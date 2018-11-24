@@ -12,6 +12,6 @@ This is a project made for the last of year of IMAC engineering formation at Uni
 - Justine Vuillemot
 - Amel Negra
 - David Nasr
-- Shiqi Jiang
+- Shiqi Jiang 
 
 *This project is in production and will be released on April 2019*
