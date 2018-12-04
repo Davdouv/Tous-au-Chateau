@@ -4,13 +4,22 @@ using UnityEngine;
 
 public class TriggerZone : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	/*
+	*	Detects if a game object with the Tag "Villagers" crosses the box collider
+	* on which this script is linked
+	* Attention! Collider object "col" must have rigidBody component
+	*/
+	void OnTriggerEnter (Collider col) {
+		Debug.Log("Something is inside!");
+		if (col.gameObject.CompareTag("Villager")) {
+			Debug.Log("Villagers are inside!");
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void OnTriggerStay (Collider col) {
+		Debug.Log("Still insied!");
+		if (col.gameObject.CompareTag("Villager")) {
+			Debug.Log("Villager is still inside!");
+		}
 	}
 }
