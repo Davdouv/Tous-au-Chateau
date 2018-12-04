@@ -9,18 +9,18 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1082830165045368}
+  m_RootGameObject: {fileID: 1554373581210612}
   m_IsPrefabAsset: 1
---- !u!1 &1082830165045368
+--- !u!1 &1554373581210612
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4778751154060202}
-  - component: {fileID: 65096107174775802}
-  - component: {fileID: 114719803129189078}
+  - component: {fileID: 4565905798139460}
+  - component: {fileID: 65808028045034758}
+  - component: {fileID: 114035889880543044}
   m_Layer: 0
   m_Name: TriggerBox
   m_TagString: Untagged
@@ -28,37 +28,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4778751154060202
+--- !u!4 &4565905798139460
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1082830165045368}
+  m_GameObject: {fileID: 1554373581210612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.4, y: 25.85, z: 9.39}
-  m_LocalScale: {x: 2.0982, y: 2.0982, z: 2.0982}
+  m_LocalPosition: {x: 78.28709, y: 24.27, z: 9.45}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &65096107174775802
+--- !u!65 &65808028045034758
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1082830165045368}
+  m_GameObject: {fileID: 1554373581210612}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 5, z: 5}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114719803129189078
+--- !u!114 &114035889880543044
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1082830165045368}
+  m_GameObject: {fileID: 1554373581210612}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a943269b2ec3de4e85c65371f3e5ebc, type: 3}
