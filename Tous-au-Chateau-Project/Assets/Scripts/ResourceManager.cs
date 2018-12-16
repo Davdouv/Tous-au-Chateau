@@ -2,22 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceManager : MonoBehaviour {
+public class ResourceManager : PauseScript
+{
+    public EndOfGameManager endOfGame;
 
     private int woodNb = 0;
     private int stoneNb = 0;
     private int foodNb = 0;
     private int villagersNb = 30;
     private float motivation = 100; //% => value from 0 to 100
+    private bool isInPause;
 
     void Start()
     {
+        isInPause = false;
         InvokeRepeating("InGameMotivation", 0.0f, 2.0f);
     }
 
     void InGameMotivation()
     {
-        RemoveMotivation(1);
+        if(!isInPause)
+            RemoveMotivation(3);
+    }
+
+    override public void Pause()
+    {
+        isInPause = true;
+    }
+
+    override public void UnPause()
+    {
+        isInPause = false;
     }
 
     /*GETTERS*/
@@ -195,9 +210,10 @@ public class ResourceManager : MonoBehaviour {
     {
         if (villagers > 0)
         {
-            if (villagersNb - villagers < 0)
+            if (villagersNb - villagers <= 0)
             {
-                return false;
+                villagersNb = 0;
+                endOfGame.LoseGame();
             }
             else
             {
@@ -213,9 +229,10 @@ public class ResourceManager : MonoBehaviour {
     {
         if (newMotivation > 0)
         {
-            if (motivation - newMotivation < 0)
+            if (motivation - newMotivation <= 0)
             {
                 motivation = 0;
+                endOfGame.LoseGame();
             }
             else
             {

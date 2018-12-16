@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class IUManager : MonoBehaviour {
+public class UIManager : PauseScript
+{
 
+    /* FOR TEST */
     public Text woodTxt;
     public Text stoneTxt;
     public Text foodTxt;
     public Text villagersTxt;
     public Slider motivation;
+
+    /* NOT FOR TEST */
+    public GameObject gameOverPanel;
+    public GameObject constructionPanel;
 
     public ResourceManager resourceManager;
 
@@ -28,6 +34,37 @@ public class IUManager : MonoBehaviour {
         foodTxt.text = "Food : " + resourceManager.GetFood();
         villagersTxt.text = "Villagers : " + resourceManager.GetVillagers();
         motivation.value = resourceManager.GetMotivation();
+    }
+
+    public void DisplayGameOverPanel()
+    {
+        gameOverPanel.SetActive(true);
+        Transform score = gameOverPanel.transform.GetChild(2);
+
+        if(score != null)
+        {
+            score.GetComponent<Text>().text = "Villagers : " + resourceManager.GetVillagers();
+        }
+    }
+
+    override public void Pause()
+    {
+        Button[] interactables = constructionPanel.GetComponentsInChildren<Button>();
+
+        for(int i = 0; i < interactables.Length; ++i)
+        {
+            interactables[i].enabled = false;
+        }
+    }
+
+    override public void UnPause()
+    {
+        Button[] interactables = constructionPanel.GetComponentsInChildren<Button>();
+
+        for (int i = 0; i < interactables.Length; ++i)
+        {
+            interactables[i].enabled = true;
+        }
     }
 
     /* WOOD */
