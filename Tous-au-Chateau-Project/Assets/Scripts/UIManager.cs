@@ -5,18 +5,14 @@ using UnityEngine.UI;
 
 public class UIManager : PauseScript
 {
-
-    /* FOR TEST */
     public Text woodTxt;
     public Text stoneTxt;
     public Text foodTxt;
     public Text villagersTxt;
     public Slider motivation;
 
-    /* NOT FOR TEST */
     public GameObject gameOverPanel;
     public GameObject constructionPanel;
-
     public ResourceManager resourceManager;
 
 	void Start () {
@@ -34,6 +30,17 @@ public class UIManager : PauseScript
         foodTxt.text = "Food : " + resourceManager.GetFood();
         villagersTxt.text = "Villagers : " + resourceManager.GetVillagers();
         motivation.value = resourceManager.GetMotivation();
+
+        /* For testing hide and show purposes */
+        if (Input.GetKeyDown("space"))
+        {
+            ShowConstructionPanel();
+        }
+
+        if (Input.GetKeyUp("space"))
+        {
+            HideConstructionPanel();
+        }
     }
 
     public void DisplayGameOverPanel()
@@ -65,6 +72,16 @@ public class UIManager : PauseScript
         {
             interactables[i].enabled = true;
         }
+    }
+
+    public void ShowConstructionPanel()
+    {
+        constructionPanel.SetActive(true);
+    }
+
+    public void HideConstructionPanel()
+    {
+        constructionPanel.SetActive(false);
     }
 
     /* WOOD */
