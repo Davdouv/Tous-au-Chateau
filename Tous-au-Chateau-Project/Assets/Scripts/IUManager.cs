@@ -33,55 +33,55 @@ public class IUManager : MonoBehaviour {
     /* WOOD */
     public void IncreaseWood()
     {
-        resourceManager.SetWood(resourceManager.GetWood() + 10);
+        resourceManager.AddWood(10);
     }
 
     public void DecreaseWood()
     {
-        resourceManager.SetWood(resourceManager.GetWood() - 5);
+        resourceManager.RemoveWood(7);
     }
 
     /* STONE */
     public void IncreaseStone()
     {
-        resourceManager.SetStone(resourceManager.GetStone() + 10);
+        resourceManager.AddStone(10);
     }
 
     public void DecreaseStone()
     {
-        resourceManager.SetStone(resourceManager.GetStone() - 10);
+        resourceManager.RemoveStone(9);
     }
 
     /* FOOD */
     public void IncreaseFood()
     {
-        resourceManager.SetFood(resourceManager.GetFood() + 5);
+        resourceManager.AddFood(5);
     }
 
     public void DecreaseFood()
     {
-        resourceManager.SetFood(resourceManager.GetFood() - 5);
+        resourceManager.RemoveFood(7);
     }
 
     /* VILLAGERS */
     public void IncreaseVillagers()
     {
-        resourceManager.SetVillagers(resourceManager.GetVillagers() + 3);
+        resourceManager.AddVillagers(3);
     }
 
     public void DecreaseVillagers()
     {
-        resourceManager.SetVillagers(resourceManager.GetVillagers() - 1);
+        resourceManager.RemoveVillagers(2);
     }
 
     /* MOTIVATION */
     public void IncreaseMotivation()
     {
-        resourceManager.SetMotivation(resourceManager.GetMotivation() + 10);
+        resourceManager.AddMotivation(10);
     }
 
     public void DecreaseMotivation()
     {
-        resourceManager.SetMotivation(resourceManager.GetMotivation() - 10);
+        resourceManager.RemoveMotivation(10);
     }
 }
