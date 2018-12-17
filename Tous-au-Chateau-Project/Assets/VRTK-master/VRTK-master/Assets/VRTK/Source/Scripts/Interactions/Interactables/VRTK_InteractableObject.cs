@@ -225,6 +225,7 @@ namespace VRTK
         protected Vector3 previousLocalScale = Vector3.zero;
         protected bool startDisabled = false;
 
+
         /// <summary>
         /// Emitted when the Interactable Object script is enabled;
         /// </summary>
@@ -455,7 +456,7 @@ namespace VRTK
         public virtual bool IsGrabbed(GameObject grabbedBy = null)
         {
             if (grabbingObjects.Count > 0 && grabbedBy != null)
-            {
+            {   
                 return (grabbingObjects.Contains(grabbedBy));
             }
             return (grabbingObjects.Count > 0);
@@ -1228,6 +1229,7 @@ namespace VRTK
             }
             ForceReleaseGrab();
             RemoveTrackPoint();
+           
             VRTK_SharedMethods.AddListValue(grabbingObjects, currentGrabbingObject, true);
             SetTrackPoint(currentGrabbingObject);
             if (!IsSwappable())

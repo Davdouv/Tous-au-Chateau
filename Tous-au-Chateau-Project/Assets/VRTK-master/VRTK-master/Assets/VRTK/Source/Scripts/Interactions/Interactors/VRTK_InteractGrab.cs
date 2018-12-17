@@ -85,6 +85,14 @@ namespace VRTK
         protected GameObject undroppableGrabbedObject;
         protected Rigidbody originalControllerAttachPoint;
 
+        //public int wood = 0;
+        //public int stone = 0;
+        public ResourceManager ressourceM;
+
+        public GameObject bridge;
+        public GameObject wall;
+        public Transform theScene;
+
         protected VRTK_ControllerReference controllerReference
         {
             get
@@ -545,6 +553,64 @@ namespace VRTK
                 {
                     initialGrabAttempt = objectToGrabScript.grabAttachMechanicScript.StartGrab(gameObject, grabbedObject, controllerAttachPoint);
                 }
+                //Gather ressources
+                if (grabbedObject.gameObject.CompareTag("wood"))
+                {
+                    Debug.Log("INTO WOOD");
+                    ressourceM.AddWood(1);
+                    Destroy(grabbedObject.gameObject);
+                }
+                else if (grabbedObject.gameObject.CompareTag("stone"))
+                {
+                    Debug.Log("INTO STONE");
+                    ressourceM.AddStone(1);
+                    Destroy(grabbedObject.gameObject);
+                }
+                else if (grabbedObject.gameObject.CompareTag("food"))
+                {
+                    Debug.Log("INTO FOOD");
+                    ressourceM.AddFood(1);
+                    Destroy(grabbedObject.gameObject);
+                }
+                //place constructions
+                if (grabbedObject.gameObject.CompareTag("bridge"))
+                {
+                    Vector3 BridgePos = grabbedObject.transform.position;
+                    if (ressourceM.RemoveWood(5))
+                    {
+                        VRTK_InteractableObject objScript = grabbedObject.GetComponent<VRTK_InteractableObject>();
+                        Debug.Log("BUILD BRIDGE");
+                        grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                        grabbedObject.transform.SetParent(theScene);
+                        Instantiate(bridge, grabbedObject.transform.position, grabbedObject.transform.rotation);
+                        objScript.isGrabbable = true;
+                    }
+                    else
+                    {
+                        VRTK_InteractableObject objScript = grabbedObject.GetComponent<VRTK_InteractableObject>();
+                        objScript.isGrabbable = false;
+                    }
+                }
+                else if (grabbedObject.gameObject.CompareTag("wall"))
+                {
+                    if (ressourceM.RemoveStone(5))
+                    {
+                        VRTK_InteractableObject objScript = grabbedObject.GetComponent<VRTK_InteractableObject>();
+                        Debug.Log("BUILD Stone");
+                        grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
+                        grabbedObject.transform.SetParent(theScene);
+                        Instantiate(wall, grabbedObject.transform.position, grabbedObject.transform.rotation);
+                        objScript.isGrabbable = true;
+                    }
+                    else
+                    {
+                        VRTK_InteractableObject objScript = grabbedObject.GetComponent<VRTK_InteractableObject>();
+                        objScript.isGrabbable = false;
+                    }
+                }
+
+
+                //will do same with other resources
             }
             return initialGrabAttempt;
         }
