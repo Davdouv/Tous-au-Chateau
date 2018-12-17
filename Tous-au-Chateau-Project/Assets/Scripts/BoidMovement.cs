@@ -35,6 +35,16 @@ public class BoidMovement : MonoBehaviour
         rb.isKinematic = true;
     }
 
+    public void Turn(Collider direction)
+    {
+        if (direction.name == "LeftWoodSign")
+        { 
+            transform.Rotate(0, 90, 0);
+        }else{
+            transform.Rotate(0, -90, 0);
+        }
+    }
+
     // FixedUpdate est conseillé en cas d'instructions sur la physique
     void FixedUpdate()
     {
