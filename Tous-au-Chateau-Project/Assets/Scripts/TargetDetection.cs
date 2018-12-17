@@ -38,6 +38,8 @@ public class TargetDetection : MonoBehaviour {
             _isInContact = true;
 
             Debug.Log("Collision !");
+
+            collision.gameObject.GetComponent<EnemyTest>().CrushDown();
         }
     }
     private void OnCollisionExit(Collision collision)
