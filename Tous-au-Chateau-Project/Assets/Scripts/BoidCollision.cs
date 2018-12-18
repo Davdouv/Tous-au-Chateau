@@ -25,17 +25,21 @@ public class BoidCollision : MonoBehaviour {
 	private RaycastHit hitInfo;
 	private bool touched= false;
     private bool onPlatform = false;
+    private bool inDanger = false;
+
 
 
     void OnTriggerEnter(Collider collisionInfo)
     {
         if(collisionInfo.tag == "Platform")
         {
+            print("UNIT " + name + " IN PLATFORM AREA "+collisionInfo.name);
             onPlatform = true;
         }
         if (!onPlatform && collisionInfo.tag == "DangerArea")
         {
-            print("UNIT " + name + " IN DANGER AREA");
+            print("UNIT " + name + " IN DANGER AREA" + collisionInfo.name);
+            inDanger = true;
             
         }
     }
@@ -43,18 +47,27 @@ public class BoidCollision : MonoBehaviour {
     {
         if (collisionInfo.tag == "Platform")
         {
+            print("UNIT " + name + " LEAVING PLATFORM AREA" + collisionInfo.name);
             onPlatform = false;
         }
         if (collisionInfo.tag == "DangerArea")
         {
-            print("UNIT " + name + " LEAVING DANGER AREA");
+            print("UNIT " + name + " LEAVING DANGER AREA" + collisionInfo.name);
+            inDanger = false;
         }
     }
+    /*
     void OnCollisionStay(Collision collisionInfo)
     {
+        print("OncollisionStay de " + name + " avec "+collisionInfo.gameObject.name);
         if(!onPlatform && collisionInfo.gameObject.tag == "DangerArea")
-        	gameObject.GetComponent<BoidStatus>().getDamaged();
+        {
+            print("UNIT " + name + " TAKES DAMAGE" + collisionInfo.gameObject.name);
+            GetComponent<BoidStatus>().getDamaged();
+        }
+            
     }
+    */
     // Détection de gameobject servant à la redirection des villageois
     void CheckforSign()
     {
@@ -75,6 +88,12 @@ public class BoidCollision : MonoBehaviour {
 
         CheckforSign();
 
-        
+        if (!onPlatform && inDanger)
+        {
+            print("UNIT " + name + " TAKES DAMAGE");
+            GetComponent<BoidStatus>().getDamaged();
+        }
+
+
     }
 }
