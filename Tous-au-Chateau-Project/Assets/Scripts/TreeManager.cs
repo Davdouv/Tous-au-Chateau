@@ -80,7 +80,6 @@ public class TreeManager : MonoBehaviour {
 
         for(int i = 0; i < _lastAxiom.Length; ++i)
         {
-            //Debug.Log(lastPoint);
             switch (_lastAxiom[i])
             {
                 case 'F': //Add branch (which has the last direction of the stack "direction")
@@ -151,7 +150,6 @@ public class TreeManager : MonoBehaviour {
 
         for(int i =0; i < numPoint; ++i)
         {
-            Debug.Log(_points.Peek());
             _pointOfBranch.Add(_points.Pop());
         }
 
@@ -170,14 +168,10 @@ public class TreeManager : MonoBehaviour {
     //Récupérer de Justine Vuillemot
     private void AxiomeIterations()
     {
-        Debug.Log("Axiome : " + _lastAxiom);
-
         for (int i = 0; i < _iteration; i++)
         {
             _lastAxiom = ApplyRuleOnAxiome();
         }
-
-        Debug.Log("Created tree : " + _lastAxiom);
     }
 
     private string ApplyRuleOnAxiome()
