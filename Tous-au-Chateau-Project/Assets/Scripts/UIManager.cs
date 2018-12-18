@@ -12,27 +12,28 @@ public class UIManager : PauseScript
     public Slider motivation;
 
     public GameObject gameOverPanel;
-    public GameObject constructionPanel;
+    public Text gameOverVillagersText;
+    //public GameObject constructionPanel;
     public ResourceManager resourceManager;
 
 	void Start () {
-        woodTxt.text = "Wood : " + resourceManager.GetWood();
-        stoneTxt.text = "Stone : " + resourceManager.GetStone();
-        foodTxt.text = "Food : " + resourceManager.GetFood();
-        villagersTxt.text = "Villagers : " + resourceManager.GetVillagers();
+        woodTxt.text = "" + resourceManager.GetWood();
+        stoneTxt.text = "" + resourceManager.GetStone();
+        foodTxt.text = "" + resourceManager.GetFood();
+        villagersTxt.text = "" + resourceManager.GetVillagers();
         motivation.value = resourceManager.GetMotivation();
     }
 
     private void Update()
     {
-        woodTxt.text = "Wood : " + resourceManager.GetWood();
-        stoneTxt.text = "Stone : " + resourceManager.GetStone();
-        foodTxt.text = "Food : " + resourceManager.GetFood();
-        villagersTxt.text = "Villagers : " + resourceManager.GetVillagers();
+        woodTxt.text = "" + resourceManager.GetWood();
+        stoneTxt.text = "" + resourceManager.GetStone();
+        foodTxt.text = "" + resourceManager.GetFood();
+        villagersTxt.text = "" + resourceManager.GetVillagers();
         motivation.value = resourceManager.GetMotivation();
 
         /* For testing hide and show purposes */
-        if (Input.GetKeyDown("space"))
+        /*if (Input.GetKeyDown("space"))
         {
             ShowConstructionPanel();
         }
@@ -40,48 +41,42 @@ public class UIManager : PauseScript
         if (Input.GetKeyUp("space"))
         {
             HideConstructionPanel();
-        }
+        }*/
     }
 
     public void DisplayGameOverPanel()
     {
         gameOverPanel.SetActive(true);
-        Transform score = gameOverPanel.transform.GetChild(2);
-
-        if(score != null)
-        {
-            score.GetComponent<Text>().text = "Villagers : " + resourceManager.GetVillagers();
-        }
+        gameOverVillagersText.text = "Remaining Villagers : " + resourceManager.GetVillagers();
     }
 
     override public void Pause()
     {
-        Button[] interactables = constructionPanel.GetComponentsInChildren<Button>();
-
+        /*Button[] interactables = constructionPanel.GetComponentsInChildren<Button>();
         for(int i = 0; i < interactables.Length; ++i)
         {
             interactables[i].enabled = false;
-        }
+        }*/
     }
 
     override public void UnPause()
     {
-        Button[] interactables = constructionPanel.GetComponentsInChildren<Button>();
+        /*Button[] interactables = constructionPanel.GetComponentsInChildren<Button>();
 
         for (int i = 0; i < interactables.Length; ++i)
         {
             interactables[i].enabled = true;
-        }
+        }*/
     }
 
     public void ShowConstructionPanel()
     {
-        constructionPanel.SetActive(true);
+       // constructionPanel.SetActive(true);
     }
 
     public void HideConstructionPanel()
     {
-        constructionPanel.SetActive(false);
+       // constructionPanel.SetActive(false);
     }
 
     /* WOOD */
