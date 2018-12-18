@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 /*
 Boid Status
@@ -25,7 +26,13 @@ public class BoidStatus : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-		if(life_point<0)
-			Destroy(gameObject);
+        if (life_point < 0)
+        {
+            GetComponent<DyingVillager>().isAlive = false;
+            GetComponent<BoidMovement>().speed = 0.0f;
+            GetComponent<NavMeshAgent>().enabled = false;
+        }
+            
+            
 	}
 }
