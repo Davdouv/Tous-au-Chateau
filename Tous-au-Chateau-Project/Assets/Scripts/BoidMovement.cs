@@ -39,9 +39,9 @@ public class BoidMovement : MonoBehaviour
     {
         if (direction.name == "LeftWoodSign")
         { 
-            transform.Rotate(0, 90, 0);
-        }else{
             transform.Rotate(0, -90, 0);
+        }else{
+            transform.Rotate(0, 90, 0);
         }
     }
 
