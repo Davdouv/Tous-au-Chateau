@@ -92,6 +92,17 @@ namespace VRTK
         public GameObject bridge;
         public GameObject wall;
         public Transform theScene;
+        public Transform UI;
+        Transform initialBridgeTrans, initialWallTrans;
+        bool canConstructWall, canConstructBridge;
+
+        void Start()
+        {
+            initialBridgeTrans = bridge.transform;
+            initialWallTrans = wall.transform;
+            Debug.Log(initialBridgeTrans);
+            Debug.Log(initialWallTrans);
+        }
 
         protected VRTK_ControllerReference controllerReference
         {
@@ -533,8 +544,26 @@ namespace VRTK
         protected virtual void PerformGrabAttempt(GameObject objectToGrab)
         {
             IncrementGrabState();
+            //place constructions
+            if (objectToGrab.gameObject.CompareTag("bridge"))
+            {
+                if (ressourceM.RemoveWood(5))
+                {
+                    GameObject myNewConstruction = Instantiate(bridge, initialBridgeTrans.position, initialBridgeTrans.rotation);
+                    myNewConstruction.transform.SetParent(theScene);
+                }
+            }
+            else if (objectToGrab.gameObject.CompareTag("wall"))
+            {
+                if (ressourceM.RemoveStone(5))
+                {
+                    GameObject myNewConstruction = Instantiate(wall, initialBridgeTrans.position, initialBridgeTrans.rotation);
+                    myNewConstruction.transform.SetParent(theScene);
+                }
+            }
             IsValidGrabAttempt(objectToGrab);
             undroppableGrabbedObject = GetUndroppableObject();
+           
         }
 
         protected virtual bool ScriptValidGrab(VRTK_InteractableObject objectToGrabScript)
@@ -572,17 +601,39 @@ namespace VRTK
                     ressourceM.AddFood(1);
                     Destroy(grabbedObject.gameObject);
                 }
-                //place constructions
-                if (grabbedObject.gameObject.CompareTag("bridge"))
+
+                //Contruction
+                if (objectToGrab.gameObject.CompareTag("bridge") && canConstructBridge)
                 {
-                    Vector3 BridgePos = grabbedObject.transform.position;
+                    
+                }
+                else if (objectToGrab.gameObject.CompareTag("wall") && canConstructWall)
+                {
+                    if (ressourceM.RemoveStone(5))
+                    {
+                        objectToGrab.GetComponent<Rigidbody>().isKinematic = false;
+                        objectToGrab.transform.SetParent(theScene);
+                        objectToGrab.gameObject.tag = "crushable";
+                        GameObject myNewCube = Instantiate(wall, initialWallTrans.position, initialWallTrans.rotation);
+                        VRTK_InteractableObject objScript = myNewCube.GetComponent<VRTK_InteractableObject>();
+                        objScript.isGrabbable = false;
+                        myNewCube.GetComponent<Rigidbody>().isKinematic = true;
+                        myNewCube.transform.SetParent(UI);
+                        canConstructWall = false;
+                    }
+                }
+
+
+                /*if (grabbedObject.gameObject.CompareTag("bridge"))
+                {
+                    Transform BridgePos = grabbedObject.transform;
                     if (ressourceM.RemoveWood(5))
                     {
                         VRTK_InteractableObject objScript = grabbedObject.GetComponent<VRTK_InteractableObject>();
                         Debug.Log("BUILD BRIDGE");
                         grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                         grabbedObject.transform.SetParent(theScene);
-                        Instantiate(bridge, grabbedObject.transform.position, grabbedObject.transform.rotation);
+                        Instantiate(bridge, BridgePos.position, BridgePos.rotation);
                         objScript.isGrabbable = true;
                     }
                     else
@@ -593,13 +644,14 @@ namespace VRTK
                 }
                 else if (grabbedObject.gameObject.CompareTag("wall"))
                 {
+                    Transform WallPos = grabbedObject.transform;
                     if (ressourceM.RemoveStone(5))
                     {
                         VRTK_InteractableObject objScript = grabbedObject.GetComponent<VRTK_InteractableObject>();
                         Debug.Log("BUILD Stone");
                         grabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                         grabbedObject.transform.SetParent(theScene);
-                        Instantiate(wall, grabbedObject.transform.position, grabbedObject.transform.rotation);
+                        Instantiate(wall, WallPos.position, WallPos.rotation);
                         objScript.isGrabbable = true;
                     }
                     else
@@ -607,7 +659,7 @@ namespace VRTK
                         VRTK_InteractableObject objScript = grabbedObject.GetComponent<VRTK_InteractableObject>();
                         objScript.isGrabbable = false;
                     }
-                }
+                }*/
 
 
                 //will do same with other resources

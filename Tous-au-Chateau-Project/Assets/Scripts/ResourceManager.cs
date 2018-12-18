@@ -6,8 +6,8 @@ public class ResourceManager : PauseScript
 {
     public EndOfGameManager endOfGame;
 
-    private int woodNb = 5;
-    private int stoneNb = 5;
+    private int woodNb = 15;
+    private int stoneNb = 10;
     private int foodNb = 0;
     private int villagersNb = 30;
     private float motivation = 100; //% => value from 0 to 100
@@ -16,13 +16,13 @@ public class ResourceManager : PauseScript
     void Start()
     {
         isInPause = false;
-        InvokeRepeating("InGameMotivation", 0.0f, 2.0f);
+        InvokeRepeating("InGameMotivation", 0.0f, 3.0f);
     }
 
     void InGameMotivation()
     {
         if(!isInPause)
-            RemoveMotivation(3);
+            RemoveMotivation(1);
     }
 
     override public void Pause()
