@@ -66,5 +66,24 @@ public class GameManager : MonoBehaviour {
     public void TogglePauseWorld()
     {
         _isWorldPaused = !_isWorldPaused;
+
+        if (_isWorldPaused)
+        {
+            PauseVillagers();
+        }
+        else
+        {
+            ResumeVillagers();
+        }
+    }
+
+    // Pause Effects
+    private void PauseVillagers()
+    {
+        Debug.Log("Pause Villagers");
+    }
+    private void ResumeVillagers()
+    {
+        Debug.Log("Resume Villagers");
     }
 }
