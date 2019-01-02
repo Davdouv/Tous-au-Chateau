@@ -48,39 +48,45 @@ public class GameManager : MonoBehaviour {
     public void Pause()
     {
         PauseWorld();
-        _isPaused = true;
+        _isPaused = true;               
         Debug.Log("Pause Game");
     }
     public void Resume()
     {
-        ResumeWorld();
         _isPaused = false;
+        ResumeWorld();
         Debug.Log("Resume Game");
     }
     public void TogglePause()
     {
         if (_isPaused)
         {
-            Pause();
+            Resume();
         }
         else
         {
-            Resume();
+            Pause();
         }
     }
 
     // PAUSE WORLD
     public void PauseWorld()
     {
-        _isWorldPaused = true;
-        Time.timeScale = 0;
-        Debug.Log("Pause World");
+        if (!_isPaused)
+        {
+            _isWorldPaused = true;
+            Time.timeScale = 0;
+            Debug.Log("Pause World");
+        }
     }
     public void ResumeWorld()
     {
-        _isWorldPaused = false;
-        Time.timeScale = 1;
-        Debug.Log("Resume World");
+        if (!_isPaused)
+        {
+            _isWorldPaused = false;
+            Time.timeScale = 1;
+            Debug.Log("Resume World");
+        }
     }
     public void TogglePauseWorld()
     {
