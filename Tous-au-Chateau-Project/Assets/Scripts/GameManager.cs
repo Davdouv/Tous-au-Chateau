@@ -47,15 +47,26 @@ public class GameManager : MonoBehaviour {
     // PAUSE GAME
     public void Pause()
     {
+        PauseWorld();
         _isPaused = true;
+        Debug.Log("Pause Game");
     }
     public void Resume()
     {
+        ResumeWorld();
         _isPaused = false;
+        Debug.Log("Resume Game");
     }
     public void TogglePause()
     {
-        _isPaused = !_isPaused;
+        if (_isPaused)
+        {
+            Pause();
+        }
+        else
+        {
+            Resume();
+        }
     }
 
     // PAUSE WORLD
@@ -81,5 +92,15 @@ public class GameManager : MonoBehaviour {
         {
             PauseWorld();
         }
+    }
+
+    // RESTART
+    public void Restart()
+    {
+        _hasStarted = false;
+        _hasWin = false;
+        _hasLost = false;
+        _isPaused = false;
+        _isWorldPaused = false;
     }
 }
