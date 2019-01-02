@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour {
         {
             if (_instance == null)
             {
-                GameObject go = new GameObject("GameManager");
+                GameObject go = new GameObject("_GameManager");
                 go.AddComponent<GameManager>();
             }
             return _instance;

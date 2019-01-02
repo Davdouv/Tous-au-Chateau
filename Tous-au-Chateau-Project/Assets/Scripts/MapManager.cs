@@ -17,7 +17,7 @@ public class MapManager : MonoBehaviour {
             // create logic to create the instance
             if (_instance == null)
             {
-                GameObject go = new GameObject("MapManager");
+                GameObject go = new GameObject("_MapManager");
                 go.AddComponent<MapManager>();
             }
             return _instance;

@@ -15,7 +15,7 @@ public class InputManager : MonoBehaviour {
         {
             if (_instance == null)
             {
-                GameObject go = new GameObject("InputManager");
+                GameObject go = new GameObject("_InputManager");
                 go.AddComponent<InputManager>();
             }
             return _instance;
