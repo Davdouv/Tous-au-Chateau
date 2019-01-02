@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour {
     {
         _hasLost = true;
     }
+
+    // PAUSE GAME
     public void Pause()
     {
         _isPaused = true;
@@ -55,35 +57,29 @@ public class GameManager : MonoBehaviour {
     {
         _isPaused = !_isPaused;
     }
+
+    // PAUSE WORLD
     public void PauseWorld()
     {
         _isWorldPaused = true;
+        Time.timeScale = 0;
+        Debug.Log("Pause World");
     }
     public void ResumeWorld()
     {
         _isWorldPaused = false;
+        Time.timeScale = 1;
+        Debug.Log("Resume World");
     }
     public void TogglePauseWorld()
     {
-        _isWorldPaused = !_isWorldPaused;
-
         if (_isWorldPaused)
         {
-            PauseVillagers();
+            ResumeWorld();
         }
         else
         {
-            ResumeVillagers();
+            PauseWorld();
         }
-    }
-
-    // Pause Effects
-    private void PauseVillagers()
-    {
-        Debug.Log("Pause Villagers");
-    }
-    private void ResumeVillagers()
-    {
-        Debug.Log("Resume Villagers");
     }
 }
