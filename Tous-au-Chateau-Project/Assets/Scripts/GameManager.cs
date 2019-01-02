@@ -43,47 +43,70 @@ public class GameManager : MonoBehaviour {
     {
         _hasLost = true;
     }
+
+    // PAUSE GAME
     public void Pause()
     {
-        _isPaused = true;
+        PauseWorld();
+        _isPaused = true;               
+        Debug.Log("Pause Game");
     }
     public void Resume()
     {
         _isPaused = false;
+        ResumeWorld();
+        Debug.Log("Resume Game");
     }
     public void TogglePause()
     {
-        _isPaused = !_isPaused;
-    }
-    public void PauseWorld()
-    {
-        _isWorldPaused = true;
-    }
-    public void ResumeWorld()
-    {
-        _isWorldPaused = false;
-    }
-    public void TogglePauseWorld()
-    {
-        _isWorldPaused = !_isWorldPaused;
-
-        if (_isWorldPaused)
+        if (_isPaused)
         {
-            PauseVillagers();
+            Resume();
         }
         else
         {
-            ResumeVillagers();
+            Pause();
         }
     }
 
-    // Pause Effects
-    private void PauseVillagers()
+    // PAUSE WORLD
+    public void PauseWorld()
     {
-        Debug.Log("Pause Villagers");
+        if (!_isPaused)
+        {
+            _isWorldPaused = true;
+            Time.timeScale = 0;
+            Debug.Log("Pause World");
+        }
     }
-    private void ResumeVillagers()
+    public void ResumeWorld()
     {
-        Debug.Log("Resume Villagers");
+        if (!_isPaused)
+        {
+            _isWorldPaused = false;
+            Time.timeScale = 1;
+            Debug.Log("Resume World");
+        }
+    }
+    public void TogglePauseWorld()
+    {
+        if (_isWorldPaused)
+        {
+            ResumeWorld();
+        }
+        else
+        {
+            PauseWorld();
+        }
+    }
+
+    // RESTART
+    public void Restart()
+    {
+        _hasStarted = false;
+        _hasWin = false;
+        _hasLost = false;
+        _isPaused = false;
+        _isWorldPaused = false;
     }
 }

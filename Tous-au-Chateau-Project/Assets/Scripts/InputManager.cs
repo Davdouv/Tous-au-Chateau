@@ -28,9 +28,16 @@ public class InputManager : MonoBehaviour {
 
     void Update()
     {
+        // PAUSE WORLD
         if (Input.GetKeyDown(KeyCode.P))
         {
             GameManager.Instance.TogglePauseWorld();
+        }
+
+        // PAUSE GAME (Pause Menu)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.Instance.TogglePause();
         }
     }
 }
