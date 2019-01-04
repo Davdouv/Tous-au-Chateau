@@ -6,11 +6,13 @@ public class GameManager : MonoBehaviour {
 
     private static GameManager _instance;
 
-    private bool _hasStarted;
-    private bool _hasWin;
-    private bool _hasLost;
-    private bool _isPaused;
-    private bool _isWorldPaused;
+    private static bool _hasStarted;
+    private static bool _hasWin;
+    private static bool _hasLost;
+    private static bool _isPaused;
+    private static bool _isWorldPaused;
+
+    public GameObject pauseMenu;
 
     // ***** SINGLETON *****/
     public static GameManager Instance
@@ -45,15 +47,21 @@ public class GameManager : MonoBehaviour {
     }
 
     // PAUSE GAME
+    public bool IsPaused()
+    {
+        return _isPaused;
+    }
     public void Pause()
     {
         PauseWorld();
-        _isPaused = true;               
+        _isPaused = true;
+        pauseMenu.SetActive(true);
         Debug.Log("Pause Game");
     }
     public void Resume()
     {
         _isPaused = false;
+        pauseMenu.SetActive(false);
         ResumeWorld();
         Debug.Log("Resume Game");
     }
@@ -70,13 +78,18 @@ public class GameManager : MonoBehaviour {
     }
 
     // PAUSE WORLD
+    public bool IsWorldPaused()
+    {
+        return _isWorldPaused;
+    }
     public void PauseWorld()
     {
         if (!_isPaused)
         {
             _isWorldPaused = true;
-            Time.timeScale = 0;
             Debug.Log("Pause World");
+            //Time.timeScale = 0;
+            // If we set timeScale to 0, then we can't move the controllers
         }
     }
     public void ResumeWorld()
@@ -84,8 +97,8 @@ public class GameManager : MonoBehaviour {
         if (!_isPaused)
         {
             _isWorldPaused = false;
-            Time.timeScale = 1;
             Debug.Log("Resume World");
+            //Time.timeScale = 1;
         }
     }
     public void TogglePauseWorld()
