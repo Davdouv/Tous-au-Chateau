@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour {
     private bool _isPaused;
     private bool _isWorldPaused;
 
+    public GameObject pauseMenu;
+
     // ***** SINGLETON *****/
     public static GameManager Instance
     {
@@ -48,12 +50,14 @@ public class GameManager : MonoBehaviour {
     public void Pause()
     {
         PauseWorld();
-        _isPaused = true;               
+        _isPaused = true;
+        pauseMenu.SetActive(true);
         Debug.Log("Pause Game");
     }
     public void Resume()
     {
         _isPaused = false;
+        pauseMenu.SetActive(false);
         ResumeWorld();
         Debug.Log("Resume Game");
     }
