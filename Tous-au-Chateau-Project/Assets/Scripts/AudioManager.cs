@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour {
 
     private static AudioManager _instance;
 
-    private bool _mute;
+    private static bool _mute;
     private AudioSource source;
     public AudioClip mainMusic;
 
