@@ -6,12 +6,10 @@ using UnityEngine.AI;
 public class AICharactersGroup : MonoBehaviour {
 
     private List<AICharacter> _aiCharacters;
-    private Transform _currentTarget;
 
     private void Awake()
     {
         _aiCharacters = new List<AICharacter>();
-        _currentTarget = null;
     }
 
     // Get all aiCharacters of the group
@@ -20,21 +18,19 @@ public class AICharactersGroup : MonoBehaviour {
         _aiCharacters.Add(character);
     }
 
-    // Give the target to everyone in the group only. Target must be null before
-    public void ShareTarget(Transform target)
+    public void ShareTarget(GameObject target)
     {
-        // If Cancel Target
-        if (target == null)
+        foreach (AICharacter character in _aiCharacters)
         {
-            _currentTarget = null;
+            character.SetTarget(target);
         }
-        if (_currentTarget == null)
+    }
+
+    public void ShareNoTarget()
+    {
+        foreach (AICharacter character in _aiCharacters)
         {
-            _currentTarget = target;
-            foreach (AICharacter character in _aiCharacters)
-            {
-                character.SetTarget(target);
-            }
+            character.NoTarget();
         }
     }
 }

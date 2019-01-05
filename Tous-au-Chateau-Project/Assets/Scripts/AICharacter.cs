@@ -8,11 +8,14 @@ public class AICharacter : EnvironmentMaterial {
     
     private bool _isAlive;
     private NavMeshAgent _agent;
+    private NavMeshObstacle _obstacle;
     private AICharactersGroup _assignedGroup;
+    private GameObject _ownTarget;
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _obstacle = GetComponent<NavMeshObstacle>();
     }
 
     private void Start()
@@ -28,14 +31,82 @@ public class AICharacter : EnvironmentMaterial {
     }
 
     // If target found, ask the group to share the target with all group objects
-    public void TargetFound(Transform target)
+    public void TargetFound(GameObject target)
     {
         _assignedGroup.ShareTarget(target);
     }
 
-    // Used by the AICharactersGroup
-    public void SetTarget(Transform target)
+    public void TargetNotFound()
     {
-        _agent.SetDestination(target.position);
+        _assignedGroup.ShareNoTarget();
+    }
+
+    // Used by the AICharactersGroup
+    // Set Destination only if there was no destination before
+    public void SetTarget(GameObject target)
+    {
+        if (_ownTarget == null) // No Destination before
+        {
+            _ownTarget = target;
+            if (_ownTarget) // Make sur target is not null
+            {
+                _agent.isStopped = false;
+                _agent.SetDestination(target.transform.position);
+            }
+        }
+    }
+
+    public void NoTarget()
+    {
+        _ownTarget = null;
+        _agent.isStopped = true;
+    }
+
+    // Used by the AICharactersGroup
+    public void Stop(bool stop)
+    {
+        if (stop)
+        {
+            _agent.enabled = false;
+            _obstacle.enabled = true;
+        }
+        else
+        {
+            _obstacle.enabled = false;
+            _agent.enabled = true;
+        }
+        // We do this to avoid having the warning of both components active at the same time
+        //_agent.enabled = !stop;
+        //_obstacle.enabled = stop;
+    }
+
+    // What to do when Obstacle Reached ?
+    // This method MUST call GetNewTarget() when it's done and before destroying the target
+    public virtual void DoActionOnTarget()
+    {
+        // FOR TEST
+        StartCoroutine(DestroyTarget());
+    }
+
+    // Personal action (for test)
+    private IEnumerator DestroyTarget()
+    {
+        yield return new WaitForSeconds(2);
+        GameObject objectToDestroy = _ownTarget;
+        GetNewTarget();
+        Destroy(objectToDestroy);
+    }
+
+    protected void GetNewTarget()
+    {
+        AIDetection aiDetection = GetComponent<AIDetection>();
+        aiDetection.RemoveItem(_ownTarget);
+        _ownTarget = null;
+        GetComponent<AIDetection>().NewTarget(_ownTarget);
+    }
+
+    public bool IsTheTarget(GameObject target)
+    {
+        return (target == _ownTarget);
     }
 }
