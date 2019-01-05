@@ -22,10 +22,18 @@ public class AIDetection : TriggerZone {
         _aiCharacter.TargetFound(other.gameObject);
     }
 
-    // On Detection Exit, remove the target
+    // On Detection Exit, remove the target from the list
     public override void TriggerExit(Collider other)
     {
         _targetDetected.Remove(other.gameObject);
+        // If it was the target we were aiming
+        if (_aiCharacter.IsTheTarget(other.gameObject))
+        {
+            // Cancel this target
+            _aiCharacter.NoTarget();
+            // Check if there's a new one near
+            NewTarget(other.gameObject);
+        }
     }
 
     // On Collision, stop moving
@@ -48,7 +56,7 @@ public class AIDetection : TriggerZone {
     // Send a new target if there's one on the list
     public void NewTarget(GameObject oldTarget)
     {
-        _aiCharacter.Stop(false);
+        //_aiCharacter.Stop(false);
         if (_targetDetected.Count == 0)
         {
             _aiCharacter.TargetNotFound();

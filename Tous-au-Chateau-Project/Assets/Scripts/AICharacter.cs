@@ -8,14 +8,12 @@ public class AICharacter : EnvironmentMaterial {
     
     private bool _isAlive;
     private NavMeshAgent _agent;
-    private NavMeshObstacle _obstacle;
     private AICharactersGroup _assignedGroup;
     private GameObject _ownTarget;
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _obstacle = GetComponent<NavMeshObstacle>();
     }
 
     private void Start()
@@ -48,36 +46,25 @@ public class AICharacter : EnvironmentMaterial {
         if (_ownTarget == null) // No Destination before
         {
             _ownTarget = target;
-            if (_ownTarget) // Make sur target is not null
+            if (_ownTarget) // Make sure target is not null
             {
-                _agent.isStopped = false;
+                Stop(false);
                 _agent.SetDestination(target.transform.position);
             }
         }
     }
 
+    // Set no target
     public void NoTarget()
     {
         _ownTarget = null;
-        _agent.isStopped = true;
+        Stop(true);
     }
 
     // Used by the AICharactersGroup
     public void Stop(bool stop)
     {
-        if (stop)
-        {
-            _agent.enabled = false;
-            _obstacle.enabled = true;
-        }
-        else
-        {
-            _obstacle.enabled = false;
-            _agent.enabled = true;
-        }
-        // We do this to avoid having the warning of both components active at the same time
-        //_agent.enabled = !stop;
-        //_obstacle.enabled = stop;
+        _agent.isStopped = stop;
     }
 
     // What to do when Obstacle Reached ?
@@ -91,12 +78,13 @@ public class AICharacter : EnvironmentMaterial {
     // Personal action (for test)
     private IEnumerator DestroyTarget()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(2); // This is bad
         GameObject objectToDestroy = _ownTarget;
         GetNewTarget();
         Destroy(objectToDestroy);
     }
 
+    // Remove the item from the list and get a new target
     protected void GetNewTarget()
     {
         AIDetection aiDetection = GetComponent<AIDetection>();
@@ -105,8 +93,18 @@ public class AICharacter : EnvironmentMaterial {
         GetComponent<AIDetection>().NewTarget(_ownTarget);
     }
 
+    // Just for security
     public bool IsTheTarget(GameObject target)
     {
         return (target == _ownTarget);
+    }
+
+    // We need to update the navMesh Destination if the target is moving
+    private void Update()
+    {
+        if (_ownTarget)
+        {
+            _agent.SetDestination(_ownTarget.transform.position);
+        }        
     }
 }
