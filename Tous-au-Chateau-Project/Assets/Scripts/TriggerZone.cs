@@ -7,8 +7,8 @@ public abstract class TriggerZone : MonoBehaviour {
 
     public List<string> targetTag = new List<string>();
 
-	private GameObject _target;
-    private bool _isInContact;
+	protected GameObject _target;
+    protected bool _isInContact;
 
     // ***** DETECTION *****/
     // Trigger must be enabled on collider
@@ -69,6 +69,11 @@ public abstract class TriggerZone : MonoBehaviour {
     public GameObject GetTarget()
     {
         return _target;
+    }
+
+    public void SetTarget(GameObject target)
+    {
+        _target = target;
     }
 
     public virtual void TriggerEnter(Collider other) { }
