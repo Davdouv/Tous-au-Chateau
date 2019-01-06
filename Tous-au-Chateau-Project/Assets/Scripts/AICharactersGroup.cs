@@ -5,20 +5,53 @@ using UnityEngine.AI;
 
 public class AICharactersGroup : MonoBehaviour {
 
+    // Children objects of the group
     private List<AICharacter> _aiCharacters;
+    // List of all targets spotted by the group
     private List<GameObject> _targetDetected;
-    private NavMeshAgent _agent;
+    
+    // RallyPoint, move along with the group
+    private GameObject _rallyPoint;
+    private NavMeshAgent _rallyPointAgent;
+
+    // Speed of the group
+    public float slowSpeed = 2.0f;
+    public float fastSpeed = 3.5f;
+
+    private bool _isGroupMoving;
+    private bool _regrouping;
 
     private void Awake()
     {
         _aiCharacters = new List<AICharacter>();
         _targetDetected = new List<GameObject>();
-        _agent = GetComponent<NavMeshAgent>();
     }
 
     private void Start()
     {
+        // Get the children into a list
+        foreach (Transform child in transform)
+        {
+            AICharacter aiCharacter = child.GetComponent<AICharacter>();
+            AddCharacter(aiCharacter);
+            aiCharacter.SetSlowSpeed(slowSpeed);
+            aiCharacter.SetFastSpeed(fastSpeed);
+        }
+        CreateRallyPoint();
         MoveRandom();
+        //Regroup();
+    }
+
+    private void CreateRallyPoint()
+    {
+        _rallyPoint = new GameObject("RallyPoint");
+        _rallyPoint.transform.position = transform.position;
+        _rallyPoint.transform.rotation = transform.rotation;
+        _rallyPoint.transform.SetParent(transform);
+        _rallyPointAgent = _rallyPoint.AddComponent<NavMeshAgent>();
+        _rallyPointAgent.enabled = true;
+        _rallyPointAgent.Warp(_rallyPoint.transform.position);
+        _rallyPointAgent.speed = slowSpeed;
     }
 
     // All aiCharacters of the group will add themselves to the list
@@ -119,27 +152,35 @@ public class AICharactersGroup : MonoBehaviour {
         _targetDetected.Remove(item);
     }
 
-    // Make all the aiCharacters move towards the group
+    // Make the rallyPoint the new destination of all the aiCharacters
     private void Regroup()
     {
-        ShareTarget(this.gameObject);
+        _regrouping = true;
+        ShareTarget(_rallyPoint);
     }
 
+    public bool IsRegrouping()
+    {
+        return _regrouping;
+    }
+
+    public void StopRegrouping()
+    {
+        _regrouping = false;
+    }
+
+    // Move the group to a random location
     public void MoveRandom()
     {
-        _aiCharacters.ForEach(ai => ai.EnableAgent(false));
-        _aiCharacters.ForEach(ai => ai.transform.rotation = transform.rotation);
+        _isGroupMoving = true;
+        _rallyPointAgent.isStopped = false;
         float range = 20f;
-        _agent.enabled = true;
-        _agent.SetDestination(RandomNavmeshLocation(range));
+        Vector3 destination = RandomNavmeshLocation(range);
+        _rallyPointAgent.SetDestination(destination);
+        ShareDestination(destination);
     }
 
-    private void StopMoveRandom()
-    {
-        _aiCharacters.ForEach(ai => ai.EnableAgent(true));
-        _agent.enabled = false;
-    }
-
+    // Get a random location on the navmesh
     private Vector3 RandomNavmeshLocation(float radius)
     {
         Vector3 randomDirection = Random.insideUnitSphere * radius;
@@ -153,5 +194,46 @@ public class AICharactersGroup : MonoBehaviour {
             finalPosition = hit.position;
         }
         return finalPosition;
+    }
+
+    // Send a common target
+    public void ShareDestination(Vector3 destination)
+    {
+        Vector3 distanceFromRallyPoint;
+        Vector3 characterDestination;
+        foreach (AICharacter character in _aiCharacters)
+        {
+            distanceFromRallyPoint = character.transform.position - _rallyPoint.transform.position;
+            characterDestination = destination + distanceFromRallyPoint;
+            character.SetDestination(characterDestination);
+        }
+    }
+
+    // Stop the group from moving. Called when a target is detected
+    private void StopMoveRandom()
+    {
+        _isGroupMoving = false;
+        _rallyPointAgent.isStopped = true;
+        ShareNoTarget();
+    }
+
+    // Check if RallyPoint has reached destination
+    private bool IsDestinationReached()
+    {
+        float stoppingDistance = 0.5f;
+        return (Vector3.Distance(_rallyPoint.transform.position, _rallyPointAgent.destination) < stoppingDistance);
+    }
+
+    private void Update()
+    {
+        if (_isGroupMoving)
+        {
+            // Check if destination is reached
+            if (IsDestinationReached())
+            {
+                // Chose another destination
+                MoveRandom();
+            }
+        }
     }
 }

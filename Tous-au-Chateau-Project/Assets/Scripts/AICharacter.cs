@@ -11,6 +11,9 @@ public class AICharacter : EnvironmentMaterial {
     private AICharactersGroup _assignedGroup;
     private GameObject _ownTarget;
 
+    public float slowSpeed = 2.0f;
+    public float fastSpeed = 3.5f;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -25,7 +28,6 @@ public class AICharacter : EnvironmentMaterial {
     private void SetGroup()
     {
         _assignedGroup = transform.parent.GetComponent<AICharactersGroup>();
-        _assignedGroup.AddCharacter(this);
     }
 
     // If target found, ask the group to share the target with all group objects
@@ -69,6 +71,7 @@ public class AICharacter : EnvironmentMaterial {
             if (_ownTarget) // Make sure target is not null
             {
                 Stop(false);
+                FastSpeed();
                 _agent.SetDestination(target.transform.position);
             }
         }
@@ -78,6 +81,7 @@ public class AICharacter : EnvironmentMaterial {
     public void NoTarget()
     {
         _ownTarget = null;
+        SlowSpeed();
         Stop(true);
     }
 
@@ -102,7 +106,7 @@ public class AICharacter : EnvironmentMaterial {
 
         GameObject objectToDestroy = _ownTarget;
         GetNewTarget();
-        if (objectToDestroy && objectToDestroy.name != transform.parent.name)
+        if (objectToDestroy && objectToDestroy.name != "RallyPoint")
         {
             objectToDestroy.SetActive(false);
         }        
@@ -122,20 +126,29 @@ public class AICharacter : EnvironmentMaterial {
         return (target == _ownTarget);
     }
 
+    // Check if RallyPoint has reached destination
+    private bool IsDestinationReached()
+    {
+        float stoppingDistance = 1.25f;
+        return (Vector3.Distance(_ownTarget.transform.position, transform.position) < stoppingDistance);
+    }
+
     // We need to update the navMesh Destination if the target is moving
     private void Update()
     {
         if (_ownTarget)
         {
+            // Update the destination in case the target is moving
             _agent.SetDestination(_ownTarget.transform.position);
 
             // If we are regrouping
-            if (_ownTarget.transform.position == transform.parent.position)
+            if (_assignedGroup.IsRegrouping())
             {
-                // Stop when one member has join the group position
+                // Stop when one member has join the rally point (the actual target)
                 float stoppingDistance = 1.25f;
                 if (Vector3.Distance(_ownTarget.transform.position, transform.position) < stoppingDistance)
                 {
+                    _assignedGroup.StopRegrouping();
                     _assignedGroup.ShareNoTarget();
                     _assignedGroup.MoveRandom();
                 }
@@ -143,8 +156,31 @@ public class AICharacter : EnvironmentMaterial {
         }
     }
 
-    public void EnableAgent(bool enable)
+    // Set a Destination (not a target gameobject)
+    public void SetDestination(Vector3 destination)
     {
-        _agent.enabled = enable;
+        Stop(false);
+        SlowSpeed();
+        _agent.SetDestination(destination);
+    }
+
+    // Used by the AICharactersGroup
+    public void SetSlowSpeed(float speed)
+    {
+        slowSpeed = speed;
+    }
+    public void SetFastSpeed(float speed)
+    {
+        fastSpeed = speed;
+    }
+
+    // Used to change the speed of a character
+    private void SlowSpeed()
+    {
+        _agent.speed = slowSpeed;
+    }
+    private void FastSpeed()
+    {
+        _agent.speed = fastSpeed;
     }
 }
