@@ -32,10 +32,13 @@ public class AICharactersGroup : MonoBehaviour {
         // Get the children into a list
         foreach (Transform child in transform)
         {
-            AICharacter aiCharacter = child.GetComponent<AICharacter>();
-            AddCharacter(aiCharacter);
-            aiCharacter.SetSlowSpeed(slowSpeed);
-            aiCharacter.SetFastSpeed(fastSpeed);
+            if (child.gameObject.activeSelf)
+            {
+                AICharacter aiCharacter = child.GetComponent<AICharacter>();
+                AddCharacter(aiCharacter);
+                aiCharacter.SetSlowSpeed(slowSpeed);
+                aiCharacter.SetFastSpeed(fastSpeed);
+            }            
         }
         CreateRallyPoint();
         MoveRandom();
