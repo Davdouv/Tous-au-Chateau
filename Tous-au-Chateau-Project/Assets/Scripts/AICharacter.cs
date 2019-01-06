@@ -11,8 +11,10 @@ public class AICharacter : EnvironmentMaterial {
     private AICharactersGroup _assignedGroup;
     private GameObject _ownTarget;
 
-    public float slowSpeed = 2.0f;
-    public float fastSpeed = 3.5f;
+    private float slowSpeed = 2.0f;
+    private float fastSpeed = 3.5f;
+
+    private bool _isEscaping = false;
 
     private void Awake()
     {
@@ -65,7 +67,7 @@ public class AICharacter : EnvironmentMaterial {
     // Set Destination only if there was no destination before
     public void SetTarget(GameObject target)
     {
-        if (_ownTarget == null) // No Destination before
+        if (_ownTarget == null && !_isEscaping) // No Destination before
         {
             _ownTarget = target;
             if (_ownTarget) // Make sure target is not null
@@ -88,7 +90,10 @@ public class AICharacter : EnvironmentMaterial {
     // Used by the AICharactersGroup
     public void Stop(bool stop)
     {
-        _agent.isStopped = stop;
+        if (gameObject.activeSelf)
+        {
+            _agent.isStopped = stop;
+        }        
     }
 
     // What to do when Obstacle Reached ?
@@ -127,10 +132,10 @@ public class AICharacter : EnvironmentMaterial {
     }
 
     // Check if RallyPoint has reached destination
-    private bool IsDestinationReached()
+    private bool IsDestinationReached(float stoppingDistance)
     {
-        float stoppingDistance = 1.25f;
-        return (Vector3.Distance(_ownTarget.transform.position, transform.position) < stoppingDistance);
+        //return (Vector3.Distance(_ownTarget.transform.position, transform.position) < stoppingDistance);
+        return (Vector3.Distance(_agent.destination, transform.position) < stoppingDistance);
     }
 
     // We need to update the navMesh Destination if the target is moving
@@ -145,12 +150,27 @@ public class AICharacter : EnvironmentMaterial {
             if (_assignedGroup.IsRegrouping())
             {
                 // Stop when one member has join the rally point (the actual target)
-                float stoppingDistance = 1.25f;
-                if (Vector3.Distance(_ownTarget.transform.position, transform.position) < stoppingDistance)
+                if (IsDestinationReached(1.25f))
                 {
                     _assignedGroup.StopRegrouping();
                     _assignedGroup.ShareNoTarget();
                     _assignedGroup.MoveRandom();
+                }
+            }
+        }
+        if (_isEscaping)
+        {
+            if (IsDestinationReached(1.0f))
+            {
+                // Check if the enemy is still near
+                GameObject ennemy = GetComponent<AIDetection>().GetEnemyNear();
+                if (ennemy)
+                {
+                    EscapeFrom(ennemy);
+                }
+                else
+                {
+                    StopEscaping();
                 }
             }
         }
@@ -182,5 +202,23 @@ public class AICharacter : EnvironmentMaterial {
     private void FastSpeed()
     {
         _agent.speed = fastSpeed;
+    }
+
+    // Go away from the enemy
+    public void EscapeFrom(GameObject enemy)
+    {
+        _isEscaping = true;
+        _ownTarget = null;
+        Stop(false);
+        // Calculate the newPosition where we must go
+        Vector3 distance = transform.position - enemy.transform.position;
+        Vector3 newPos = transform.position + distance;
+        _agent.SetDestination(newPos);
+    }
+
+    public void StopEscaping()
+    {
+        _isEscaping = false;
+        _assignedGroup.NewTarget();
     }
 }

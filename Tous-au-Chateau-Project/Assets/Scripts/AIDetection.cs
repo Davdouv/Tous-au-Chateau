@@ -7,22 +7,56 @@ using UnityEngine;
 public class AIDetection : TriggerZone {
 
     private AICharacter _aiCharacter;
+    public List<string> vulnerableTo;
+    private List<GameObject> _ennemies;
 
     private void Start()
     {
         _aiCharacter = this.transform.GetComponent<AICharacter>();
+        _ennemies = new List<GameObject>();
+        targetTag.AddRange(vulnerableTo);
     }
 
     // On Detection, send the target to the aiCharacter
     public override void TriggerEnter(Collider other)
     {
-        _aiCharacter.TargetFound(other.gameObject);
+        // Danger, try to escape
+        if (vulnerableTo.Contains(other.tag))
+        {
+            _targets.Remove(other.gameObject);
+            _ennemies.Add(other.gameObject);
+            _aiCharacter.EscapeFrom(other.gameObject);
+        }
+        // Target, try to attack
+        else
+        {
+            _aiCharacter.TargetFound(other.gameObject);
+        }
     }
 
-    // On Detection Exit, remove the target from the list if nobody is near the target
+    // On Detection Exit, 
     public override void TriggerExit(Collider other)
     {
-        _aiCharacter.CheckIfRemoveTarget(other.gameObject);
+        // If it's an enemy
+        if (vulnerableTo.Contains(other.tag))
+        {
+            // Remove it from the list
+            _ennemies.Remove(other.gameObject);
+            // If there's no more enemies in sight
+            if (_ennemies.Count == 0)
+            {
+                _aiCharacter.StopEscaping();
+            }
+            else
+            {
+                _aiCharacter.EscapeFrom(_ennemies[0]);
+            }
+        }
+        // Remove the target from the list if nobody is near the target
+        else
+        {
+            _aiCharacter.CheckIfRemoveTarget(other.gameObject);
+        }        
     }
 
     // On Collision, stop moving
@@ -41,5 +75,17 @@ public class AIDetection : TriggerZone {
     public override void CollisionExit(Collision collision)
     {
         _aiCharacter.Stop(false);
+    }
+
+    public GameObject GetEnemyNear()
+    {
+        if (_ennemies.Count == 0)
+        {
+            return null;
+        }
+        else
+        {
+            return _ennemies[0];
+        }
     }
 }
