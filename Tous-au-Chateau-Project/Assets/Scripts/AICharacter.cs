@@ -10,6 +10,7 @@ public class AICharacter : EnvironmentMaterial {
     private NavMeshAgent _agent;
     private AICharactersGroup _assignedGroup;
     private GameObject _ownTarget;
+    private Vector3 _destination;
 
     private float slowSpeed = 2.0f;
     private float fastSpeed = 3.5f;
@@ -67,6 +68,7 @@ public class AICharacter : EnvironmentMaterial {
     {
         if (gameObject.activeSelf)
         {
+            _destination = destination;
             _agent.SetDestination(destination);
         }
     }
@@ -91,6 +93,7 @@ public class AICharacter : EnvironmentMaterial {
     public void NoTarget()
     {
         _ownTarget = null;
+        _destination = _assignedGroup.GetRallyPoint().transform.position;
         SlowSpeed();
         Stop(true);
     }
@@ -142,8 +145,7 @@ public class AICharacter : EnvironmentMaterial {
     // Check if RallyPoint has reached destination
     private bool IsDestinationReached(float stoppingDistance)
     {
-        //return (Vector3.Distance(_ownTarget.transform.position, transform.position) < stoppingDistance);
-        return (Vector3.Distance(_agent.destination, transform.position) < stoppingDistance);
+        return (Vector3.Distance(_destination, transform.position) < stoppingDistance);
     }
 
     // We need to update the navMesh Destination if the target is moving
@@ -168,18 +170,15 @@ public class AICharacter : EnvironmentMaterial {
         }
         if (_isEscaping)
         {
-            if (IsDestinationReached(1.0f))
+            GameObject ennemy = GetComponent<AIDetection>().GetEnemyNear();
+            // If there's still an ennemy close to us
+            if (ennemy && Vector3.Distance(ennemy.transform.position, transform.position) < GetComponent<AIDetection>().distanceDetection)
             {
-                // Check if the enemy is still near
-                GameObject ennemy = GetComponent<AIDetection>().GetEnemyNear();
-                if (ennemy)
-                {
-                    EscapeFrom(ennemy);
-                }
-                else
-                {
-                    StopEscaping();
-                }
+                EscapeFrom(ennemy);
+            }
+            else
+            {
+                StopEscaping();
             }
         }
     }
@@ -231,6 +230,7 @@ public class AICharacter : EnvironmentMaterial {
         SetDestination(newPos);
     }
 
+    // Try to find a new target or join the rally point
     public void StopEscaping()
     {
         _isEscaping = false;

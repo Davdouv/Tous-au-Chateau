@@ -230,6 +230,11 @@ public class AICharactersGroup : MonoBehaviour {
         return (Vector3.Distance(_rallyPoint.transform.position, _rallyPointAgent.destination) < stoppingDistance);
     }
 
+    public GameObject GetRallyPoint()
+    {
+        return _rallyPoint;
+    }
+
     private void Update()
     {
         if (_isGroupMoving)

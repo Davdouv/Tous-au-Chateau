@@ -20,11 +20,11 @@ public class AIDetection : TriggerZone {
     // On Detection, send the target to the aiCharacter
     public override void TriggerEnter(GameObject target)
     {
-        //Debug.Log("TRIGGER ENTER : " + target.name);
+        Debug.Log("TRIGGER ENTER : " + target.name);
         // Danger, try to escape
         if (vulnerableTo.Contains(target.tag))
         {
-            RemoveTarget(target);
+            //RemoveTarget(target);
             _ennemies.Add(target);
             _aiCharacter.EscapeFrom(target);
         }
@@ -91,5 +91,10 @@ public class AIDetection : TriggerZone {
         {
             return _ennemies[0];
         }
+    }
+
+    public void RemoveEnnemy(GameObject ennemy)
+    {
+        _ennemies.Remove(ennemy);
     }
 }
