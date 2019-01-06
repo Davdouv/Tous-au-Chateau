@@ -7,7 +7,7 @@ public abstract class TriggerZone : MonoBehaviour {
 
     public List<string> targetTag = new List<string>();
 
-	protected GameObject _target;
+	protected List<GameObject> _targets = new List<GameObject>();
     protected bool _isInContact;
 
     // ***** DETECTION *****/
@@ -17,7 +17,7 @@ public abstract class TriggerZone : MonoBehaviour {
         // If the target's tag is in the list
         if (targetTag.Contains(other.gameObject.tag))
         {
-            _target = other.gameObject;
+            _targets.Add(other.gameObject);
 
             Debug.Log("Target in sight");
 
@@ -28,7 +28,7 @@ public abstract class TriggerZone : MonoBehaviour {
     {
         if (targetTag.Contains(other.gameObject.tag))
         {
-            _target = null;
+            _targets.Remove(other.gameObject);
 
             Debug.Log("Target got away");
 
@@ -61,19 +61,24 @@ public abstract class TriggerZone : MonoBehaviour {
         }
     }
 
+    public bool IsInSight(GameObject target)
+    {
+        return _targets.Contains(target);
+    }
+
     public bool IsInContact()
     {
         return _isInContact;
     }
 
-    public GameObject GetTarget()
+    public List<GameObject> GetTargets()
     {
-        return _target;
+        return _targets;
     }
 
-    public void SetTarget(GameObject target)
+    public void AddTarget(GameObject target)
     {
-        _target = target;
+        _targets.Add(target);
     }
 
     public virtual void TriggerEnter(Collider other) { }
