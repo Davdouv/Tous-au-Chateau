@@ -19,7 +19,7 @@ public abstract class TriggerZone : MonoBehaviour {
         {
             _targets.Add(other.gameObject);
 
-            Debug.Log("Target in sight");
+            // Debug.Log("Target " + other.gameObject.name + " in sight");
 
             TriggerEnter(other);
         }
@@ -30,7 +30,7 @@ public abstract class TriggerZone : MonoBehaviour {
         {
             _targets.Remove(other.gameObject);
 
-            Debug.Log("Target got away");
+            //Debug.Log("Target " + other.gameObject.name + " got away");
 
             TriggerExit(other);
         }
@@ -44,7 +44,7 @@ public abstract class TriggerZone : MonoBehaviour {
         {
             _isInContact = true;
 
-            Debug.Log("Collision !");
+            //Debug.Log("Collision with " + collision.gameObject.name + " !");
 
             CollisionEnter(collision);
         }
@@ -55,7 +55,7 @@ public abstract class TriggerZone : MonoBehaviour {
         {
             _isInContact = false;
 
-            Debug.Log("Collision no more");
+            //Debug.Log("Collision with " + collision.gameObject.name + " no more");
 
             CollisionExit(collision);
         }

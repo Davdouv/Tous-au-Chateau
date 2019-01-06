@@ -26,6 +26,7 @@ public class AICharacter : EnvironmentMaterial {
     {
         _assignedGroup = transform.parent.GetComponent<AICharactersGroup>();
         _assignedGroup.AddCharacter(this);
+        _assignedGroup.Regroup();
     }
 
     // If target found, ask the group to share the target with all group objects
@@ -70,7 +71,6 @@ public class AICharacter : EnvironmentMaterial {
             {
                 Stop(false);
                 _agent.SetDestination(target.transform.position);
-                Debug.Log("SetTarget : " + target.name);
             }
         }
     }
@@ -98,22 +98,22 @@ public class AICharacter : EnvironmentMaterial {
 
     // Personal action (for test)
     private IEnumerator DestroyTarget()
-    {
+    {        
         yield return new WaitForSeconds(1); // This is bad
+
         GameObject objectToDestroy = _ownTarget;
         GetNewTarget();
-        //Destroy(objectToDestroy);
-        objectToDestroy.SetActive(false);
+        if (objectToDestroy && objectToDestroy.name != transform.parent.name)
+        {
+            objectToDestroy.SetActive(false);
+        }        
     }
 
     // Remove the item from the list and get a new target
     protected void GetNewTarget()
     {
-        //AIDetection aiDetection = GetComponent<AIDetection>();
         _assignedGroup.RemoveItem(_ownTarget);
-        //_ownTarget = null;
         _assignedGroup.CancelTarget(_ownTarget);
-        //NoTarget();
         _assignedGroup.NewTarget();
     }
 
@@ -129,6 +129,17 @@ public class AICharacter : EnvironmentMaterial {
         if (_ownTarget)
         {
             _agent.SetDestination(_ownTarget.transform.position);
-        }        
+
+            // If we are regrouping
+            if (_ownTarget.transform.position == transform.parent.position)
+            {
+                // Stop when one member has join the group position
+                float stoppingDistance = 1.25f;
+                if (Vector3.Distance(_ownTarget.transform.position, transform.position) < stoppingDistance)
+                {
+                    _assignedGroup.ShareNoTarget();
+                }
+            }
+        }
     }
 }

@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 346966397}
   m_Layer: 0
   m_Name: Destination (2)
-  m_TagString: Grass
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 451405450}
   m_Layer: 0
   m_Name: Destination (3)
-  m_TagString: Grass
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 834857364}
   m_Layer: 0
   m_Name: Destination (4)
-  m_TagString: Grass
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -402,7 +402,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 841290325}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.24, y: 0, z: 5.19}
+  m_LocalPosition: {x: 2.74, y: 0, z: 5.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1800192214}
@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 1540950554}
   m_Layer: 0
   m_Name: Destination
-  m_TagString: Grass
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -666,7 +666,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1800192209}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.95, y: 0.5, z: -4.41}
+  m_LocalPosition: {x: 2.18, y: 0.5, z: -3.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 841290329}
@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag:
-  - Grass
+  - food
 --- !u!114 &1800192218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,7 +869,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1969674982}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.76, y: 0.5, z: -0.99}
+  m_LocalPosition: {x: 3.76, y: 0.5, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 841290329}
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag:
-  - Grass
+  - food
 --- !u!114 &1969674985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,7 +1014,7 @@ GameObject:
   - component: {fileID: 2099465232}
   m_Layer: 0
   m_Name: Destination (1)
-  m_TagString: Grass
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

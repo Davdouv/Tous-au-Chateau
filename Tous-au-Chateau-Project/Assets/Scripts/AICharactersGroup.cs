@@ -58,7 +58,7 @@ public class AICharactersGroup : MonoBehaviour {
 
         // Find a new target
         GameObject newTarget = _targetDetected.Find(obj => obj != target);
-        Debug.Log("newTarget -> " + newTarget.name);
+
         // Set the new target to other characters
         int index = _aiCharacters.IndexOf(aiCharacter);
         for (int i = 0; i < _aiCharacters.Count; ++i)
@@ -98,10 +98,10 @@ public class AICharactersGroup : MonoBehaviour {
         if (_targetDetected.Count == 0)
         {
             ShareNoTarget();
+            Regroup();
         }
         else
         {
-            Debug.Log("newTarget : " + _targetDetected[0].name);
             ShareTarget(_targetDetected[0]);
         }
     }
@@ -109,5 +109,10 @@ public class AICharactersGroup : MonoBehaviour {
     public void RemoveItem(GameObject item)
     {
         _targetDetected.Remove(item);
+    }
+
+    public void Regroup()
+    {
+        ShareTarget(this.gameObject);
     }
 }
