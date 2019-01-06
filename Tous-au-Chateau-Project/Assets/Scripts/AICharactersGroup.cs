@@ -133,7 +133,7 @@ public class AICharactersGroup : MonoBehaviour {
     // For each aiCharacters, test if the target is still is sight or not
     public void CheckIfRemoveTarget(GameObject target)
     {
-        if (_aiCharacters.TrueForAll(character => character.gameObject.GetComponent<AIDetection>().IsInSight(target) == false))
+        if (_aiCharacters.TrueForAll(character => character.gameObject.GetComponent<AIDetection>().IsInRange(target.transform.position) == false))
         {
             _targetDetected.Remove(target);
         }

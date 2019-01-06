@@ -13,9 +13,9 @@ public class Target {
         _isTriggered = false;
     }
 
-    public void Trigger()
+    public void SetTrigger(bool isTriggerd)
     {
-        _isTriggered = true;
+        _isTriggered = isTriggerd;
     }
 
     public bool IsTriggered()
