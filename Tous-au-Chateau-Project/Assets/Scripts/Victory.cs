@@ -9,7 +9,7 @@ public class Victory : TriggerZone {
         //targetTag.Add("Villager");
     }
 
-    public override void TriggerEnter(Collider other)
+    public override void TriggerEnter(GameObject target)
     {
         Debug.Log("VICTORY !");
     }

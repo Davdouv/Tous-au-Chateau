@@ -6,9 +6,21 @@ using UnityEngine;
 public abstract class TriggerZone : MonoBehaviour {
 
     public List<string> targetTag = new List<string>();
+    public float distanceDetection = 5.0f;
 
-	protected List<GameObject> _targets = new List<GameObject>();
+    //protected List<GameObject> _targets = new List<GameObject>();
     protected bool _isInContact;
+
+    protected List<Target> _targetList = new List<Target>();
+
+    private void Start()
+    {
+        SphereCollider sphereCollider = gameObject.GetComponent<SphereCollider>();
+        if (sphereCollider && sphereCollider.isTrigger)
+        {
+            sphereCollider.radius = distanceDetection;
+        }
+    }
 
     // ***** DETECTION *****/
     // Trigger must be enabled on collider
@@ -17,22 +29,24 @@ public abstract class TriggerZone : MonoBehaviour {
         // If the target's tag is in the list
         if (targetTag.Contains(other.gameObject.tag))
         {
-            _targets.Add(other.gameObject);
+            //_targets.Add(other.gameObject);
+            _targetList.Add(new Target(other.gameObject));
 
             // Debug.Log("Target " + other.gameObject.name + " in sight");
 
-            TriggerEnter(other);
+            //TriggerEnter(other);
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (targetTag.Contains(other.gameObject.tag))
         {
-            _targets.Remove(other.gameObject);
+            //_targets.Remove(other.gameObject);
+            RemoveTarget(other.gameObject);
 
             //Debug.Log("Target " + other.gameObject.name + " got away");
 
-            TriggerExit(other);
+            //TriggerExit(other);
         }
     }
 
@@ -63,7 +77,16 @@ public abstract class TriggerZone : MonoBehaviour {
 
     public bool IsInSight(GameObject target)
     {
-        return _targets.Contains(target);
+        foreach (Target tar in _targetList)
+        {
+            if (tar.GetObject() == target)
+            {
+                return true;
+            }
+        }
+        return false;
+        
+        //return _targets.Contains(target);
     }
 
     public bool IsInContact()
@@ -71,18 +94,45 @@ public abstract class TriggerZone : MonoBehaviour {
         return _isInContact;
     }
 
-    public List<GameObject> GetTargets()
-    {
-        return _targets;
-    }
-
     public void AddTarget(GameObject target)
     {
-        _targets.Add(target);
+        //_targets.Add(target);
+        _targetList.Add(new Target(target));
     }
 
-    public virtual void TriggerEnter(Collider other) { }
-    public virtual void TriggerExit(Collider other) { }
+    public virtual void TriggerEnter(GameObject target) { }
+    public virtual void TriggerExit(GameObject target) { }
     public virtual void CollisionEnter(Collision collision) { }
     public virtual void CollisionExit(Collision collision) { }
+
+    private bool IsInRange(Vector3 position)
+    {
+        float distance = Vector3.Distance(transform.position, position);
+        return (distance < distanceDetection);
+    }
+
+    protected void RemoveTarget(GameObject target)
+    {
+        foreach(Target tar in _targetList)
+        {
+            if (tar.GetObject() == target)
+            {
+                _targetList.Remove(tar);
+                return;
+            }
+        }
+    }
+
+    private void Update()
+    {        
+        foreach (Target target in _targetList)
+        {
+            // If not triggered yet, check if it's a the good distance
+            if (!target.IsTriggered() && IsInRange(target.GetObject().transform.position))
+            {
+                target.Trigger();
+                TriggerEnter(target.GetObject());
+            }
+        }
+    }
 }

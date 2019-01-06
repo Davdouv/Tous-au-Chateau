@@ -18,30 +18,31 @@ public class AIDetection : TriggerZone {
     }
 
     // On Detection, send the target to the aiCharacter
-    public override void TriggerEnter(Collider other)
+    public override void TriggerEnter(GameObject target)
     {
+        Debug.Log("TRIGGER ENTER : " + target.name);
         // Danger, try to escape
-        if (vulnerableTo.Contains(other.tag))
+        if (vulnerableTo.Contains(target.tag))
         {
-            _targets.Remove(other.gameObject);
-            _ennemies.Add(other.gameObject);
-            _aiCharacter.EscapeFrom(other.gameObject);
+            RemoveTarget(target);
+            _ennemies.Add(target);
+            _aiCharacter.EscapeFrom(target);
         }
         // Target, try to attack
         else
         {
-            _aiCharacter.TargetFound(other.gameObject);
+            _aiCharacter.TargetFound(target);
         }
     }
 
     // On Detection Exit, 
-    public override void TriggerExit(Collider other)
+    public override void TriggerExit(GameObject target)
     {
         // If it's an enemy
-        if (vulnerableTo.Contains(other.tag))
+        if (vulnerableTo.Contains(target.tag))
         {
             // Remove it from the list
-            _ennemies.Remove(other.gameObject);
+            _ennemies.Remove(target.gameObject);
             // If there's no more enemies in sight
             if (_ennemies.Count == 0)
             {
@@ -55,7 +56,7 @@ public class AIDetection : TriggerZone {
         // Remove the target from the list if nobody is near the target
         else
         {
-            _aiCharacter.CheckIfRemoveTarget(other.gameObject);
+            _aiCharacter.CheckIfRemoveTarget(target.gameObject);
         }        
     }
 
