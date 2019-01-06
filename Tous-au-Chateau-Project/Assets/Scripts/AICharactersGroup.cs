@@ -7,11 +7,18 @@ public class AICharactersGroup : MonoBehaviour {
 
     private List<AICharacter> _aiCharacters;
     private List<GameObject> _targetDetected;
+    private NavMeshAgent _agent;
 
     private void Awake()
     {
         _aiCharacters = new List<AICharacter>();
         _targetDetected = new List<GameObject>();
+        _agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Start()
+    {
+        MoveRandom();
     }
 
     // All aiCharacters of the group will add themselves to the list
@@ -32,6 +39,7 @@ public class AICharactersGroup : MonoBehaviour {
     // Send a common target
     public void ShareTarget(GameObject target)
     {
+        StopMoveRandom();
         foreach (AICharacter character in _aiCharacters)
         {
             character.SetTarget(target);
@@ -111,8 +119,39 @@ public class AICharactersGroup : MonoBehaviour {
         _targetDetected.Remove(item);
     }
 
-    public void Regroup()
+    // Make all the aiCharacters move towards the group
+    private void Regroup()
     {
         ShareTarget(this.gameObject);
+    }
+
+    public void MoveRandom()
+    {
+        _aiCharacters.ForEach(ai => ai.EnableAgent(false));
+        _aiCharacters.ForEach(ai => ai.transform.rotation = transform.rotation);
+        float range = 20f;
+        _agent.enabled = true;
+        _agent.SetDestination(RandomNavmeshLocation(range));
+    }
+
+    private void StopMoveRandom()
+    {
+        _aiCharacters.ForEach(ai => ai.EnableAgent(true));
+        _agent.enabled = false;
+    }
+
+    private Vector3 RandomNavmeshLocation(float radius)
+    {
+        Vector3 randomDirection = Random.insideUnitSphere * radius;
+        randomDirection.y = 0;
+        randomDirection += transform.position;
+        NavMeshHit hit;
+        Vector3 finalPosition = Vector3.zero;
+        // Finds the closest point on NavMesh within specified range.
+        if (NavMesh.SamplePosition(randomDirection, out hit, radius, NavMesh.AllAreas))
+        {
+            finalPosition = hit.position;
+        }
+        return finalPosition;
     }
 }

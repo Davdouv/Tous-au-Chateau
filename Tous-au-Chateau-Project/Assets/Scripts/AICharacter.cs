@@ -26,7 +26,6 @@ public class AICharacter : EnvironmentMaterial {
     {
         _assignedGroup = transform.parent.GetComponent<AICharactersGroup>();
         _assignedGroup.AddCharacter(this);
-        _assignedGroup.Regroup();
     }
 
     // If target found, ask the group to share the target with all group objects
@@ -138,8 +137,14 @@ public class AICharacter : EnvironmentMaterial {
                 if (Vector3.Distance(_ownTarget.transform.position, transform.position) < stoppingDistance)
                 {
                     _assignedGroup.ShareNoTarget();
+                    _assignedGroup.MoveRandom();
                 }
             }
         }
+    }
+
+    public void EnableAgent(bool enable)
+    {
+        _agent.enabled = enable;
     }
 }
