@@ -103,7 +103,8 @@ public class AICharacter : EnvironmentMaterial {
     {
         if (gameObject.activeSelf)
         {
-            _agent.isStopped = stop;
+            //_agent.isStopped = stop;
+            _agent.isStopped = false;
         }        
     }
 
