@@ -4,61 +4,61 @@ using UnityEngine;
 
 public class ResourceManager : PauseScript
 {
-    public EndOfGameManager endOfGame;
+    public EndOfGameManager _EndOfGame;
 
-    private int woodNb = 15;
-    private int stoneNb = 10;
-    private int foodNb = 0;
-    private int villagersNb = 30;
-    private float motivation = 100; //% => value from 0 to 100
-    private bool isInPause;
+    private int _woodNb = 15;
+    private int _stoneNb = 10;
+    private int _foodNb = 0;
+    private int _villagersNb = 30;
+    private float _motivation = 100; //% => value from 0 to 100
+    private bool _isInPause;
 
     void Start()
     {
-        isInPause = false;
+        _isInPause = false;
         InvokeRepeating("InGameMotivation", 0.0f, 3.0f);
     }
 
     void InGameMotivation()
     {
-        if(!isInPause)
+        if(!_isInPause)
             RemoveMotivation(1);
     }
 
     override public void Pause()
     {
-        isInPause = true;
+        _isInPause = true;
     }
 
     override public void UnPause()
     {
-        isInPause = false;
+        _isInPause = false;
     }
 
     /*GETTERS*/
     public int GetWood()
     {
-        return woodNb;
+        return _woodNb;
     }
 
     public int GetStone()
     {
-        return stoneNb;
+        return _stoneNb;
     }
 
     public int GetFood()
     {
-        return foodNb;
+        return _foodNb;
     }
 
     public int GetVillagers()
     {
-        return villagersNb;
+        return _villagersNb;
     }
 
     public float GetMotivation()
     {
-        return motivation;
+        return _motivation;
     }
 
     /*SETTERS*/
@@ -66,7 +66,7 @@ public class ResourceManager : PauseScript
     {
         if (wood >= 0)
         {
-            woodNb = wood;
+            _woodNb = wood;
         }
     }
 
@@ -74,7 +74,7 @@ public class ResourceManager : PauseScript
     {
         if(stone >= 0)
         {
-            stoneNb = stone;
+            _stoneNb = stone;
         }
     }
 
@@ -82,7 +82,7 @@ public class ResourceManager : PauseScript
     {
         if(food >= 0)
         {
-            foodNb = food;
+            _foodNb = food;
         }
     }
 
@@ -90,16 +90,16 @@ public class ResourceManager : PauseScript
     {
         if(villagers >= 0)
         {
-            villagersNb = villagers;
+            _villagersNb = villagers;
         }
     }
 
-    public void SetMotivation(float newMotivation)
+    public void SetMotivation(float motivation)
     {
         //% => value from 0 to 100
-        if (newMotivation >= 0 && newMotivation <= 100)
+        if (motivation >= 0 && motivation <= 100)
         {
-            motivation = newMotivation;
+            _motivation = motivation;
         }
     }
 
@@ -108,7 +108,7 @@ public class ResourceManager : PauseScript
     {
         if (wood > 0)
         {
-            woodNb += wood;
+            _woodNb += wood;
         }
     }
 
@@ -116,7 +116,7 @@ public class ResourceManager : PauseScript
     {
         if (stone > 0)
         {
-            stoneNb += stone;
+            _stoneNb += stone;
         }
     }
 
@@ -124,7 +124,7 @@ public class ResourceManager : PauseScript
     {
         if (food > 0)
         {
-            foodNb += food;
+            _foodNb += food;
         }
     }
 
@@ -132,21 +132,21 @@ public class ResourceManager : PauseScript
     {
         if (villagers > 0)
         {
-            villagersNb += villagers;
+            _villagersNb += villagers;
         }
     }
 
-    public void AddMotivation(int newMotivation)
+    public void AddMotivation(int motivation)
     {
-        if (newMotivation > 0)
+        if (motivation > 0)
         {
-            if (motivation + newMotivation > 100)
+            if (_motivation + motivation > 100)
             {
-                motivation = 100;
+                _motivation = 100;
             }
             else
             {
-                motivation += newMotivation;
+                _motivation += motivation;
             }
         }
     }
@@ -156,13 +156,13 @@ public class ResourceManager : PauseScript
     {
         if (wood > 0)
         {
-            if(woodNb - wood < 0)
+            if(_woodNb - wood < 0)
             {
                 return false;
             }
             else
             {
-                woodNb -= wood;
+                _woodNb -= wood;
                 return true;
             }
         }
@@ -174,13 +174,13 @@ public class ResourceManager : PauseScript
     {
         if (stone > 0)
         {
-            if (stoneNb - stone < 0)
+            if (_stoneNb - stone < 0)
             {
                 return false;
             }
             else
             {
-                stoneNb -= stone;
+                _stoneNb -= stone;
                 return true;
             }
         }
@@ -192,13 +192,13 @@ public class ResourceManager : PauseScript
     {
         if (food > 0)
         {
-            if (foodNb - food < 0)
+            if (_foodNb - food < 0)
             {
                 return false;
             }
             else
             {
-                foodNb -= food;
+                _foodNb -= food;
                 return true;
             }
         }
@@ -210,14 +210,14 @@ public class ResourceManager : PauseScript
     {
         if (villagers > 0)
         {
-            if (villagersNb - villagers <= 0)
+            if (_villagersNb - villagers <= 0)
             {
-                villagersNb = 0;
-                endOfGame.LoseGame();
+                _villagersNb = 0;
+                _EndOfGame.LoseGame();
             }
             else
             {
-                villagersNb -= villagers;
+                _villagersNb -= villagers;
                 return true;
             }
         }
@@ -225,18 +225,18 @@ public class ResourceManager : PauseScript
         return false;
     }
 
-    public void RemoveMotivation(int newMotivation)
+    public void RemoveMotivation(int motivation)
     {
-        if (newMotivation > 0)
+        if (motivation > 0)
         {
-            if (motivation - newMotivation <= 0)
+            if (_motivation - motivation <= 0)
             {
-                motivation = 0;
-                endOfGame.LoseGame();
+                _motivation = 0;
+                _EndOfGame.LoseGame();
             }
             else
             {
-                motivation -= newMotivation;
+                _motivation -= motivation;
             }
         }
     }

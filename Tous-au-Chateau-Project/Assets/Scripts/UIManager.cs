@@ -11,26 +11,26 @@ public class UIManager : PauseScript
     public Text villagersTxt;
     public Slider motivation;
 
-    public GameObject gameOverPanel;
+    public GameObject GameOverPanel;
     public Text gameOverVillagersText;
     //public GameObject constructionPanel;
-    public ResourceManager resourceManager;
+    public ResourceManager ResourceManager;
 
 	void Start () {
-        woodTxt.text = "" + resourceManager.GetWood();
-        stoneTxt.text = "" + resourceManager.GetStone();
-        foodTxt.text = "" + resourceManager.GetFood();
-        villagersTxt.text = "" + resourceManager.GetVillagers();
-        motivation.value = resourceManager.GetMotivation();
+        woodTxt.text = "" + ResourceManager.GetWood();
+        stoneTxt.text = "" + ResourceManager.GetStone();
+        foodTxt.text = "" + ResourceManager.GetFood();
+        villagersTxt.text = "" + ResourceManager.GetVillagers();
+        motivation.value = ResourceManager.GetMotivation();
     }
 
     private void Update()
     {
-        woodTxt.text = "" + resourceManager.GetWood();
-        stoneTxt.text = "" + resourceManager.GetStone();
-        foodTxt.text = "" + resourceManager.GetFood();
-        villagersTxt.text = "" + resourceManager.GetVillagers();
-        motivation.value = resourceManager.GetMotivation();
+        woodTxt.text = "" + ResourceManager.GetWood();
+        stoneTxt.text = "" + ResourceManager.GetStone();
+        foodTxt.text = "" + ResourceManager.GetFood();
+        villagersTxt.text = "" + ResourceManager.GetVillagers();
+        motivation.value = ResourceManager.GetMotivation();
 
         /* For testing hide and show purposes */
         /*if (Input.GetKeyDown("space"))
@@ -46,8 +46,8 @@ public class UIManager : PauseScript
 
     public void DisplayGameOverPanel()
     {
-        gameOverPanel.SetActive(true);
-        gameOverVillagersText.text = "Remaining Villagers : " + resourceManager.GetVillagers();
+        GameOverPanel.SetActive(true);
+        gameOverVillagersText.text = "Remaining Villagers : " + ResourceManager.GetVillagers();
     }
 
     override public void Pause()
@@ -82,55 +82,55 @@ public class UIManager : PauseScript
     /* WOOD */
     public void IncreaseWood()
     {
-        resourceManager.AddWood(10);
+        ResourceManager.AddWood(10);
     }
 
     public void DecreaseWood()
     {
-        resourceManager.RemoveWood(7);
+        ResourceManager.RemoveWood(7);
     }
 
     /* STONE */
     public void IncreaseStone()
     {
-        resourceManager.AddStone(10);
+        ResourceManager.AddStone(10);
     }
 
     public void DecreaseStone()
     {
-        resourceManager.RemoveStone(9);
+        ResourceManager.RemoveStone(9);
     }
 
     /* FOOD */
     public void IncreaseFood()
     {
-        resourceManager.AddFood(5);
+        ResourceManager.AddFood(5);
     }
 
     public void DecreaseFood()
     {
-        resourceManager.RemoveFood(7);
+        ResourceManager.RemoveFood(7);
     }
 
     /* VILLAGERS */
     public void IncreaseVillagers()
     {
-        resourceManager.AddVillagers(3);
+        ResourceManager.AddVillagers(3);
     }
 
     public void DecreaseVillagers()
     {
-        resourceManager.RemoveVillagers(2);
+        ResourceManager.RemoveVillagers(2);
     }
 
     /* MOTIVATION */
     public void IncreaseMotivation()
     {
-        resourceManager.AddMotivation(10);
+        ResourceManager.AddMotivation(10);
     }
 
     public void DecreaseMotivation()
     {
-        resourceManager.RemoveMotivation(10);
+        ResourceManager.RemoveMotivation(10);
     }
 }
