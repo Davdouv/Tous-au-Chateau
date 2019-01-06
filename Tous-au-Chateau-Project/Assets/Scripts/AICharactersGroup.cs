@@ -75,7 +75,10 @@ public class AICharactersGroup : MonoBehaviour {
     // Send a common target
     public void ShareTarget(GameObject target)
     {
-        StopMoveRandom();
+        if (_isGroupMoving)
+        {
+            StopMoveRandom();
+        }
         foreach (AICharacter character in _aiCharacters)
         {
             character.SetTarget(target);
