@@ -208,7 +208,7 @@ public class AICharactersGroup : MonoBehaviour {
         {
             distanceFromRallyPoint = character.transform.position - _rallyPoint.transform.position;
             characterDestination = destination + distanceFromRallyPoint;
-            character.SetDestination(characterDestination);
+            character.SetRandomDestination(characterDestination);
         }
     }
 

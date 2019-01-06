@@ -63,6 +63,14 @@ public class AICharacter : EnvironmentMaterial {
         }
     }
 
+    private void SetDestination(Vector3 destination)
+    {
+        if (gameObject.activeSelf)
+        {
+            _agent.SetDestination(destination);
+        }
+    }
+
     // Used by the AICharactersGroup
     // Set Destination only if there was no destination before
     public void SetTarget(GameObject target)
@@ -74,7 +82,7 @@ public class AICharacter : EnvironmentMaterial {
             {
                 Stop(false);
                 FastSpeed();
-                _agent.SetDestination(target.transform.position);
+                SetDestination(target.transform.position);
             }
         }
     }
@@ -177,11 +185,11 @@ public class AICharacter : EnvironmentMaterial {
     }
 
     // Set a Destination (not a target gameobject)
-    public void SetDestination(Vector3 destination)
+    public void SetRandomDestination(Vector3 destination)
     {
         Stop(false);
         SlowSpeed();
-        _agent.SetDestination(destination);
+        SetDestination(destination);
     }
 
     // Used by the AICharactersGroup
@@ -197,11 +205,17 @@ public class AICharacter : EnvironmentMaterial {
     // Used to change the speed of a character
     private void SlowSpeed()
     {
-        _agent.speed = slowSpeed;
+        if (gameObject.activeSelf)
+        {
+            _agent.speed = slowSpeed;
+        }        
     }
     private void FastSpeed()
     {
-        _agent.speed = fastSpeed;
+        if (gameObject.activeSelf)
+        {
+            _agent.speed = fastSpeed;
+        }
     }
 
     // Go away from the enemy
@@ -210,10 +224,11 @@ public class AICharacter : EnvironmentMaterial {
         _isEscaping = true;
         _ownTarget = null;
         Stop(false);
+        FastSpeed();
         // Calculate the newPosition where we must go
         Vector3 distance = transform.position - enemy.transform.position;
         Vector3 newPos = transform.position + distance;
-        _agent.SetDestination(newPos);
+        SetDestination(newPos);
     }
 
     public void StopEscaping()
