@@ -12,8 +12,8 @@ public class AICharacter : EnvironmentMaterial {
     private GameObject _ownTarget;
     private Vector3 _destination;
 
-    private float slowSpeed = 2.0f;
-    private float fastSpeed = 3.5f;
+    private float passiveSpeed = 2.0f;
+    private float actionSpeed = 3.5f;
 
     private bool _isEscaping = false;
 
@@ -195,11 +195,11 @@ public class AICharacter : EnvironmentMaterial {
     // Used by the AICharactersGroup
     public void SetSlowSpeed(float speed)
     {
-        slowSpeed = speed;
+        passiveSpeed = speed;
     }
     public void SetFastSpeed(float speed)
     {
-        fastSpeed = speed;
+        actionSpeed = speed;
     }
 
     // Used to change the speed of a character
@@ -207,14 +207,14 @@ public class AICharacter : EnvironmentMaterial {
     {
         if (gameObject.activeSelf)
         {
-            _agent.speed = slowSpeed;
+            _agent.speed = passiveSpeed;
         }        
     }
     private void FastSpeed()
     {
         if (gameObject.activeSelf)
         {
-            _agent.speed = fastSpeed;
+            _agent.speed = actionSpeed;
         }
     }
 

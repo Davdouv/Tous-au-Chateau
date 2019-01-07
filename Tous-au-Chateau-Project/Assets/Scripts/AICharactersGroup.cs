@@ -15,8 +15,11 @@ public class AICharactersGroup : MonoBehaviour {
     private NavMeshAgent _rallyPointAgent;
 
     // Speed of the group
-    public float slowSpeed = 2.0f;
-    public float fastSpeed = 3.5f;
+    public float passiveSpeed = 2.0f;
+    public float actionSpeed = 3.5f;
+
+    // Range, how far can the group go ?
+    public float movingDistance = 20.0f;
 
     private bool _isGroupMoving;
     private bool _regrouping;
@@ -36,8 +39,8 @@ public class AICharactersGroup : MonoBehaviour {
             {
                 AICharacter aiCharacter = child.GetComponent<AICharacter>();
                 AddCharacter(aiCharacter);
-                aiCharacter.SetSlowSpeed(slowSpeed);
-                aiCharacter.SetFastSpeed(fastSpeed);
+                aiCharacter.SetSlowSpeed(passiveSpeed);
+                aiCharacter.SetFastSpeed(actionSpeed);
             }            
         }
         CreateRallyPoint();
@@ -54,7 +57,7 @@ public class AICharactersGroup : MonoBehaviour {
         _rallyPointAgent = _rallyPoint.AddComponent<NavMeshAgent>();
         _rallyPointAgent.enabled = true;
         _rallyPointAgent.Warp(_rallyPoint.transform.position);
-        _rallyPointAgent.speed = slowSpeed;
+        _rallyPointAgent.speed = passiveSpeed;
     }
 
     // All aiCharacters of the group will add themselves to the list
@@ -180,8 +183,7 @@ public class AICharactersGroup : MonoBehaviour {
     {
         _isGroupMoving = true;
         _rallyPointAgent.isStopped = false;
-        float range = 20f;
-        Vector3 destination = RandomNavmeshLocation(range);
+        Vector3 destination = RandomNavmeshLocation(movingDistance);
         _rallyPointAgent.SetDestination(destination);
         ShareDestination(destination);
     }
