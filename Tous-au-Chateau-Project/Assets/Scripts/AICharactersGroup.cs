@@ -28,8 +28,6 @@ public class AICharactersGroup : MonoBehaviour {
     // If false, the group will move to a random position
     // If true, each character will move near the fixed rallyPoint
     public bool moveInsideCircle = false;
-    private float _startTimeMoving;
-    private float _movingDuration = 3.0f;
 
     private void Awake()
     {
@@ -196,7 +194,7 @@ public class AICharactersGroup : MonoBehaviour {
         {
             // Move to a random position on the navmesh
             _rallyPointAgent.isStopped = false;
-            Vector3 destination = RandomNavmeshLocation(movingDistance);
+            Vector3 destination = RandomNavmeshLocation();
             _rallyPointAgent.SetDestination(destination);
             ShareDestination(destination);
         }
@@ -207,12 +205,20 @@ public class AICharactersGroup : MonoBehaviour {
         }
     }
 
-    // Get a random location on the navmesh
-    private Vector3 RandomNavmeshLocation(float radius)
+    // Get a random point inside the circle that have the rallyPoint as center and the movingDistance as radius
+    public Vector3 RandomPointOnCircle(float radius)
     {
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
-        randomDirection.y = 0;
-        randomDirection += transform.position;
+        Vector3 randomPosition = Random.insideUnitSphere * radius;
+        randomPosition.y = 0;
+        randomPosition += _rallyPoint.transform.position;
+        return randomPosition;
+    }
+
+    // Get a random location on the navmesh
+    public Vector3 RandomNavmeshLocation()
+    {
+        float radius = movingDistance;
+        Vector3 randomDirection = RandomPointOnCircle(radius);
         NavMeshHit hit;
         Vector3 finalPosition = Vector3.zero;
         // Finds the closest point on NavMesh within specified range.
@@ -271,31 +277,16 @@ public class AICharactersGroup : MonoBehaviour {
                 MoveRandom();
             }
         }
-        else if (_isGroupMoving && moveInsideCircle)
-        {
-            _startTimeMoving += Time.deltaTime;
-            if (_startTimeMoving > _movingDuration)
-            {
-                MoveRandom();
-            }
-        }
-    }
-
-    // Get a random point inside the circle that have the rallyPoint as center and the movingDistance as radius
-    private Vector3 RandomPointOnCircle(float radius)
-    {
-        Vector2 vector2 = Random.insideUnitCircle * radius;
-        return new Vector3(vector2.x + _rallyPoint.transform.position.x, 0, vector2.y + _rallyPoint.transform.position.z);
     }
 
     // Give a random position to each character inside the circle
     private void MoveAround()
     {
-        _startTimeMoving = 0;
         foreach (AICharacter character in _aiCharacters)
         {
-            Vector3 destination = RandomPointOnCircle(movingDistance);
+            Vector3 destination = RandomNavmeshLocation();
             character.SetRandomDestination(destination);
+            character.SetIsMovingAround(true);
         }
     }
 }

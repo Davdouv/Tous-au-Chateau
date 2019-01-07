@@ -16,6 +16,7 @@ public class AICharacter : EnvironmentMaterial {
     private float actionSpeed = 3.5f;
 
     private bool _isEscaping = false;
+    private bool _isMovingAround = false;
 
     private void Awake()
     {
@@ -77,7 +78,8 @@ public class AICharacter : EnvironmentMaterial {
     // Set Destination only if there was no destination before
     public void SetTarget(GameObject target)
     {
-        if (_ownTarget == null && !_isEscaping) // No Destination before
+        SetIsMovingAround(false);
+        if (_ownTarget == null && !_isEscaping) // No Target before
         {
             _ownTarget = target;
             if (_ownTarget) // Make sure target is not null
@@ -182,6 +184,13 @@ public class AICharacter : EnvironmentMaterial {
                 StopEscaping();
             }
         }
+        if (_isMovingAround)
+        {
+            if (IsDestinationReached(1.25f))
+            {
+                SetRandomDestination(_assignedGroup.RandomNavmeshLocation());
+            }
+        }
     }
 
     // Set a Destination (not a target gameobject)
@@ -236,5 +245,10 @@ public class AICharacter : EnvironmentMaterial {
     {
         _isEscaping = false;
         _assignedGroup.NewTarget();
+    }
+
+    public void SetIsMovingAround(bool isMovingAround)
+    {
+        _isMovingAround = isMovingAround;
     }
 }
