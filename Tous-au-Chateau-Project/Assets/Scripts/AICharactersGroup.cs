@@ -21,8 +21,15 @@ public class AICharactersGroup : MonoBehaviour {
     // Range, how far can the group go ?
     public float movingDistance = 20.0f;
 
+    // To check if the group is following the rallyPoint or not
     private bool _isGroupMoving;
     private bool _regrouping;
+
+    // If false, the group will move to a random position
+    // If true, each character will move near the fixed rallyPoint
+    public bool moveInsideCircle = false;
+    private float _startTimeMoving;
+    private float _movingDuration = 3.0f;
 
     private void Awake()
     {
@@ -54,10 +61,13 @@ public class AICharactersGroup : MonoBehaviour {
         _rallyPoint.transform.position = transform.position;
         _rallyPoint.transform.rotation = transform.rotation;
         _rallyPoint.transform.SetParent(transform);
-        _rallyPointAgent = _rallyPoint.AddComponent<NavMeshAgent>();
-        _rallyPointAgent.enabled = true;
-        _rallyPointAgent.Warp(_rallyPoint.transform.position);
-        _rallyPointAgent.speed = passiveSpeed;
+        if (!moveInsideCircle)
+        {
+            _rallyPointAgent = _rallyPoint.AddComponent<NavMeshAgent>();
+            _rallyPointAgent.enabled = true;
+            _rallyPointAgent.Warp(_rallyPoint.transform.position);
+            _rallyPointAgent.speed = passiveSpeed;
+        }
     }
 
     // All aiCharacters of the group will add themselves to the list
@@ -182,10 +192,19 @@ public class AICharactersGroup : MonoBehaviour {
     public void MoveRandom()
     {
         _isGroupMoving = true;
-        _rallyPointAgent.isStopped = false;
-        Vector3 destination = RandomNavmeshLocation(movingDistance);
-        _rallyPointAgent.SetDestination(destination);
-        ShareDestination(destination);
+        if (!moveInsideCircle)
+        {
+            // Move to a random position on the navmesh
+            _rallyPointAgent.isStopped = false;
+            Vector3 destination = RandomNavmeshLocation(movingDistance);
+            _rallyPointAgent.SetDestination(destination);
+            ShareDestination(destination);
+        }
+        else
+        {
+            // Move to a random position inside the circle
+            MoveAround();
+        }
     }
 
     // Get a random location on the navmesh
@@ -204,7 +223,7 @@ public class AICharactersGroup : MonoBehaviour {
         return finalPosition;
     }
 
-    // Send a common target
+    // Send a common destination
     public void ShareDestination(Vector3 destination)
     {
         Vector3 distanceFromRallyPoint;
@@ -221,7 +240,10 @@ public class AICharactersGroup : MonoBehaviour {
     private void StopMoveRandom()
     {
         _isGroupMoving = false;
-        _rallyPointAgent.isStopped = true;
+        if (!moveInsideCircle)
+        {
+            _rallyPointAgent.isStopped = true;
+        }
         ShareNoTarget();
     }
 
@@ -239,7 +261,8 @@ public class AICharactersGroup : MonoBehaviour {
 
     private void Update()
     {
-        if (_isGroupMoving)
+        // If Group is moving to a random destination
+        if (_isGroupMoving && !moveInsideCircle)
         {
             // Check if destination is reached
             if (IsDestinationReached())
@@ -247,6 +270,32 @@ public class AICharactersGroup : MonoBehaviour {
                 // Chose another destination
                 MoveRandom();
             }
+        }
+        else if (_isGroupMoving && moveInsideCircle)
+        {
+            _startTimeMoving += Time.deltaTime;
+            if (_startTimeMoving > _movingDuration)
+            {
+                MoveRandom();
+            }
+        }
+    }
+
+    // Get a random point inside the circle that have the rallyPoint as center and the movingDistance as radius
+    private Vector3 RandomPointOnCircle(float radius)
+    {
+        Vector2 vector2 = Random.insideUnitCircle * radius;
+        return new Vector3(vector2.x + _rallyPoint.transform.position.x, 0, vector2.y + _rallyPoint.transform.position.z);
+    }
+
+    // Give a random position to each character inside the circle
+    private void MoveAround()
+    {
+        _startTimeMoving = 0;
+        foreach (AICharacter character in _aiCharacters)
+        {
+            Vector3 destination = RandomPointOnCircle(movingDistance);
+            character.SetRandomDestination(destination);
         }
     }
 }
