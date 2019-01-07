@@ -15,11 +15,19 @@ public class AICharactersGroup : MonoBehaviour {
     private NavMeshAgent _rallyPointAgent;
 
     // Speed of the group
-    public float slowSpeed = 2.0f;
-    public float fastSpeed = 3.5f;
+    public float passiveSpeed = 2.0f;
+    public float actionSpeed = 3.5f;
 
+    // Range, how far can the group go ?
+    public float movingDistance = 20.0f;
+
+    // To check if the group is following the rallyPoint or not
     private bool _isGroupMoving;
     private bool _regrouping;
+
+    // If false, the group will move to a random position
+    // If true, each character will move near the fixed rallyPoint
+    public bool moveInsideCircle = false;
 
     private void Awake()
     {
@@ -36,8 +44,8 @@ public class AICharactersGroup : MonoBehaviour {
             {
                 AICharacter aiCharacter = child.GetComponent<AICharacter>();
                 AddCharacter(aiCharacter);
-                aiCharacter.SetSlowSpeed(slowSpeed);
-                aiCharacter.SetFastSpeed(fastSpeed);
+                aiCharacter.SetSlowSpeed(passiveSpeed);
+                aiCharacter.SetFastSpeed(actionSpeed);
             }            
         }
         CreateRallyPoint();
@@ -51,10 +59,13 @@ public class AICharactersGroup : MonoBehaviour {
         _rallyPoint.transform.position = transform.position;
         _rallyPoint.transform.rotation = transform.rotation;
         _rallyPoint.transform.SetParent(transform);
-        _rallyPointAgent = _rallyPoint.AddComponent<NavMeshAgent>();
-        _rallyPointAgent.enabled = true;
-        _rallyPointAgent.Warp(_rallyPoint.transform.position);
-        _rallyPointAgent.speed = slowSpeed;
+        if (!moveInsideCircle)
+        {
+            _rallyPointAgent = _rallyPoint.AddComponent<NavMeshAgent>();
+            _rallyPointAgent.enabled = true;
+            _rallyPointAgent.Warp(_rallyPoint.transform.position);
+            _rallyPointAgent.speed = passiveSpeed;
+        }
     }
 
     // All aiCharacters of the group will add themselves to the list
@@ -179,19 +190,35 @@ public class AICharactersGroup : MonoBehaviour {
     public void MoveRandom()
     {
         _isGroupMoving = true;
-        _rallyPointAgent.isStopped = false;
-        float range = 20f;
-        Vector3 destination = RandomNavmeshLocation(range);
-        _rallyPointAgent.SetDestination(destination);
-        ShareDestination(destination);
+        if (!moveInsideCircle)
+        {
+            // Move to a random position on the navmesh
+            _rallyPointAgent.isStopped = false;
+            Vector3 destination = RandomNavmeshLocation();
+            _rallyPointAgent.SetDestination(destination);
+            ShareDestination(destination);
+        }
+        else
+        {
+            // Move to a random position inside the circle
+            MoveAround();
+        }
+    }
+
+    // Get a random point inside the circle that have the rallyPoint as center and the movingDistance as radius
+    public Vector3 RandomPointOnCircle(float radius)
+    {
+        Vector3 randomPosition = Random.insideUnitSphere * radius;
+        randomPosition.y = 0;
+        randomPosition += _rallyPoint.transform.position;
+        return randomPosition;
     }
 
     // Get a random location on the navmesh
-    private Vector3 RandomNavmeshLocation(float radius)
+    public Vector3 RandomNavmeshLocation()
     {
-        Vector3 randomDirection = Random.insideUnitSphere * radius;
-        randomDirection.y = 0;
-        randomDirection += transform.position;
+        float radius = movingDistance;
+        Vector3 randomDirection = RandomPointOnCircle(radius);
         NavMeshHit hit;
         Vector3 finalPosition = Vector3.zero;
         // Finds the closest point on NavMesh within specified range.
@@ -202,7 +229,7 @@ public class AICharactersGroup : MonoBehaviour {
         return finalPosition;
     }
 
-    // Send a common target
+    // Send a common destination
     public void ShareDestination(Vector3 destination)
     {
         Vector3 distanceFromRallyPoint;
@@ -219,7 +246,10 @@ public class AICharactersGroup : MonoBehaviour {
     private void StopMoveRandom()
     {
         _isGroupMoving = false;
-        _rallyPointAgent.isStopped = true;
+        if (!moveInsideCircle)
+        {
+            _rallyPointAgent.isStopped = true;
+        }
         ShareNoTarget();
     }
 
@@ -237,7 +267,8 @@ public class AICharactersGroup : MonoBehaviour {
 
     private void Update()
     {
-        if (_isGroupMoving)
+        // If Group is moving to a random destination
+        if (_isGroupMoving && !moveInsideCircle)
         {
             // Check if destination is reached
             if (IsDestinationReached())
@@ -245,6 +276,17 @@ public class AICharactersGroup : MonoBehaviour {
                 // Chose another destination
                 MoveRandom();
             }
+        }
+    }
+
+    // Give a random position to each character inside the circle
+    private void MoveAround()
+    {
+        foreach (AICharacter character in _aiCharacters)
+        {
+            Vector3 destination = RandomNavmeshLocation();
+            character.SetRandomDestination(destination);
+            character.SetIsMovingAround(true);
         }
     }
 }
