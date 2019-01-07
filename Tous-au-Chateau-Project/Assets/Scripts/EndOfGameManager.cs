@@ -15,4 +15,13 @@ public class EndOfGameManager : MonoBehaviour {
             pauseObjects[i].Pause();
         }
     }
+
+    public void WinGame()
+    {
+        //uiManager.DisplayVictoryPanel();
+        for (int i = 0; i < pauseObjects.Length; ++i)
+        {
+            pauseObjects[i].Pause();
+        }
+    }
 }
