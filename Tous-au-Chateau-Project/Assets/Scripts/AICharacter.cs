@@ -15,6 +15,7 @@ public class AICharacter : EnvironmentMaterial {
     private float passiveSpeed = 2.0f;
     private float actionSpeed = 3.5f;
 
+    private bool _hasPriorityOnTarget = false;
     private bool _isEscaping = false;
     private bool _isMovingAround = false;
 
@@ -37,12 +38,14 @@ public class AICharacter : EnvironmentMaterial {
     // If target found, ask the group to share the target with all group objects
     public void TargetFound(GameObject target)
     {
+        _hasPriorityOnTarget = true;
         _assignedGroup.AddTarget(target);
         _assignedGroup.ShareTarget(target);
     }
 
     public void TargetNotFound()
     {
+        _hasPriorityOnTarget = false;
         _assignedGroup.ShareNoTarget();
     }
 
@@ -53,6 +56,7 @@ public class AICharacter : EnvironmentMaterial {
 
     public void CheckIfRemoveTarget(GameObject target)
     {
+        _hasPriorityOnTarget = false;
         _assignedGroup.CheckIfRemoveTarget(target);
 
         // If it was the target we were aiming
@@ -79,7 +83,7 @@ public class AICharacter : EnvironmentMaterial {
     public void SetTarget(GameObject target)
     {
         SetIsMovingAround(false);
-        if (_ownTarget == null && !_isEscaping) // No Target before
+        if ((_ownTarget == null && !_isEscaping) || (_ownTarget != null && !_hasPriorityOnTarget)) // No Target before OR didn't have priority on target
         {
             _ownTarget = target;
             if (_ownTarget) // Make sure target is not null
