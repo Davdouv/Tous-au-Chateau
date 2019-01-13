@@ -9,7 +9,7 @@ public class ResourceManager : PauseScript
     private int woodNb = 15;
     private int stoneNb = 10;
     private int foodNb = 0;
-    private int villagersNb = 30;
+    private VillagersGroup _villagers;
     private float motivation = 100; //% => value from 0 to 100
     private bool isInPause;
 
@@ -53,7 +53,7 @@ public class ResourceManager : PauseScript
 
     public int GetVillagers()
     {
-        return villagersNb;
+        return _villagers.GetNumberOfVillagers();
     }
 
     public float GetMotivation()
@@ -85,7 +85,7 @@ public class ResourceManager : PauseScript
             foodNb = food;
         }
     }
-
+    /*
     public void SetVillagers(int villagers)
     {
         if(villagers >= 0)
@@ -93,7 +93,7 @@ public class ResourceManager : PauseScript
             villagersNb = villagers;
         }
     }
-
+    */
     public void SetMotivation(float newMotivation)
     {
         //% => value from 0 to 100
@@ -127,15 +127,15 @@ public class ResourceManager : PauseScript
             foodNb += food;
         }
     }
-
+    
     public void AddVillagers(int villagers)
     {
         if (villagers > 0)
         {
-            villagersNb += villagers;
+           _villagers.AddVillagers();
         }
     }
-
+    
     public void AddMotivation(int newMotivation)
     {
         if (newMotivation > 0)
@@ -205,26 +205,29 @@ public class ResourceManager : PauseScript
 
         return false;
     }
-
+    
     public bool RemoveVillagers(int villagers)
     {
         if (villagers > 0)
         {
-            if (villagersNb - villagers <= 0)
+            if (_villagers.GetNumberOfVillagers() - villagers <= 0)
             {
-                villagersNb = 0;
+                _villagers.RemoveAllVillager();
                 endOfGame.LoseGame();
             }
             else
             {
-                villagersNb -= villagers;
+                for(int i =0; i< villagers; i++)
+                {
+                    _villagers.RemoveVillager();
+                }
                 return true;
             }
         }
 
         return false;
     }
-
+    
     public void RemoveMotivation(int newMotivation)
     {
         if (newMotivation > 0)
