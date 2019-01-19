@@ -16,17 +16,16 @@ public class UIManager : PauseScript
     public GameObject GameOverPanel;
     public Text gameOverVillagersText;
     public ResourceManager _ResourceManager;
-    public List<GameObject> buildings;
 
     //For construction pagination
+    public List<Building> buildings;
     public int constructionNbByPage;
-    public GameObject ConstructionPages;
+    public GameObject ConstructionPages; //parent of each page content
     private int _nbOfPagesInUI = 0;
 
     private void Start()
     {
-        float 
-        _nbOfPagesInUI = Mathf.Ceil((float)buildings.Count / constructionNbByPage);
+        _nbOfPagesInUI = Mathf.CeilToInt((float)buildings.Count / constructionNbByPage);
     }
 
     private void Update()

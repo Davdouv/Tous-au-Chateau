@@ -11,7 +11,7 @@ public class DirectionalSign : Building
 
     }
 
-    public override void crush()
+    public override void Crush()
     {
         //if (this.gameObject.CompareTag("DirectionalSign"))
       

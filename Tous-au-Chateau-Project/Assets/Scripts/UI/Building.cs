@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Building {
+public class Building : MonoBehaviour {
 
     protected ResourcesPack _cost;
     public ResourceManager _resourceManager;
@@ -11,11 +11,11 @@ public class Building {
     private float _height;
     private bool _isDraggable;
 
-    public virtual void crush()
+    public virtual void Crush()
     {
 
     }
-    public virtual bool canBuy()
+    public virtual bool CanBuy()
     {
         return _resourceManager.RemoveWood(_cost.wood) && _resourceManager.RemoveWood(_cost.stone);
     }
