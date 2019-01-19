@@ -2,32 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class Building {
+public class Building {
 
-    private RessourcesPack _cost;
-    private RessourcesPack _provision;
+    protected ResourcesPack _cost;
+    public ResourceManager _resourceManager;
     private float _effectArea; //the radius of effect area
     private float _width;
     private float _height;
     private bool _isDraggable;
 
-    public void crush()
+    public virtual void crush()
     {
 
     }
-    public bool canBuy()
+    public virtual bool canBuy()
     {
-        return;
+        return _resourceManager.RemoveWood(_cost.wood) && _resourceManager.RemoveWood(_cost.stone);
     }
 
-    public bool ApplyEffect()
+    public virtual bool ApplyEffect()
     {
-        return;
+        return false;
     }
 
-    public bool Drag()
+    public virtual bool Drag()
     {
-        return;
+        return false;
     }
 
 }

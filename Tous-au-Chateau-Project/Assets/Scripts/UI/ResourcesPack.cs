@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ResourcesPack {
+public class ResourcesPack 
+{
 
     public int wood = 0;
     public int stone = 0;

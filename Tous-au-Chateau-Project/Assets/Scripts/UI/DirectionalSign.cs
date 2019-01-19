@@ -2,25 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WoodPlank : Building
+public class DirectionalSign : Building
 {
 
     void Start()
     {
-        _cost.wood = 5;
+        _cost.wood = 20;
 
     }
 
     public override void crush()
     {
-       // if(this.gameObject.CompareTag("woodPlank"))
-        
+        //if (this.gameObject.CompareTag("DirectionalSign"))
+      
     }
-    
+
 
     public override bool ApplyEffect()
     {
         return true;
     }
-
 }
