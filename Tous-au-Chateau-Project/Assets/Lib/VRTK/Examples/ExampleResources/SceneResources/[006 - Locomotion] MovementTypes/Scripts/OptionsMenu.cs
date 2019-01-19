@@ -10,6 +10,13 @@
 
         protected bool state;
 
+        private void Update()
+        {
+            transform.position = leftController.transform.position;
+            //
+            transform.localRotation = Quaternion.LookRotation(-leftController.transform.forward);
+        }
+
         protected virtual void OnEnable()
         {
             state = false;
@@ -29,25 +36,25 @@
         protected virtual void ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
         {
             state = !state;
-            Move();
+            //Move();
             SetObjectVisibility();
         }
 
-        protected virtual void Move()
+        /*protected virtual void Move()
         {
             Transform playArea = VRTK_DeviceFinder.PlayAreaTransform();
             Transform headset = VRTK_DeviceFinder.HeadsetTransform();
             if (playArea != null && headset != null)
             {
                 transform.position = new Vector3(headset.position.x, playArea.position.y, headset.position.z);
-                controlObject.transform.localPosition = headset.forward * 0.5f;
-                controlObject.transform.localPosition = new Vector3(controlObject.transform.localPosition.x, 0f, controlObject.transform.localPosition.z);
+                //controlObject.transform.localPosition = headset.forward * 0.5f;
+                //controlObject.transform.localPosition = new Vector3(controlObject.transform.localPosition.x, 0f, controlObject.transform.localPosition.z);
                 Vector3 targetPosition = headset.position;
                 targetPosition.y = playArea.transform.position.y;
-                controlObject.transform.LookAt(targetPosition);
-                controlObject.transform.localEulerAngles = new Vector3(0f, controlObject.transform.localEulerAngles.y, 0f);
+                //controlObject.transform.LookAt(targetPosition);
+                //controlObject.transform.localEulerAngles = new Vector3(0f, controlObject.transform.localEulerAngles.y, 0f);
             }
-        }
+        }*/
 
         protected virtual void SetObjectVisibility()
         {
