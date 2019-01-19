@@ -3417,8 +3417,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 271799130}
-  m_LocalRotation: {x: 0.29272884, y: 0.13764517, z: 0.04262541, w: -0.945276}
-  m_LocalPosition: {x: 5.746559, y: -119.36187, z: -96.59985}
+  m_LocalRotation: {x: 0.10765604, y: 0.1858637, z: 0.020492101, w: -0.9764451}
+  m_LocalPosition: {x: 42.477703, y: -1.1316471, z: -65.85329}
   m_LocalScale: {x: 0.8381444, y: 0.916419, z: 0.9121032}
   m_Children: []
   m_Father: {fileID: 197541977}
@@ -28398,9 +28398,9 @@ MonoBehaviour:
   _iteration: 1
   _minAngle: 30
   _maxAngle: 85
-  _length: 0.02
-  _widthMax: 0.007
-  _widthMin: 0.005
+  _length: 2
+  _widthMax: 0.7
+  _widthMin: 0.5
   _sizeLeaf: 2
 --- !u!114 &2028552933
 MonoBehaviour:
@@ -28414,24 +28414,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _TreesPosition: {fileID: 1089973178}
---- !u!224 &2028552934
-RectTransform:
+--- !u!4 &2028552934
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2028552931}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.742779, y: -19.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 851190974}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.742779, y: -20.179144}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2035507738
 GameObject:
   m_ObjectHideFlags: 0
