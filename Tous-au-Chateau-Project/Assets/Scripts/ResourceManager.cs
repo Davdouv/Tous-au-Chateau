@@ -6,17 +6,20 @@ public class ResourceManager : PauseScript
 {
     public EndOfGameManager _EndOfGame;
 
-    private int _woodNb = 15;
-    private int _stoneNb = 10;
-    private int _foodNb = 0;
-    private int _villagersNb = 30;
-    private float _motivation = 100; //% => value from 0 to 100
+    private ResourcesPack _currentResources;
     private bool _isInPause;
 
     void Start()
     {
+        _currentResources = new ResourcesPack { motivation = 100, workForce = 10};
         _isInPause = false;
         InvokeRepeating("InGameMotivation", 0.0f, 3.0f);
+
+        //test for resource pack operator override
+        ResourcesPack test = new ResourcesPack { wood = 5, workForce = 3, food = 2 };
+        _currentResources += test;
+
+        Debug.Log(_currentResources);
     }
 
     void InGameMotivation()
@@ -38,69 +41,27 @@ public class ResourceManager : PauseScript
     /*GETTERS*/
     public int GetWood()
     {
-        return _woodNb;
+        return _currentResources.wood;
     }
 
     public int GetStone()
     {
-        return _stoneNb;
+        return _currentResources.stone;
     }
 
     public int GetFood()
     {
-        return _foodNb;
+        return _currentResources.food;
     }
 
-    public int GetVillagers()
+    public int GetWorkForce()
     {
-        return _villagersNb;
+        return _currentResources.workForce;
     }
 
     public float GetMotivation()
     {
-        return _motivation;
-    }
-
-    /*SETTERS*/
-    public void SetWood(int wood)
-    {
-        if (wood >= 0)
-        {
-            _woodNb = wood;
-        }
-    }
-
-    public void SetStone(int stone)
-    {
-        if(stone >= 0)
-        {
-            _stoneNb = stone;
-        }
-    }
-
-    public void SetFood(int food)
-    {
-        if(food >= 0)
-        {
-            _foodNb = food;
-        }
-    }
-
-    public void SetVillagers(int villagers)
-    {
-        if(villagers >= 0)
-        {
-            _villagersNb = villagers;
-        }
-    }
-
-    public void SetMotivation(float motivation)
-    {
-        //% => value from 0 to 100
-        if (motivation >= 0 && motivation <= 100)
-        {
-            _motivation = motivation;
-        }
+        return _currentResources.motivation;
     }
 
     /* ADD */
@@ -108,7 +69,7 @@ public class ResourceManager : PauseScript
     {
         if (wood > 0)
         {
-            _woodNb += wood;
+            _currentResources.wood += wood;
         }
     }
 
@@ -116,7 +77,7 @@ public class ResourceManager : PauseScript
     {
         if (stone > 0)
         {
-            _stoneNb += stone;
+            _currentResources.stone += stone;
         }
     }
 
@@ -124,15 +85,15 @@ public class ResourceManager : PauseScript
     {
         if (food > 0)
         {
-            _foodNb += food;
+            _currentResources.food += food;
         }
     }
 
-    public void AddVillagers(int villagers)
+    public void AddWorkForce(int workFroce)
     {
-        if (villagers > 0)
+        if (workFroce > 0)
         {
-            _villagersNb += villagers;
+            _currentResources.workForce += workFroce;
         }
     }
 
@@ -140,13 +101,13 @@ public class ResourceManager : PauseScript
     {
         if (motivation > 0)
         {
-            if (_motivation + motivation > 100)
+            if (_currentResources.motivation + motivation > 100)
             {
-                _motivation = 100;
+                _currentResources.motivation = 100;
             }
             else
             {
-                _motivation += motivation;
+                _currentResources.motivation += motivation;
             }
         }
     }
@@ -156,13 +117,13 @@ public class ResourceManager : PauseScript
     {
         if (wood > 0)
         {
-            if(_woodNb - wood < 0)
+            if(_currentResources.wood - wood < 0)
             {
                 return false;
             }
             else
             {
-                _woodNb -= wood;
+                _currentResources.wood -= wood;
                 return true;
             }
         }
@@ -174,13 +135,13 @@ public class ResourceManager : PauseScript
     {
         if (stone > 0)
         {
-            if (_stoneNb - stone < 0)
+            if (_currentResources.stone - stone < 0)
             {
                 return false;
             }
             else
             {
-                _stoneNb -= stone;
+                _currentResources.stone -= stone;
                 return true;
             }
         }
@@ -192,13 +153,13 @@ public class ResourceManager : PauseScript
     {
         if (food > 0)
         {
-            if (_foodNb - food < 0)
+            if (_currentResources.food - food < 0)
             {
                 return false;
             }
             else
             {
-                _foodNb -= food;
+                _currentResources.food -= food;
                 return true;
             }
         }
@@ -206,18 +167,18 @@ public class ResourceManager : PauseScript
         return false;
     }
 
-    public bool RemoveVillagers(int villagers)
+    public bool RemoveWorkForce(int workForce)
     {
-        if (villagers > 0)
+        if (workForce > 0)
         {
-            if (_villagersNb - villagers <= 0)
+            if (_currentResources.workForce - workForce <= 0)
             {
-                _villagersNb = 0;
+                _currentResources.workForce = 0;
                 _EndOfGame.LoseGame();
             }
             else
             {
-                _villagersNb -= villagers;
+                _currentResources.workForce -= workForce;
                 return true;
             }
         }
@@ -229,14 +190,14 @@ public class ResourceManager : PauseScript
     {
         if (motivation > 0)
         {
-            if (_motivation - motivation <= 0)
+            if (_currentResources.motivation - motivation <= 0)
             {
-                _motivation = 0;
+                _currentResources.motivation = 0;
                 _EndOfGame.LoseGame();
             }
             else
             {
-                _motivation -= motivation;
+                _currentResources.motivation -= motivation;
             }
         }
     }
