@@ -14,15 +14,9 @@ public class ResourceManager : PauseScript
         _currentResources = new ResourcesPack { motivation = 100, workForce = 10};
         _isInPause = false;
         InvokeRepeating("InGameMotivation", 0.0f, 3.0f);
-
-        //test for resource pack operator override
-        ResourcesPack test = new ResourcesPack { wood = 5, workForce = 3, food = 2 };
-        _currentResources += test;
-
-        Debug.Log(_currentResources);
     }
 
-    void InGameMotivation()
+    private void InGameMotivation()
     {
         if(!_isInPause)
             RemoveMotivation(1);

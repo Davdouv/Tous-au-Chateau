@@ -5,29 +5,43 @@ using UnityEngine.UI;
 
 public class UIManager : PauseScript
 {
+    //To know where to update the display
     public Text woodTxt;
     public Text stoneTxt;
     public Text foodTxt;
     public Text villagersTxt;
     public Slider motivation;
 
+    //For gameplay purposes
     public GameObject GameOverPanel;
     public Text gameOverVillagersText;
-    public ResourceManager ResourceManager;
+    public ResourceManager _ResourceManager;
+    public List<GameObject> buildings;
+
+    //For construction pagination
+    public int constructionNbByPage;
+    public GameObject ConstructionPages;
+    private int _nbOfPagesInUI = 0;
+
+    private void Start()
+    {
+        float 
+        _nbOfPagesInUI = Mathf.Ceil((float)buildings.Count / constructionNbByPage);
+    }
 
     private void Update()
     {
-        woodTxt.text = "" + ResourceManager.GetWood();
-        stoneTxt.text = "" + ResourceManager.GetStone();
-        foodTxt.text = "" + ResourceManager.GetFood();
-        villagersTxt.text = "" + ResourceManager.GetWorkForce();
-        motivation.value = ResourceManager.GetMotivation();
+        woodTxt.text = "" + _ResourceManager.GetWood();
+        stoneTxt.text = "" + _ResourceManager.GetStone();
+        foodTxt.text = "" + _ResourceManager.GetFood();
+        villagersTxt.text = "" + _ResourceManager.GetWorkForce();
+        motivation.value = _ResourceManager.GetMotivation();
     }
 
     public void DisplayGameOverPanel()
     {
         GameOverPanel.SetActive(true);
-        gameOverVillagersText.text = "Remaining Villagers : " + ResourceManager.GetWorkForce();
+        gameOverVillagersText.text = "Remaining Villagers : " + _ResourceManager.GetWorkForce();
     }
 
     override public void Pause()
