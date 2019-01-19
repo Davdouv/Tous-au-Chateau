@@ -13,41 +13,21 @@ public class UIManager : PauseScript
 
     public GameObject GameOverPanel;
     public Text gameOverVillagersText;
-    //public GameObject constructionPanel;
     public ResourceManager ResourceManager;
-
-	void Start () {
-        woodTxt.text = "" + ResourceManager.GetWood();
-        stoneTxt.text = "" + ResourceManager.GetStone();
-        foodTxt.text = "" + ResourceManager.GetFood();
-        villagersTxt.text = "" + ResourceManager.GetVillagers();
-        motivation.value = ResourceManager.GetMotivation();
-    }
 
     private void Update()
     {
         woodTxt.text = "" + ResourceManager.GetWood();
         stoneTxt.text = "" + ResourceManager.GetStone();
         foodTxt.text = "" + ResourceManager.GetFood();
-        villagersTxt.text = "" + ResourceManager.GetVillagers();
+        villagersTxt.text = "" + ResourceManager.GetWorkForce();
         motivation.value = ResourceManager.GetMotivation();
-
-        /* For testing hide and show purposes */
-        /*if (Input.GetKeyDown("space"))
-        {
-            ShowConstructionPanel();
-        }
-
-        if (Input.GetKeyUp("space"))
-        {
-            HideConstructionPanel();
-        }*/
     }
 
     public void DisplayGameOverPanel()
     {
         GameOverPanel.SetActive(true);
-        gameOverVillagersText.text = "Remaining Villagers : " + ResourceManager.GetVillagers();
+        gameOverVillagersText.text = "Remaining Villagers : " + ResourceManager.GetWorkForce();
     }
 
     override public void Pause()
@@ -79,58 +59,4 @@ public class UIManager : PauseScript
        // constructionPanel.SetActive(false);
     }
 
-    /* WOOD */
-    public void IncreaseWood()
-    {
-        ResourceManager.AddWood(10);
-    }
-
-    public void DecreaseWood()
-    {
-        ResourceManager.RemoveWood(7);
-    }
-
-    /* STONE */
-    public void IncreaseStone()
-    {
-        ResourceManager.AddStone(10);
-    }
-
-    public void DecreaseStone()
-    {
-        ResourceManager.RemoveStone(9);
-    }
-
-    /* FOOD */
-    public void IncreaseFood()
-    {
-        ResourceManager.AddFood(5);
-    }
-
-    public void DecreaseFood()
-    {
-        ResourceManager.RemoveFood(7);
-    }
-
-    /* VILLAGERS */
-    public void IncreaseVillagers()
-    {
-        ResourceManager.AddVillagers(3);
-    }
-
-    public void DecreaseVillagers()
-    {
-        ResourceManager.RemoveVillagers(2);
-    }
-
-    /* MOTIVATION */
-    public void IncreaseMotivation()
-    {
-        ResourceManager.AddMotivation(10);
-    }
-
-    public void DecreaseMotivation()
-    {
-        ResourceManager.RemoveMotivation(10);
-    }
 }
