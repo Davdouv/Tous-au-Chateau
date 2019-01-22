@@ -17,7 +17,7 @@ public class Building : MonoBehaviour {
     }
     public virtual bool CanBuy()
     {
-        return _resourceManager.RemoveWood(_cost.wood) && _resourceManager.RemoveWood(_cost.stone);
+        return _resourceManager.Buy(_cost);
     }
 
     public virtual bool ApplyEffect()
