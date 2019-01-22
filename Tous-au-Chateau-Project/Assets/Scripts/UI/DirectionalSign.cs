@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class DirectionalSign : Building
 {
+    enum Direction { North, East, South, West };
 
     void Start()
     {
