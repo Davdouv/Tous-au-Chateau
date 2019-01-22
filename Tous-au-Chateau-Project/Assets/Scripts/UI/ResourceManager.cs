@@ -16,10 +16,17 @@ public class ResourceManager : PauseScript
         InvokeRepeating("InGameMotivation", 0.0f, 3.0f);
     }
 
+    private void Update()
+    {
+        //Need to update villagers nb from Villagers group instance
+    }
+
     private void InGameMotivation()
     {
-        if(!_isInPause)
-            RemoveMotivation(1);
+        if (!_isInPause)
+        {
+            RemoveResources(new ResourcesPack { motivation = 1 });
+        }
     }
 
     override public void Pause()
@@ -32,7 +39,8 @@ public class ResourceManager : PauseScript
         _isInPause = false;
     }
 
-    /*GETTERS*/
+    //GETTERS
+    //Mainly used to help UI display
     public int GetWood()
     {
         return _currentResources.wood;
@@ -58,141 +66,46 @@ public class ResourceManager : PauseScript
         return _currentResources.motivation;
     }
 
-    /* ADD */
-    public void AddWood(int wood)
+    //ADD
+
+    public void AddResources(ResourcesPack toAdd)
     {
-        if (wood > 0)
-        {
-            _currentResources.wood += wood;
-        }
+        if (toAdd.wood >= 0 && toAdd.stone >= 0 && toAdd.food >= 0 && toAdd.workForce >= 0 && toAdd.motivation >= 0)
+            _currentResources += toAdd;
+
+        if (_currentResources.motivation > 100)
+            _currentResources.motivation = 100;
     }
 
-    public void AddStone(int stone)
+    //REMOVE
+    public bool RemoveResources(ResourcesPack toRemove)
     {
-        if (stone > 0)
-        {
-            _currentResources.stone += stone;
-        }
-    }
+        //non valid values
+        if (toRemove.wood < 0 || toRemove.stone < 0 || toRemove.food < 0 || toRemove.workForce < 0 || toRemove.motivation < 0)
+            return false;
 
-    public void AddFood(int food)
-    {
-        if (food > 0)
-        {
-            _currentResources.food += food;
-        }
-    }
+        //case where not enough wood to remove
+        if(toRemove.wood > 0 && _currentResources.wood - toRemove.wood < 0)
+            return false;
 
-    public void AddWorkForce(int workFroce)
-    {
-        if (workFroce > 0)
-        {
-            _currentResources.workForce += workFroce;
-        }
-    }
+        //case where not enough stone to remove
+        if (toRemove.stone > 0 && _currentResources.stone - toRemove.stone < 0)
+            return false;
 
-    public void AddMotivation(int motivation)
-    {
-        if (motivation > 0)
-        {
-            if (_currentResources.motivation + motivation > 100)
-            {
-                _currentResources.motivation = 100;
-            }
-            else
-            {
-                _currentResources.motivation += motivation;
-            }
-        }
-    }
+        //case where not enough food to remove
+        if (toRemove.food > 0 && _currentResources.food - toRemove.food < 0)
+            return false;
 
-    /* REMOVE */
-    public bool RemoveWood(int wood)
-    {
-        if (wood > 0)
-        {
-            if(_currentResources.wood - wood < 0)
-            {
-                return false;
-            }
-            else
-            {
-                _currentResources.wood -= wood;
-                return true;
-            }
-        }
+        //case where not enough workForce to remove
+        if (toRemove.workForce > 0 && _currentResources.workForce - toRemove.workForce < 0)
+            return false; // end of game ?
 
-        return false;
-    }
+        //case where not enough motivation to remove
+        if (toRemove.motivation > 0 && _currentResources.motivation - toRemove.motivation < 0)
+            return false; // end of game ?
 
-    public bool RemoveStone(int stone)
-    {
-        if (stone > 0)
-        {
-            if (_currentResources.stone - stone < 0)
-            {
-                return false;
-            }
-            else
-            {
-                _currentResources.stone -= stone;
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public bool RemoveFood(int food)
-    {
-        if (food > 0)
-        {
-            if (_currentResources.food - food < 0)
-            {
-                return false;
-            }
-            else
-            {
-                _currentResources.food -= food;
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public bool RemoveWorkForce(int workForce)
-    {
-        if (workForce > 0)
-        {
-            if (_currentResources.workForce - workForce <= 0)
-            {
-                _currentResources.workForce = 0;
-                _EndOfGame.LoseGame();
-            }
-            else
-            {
-                _currentResources.workForce -= workForce;
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    public void RemoveMotivation(int motivation)
-    {
-        if (motivation > 0)
-        {
-            if (_currentResources.motivation - motivation <= 0)
-            {
-                _currentResources.motivation = 0;
-                _EndOfGame.LoseGame();
-            }
-            else
-            {
-                _currentResources.motivation -= motivation;
-            }
-        }
+        //every resource level is high enough
+        _currentResources -= toRemove;
+        return true;
     }
 }

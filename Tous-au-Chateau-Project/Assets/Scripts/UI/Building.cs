@@ -15,9 +15,10 @@ public class Building : MonoBehaviour {
     {
 
     }
+
     public virtual bool CanBuy()
     {
-        return _resourceManager.Buy(_cost);
+        return _resourceManager.RemoveResources(_cost);
     }
 
     public virtual bool ApplyEffect()
