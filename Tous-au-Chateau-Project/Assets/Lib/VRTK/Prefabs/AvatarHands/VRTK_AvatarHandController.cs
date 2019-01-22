@@ -113,7 +113,7 @@ namespace VRTK
         [Tooltip("The speed in which a finger will transition to it's destination position if the finger state is `Digital`.")]
         public float animationSnapSpeed = 0.1f;
 
-        [Header("Digital Finger Settings")]
+        /*[Header("Digital Finger Settings")]
 
         [Tooltip("The button alias to control the thumb if the thumb state is `Digital`.")]
         public VRTK_ControllerEvents.ButtonAlias thumbButton = VRTK_ControllerEvents.ButtonAlias.TouchpadTouch;
@@ -141,7 +141,37 @@ namespace VRTK
         [Tooltip("The button type to listen for axis changes to control the pinky finger.")]
         public SDK_BaseController.ButtonTypes pinkyAxisButton = SDK_BaseController.ButtonTypes.PinkyFinger;
         [Tooltip("The button type to listen for axis changes to control the middle, ring and pinky finger.")]
-        public SDK_BaseController.ButtonTypes threeFingerAxisButton = SDK_BaseController.ButtonTypes.Grip;
+        public SDK_BaseController.ButtonTypes threeFingerAxisButton = SDK_BaseController.ButtonTypes.Grip;*/
+
+        [Header("Digital Finger Settings")]
+
+        [Tooltip("The button alias to control the thumb if the thumb state is `Digital`.")]
+        public VRTK_ControllerEvents.ButtonAlias thumbButton = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+        [Tooltip("The button alias to control the index finger if the index finger state is `Digital`.")]
+        public VRTK_ControllerEvents.ButtonAlias indexButton = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+        [Tooltip("The button alias to control the middle finger if the middle finger state is `Digital`.")]
+        public VRTK_ControllerEvents.ButtonAlias middleButton = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+        [Tooltip("The button alias to control the ring finger if the ring finger state is `Digital`.")]
+        public VRTK_ControllerEvents.ButtonAlias ringButton = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+        [Tooltip("The button alias to control the pinky finger if the pinky finger state is `Digital`.")]
+        public VRTK_ControllerEvents.ButtonAlias pinkyButton = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+        [Tooltip("The button alias to control the middle, ring and pinky finger if the three finger state is `Digital`.")]
+        public VRTK_ControllerEvents.ButtonAlias threeFingerButton = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+
+        [Header("Axis Finger Settings")]
+
+        [Tooltip("The button type to listen for axis changes to control the thumb.")]
+        public SDK_BaseController.ButtonTypes thumbAxisButton = SDK_BaseController.ButtonTypes.Trigger;
+        [Tooltip("The button type to listen for axis changes to control the index finger.")]
+        public SDK_BaseController.ButtonTypes indexAxisButton = SDK_BaseController.ButtonTypes.Trigger;
+        [Tooltip("The button type to listen for axis changes to control the middle finger.")]
+        public SDK_BaseController.ButtonTypes middleAxisButton = SDK_BaseController.ButtonTypes.Trigger;
+        [Tooltip("The button type to listen for axis changes to control the ring finger.")]
+        public SDK_BaseController.ButtonTypes ringAxisButton = SDK_BaseController.ButtonTypes.Trigger;
+        [Tooltip("The button type to listen for axis changes to control the pinky finger.")]
+        public SDK_BaseController.ButtonTypes pinkyAxisButton = SDK_BaseController.ButtonTypes.Trigger;
+        [Tooltip("The button type to listen for axis changes to control the middle, ring and pinky finger.")]
+        public SDK_BaseController.ButtonTypes threeFingerAxisButton = SDK_BaseController.ButtonTypes.Trigger;
 
         [Header("Finger State Settings")]
 
@@ -203,12 +233,12 @@ namespace VRTK
         protected VRTK_ControllerEvents.AxisType[] axisTypes = new VRTK_ControllerEvents.AxisType[5];
         protected Coroutine[] fingerAnimationRoutine = new Coroutine[5];
 
-        protected VRTK_ControllerEvents.ButtonAlias savedThumbButtonState = VRTK_ControllerEvents.ButtonAlias.Undefined;
-        protected VRTK_ControllerEvents.ButtonAlias savedIndexButtonState = VRTK_ControllerEvents.ButtonAlias.Undefined;
-        protected VRTK_ControllerEvents.ButtonAlias savedMiddleButtonState = VRTK_ControllerEvents.ButtonAlias.Undefined;
-        protected VRTK_ControllerEvents.ButtonAlias savedRingButtonState = VRTK_ControllerEvents.ButtonAlias.Undefined;
-        protected VRTK_ControllerEvents.ButtonAlias savedPinkyButtonState = VRTK_ControllerEvents.ButtonAlias.Undefined;
-        protected VRTK_ControllerEvents.ButtonAlias savedThreeFingerButtonState = VRTK_ControllerEvents.ButtonAlias.Undefined;
+        protected VRTK_ControllerEvents.ButtonAlias savedThumbButtonState = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+        protected VRTK_ControllerEvents.ButtonAlias savedIndexButtonState = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+        protected VRTK_ControllerEvents.ButtonAlias savedMiddleButtonState = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+        protected VRTK_ControllerEvents.ButtonAlias savedRingButtonState = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+        protected VRTK_ControllerEvents.ButtonAlias savedPinkyButtonState = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
+        protected VRTK_ControllerEvents.ButtonAlias savedThreeFingerButtonState = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
 
         protected SDK_BaseController.ButtonTypes savedThumbAxisButtonState;
         protected SDK_BaseController.ButtonTypes savedIndexAxisButtonState;
