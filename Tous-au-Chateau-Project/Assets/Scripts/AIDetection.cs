@@ -77,8 +77,11 @@ public class AIDetection : TriggerZone {
     // On Collision Exit, chase the target again
     public override void CollisionExit(Collision collision)
     {
-        //Debug.Log("COLLISION EXIT : " + collision.gameObject.name);
-        _aiCharacter.Stop(false);
+        if (_aiCharacter.IsTheTarget(collision.gameObject))
+        {
+            _aiCharacter.Stop(false);
+            _aiCharacter.StopActionOnTarget();
+        }
     }
 
     public GameObject GetEnemyNear()

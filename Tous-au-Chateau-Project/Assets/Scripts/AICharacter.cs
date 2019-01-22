@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 // This should be used on an AI Object, child of an object with the AICharactersGroup component
+[RequireComponent(typeof(AICharacterAttack))]
 public class AICharacter : EnvironmentMaterial {
     
     private bool _isAlive;
@@ -18,6 +19,9 @@ public class AICharacter : EnvironmentMaterial {
     private bool _hasPriorityOnTarget = false;
     private bool _isEscaping = false;
     private bool _isMovingAround = false;
+    private bool _isAttacking = false;
+
+    private AICharacterAttack _combat;
 
     private void Awake()
     {
@@ -26,6 +30,7 @@ public class AICharacter : EnvironmentMaterial {
 
     private void Start()
     {
+        _combat = GetComponent<AICharacterAttack>();
         SetGroup();
     }
 
@@ -118,10 +123,17 @@ public class AICharacter : EnvironmentMaterial {
     // This method MUST call GetNewTarget() when it's done and before destroying the target
     public virtual void DoActionOnTarget()
     {
+        _isAttacking = true;
         // FOR TEST
-        StartCoroutine(DestroyTarget());
+        //StartCoroutine(DestroyTarget());
+    }
+    
+    public virtual void StopActionOnTarget()
+    {
+        _isAttacking = false;
     }
 
+    // TODO --> Remove this method
     // Personal action (for test)
     private IEnumerator DestroyTarget()
     {        
@@ -194,6 +206,15 @@ public class AICharacter : EnvironmentMaterial {
             {
                 SetRandomDestination(_assignedGroup.RandomNavmeshLocation());
             }
+        }
+        // TODO
+        if (_isAttacking)
+        {
+            _combat.Attack();
+            //if (targetIsDead())
+            //{
+            //    GetNewTarget();
+            //}            
         }
     }
 

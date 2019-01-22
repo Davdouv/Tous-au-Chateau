@@ -299,6 +299,7 @@ GameObject:
   - component: {fileID: 578340530}
   - component: {fileID: 578340529}
   - component: {fileID: 578340536}
+  - component: {fileID: 578340537}
   m_Layer: 0
   m_Name: AI_Object_Attacking
   m_TagString: Head
@@ -448,6 +449,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &578340537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 578340527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c511998e0e1d743a67ec2ee50baebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeed: 1
+  attackDelay: 0.6
 --- !u!1 &729449653
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +474,7 @@ GameObject:
   - component: {fileID: 729449661}
   - component: {fileID: 729449660}
   - component: {fileID: 729449659}
+  - component: {fileID: 729449663}
   - component: {fileID: 729449658}
   - component: {fileID: 729449657}
   - component: {fileID: 729449656}
@@ -613,6 +628,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 729449653}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &729449663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 729449653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c511998e0e1d743a67ec2ee50baebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeed: 1
+  attackDelay: 0.6
 --- !u!1 &834857363
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,6 +875,7 @@ GameObject:
   - component: {fileID: 1236866364}
   - component: {fileID: 1236866363}
   - component: {fileID: 1236866362}
+  - component: {fileID: 1236866366}
   - component: {fileID: 1236866361}
   - component: {fileID: 1236866360}
   - component: {fileID: 1236866359}
@@ -1000,6 +1029,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1236866356}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1236866366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1236866356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c511998e0e1d743a67ec2ee50baebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeed: 1
+  attackDelay: 0.6
 --- !u!1 &1340864663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1242,7 @@ GameObject:
   - component: {fileID: 1800192216}
   - component: {fileID: 1800192218}
   - component: {fileID: 1800192217}
+  - component: {fileID: 1800192219}
   m_Layer: 0
   m_Name: AI_Object
   m_TagString: Saucers
@@ -1349,6 +1392,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d4a616a4e0b294f86fb4a9a2b0754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1800192219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1800192209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c511998e0e1d743a67ec2ee50baebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeed: 1
+  attackDelay: 0.6
 --- !u!1 &1882486860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,6 +1533,7 @@ GameObject:
   - component: {fileID: 1969674990}
   - component: {fileID: 1969674989}
   - component: {fileID: 1969674988}
+  - component: {fileID: 1969674992}
   - component: {fileID: 1969674987}
   - component: {fileID: 1969674986}
   - component: {fileID: 1969674985}
@@ -1630,6 +1687,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1969674982}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1969674992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1969674982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c511998e0e1d743a67ec2ee50baebb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackSpeed: 1
+  attackDelay: 0.6
 --- !u!1 &2099465231
 GameObject:
   m_ObjectHideFlags: 0
