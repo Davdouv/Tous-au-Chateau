@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class actions : MonoBehaviour {
 
-    VRTK.VRTK_ControllerEvents events;
+    public ResourceManager resourceM;
 
+    VRTK.VRTK_ControllerEvents events;
     bool trigger;
     Vector3 currentPos;
 
@@ -32,6 +33,34 @@ public class actions : MonoBehaviour {
             Debug.Log(currentPos);
         }
 	}
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.tag);
+        if (trigger)
+        {
+            if (other.tag == "Wood")
+            {
+                //other.crush()   <= for the next sprint
+                Debug.Log("INTO WOOD");
+                resourceM.AddWood(10);
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "Stone")
+            {
+                Debug.Log("INTO STONE");
+                resourceM.AddStone(10);
+                Destroy(other.gameObject);
+            }
+            else if (other.tag == "Food")
+            {
+                Debug.Log("INTO FOOD");
+                resourceM.AddFood(10);
+                Destroy(other.gameObject);
+            }
+        }
+        
+    }
 
     //void OnTrigg
 }
