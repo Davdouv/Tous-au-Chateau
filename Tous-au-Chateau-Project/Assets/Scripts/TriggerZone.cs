@@ -105,7 +105,7 @@ public abstract class TriggerZone : MonoBehaviour {
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {        
         for (int i = 0; i < _targetList.Count; ++i)
         {
