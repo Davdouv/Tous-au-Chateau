@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using VRTK;
 
 public class ChangeHeightMap : MonoBehaviour {
 
     public Terrain terrain;
     public GameObject map;
+
+    //public VRTK_ControllerEvents leftControllerEvents;
+    //public VRTK_ControllerEvents rightControllerEvents;
 
     public void Increase()
     {
