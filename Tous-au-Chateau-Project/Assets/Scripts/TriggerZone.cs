@@ -6,9 +6,19 @@ using UnityEngine;
 public abstract class TriggerZone : MonoBehaviour {
 
     public List<string> targetTag = new List<string>();
+    public float distanceDetection = 5.0f;
+    
+    protected bool _isInContact;
+    protected List<Target> _targetList = new List<Target>();
 
-	private GameObject _target;
-    private bool _isInContact;
+    private void Start()
+    {
+        SphereCollider sphereCollider = gameObject.GetComponent<SphereCollider>();
+        if (sphereCollider && sphereCollider.isTrigger)
+        {
+            sphereCollider.radius = distanceDetection;
+        }
+    }
 
     // ***** DETECTION *****/
     // Trigger must be enabled on collider
@@ -17,22 +27,14 @@ public abstract class TriggerZone : MonoBehaviour {
         // If the target's tag is in the list
         if (targetTag.Contains(other.gameObject.tag))
         {
-            _target = other.gameObject;
-
-            Debug.Log("Target in sight");
-
-            TriggerEnter(other);
+            _targetList.Add(new Target(other.gameObject));
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if (targetTag.Contains(other.gameObject.tag))
         {
-            _target = null;
-
-            Debug.Log("Target got away");
-
-            TriggerExit(other);
+            RemoveTarget(other.gameObject);
         }
     }
 
@@ -44,8 +46,6 @@ public abstract class TriggerZone : MonoBehaviour {
         {
             _isInContact = true;
 
-            Debug.Log("Collision !");
-
             CollisionEnter(collision);
         }
     }
@@ -55,10 +55,21 @@ public abstract class TriggerZone : MonoBehaviour {
         {
             _isInContact = false;
 
-            Debug.Log("Collision no more");
-
             CollisionExit(collision);
         }
+    }
+
+    // Not used anymore
+    public bool IsInSight(GameObject target)
+    {
+        foreach (Target tar in _targetList)
+        {
+            if (tar.GetObject() == target)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public bool IsInContact()
@@ -66,13 +77,57 @@ public abstract class TriggerZone : MonoBehaviour {
         return _isInContact;
     }
 
-    public GameObject GetTarget()
+    public void AddTarget(GameObject target)
     {
-        return _target;
+        _targetList.Add(new Target(target));
     }
 
-    public virtual void TriggerEnter(Collider other) { }
-    public virtual void TriggerExit(Collider other) { }
+    public virtual void TriggerEnter(GameObject target) { }
+    public virtual void TriggerExit(GameObject target) { }
     public virtual void CollisionEnter(Collision collision) { }
     public virtual void CollisionExit(Collision collision) { }
+
+    public bool IsInRange(Vector3 position)
+    {
+        float distance = Vector3.Distance(transform.position, position);
+        return (distance < distanceDetection);
+    }
+
+    protected void RemoveTarget(GameObject target)
+    {
+        foreach(Target tar in _targetList)
+        {
+            if (tar.GetObject() == target)
+            {
+                _targetList.Remove(tar);
+                return;
+            }
+        }
+    }
+
+    private void Update()
+    {        
+        for (int i = 0; i < _targetList.Count; ++i)
+        {
+            // If not triggered yet, check if it's a the good distance
+            if (!_targetList[i].IsTriggered() && IsInRange(_targetList[i].GetObject().transform.position))
+            {
+                _targetList[i].SetTrigger(true);
+                TriggerEnter(_targetList[i].GetObject());
+            }
+            // If it has been triggered, check if it get away
+            else if (_targetList[i].IsTriggered() && !IsInRange(_targetList[i].GetObject().transform.position))
+            {
+                _targetList[i].SetTrigger(false);
+                TriggerExit(_targetList[i].GetObject());
+            }
+            // If the object is no longer active
+            else if (!_targetList[i].GetObject().activeSelf)
+            {                
+                TriggerExit(_targetList[i].GetObject());
+                RemoveTarget(_targetList[i].GetObject());
+                --i;
+            }
+        }
+    }
 }

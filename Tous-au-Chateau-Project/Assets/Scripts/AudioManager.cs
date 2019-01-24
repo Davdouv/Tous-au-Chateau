@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour {
 
     private static AudioManager _instance;
 
-    private bool _mute;
+    private static bool _mute;
     private AudioSource source;
     public AudioClip mainMusic;
 
@@ -18,7 +18,7 @@ public class AudioManager : MonoBehaviour {
             // create logic to create the instance
             if (_instance == null)
             {
-                GameObject go = new GameObject("AudioManager");
+                GameObject go = new GameObject("_AudioManager");
                 go.AddComponent<AudioManager>();
             }
             return _instance;
