@@ -1,19 +1,16 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public struct Direction { };
-public interface MapPhysicObject { };
+public enum Direction { RIGHT, LEFT, BACKWARD };
 
-public class Villager : MonoBehaviour, MapPhysicObject
+
+public class Villager : MapPhysicObject
 {
-    private bool _isAlive;
-    private bool _isInfected;
-    private int _life;
+    
     private int _motivation;
-    private Direction _mainDirection;
-
+    private bool _isInfected;
     private bool _canMove;
-    public float _speed = 1.50f;
+    private CharacterStats _stats;
     Rigidbody _rb;
 
     private CollisionDetection _villagerCollision;
@@ -21,43 +18,51 @@ public class Villager : MonoBehaviour, MapPhysicObject
 
     
 
-    public Villager() : this(100, true, false, new Direction())
+    public Villager() : this( false)
     { }
-    public Villager(int life, bool alive, bool infected, Direction direction)
+    public Villager(bool infected)
     {
-        _isAlive = alive;
         _isInfected = infected;
-        _life = life;
-        _mainDirection = direction;
+        _stats = new CharacterStats();
     }
     
-    void Crush()
+    public override void Crush()
     {
 
     }
     private void Move()
     {
-        _rb.MovePosition(transform.position + transform.forward * _speed * Time.fixedDeltaTime);
+        _rb.MovePosition(transform.position + transform.forward * _stats.speed * Time.fixedDeltaTime);
     }
-    public void Turn(Collider direction)
+    public void ChangeDirection(Direction dir)
     {
-        if (direction.name == "LeftWoodSign")
+        switch (dir)
         {
-            transform.Rotate(0, -90, 0);
-        }
-        else
-        {
-            transform.Rotate(0, 90, 0);
+            case Direction.BACKWARD:
+                transform.Rotate(0, 180, 0);
+                break;
+            case Direction.LEFT:
+                transform.Rotate(0, -90, 0);
+                break;
+            case Direction.RIGHT:
+                transform.Rotate(0, 90, 0);
+                break;
+
+            default:
+                break;
+            
+                
         }
     }
+    
     private void GetInfected()
     {
         _isInfected = true;
-        _speed = 1.3f;
+        _stats.speed = 1.3f;
     }
     private void Die()
     {
-        _isAlive = false;
+        _stats.isAlive = false;
         _deathmode.isAlive = false;
         // delete villager ?
         // callback on villagersgroup to erase from list ?
@@ -83,22 +88,20 @@ public class Villager : MonoBehaviour, MapPhysicObject
     // Update is called once per frame
     void Update()
     {
-        if (_isAlive){
-            if(_life <= 0)
+        if (_stats.isAlive){
+            if(_stats.life <= 0)
             {
                 Die();
-                _isAlive = false;
+                _stats.isAlive = false;
                 _canMove = false;
             }
 
-            if (_villagerCollision.CheckforSign())
-                Turn(_villagerCollision.hitInfo.collider);
-
+            
             if (_villagerCollision.inDanger)
             {
                 if (!_villagerCollision.onPlatform)
                 {
-                    _life -= 1;
+                    _stats.life -= 1;
                 }
 
             }

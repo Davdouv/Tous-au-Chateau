@@ -5,10 +5,7 @@ public class VillagersGroup : MonoBehaviour
 {
     public List<Villager> _villagers;
 
-    public void ChangeMainDirection(Direction direction)
-    {
-
-    }
+    
     public void AddVillagers()
     {
         Villager villager = new Villager();

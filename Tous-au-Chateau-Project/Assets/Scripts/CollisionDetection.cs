@@ -21,9 +21,7 @@ Nécessite :
 */
 
 public class CollisionDetection : MonoBehaviour {
-
-	public RaycastHit hitInfo;
-	private bool touched= false;
+    
     public bool onPlatform = false;
     public bool inDanger = false;
 
@@ -56,35 +54,9 @@ public class CollisionDetection : MonoBehaviour {
             inDanger = false;
         }
     }
-    /*
-    void OnCollisionStay(Collision collisionInfo)
-    {
-        print("OncollisionStay de " + name + " avec "+collisionInfo.gameObject.name);
-        if(!onPlatform && collisionInfo.gameObject.tag == "DangerArea")
-        {
-            print("UNIT " + name + " TAKES DAMAGE" + collisionInfo.gameObject.name);
-            GetComponent<BoidStatus>().getDamaged();
-        }
-            
-    }
-    */
+    
     // Détection de gameobject servant à la redirection des villageois
-    public bool CheckforSign()
-    {
-        // Résultat de Raycast
-        touched = Physics.Raycast(
-            transform.position,
-            transform.forward,
-            out hitInfo,
-            3.0f
-            );
-        if (touched && hitInfo.collider.tag == "Sign")
-        {
-            return true;
-            
-        }
-        return false;
-    }
+    
     // Update is called once per frame
     void Update () {
 
