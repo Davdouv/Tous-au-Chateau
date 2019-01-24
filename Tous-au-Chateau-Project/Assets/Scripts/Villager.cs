@@ -72,6 +72,7 @@ public class Villager : MonoBehaviour, MapPhysicObject
         transform.LookAt(GameObject.Find("Objectif").transform.position);
         _rb.freezeRotation = true;
         _rb.isKinematic = true;
+        _canMove = true;
     }
     void FixedUpdate()
     {
@@ -82,20 +83,28 @@ public class Villager : MonoBehaviour, MapPhysicObject
     // Update is called once per frame
     void Update()
     {
-        if (_isAlive &&_life <= 0)
-            Die();
-
-        if (_villagerCollision.CheckforSign())
-            Turn(_villagerCollision.hitInfo.collider);
-        
-        if (_villagerCollision.inDanger)
-        {
-            if (!_villagerCollision.onPlatform)
+        if (_isAlive){
+            if(_life <= 0)
             {
-                _life -= 1;
+                Die();
+                _isAlive = false;
+                _canMove = false;
             }
-            
+
+            if (_villagerCollision.CheckforSign())
+                Turn(_villagerCollision.hitInfo.collider);
+
+            if (_villagerCollision.inDanger)
+            {
+                if (!_villagerCollision.onPlatform)
+                {
+                    _life -= 1;
+                }
+
+            }
+
         }
+            
         
 
     }
