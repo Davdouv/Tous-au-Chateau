@@ -4,6 +4,29 @@ using UnityEngine;
 
 public class ResourceManager : PauseScript
 {
+    #region Singleton
+    private static ResourceManager _instance;
+
+    public static ResourceManager Instance
+    {
+        get
+        {
+            // create logic to create the instance
+            if (_instance == null)
+            {
+                GameObject go = new GameObject("_ResourceManager");
+                go.AddComponent<ResourceManager>();
+            }
+            return _instance;
+        }
+    }
+
+    void Awake()
+    {
+        _instance = this;
+    }
+    #endregion
+
     public EndOfGameManager _EndOfGame;
 
     private ResourcesPack _currentResources;
