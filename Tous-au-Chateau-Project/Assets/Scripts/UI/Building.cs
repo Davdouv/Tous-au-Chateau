@@ -13,10 +13,12 @@ public class Building : MonoBehaviour {
 
     public virtual void Crush()
     {
+        // if(this.gameObject.CompareTag("crushable"))
+        //apply function VR 
 
     }
 
-    public virtual bool CanBuy()
+    public bool CanBuy()
     {
         return _resourceManager.RemoveResources(_cost);
     }

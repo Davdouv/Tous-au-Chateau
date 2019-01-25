@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class DirectionalSign : Building
 {
+    enum Direction { North, East, South, West };
 
     void Start()
     {
         _cost.wood = 20;
 
     }
-
-    public override void Crush()
-    {
-        //if (this.gameObject.CompareTag("DirectionalSign"))
-      
-    }
-
 
     public override bool ApplyEffect()
     {
