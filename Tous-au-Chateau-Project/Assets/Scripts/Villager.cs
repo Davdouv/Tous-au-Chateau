@@ -1,9 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public enum Direction { RIGHT, LEFT, BACKWARD };
-
-
 public class Villager : MapPhysicObject
 {
     
@@ -49,9 +46,7 @@ public class Villager : MapPhysicObject
                 break;
 
             default:
-                break;
-            
-                
+                break;          
         }
     }
     

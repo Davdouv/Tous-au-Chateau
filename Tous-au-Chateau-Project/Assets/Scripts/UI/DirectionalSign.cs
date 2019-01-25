@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Direction { RIGHT, LEFT, BACKWARD };
+
 public class DirectionalSign : Building
 {
-    enum Direction { North, East, South, West };
+    public Direction direction;
 
     void Start()
     {
-        _cost.wood = 20;
-
+        // wood = 20, stone = 0, food = 0
+        _cost = new ResourcesPack(20);
     }
 
     public override bool ApplyEffect()
