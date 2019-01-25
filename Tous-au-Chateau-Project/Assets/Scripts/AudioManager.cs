@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
+    #region Singleton
     private static AudioManager _instance;
 
-    private static bool _mute;
-    private AudioSource source;
-    public AudioClip mainMusic;
-
-    // ***** SINGLETON *****/
     public static AudioManager Instance
     {
         get
@@ -29,6 +25,11 @@ public class AudioManager : MonoBehaviour {
     {
         _instance = this;
     }
+    #endregion
+
+    private static bool _mute;
+    private AudioSource source;
+    public AudioClip mainMusic;
 
     private void Start()
     {

@@ -45,6 +45,18 @@ public class BoidMovement : MonoBehaviour
         }
     }
 
+    public void Turn(string direction)
+    {
+        if (direction == "LeftWoodSign")
+        {
+            transform.Rotate(0, -90, 0);
+        }
+        else
+        {
+            transform.Rotate(0, 90, 0);
+        }
+    }
+
     // FixedUpdate est conseillé en cas d'instructions sur la physique
     void FixedUpdate()
     {

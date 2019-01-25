@@ -5,11 +5,15 @@ using UnityEngine;
 public class Building : MonoBehaviour {
 
     protected ResourcesPack _cost;
-    public ResourceManager _resourceManager;
     private float _effectArea; //the radius of effect area
     private float _width;
     private float _height;
     private bool _isDraggable;
+
+    private void Start()
+    {
+        _cost = new ResourcesPack();
+    }
 
     public virtual void Crush()
     {
@@ -20,7 +24,7 @@ public class Building : MonoBehaviour {
 
     public bool CanBuy()
     {
-        return _resourceManager.RemoveResources(_cost);
+        return ResourceManager.Instance.RemoveResources(_cost);
     }
 
     public virtual bool ApplyEffect()
