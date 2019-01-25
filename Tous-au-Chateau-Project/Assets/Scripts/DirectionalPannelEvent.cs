@@ -2,9 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DirectionnalPannelEvent : TriggerZone {
+[RequireComponent(typeof(DirectionalSign))]
+public class DirectionalPannelEvent : TriggerZone {
 
     private bool _isOnTheGround;
+    private DirectionalSign _directionalSign;
+
+    private void Start()
+    {
+        _directionalSign = GetComponent<DirectionalSign>();
+    }
 
     public override void CollisionEnter(Collision collision)
     {
@@ -26,11 +33,7 @@ public class DirectionnalPannelEvent : TriggerZone {
     {
         if (_isOnTheGround && target.tag != "Ground")
         {
-            // TODO 
-            // --> Need to change BoidMovement to Villager
-            // --> Need to change "LeftWoodSign" to DirectionnalPannel.GetDirection
-            // --> Need to change Turn method in Villager
-            target.GetComponent<BoidMovement>().Turn("LeftWoodSign");
+            target.GetComponent<Villager>().ChangeDirection(_directionalSign.direction);
         }        
     }
 }
