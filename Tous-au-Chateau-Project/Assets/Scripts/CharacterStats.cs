@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats
 {
     public bool isAlive;
     public int life;
@@ -16,10 +16,5 @@ public class CharacterStats : MonoBehaviour
         life = vie;
         speed = vitesse;
         strength = force;
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }
