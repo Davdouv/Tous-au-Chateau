@@ -2859,7 +2859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06ab8114a852b146b47caea81802361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceManager: {fileID: 1883661142}
+  _resourceManager: {fileID: 0}
 --- !u!1001 &232482271
 Prefab:
   m_ObjectHideFlags: 0
@@ -11044,7 +11044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06ab8114a852b146b47caea81802361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceManager: {fileID: 1883661142}
+  _resourceManager: {fileID: 0}
 --- !u!1 &771645345
 GameObject:
   m_ObjectHideFlags: 0
@@ -11195,7 +11195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06ab8114a852b146b47caea81802361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceManager: {fileID: 1883661142}
+  _resourceManager: {fileID: 0}
 --- !u!1 &787165840
 GameObject:
   m_ObjectHideFlags: 0
@@ -11280,7 +11280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06ab8114a852b146b47caea81802361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceManager: {fileID: 1883661142}
+  _resourceManager: {fileID: 0}
 --- !u!1001 &810674566
 Prefab:
   m_ObjectHideFlags: 0
@@ -12417,7 +12417,7 @@ MonoBehaviour:
   motivation: {fileID: 690380265}
   GameOverPanel: {fileID: 677640092}
   gameOverVillagersText: {fileID: 1249994209}
-  _ResourceManager: {fileID: 1883661142}
+  _ResourceManager: {fileID: 0}
   buildings:
   - {fileID: 769994991}
   - {fileID: 898411118}
@@ -12855,7 +12855,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06ab8114a852b146b47caea81802361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resourceManager: {fileID: 1883661142}
+  _resourceManager: {fileID: 0}
 --- !u!1 &899820314
 GameObject:
   m_ObjectHideFlags: 0
@@ -13683,7 +13683,7 @@ MonoBehaviour:
   controllerAttachPoint: {fileID: 0}
   controllerEvents: {fileID: 0}
   interactTouch: {fileID: 0}
-  ressourceM: {fileID: 1883661142}
+  ressourceM: {fileID: 0}
   bridge: {fileID: 405980975}
   wall: {fileID: 592238520}
   theScene: {fileID: 50809542}
@@ -15706,7 +15706,7 @@ MonoBehaviour:
   controllerAttachPoint: {fileID: 0}
   controllerEvents: {fileID: 0}
   interactTouch: {fileID: 0}
-  ressourceM: {fileID: 1883661142}
+  ressourceM: {fileID: 0}
   bridge: {fileID: 405980975}
   wall: {fileID: 592238520}
   theScene: {fileID: 50809542}
@@ -25800,7 +25800,7 @@ MonoBehaviour:
   _UiManager: {fileID: 0}
   pauseObjects:
   - {fileID: 853650080}
-  - {fileID: 1883661142}
+  - {fileID: 0}
 --- !u!4 &1807039499
 Transform:
   m_ObjectHideFlags: 0
@@ -26863,13 +26863,12 @@ GameObject:
 --- !u!114 &1883661142
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114018386165649880, guid: b31e8bf68eb90b84abf4118eaa68a3a1,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1883661141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b3907b688343644b25adcf5168e8cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 13d5ef9630831694fbafa3bf83208c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _EndOfGame: {fileID: 1807039498}

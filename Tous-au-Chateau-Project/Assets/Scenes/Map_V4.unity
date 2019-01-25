@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10530259, g: 0.28906628, b: 0.7487004, a: 1}
+  m_IndirectSpecularColor: {r: 0.10531386, g: 0.2890744, b: 0.7486943, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2817,7 +2817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928dbe2b503e851489df15c7c66a1197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1.5
 --- !u!1 &196330015
 GameObject:
   m_ObjectHideFlags: 0
@@ -12771,9 +12770,12 @@ MonoBehaviour:
   foodTxt: {fileID: 1984886757}
   villagersTxt: {fileID: 1944278528}
   motivation: {fileID: 690380265}
-  gameOverPanel: {fileID: 677640092}
+  GameOverPanel: {fileID: 0}
   gameOverVillagersText: {fileID: 1249994209}
-  resourceManager: {fileID: 1883661142}
+  _ResourceManager: {fileID: 0}
+  buildings: []
+  constructionNbByPage: 0
+  ConstructionPages: {fileID: 0}
 --- !u!4 &853650081
 Transform:
   m_ObjectHideFlags: 0
@@ -13990,7 +13992,7 @@ MonoBehaviour:
   controllerAttachPoint: {fileID: 0}
   controllerEvents: {fileID: 0}
   interactTouch: {fileID: 0}
-  ressourceM: {fileID: 1883661142}
+  ressourceM: {fileID: 0}
   bridge: {fileID: 405980975}
   wall: {fileID: 592238520}
   theScene: {fileID: 50809542}
@@ -15913,7 +15915,7 @@ MonoBehaviour:
   controllerAttachPoint: {fileID: 0}
   controllerEvents: {fileID: 0}
   interactTouch: {fileID: 0}
-  ressourceM: {fileID: 1883661142}
+  ressourceM: {fileID: 0}
   bridge: {fileID: 405980975}
   wall: {fileID: 592238520}
   theScene: {fileID: 50809542}
@@ -26421,10 +26423,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5332fad0472e14db26eacac8f39f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 853650080}
+  _UiManager: {fileID: 0}
   pauseObjects:
   - {fileID: 853650080}
-  - {fileID: 1883661142}
+  - {fileID: 0}
 --- !u!4 &1807039499
 Transform:
   m_ObjectHideFlags: 0
@@ -27487,8 +27489,7 @@ GameObject:
 --- !u!114 &1883661142
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114018386165649880, guid: b31e8bf68eb90b84abf4118eaa68a3a1,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1883661141}
   m_Enabled: 1
@@ -27497,6 +27498,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endOfGame: {fileID: 1807039498}
+  woodNb: 15
+  stoneNb: 10
+  foodNb: 0
+  _villagers: {fileID: 0}
+  motivation: 100
+  isInPause: 0
 --- !u!4 &1883661143
 Transform:
   m_ObjectHideFlags: 0
