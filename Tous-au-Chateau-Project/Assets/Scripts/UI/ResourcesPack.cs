@@ -12,28 +12,39 @@ public class ResourcesPack
     public int workForce = 0;
     public int motivation = 0;
 
+    public ResourcesPack(int wood = 0, int stone = 0, int food = 0, int workForce = 0, int motivation = 0)
+    {
+        this.wood = wood;
+        this.stone = stone;
+        this.food = food;
+        this.workForce = workForce;
+        this.motivation = motivation;
+    }
+
     public static ResourcesPack operator+ (ResourcesPack resourcePack1, ResourcesPack resourcePack2)
     {
-        ResourcesPack rsResult = new ResourcesPack();
-
-        rsResult.wood = resourcePack1.wood + resourcePack2.wood;
-        rsResult.stone = resourcePack1.stone + resourcePack2.stone;
-        rsResult.food = resourcePack1.food + resourcePack2.food;
-        rsResult.workForce = resourcePack1.workForce + resourcePack2.workForce;
-        rsResult.motivation = resourcePack1.motivation + resourcePack2.motivation;
+        ResourcesPack rsResult = new ResourcesPack
+        {
+            wood = resourcePack1.wood + resourcePack2.wood,
+            stone = resourcePack1.stone + resourcePack2.stone,
+            food = resourcePack1.food + resourcePack2.food,
+            workForce = resourcePack1.workForce + resourcePack2.workForce,
+            motivation = resourcePack1.motivation + resourcePack2.motivation
+        };
 
         return rsResult;
     }
 
     public static ResourcesPack operator- (ResourcesPack resourcePack1, ResourcesPack resourcePack2)
     {
-        ResourcesPack rsResult = new ResourcesPack();
-
-        rsResult.wood = resourcePack1.wood - resourcePack2.wood;
-        rsResult.stone = resourcePack1.stone - resourcePack2.stone;
-        rsResult.food = resourcePack1.food - resourcePack2.food;
-        rsResult.workForce = resourcePack1.workForce - resourcePack2.workForce;
-        rsResult.motivation = resourcePack1.motivation - resourcePack2.motivation;
+        ResourcesPack rsResult = new ResourcesPack
+        {
+            wood = resourcePack1.wood - resourcePack2.wood,
+            stone = resourcePack1.stone - resourcePack2.stone,
+            food = resourcePack1.food - resourcePack2.food,
+            workForce = resourcePack1.workForce - resourcePack2.workForce,
+            motivation = resourcePack1.motivation - resourcePack2.motivation
+        };
 
         return rsResult;
     }
