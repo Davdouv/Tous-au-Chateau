@@ -72,26 +72,52 @@ public class actions : MonoBehaviour {
             {
                 //other.crush()   <= for the next sprint
                 Debug.Log("INTO WOOD");
-                resourceM.AddWood(10);
+                resourceM.AddResources(new ResourcesPack { wood = 1 });
                 Destroy(other.gameObject);
             }
             else if (other.tag == "Stone")
             {
                 Debug.Log("INTO STONE");
-                resourceM.AddStone(10);
+                resourceM.AddResources(new ResourcesPack { stone = 1 });
                 Destroy(other.gameObject);
             }
             else if (other.tag == "Food")
             {
                 Debug.Log("INTO FOOD");
-                resourceM.AddFood(10);
+                resourceM.AddResources(new ResourcesPack { food = 1 });
                 Destroy(other.gameObject);
             }
         }
 
         //For buildings
-        
-        
+        /*
+     
+
+                //Contruction
+                if (objectToGrab.gameObject.CompareTag("bridge") && canConstructBridge)
+                {
+                    
+                }
+                else if (objectToGrab.gameObject.CompareTag("wall") && canConstructWall)
+                {
+                    if (ressourceM.RemoveResources(new ResourcesPack { stone = 5 }))
+                    {
+                        objectToGrab.GetComponent<Rigidbody>().isKinematic = false;
+                        objectToGrab.transform.SetParent(theScene);
+                        objectToGrab.gameObject.tag = "crushable";
+                        GameObject myNewCube = Instantiate(wall, initialWallTrans.position, initialWallTrans.rotation);
+                        VRTK_InteractableObject objScript = myNewCube.GetComponent<VRTK_InteractableObject>();
+                        objScript.isGrabbable = false;
+                        myNewCube.GetComponent<Rigidbody>().isKinematic = true;
+                        myNewCube.transform.SetParent(UI);
+                        canConstructWall = false;
+                    }
+                }
+
+         * 
+         * 
+         */
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -100,7 +126,7 @@ public class actions : MonoBehaviour {
         {
             if (other.tag == "bridge")
             {
-                if (resourceM.RemoveWood(5))
+                if (resourceM.RemoveResources(new ResourcesPack { wood = 5 }))
                 {
                     newBuilding = Instantiate(bridge, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
                     haveBuilding = true;
@@ -108,7 +134,7 @@ public class actions : MonoBehaviour {
             }
             else if (other.tag == "wall")
             {
-                if (resourceM.RemoveStone(5))
+                if (resourceM.RemoveResources(new ResourcesPack { stone = 5 }))
                 {
                     newBuilding = Instantiate(wall, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
                     haveBuilding = true;

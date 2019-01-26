@@ -4,17 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+    #region Singleton
     private static GameManager _instance;
-
-    private static bool _hasStarted;
-    private static bool _hasWin;
-    private static bool _hasLost;
-    private static bool _isPaused;
-    private static bool _isWorldPaused;
-
-    public GameObject pauseMenu;
-
-    // ***** SINGLETON *****/
+    
     public static GameManager Instance
     {
         get
@@ -31,6 +23,16 @@ public class GameManager : MonoBehaviour {
     {
         _instance = this;
     }
+
+    #endregion
+
+    private static bool _hasStarted;
+    private static bool _hasWin;
+    private static bool _hasLost;
+    private static bool _isPaused;
+    private static bool _isWorldPaused;
+
+    public GameObject pauseMenu;
 
     // ***** STATES OF THE GAME *****/
     public void GameStarted()
