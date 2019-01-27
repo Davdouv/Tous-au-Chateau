@@ -22,6 +22,10 @@ public class Villager : MapPhysicObject
     { }
     public Villager(bool infected)
     {
+        if (infected)
+        {
+            gameObject.AddComponent<InfectionSpreading>();
+        }
         _isInfected = infected;
         _stats = new CharacterStats();
     }
@@ -32,7 +36,7 @@ public class Villager : MapPhysicObject
     }
     private void Move()
     {
-        _rb.MovePosition(transform.position + transform.forward * _stats.speed * Time.fixedDeltaTime);
+        _rb.MovePosition(transform.position + transform.forward * _stats._speed * Time.fixedDeltaTime);
     }
     public void ChangeDirection(Direction dir)
     {
@@ -58,11 +62,11 @@ public class Villager : MapPhysicObject
     private void GetInfected()
     {
         _isInfected = true;
-        _stats.speed = 1.3f;
+        gameObject.AddComponent<InfectionSpreading>();
     }
     private void Die()
     {
-        _stats.isAlive = false;
+        _stats.SetIsAlive( false);
         _deathmode.isAlive = false;
         // delete villager ?
         // callback on villagersgroup to erase from list ?
@@ -88,11 +92,11 @@ public class Villager : MapPhysicObject
     // Update is called once per frame
     void Update()
     {
-        if (_stats.isAlive){
-            if(_stats.life <= 0)
+        if (_stats.GetIsAlive()){
+            if(_stats.GetLife() <= 0)
             {
                 Die();
-                _stats.isAlive = false;
+                _stats.SetIsAlive(false);
                 _canMove = false;
             }
 
@@ -101,7 +105,7 @@ public class Villager : MapPhysicObject
             {
                 if (!_villagerCollision.onPlatform)
                 {
-                    _stats.life -= 1;
+                    _stats.SetLife(_stats.GetLife()-1);
                 }
 
             }

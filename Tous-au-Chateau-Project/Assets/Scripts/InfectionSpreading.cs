@@ -2,27 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// do not add update method when inheriting TriggerZone
 public class InfectionSpreading : TriggerZone
 {
-    public List<string> _canInfect;
+    public List<string> _canInfect; // defined by user but need to be replicated to runtime-made copies
     private List<GameObject> _infectable;
     private CharacterStats _stats;
     public int _duration = 20; // malus duration
-    public int _countdown= 20; // exposition countdown before close units get infected
+    public int _countdown= 5; // exposition countdown before close units get infected
 
     
     // Use this for initialization
     void Start () {
         _stats = GetComponent<CharacterStats>();
         Time.timeScale = 1;
+        _infectable = new List<GameObject>();
         _stats.SetSpeed(_stats.GetSpeed() / 2);
-	}
+        GetComponent<SphereCollider>().radius = 2.5f;
+        targetTag.AddRange(_canInfect);
+    }
 
 
     // On Detection, 
     public override void TriggerEnter(GameObject target)
     {
-        Debug.Log("TRIGGER ENTER : " + target.name);
+        Debug.Log("INFECTION TRIGGER ENTER : " + target.name);
         // 
         if (_canInfect.Contains(target.tag))
         {
@@ -35,7 +39,7 @@ public class InfectionSpreading : TriggerZone
     // On Detection Exit, 
     public override void TriggerExit(GameObject target)
     {
-        //Debug.Log("TRIGGER EXIT : " + target.name);
+        Debug.Log("INFECTION TRIGGER EXIT : " + target.name);
         // 
         if (_canInfect.Contains(target.tag))
         {
@@ -53,7 +57,6 @@ public class InfectionSpreading : TriggerZone
         if (_infectable.Contains(collision.gameObject))
         {
             Infect(collision.gameObject);
-            _infectable.Remove(collision.gameObject);
         }
     }
 
@@ -78,10 +81,11 @@ public class InfectionSpreading : TriggerZone
     IEnumerator CountDown(GameObject target)
     {
         int timeLeft = _countdown;
-        while (IsInRange(target.transform.position))
+        while (IsInRange(target.transform.position) && timeLeft > 0)
         {
             yield return new WaitForSeconds(1);
             timeLeft--;
+            print(target.name+" :"+timeLeft);
         }
         if(timeLeft <= 0)
         {
@@ -89,9 +93,5 @@ public class InfectionSpreading : TriggerZone
         }
 
     }
-
-    // Update is called once per frame
-    void Update () {
-		
-	}
+    
 }

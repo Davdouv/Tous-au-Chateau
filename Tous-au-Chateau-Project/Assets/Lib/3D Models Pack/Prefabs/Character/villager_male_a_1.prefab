@@ -187,10 +187,13 @@ GameObject:
   - component: {fileID: 95075878474243558}
   - component: {fileID: 54230117645955574}
   - component: {fileID: 65994427069943566}
-  - component: {fileID: 114377561714271404}
-  - component: {fileID: 114291671765946118}
+  - component: {fileID: 135172331786323886}
+  - component: {fileID: 114044175096227976}
   - component: {fileID: 114199621010696886}
   - component: {fileID: 195576720534962976}
+  - component: {fileID: 114954212585259168}
+  - component: {fileID: 114453992577752830}
+  - component: {fileID: 114637501747904502}
   m_Layer: 0
   m_Name: villager_male_a_1
   m_TagString: Villager
@@ -627,7 +630,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1393693066860460}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0222168, y: 0, z: -6.0369987}
+  m_LocalPosition: {x: 1.3499985, y: 0, z: -5.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4264298004704402}
@@ -846,6 +849,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114044175096227976
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393693066860460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928dbe2b503e851489df15c7c66a1197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114199621010696886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -857,7 +871,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e2d81a41321de42b184cb0bb49f696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114291671765946118
+  onPlatform: 0
+  inDanger: 0
+--- !u!114 &114453992577752830
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -865,11 +881,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1393693066860460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d855fa7ea4310ee44a922ee7b15a1540, type: 3}
+  m_Script: {fileID: 11500000, guid: 38768eac16864594b8dbb88465cf6271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.5
---- !u!114 &114377561714271404
+  _isAlive: 1
+  _life: 100
+  _speed: 1.5
+  _strength: 0
+--- !u!114 &114637501747904502
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -877,11 +896,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 1393693066860460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 785eb7e6b79a0464a9e52965c039defd, type: 3}
+  m_Script: {fileID: 11500000, guid: c9e3f7246a99ad442a632e96f52f81a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life_point: 0
-  motivation_point: 0
+  isAlive: 1
+  turningRate: 20
+  mesh: {fileID: 1011497130900472}
+--- !u!114 &114954212585259168
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393693066860460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9e3f7246a99ad442a632e96f52f81a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAlive: 1
+  turningRate: 20
+  mesh: {fileID: 1011497130900472}
+--- !u!135 &135172331786323886
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393693066860460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.15
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!137 &137548814299324064
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -960,7 +1006,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 15
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
