@@ -7,31 +7,15 @@ public class InfectionSpreading : TriggerZone
     public List<string> _canInfect;
     private List<GameObject> _infectable;
     private CharacterStats _stats;
-    /* Hérité de TriggerZone
+    public int _duration = 20; // malus duration
+    public int _countdown= 20; // exposition countdown before close units get infected
+
     
-    public List<string> targetTag = new List<string>();
-    public float distanceDetection = 5.0f;
-    
-    protected bool _isInContact;
-    protected List<Target> _targetList = new List<Target>();
-
-
-    public bool IsInContact()
-    public bool IsInRange(Vector3 position)
-
-    public void AddTarget(GameObject target)
-    protected void RemoveTarget(GameObject target)
-
-    public virtual void TriggerEnter(GameObject target) { }
-    public virtual void TriggerExit(GameObject target) { }
-    public virtual void CollisionEnter(Collision collision) { }
-    public virtual void CollisionExit(Collision collision) { }
-    
-         
-    */
     // Use this for initialization
     void Start () {
         _stats = GetComponent<CharacterStats>();
+        Time.timeScale = 1;
+        _stats.SetSpeed(_stats.GetSpeed() / 2);
 	}
 
 
@@ -43,6 +27,7 @@ public class InfectionSpreading : TriggerZone
         if (_canInfect.Contains(target.tag))
         {
             _infectable.Add(target);
+            Contaminate(target);
         }
         
     }
@@ -82,11 +67,31 @@ public class InfectionSpreading : TriggerZone
     private void Infect(GameObject target)
     {
         target.AddComponent<InfectionSpreading>();
+        _infectable.Remove(target);
     }
 
+    private void Contaminate(GameObject target)
+    {
+        StartCoroutine(CountDown(target));
+        
+    }
+    IEnumerator CountDown(GameObject target)
+    {
+        int timeLeft = _countdown;
+        while (IsInRange(target.transform.position))
+        {
+            yield return new WaitForSeconds(1);
+            timeLeft--;
+        }
+        if(timeLeft <= 0)
+        {
+            Infect(target);
+        }
+
+    }
 
     // Update is called once per frame
     void Update () {
-		//make countdown class
+		
 	}
 }
