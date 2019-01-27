@@ -8,12 +8,14 @@ public class actions : MonoBehaviour {
     public GameObject spawnPoint;
     public GameObject bridge;
     public GameObject wall;
+    public Transform RightHand;
 
     VRTK.VRTK_ControllerEvents events;
     bool trigger;
     bool crushMode;
     bool haveBuilding;
     Vector3 currentPos;
+
 
     GameObject newBuilding;
 
@@ -44,6 +46,8 @@ public class actions : MonoBehaviour {
                 //releaseBuilding
                 haveBuilding = false;
                 newBuilding.GetComponent<Rigidbody>().isKinematic = false;
+                newBuilding.transform.parent = null;
+
             }
         }
 
@@ -60,6 +64,7 @@ public class actions : MonoBehaviour {
         {
             newBuilding.transform.position = spawnPoint.transform.position;
             newBuilding.transform.localRotation = spawnPoint.transform.localRotation;
+            newBuilding.transform.SetParent(RightHand);
         }
 	}
 
