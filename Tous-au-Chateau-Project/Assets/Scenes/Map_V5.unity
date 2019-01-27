@@ -2993,8 +2993,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 271799130}
-  m_LocalRotation: {x: -0.07488287, y: 0.9059368, z: 0.180637, w: 0.37555486}
-  m_LocalPosition: {x: -137.28122, y: -21.13656, z: -13.995214}
+  m_LocalRotation: {x: -0.10355689, y: 0.8401365, z: 0.17276455, w: 0.5035862}
+  m_LocalPosition: {x: -301.99164, y: -144.80545, z: 102.2943}
   m_LocalScale: {x: 0.8381444, y: 0.916419, z: 0.9121032}
   m_Children: []
   m_Father: {fileID: 197541977}
@@ -20806,7 +20806,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1768456266}
-  - component: {fileID: 1768456267}
   m_Layer: 0
   m_Name: '[VRTK_Scripts] teleport'
   m_TagString: Untagged
@@ -20831,24 +20830,6 @@ Transform:
   m_Father: {fileID: 1536056389}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1768456267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1768456265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7e6bfad51b1f24f8bba548c8dcecb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkToColor: {r: 0, g: 0, b: 0, a: 1}
-  blinkTransitionSpeed: 0.6
-  distanceBlinkDelay: 0
-  headsetPositionCompensation: 1
-  targetListPolicy: {fileID: 0}
-  navMeshData: {fileID: 0}
-  navMeshLimitDistance: 0
 --- !u!1 &1769350538
 GameObject:
   m_ObjectHideFlags: 0
