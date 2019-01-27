@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10531985, g: 0.28909323, b: 0.748694, a: 1}
+  m_IndirectSpecularColor: {r: 0.105295464, g: 0.28905082, b: 0.7486986, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10170,12 +10170,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ac32074696d3a94d9c10d81ff9c1f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodTxt: {fileID: 0}
-  stoneTxt: {fileID: 0}
-  foodTxt: {fileID: 0}
-  villagersTxt: {fileID: 0}
+  woodTxt: {fileID: 313986825}
+  stoneTxt: {fileID: 1433834679}
+  foodTxt: {fileID: 551125232}
+  villagersTxt: {fileID: 1840524821}
   motivation: {fileID: 690380265}
-  GameOverPanel: {fileID: 0}
+  GameOverPanel: {fileID: 677640092}
   gameOverVillagersText: {fileID: 1249994209}
   _ResourceManager: {fileID: 0}
   buildings: []
@@ -21965,9 +21965,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1883661141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b3907b688343644b25adcf5168e8cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 13d5ef9630831694fbafa3bf83208c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _EndOfGame: {fileID: 1807039498}
 --- !u!4 &1883661143
 Transform:
   m_ObjectHideFlags: 0
