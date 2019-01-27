@@ -8,12 +8,15 @@ public class actions : MonoBehaviour {
     public GameObject spawnPoint;
     public GameObject bridge;
     public GameObject wall;
+    public Transform RightHand;
 
     VRTK.VRTK_ControllerEvents events;
     bool trigger;
     bool crushMode;
     bool haveBuilding;
+    bool handStillClose;
     Vector3 currentPos;
+
 
     GameObject newBuilding;
 
@@ -39,11 +42,13 @@ public class actions : MonoBehaviour {
         {
             trigger = false;
             crushMode = false;
+            handStillClose = false;
             if (haveBuilding)
             {
                 //releaseBuilding
                 haveBuilding = false;
                 newBuilding.GetComponent<Rigidbody>().isKinematic = false;
+                newBuilding.transform.parent = null;
             }
         }
 
@@ -60,13 +65,14 @@ public class actions : MonoBehaviour {
         {
             newBuilding.transform.position = spawnPoint.transform.position;
             newBuilding.transform.localRotation = spawnPoint.transform.localRotation;
+            newBuilding.transform.SetParent(RightHand);
         }
 	}
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log(other.tag);
-        if (crushMode) //Destroy element of the nature
+        if (crushMode && !handStillClose) //Destroy element of the nature
         {
             if (other.tag == "Wood")
             {
@@ -74,18 +80,21 @@ public class actions : MonoBehaviour {
                 Debug.Log("INTO WOOD");
                 resourceM.AddResources(new ResourcesPack { wood = 1 });
                 Destroy(other.gameObject);
+                handStillClose = true;
             }
             else if (other.tag == "Stone")
             {
                 Debug.Log("INTO STONE");
                 resourceM.AddResources(new ResourcesPack { stone = 1 });
                 Destroy(other.gameObject);
+                handStillClose = true;
             }
             else if (other.tag == "Food")
             {
                 Debug.Log("INTO FOOD");
                 resourceM.AddResources(new ResourcesPack { food = 1 });
                 Destroy(other.gameObject);
+                handStillClose = true;
             }
         }
 
