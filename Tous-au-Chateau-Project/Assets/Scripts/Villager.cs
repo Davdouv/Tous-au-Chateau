@@ -59,7 +59,7 @@ public class Villager : MapPhysicObject
         }
     }
     
-    private void GetInfected()
+    public void GetInfected()
     {
         _isInfected = true;
         gameObject.AddComponent<InfectionSpreading>();
@@ -80,7 +80,7 @@ public class Villager : MapPhysicObject
         _deathmode = GetComponent<DyingVillager>();
         transform.LookAt(GameObject.Find("Objectif").transform.position);
         _rb.freezeRotation = true;
-        _rb.isKinematic = true;
+        _rb.isKinematic = false;
         _canMove = true;
     }
     void FixedUpdate()

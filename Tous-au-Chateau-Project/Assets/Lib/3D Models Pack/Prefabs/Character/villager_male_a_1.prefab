@@ -193,7 +193,6 @@ GameObject:
   - component: {fileID: 195576720534962976}
   - component: {fileID: 114954212585259168}
   - component: {fileID: 114453992577752830}
-  - component: {fileID: 114637501747904502}
   m_Layer: 0
   m_Name: villager_male_a_1
   m_TagString: Villager
@@ -630,7 +629,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1393693066860460}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3499985, y: 0, z: -5.41}
+  m_LocalPosition: {x: -1.84, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4264298004704402}
@@ -888,20 +887,6 @@ MonoBehaviour:
   _life: 100
   _speed: 1.5
   _strength: 0
---- !u!114 &114637501747904502
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1393693066860460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9e3f7246a99ad442a632e96f52f81a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAlive: 1
-  turningRate: 20
-  mesh: {fileID: 1011497130900472}
 --- !u!114 &114954212585259168
 MonoBehaviour:
   m_ObjectHideFlags: 1

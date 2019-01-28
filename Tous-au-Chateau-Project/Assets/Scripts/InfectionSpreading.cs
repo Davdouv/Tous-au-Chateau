@@ -5,7 +5,7 @@ using UnityEngine;
 // do not add update method when inheriting TriggerZone
 public class InfectionSpreading : TriggerZone
 {
-    public List<string> _canInfect; // defined by user but need to be replicated to runtime-made copies
+    private List<string> _canInfect; // defined by user but need to be replicated to runtime-made copies
     private List<GameObject> _infectable;
     private CharacterStats _stats;
     public int _duration = 20; // malus duration
@@ -15,9 +15,11 @@ public class InfectionSpreading : TriggerZone
     // Use this for initialization
     void Start () {
         _stats = GetComponent<CharacterStats>();
+        _canInfect = new List<string> { tag };
         Time.timeScale = 1;
         _infectable = new List<GameObject>();
         _stats.SetSpeed(_stats.GetSpeed() / 2);
+        distanceDetection = 2.5f;
         GetComponent<SphereCollider>().radius = 2.5f;
         targetTag.AddRange(_canInfect);
     }
@@ -52,10 +54,11 @@ public class InfectionSpreading : TriggerZone
     // On Collision, 
     public override void CollisionEnter(Collision collision)
     {
-        //Debug.Log("COLLISION ENTER : " + collision.gameObject.name);
+        Debug.Log("COLLISION ENTER : " + collision.gameObject.name);
         // Check if it's the target we are aiming
         if (_infectable.Contains(collision.gameObject))
         {
+            Debug.Log("HE CAN BE INFECTED : " + collision.gameObject.name);
             Infect(collision.gameObject);
         }
     }
@@ -69,8 +72,14 @@ public class InfectionSpreading : TriggerZone
 
     private void Infect(GameObject target)
     {
-        target.AddComponent<InfectionSpreading>();
-        _infectable.Remove(target);
+        Component alreadyinfected = target.GetComponent<InfectionSpreading>();
+        if (!alreadyinfected)
+        {
+            //target.GetComponent<Villager>().GetInfected();  villagers only
+            target.AddComponent<InfectionSpreading>(); // need a mother class that implement GetInfected() to generalize
+            _infectable.Remove(target);
+        }
+        
     }
 
     private void Contaminate(GameObject target)
@@ -81,7 +90,7 @@ public class InfectionSpreading : TriggerZone
     IEnumerator CountDown(GameObject target)
     {
         int timeLeft = _countdown;
-        while (IsInRange(target.transform.position) && timeLeft > 0)
+        while (IsInRange(target.transform.position) && timeLeft > 0 && !target.GetComponent<InfectionSpreading>())
         {
             yield return new WaitForSeconds(1);
             timeLeft--;
