@@ -31,7 +31,8 @@ namespace VRTK
         [Header("Grab Settings")]
 
         [Tooltip("The button used to grab/release a touched Interactable Object.")]
-        public VRTK_ControllerEvents.ButtonAlias grabButton = VRTK_ControllerEvents.ButtonAlias.GripPress;
+        //Change for TriggerPress
+        public VRTK_ControllerEvents.ButtonAlias grabButton = VRTK_ControllerEvents.ButtonAlias.TriggerPress;
         [Tooltip("An amount of time between when the grab button is pressed to when the controller is touching an Interactable Object to grab it.")]
         public float grabPrecognition = 0f;
         [Tooltip("An amount to multiply the velocity of any Interactable Object being thrown.")]
@@ -547,7 +548,7 @@ namespace VRTK
             //place constructions
             if (objectToGrab.gameObject.CompareTag("bridge"))
             {
-                if (ressourceM.RemoveWood(5))
+                if (ressourceM.RemoveResources(new ResourcesPack { wood = 5 }))
                 {
                     GameObject myNewConstruction = Instantiate(bridge, initialBridgeTrans.position, initialBridgeTrans.rotation);
                     myNewConstruction.transform.SetParent(theScene);
@@ -555,7 +556,7 @@ namespace VRTK
             }
             else if (objectToGrab.gameObject.CompareTag("wall"))
             {
-                if (ressourceM.RemoveStone(5))
+                if (ressourceM.RemoveResources(new ResourcesPack { stone = 5 }))
                 {
                     GameObject myNewConstruction = Instantiate(wall, initialBridgeTrans.position, initialBridgeTrans.rotation);
                     myNewConstruction.transform.SetParent(theScene);
@@ -586,19 +587,19 @@ namespace VRTK
                 if (grabbedObject.gameObject.CompareTag("wood"))
                 {
                     Debug.Log("INTO WOOD");
-                    ressourceM.AddWood(1);
+                    ressourceM.AddResources(new ResourcesPack { wood = 1 });
                     Destroy(grabbedObject.gameObject);
                 }
                 else if (grabbedObject.gameObject.CompareTag("stone"))
                 {
                     Debug.Log("INTO STONE");
-                    ressourceM.AddStone(1);
+                    ressourceM.AddResources(new ResourcesPack { stone = 1 });
                     Destroy(grabbedObject.gameObject);
                 }
                 else if (grabbedObject.gameObject.CompareTag("food"))
                 {
                     Debug.Log("INTO FOOD");
-                    ressourceM.AddFood(1);
+                    ressourceM.AddResources(new ResourcesPack { food = 1 });
                     Destroy(grabbedObject.gameObject);
                 }
 
@@ -609,7 +610,7 @@ namespace VRTK
                 }
                 else if (objectToGrab.gameObject.CompareTag("wall") && canConstructWall)
                 {
-                    if (ressourceM.RemoveStone(5))
+                    if (ressourceM.RemoveResources(new ResourcesPack { stone = 5 }))
                     {
                         objectToGrab.GetComponent<Rigidbody>().isKinematic = false;
                         objectToGrab.transform.SetParent(theScene);

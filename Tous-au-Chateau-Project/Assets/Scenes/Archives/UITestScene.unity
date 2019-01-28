@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -346,7 +346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &171745700
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1085,9 +1085,10 @@ MonoBehaviour:
   foodTxt: {fileID: 1356710090}
   villagersTxt: {fileID: 606125498}
   motivation: {fileID: 1013124492}
-  gameOverPanel: {fileID: 1876807906}
-  constructionPanel: {fileID: 171745699}
-  resourceManager: {fileID: 1263217357}
+  GameOverPanel: {fileID: 1876807906}
+  gameOverVillagersText: {fileID: 1923916732}
+  _ResourceManager: {fileID: 1263217357}
+  buildings: []
 --- !u!1 &839355208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1195,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2062,7 +2063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b3907b688343644b25adcf5168e8cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endOfGame: {fileID: 2056190554}
+  _EndOfGame: {fileID: 2056190554}
 --- !u!1 &1356710088
 GameObject:
   m_ObjectHideFlags: 0
@@ -2442,7 +2443,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4194,7 +4195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5332fad0472e14db26eacac8f39f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 817109732}
+  _UiManager: {fileID: 0}
   pauseObjects:
   - {fileID: 817109732}
   - {fileID: 1263217357}
