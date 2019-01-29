@@ -15,6 +15,14 @@ public class VillagersGroup : MonoBehaviour
     {
         _villagers.RemoveAt(_villagers.Count-1);
     }
+    public void AddVillagers(Villager villager)
+    {
+        _villagers.Add(villager);
+    }
+    public void RemoveVillager(Villager villager)
+    {
+        _villagers.RemoveAt(_villagers.Count - 1);
+    }
     public void RemoveAllVillager()
     {
         foreach(Villager v in _villagers)

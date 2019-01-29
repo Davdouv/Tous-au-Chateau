@@ -8,7 +8,7 @@ public enum Direction { RIGHT, LEFT, BACKWARD };
 public class Villager : MapPhysicObject
 {
     Rigidbody _rb;
-    private VillagersGroup _group;
+    public VillagersGroup _group;
     public int _motivation;
     public CharacterStats _stats;
 
@@ -148,10 +148,12 @@ public class Villager : MapPhysicObject
                         _canMove = true;
                         _rb.freezeRotation = true;
                         transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
-                        print("forward de " + _isJoining.name + " : " + _isJoining.transform.forward);
-                        print("forward de " + name + " : " + transform.forward);
-                        print("looking at " + (transform.position + _isJoining.transform.forward - _isJoining.transform.position));
+                        
+                        _group = _isJoining.transform.parent.gameObject.GetComponent<VillagersGroup>();
+                        _group.AddVillagers(GetComponent<Villager>());
+                        transform.parent = _group.gameObject.transform;
                         _isJoining = null;
+
                         agent.ResetPath();
                     }
                 }
