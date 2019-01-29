@@ -7,21 +7,28 @@ using UnityEngine.AI;
 [RequireComponent(typeof(AICharacterAttack))]
 public class AICharacter : EnvironmentMaterial {
     
-    private bool _isAlive;
+    // Components attached to object
     private NavMeshAgent _agent;
+    private AICharacterAttack _combat;
+
     private AICharactersGroup _assignedGroup;
+
+    // Target & destination for navMesh agent
     private GameObject _ownTarget;
     private Vector3 _destination;
 
+    // These variables are set by the assignedGroup !
     private float passiveSpeed = 2.0f;
     private float actionSpeed = 3.5f;
 
+    private float _stoppingDistance = 1.0f;
+
+    // States
     private bool _hasPriorityOnTarget = false;
     private bool _isEscaping = false;
     private bool _isMovingAround = false;
     private bool _isAttacking = false;
-
-    private AICharacterAttack _combat;
+    
 
     private void Awake()
     {
@@ -31,13 +38,13 @@ public class AICharacter : EnvironmentMaterial {
     private void Start()
     {
         _combat = GetComponent<AICharacterAttack>();
-        SetGroup();
+        _assignedGroup = transform.parent.GetComponent<AICharactersGroup>();
     }
 
     // Get the group and add him to it
-    private void SetGroup()
+    public bool IsAttacking()
     {
-        _assignedGroup = transform.parent.GetComponent<AICharactersGroup>();
+        return _isAttacking;
     }
 
     // If target found, ask the group to share the target with all group objects
@@ -93,7 +100,6 @@ public class AICharacter : EnvironmentMaterial {
             _ownTarget = target;
             if (_ownTarget) // Make sure target is not null
             {
-                Stop(false);
                 FastSpeed();
                 SetDestination(target.transform.position);
             }
@@ -106,17 +112,6 @@ public class AICharacter : EnvironmentMaterial {
         _ownTarget = null;
         _destination = _assignedGroup.GetRallyPoint().transform.position;
         SlowSpeed();
-        Stop(true);
-    }
-
-    // Used by the AICharactersGroup
-    public void Stop(bool stop)
-    {
-        if (gameObject.activeSelf)
-        {
-            //_agent.isStopped = stop;
-            _agent.isStopped = false;
-        }        
     }
 
     // What to do when Obstacle Reached ?
@@ -124,8 +119,12 @@ public class AICharacter : EnvironmentMaterial {
     public virtual void DoActionOnTarget()
     {
         _isAttacking = true;
-        // FOR TEST
-        //StartCoroutine(DestroyTarget());
+        // Make the target stop moving because we are attacking it
+        AICharacter aiTarget = _ownTarget.GetComponent<AICharacter>();
+        if (aiTarget)
+        {
+            aiTarget.StopMoving();
+        }
     }
     
     public virtual void StopActionOnTarget()
@@ -133,23 +132,22 @@ public class AICharacter : EnvironmentMaterial {
         _isAttacking = false;
     }
 
-    // TODO --> Remove this method
-    // Personal action (for test)
-    private IEnumerator DestroyTarget()
-    {        
-        yield return new WaitForSeconds(1); // This is bad
+    public virtual void StopMoving()
+    {
+        _isEscaping = false;
+        _agent.speed = 0;
+        // Animation get down on the ground
+    }
 
-        GameObject objectToDestroy = _ownTarget;
-        GetNewTarget();
-        if (objectToDestroy && objectToDestroy.name != "RallyPoint")
-        {
-            objectToDestroy.SetActive(false);
-        }        
+    public virtual void MoveAgain()
+    {
+        FastSpeed();
     }
 
     // Remove the item from the list and get a new target
-    protected void GetNewTarget()
+    public void GetNewTarget()
     {
+        Debug.Log("new target");
         _assignedGroup.RemoveItem(_ownTarget);
         _assignedGroup.CancelTarget(_ownTarget);
         _assignedGroup.NewTarget();
@@ -169,24 +167,7 @@ public class AICharacter : EnvironmentMaterial {
 
     // We need to update the navMesh Destination if the target is moving
     private void Update()
-    {
-        if (_ownTarget)
-        {
-            // Update the destination in case the target is moving
-            _agent.SetDestination(_ownTarget.transform.position);
-
-            // If we are regrouping
-            if (_assignedGroup.IsRegrouping())
-            {
-                // Stop when one member has join the rally point (the actual target)
-                if (IsDestinationReached(1.25f))
-                {
-                    _assignedGroup.StopRegrouping();
-                    _assignedGroup.ShareNoTarget();
-                    _assignedGroup.MoveRandom();
-                }
-            }
-        }
+    {        
         if (_isEscaping)
         {
             GameObject ennemy = GetComponent<AIDetection>().GetEnemyNear();
@@ -200,28 +181,57 @@ public class AICharacter : EnvironmentMaterial {
                 StopEscaping();
             }
         }
-        if (_isMovingAround)
+        else if (_isMovingAround)
         {
-            if (IsDestinationReached(1.25f))
+            if (IsDestinationReached(_stoppingDistance))
             {
                 SetRandomDestination(_assignedGroup.RandomNavmeshLocation());
             }
         }
-        // TODO
-        if (_isAttacking)
+        if (_ownTarget != null && _ownTarget.activeSelf)
         {
-            _combat.Attack();
-            //if (targetIsDead())
-            //{
-            //    GetNewTarget();
-            //}            
+            // Update the destination in case the target is moving
+            _agent.SetDestination(_ownTarget.transform.position);
+
+            // If we are regrouping
+            if (_assignedGroup.IsRegrouping())
+            {
+                // Stop when one member has join the rally point (the actual target)
+                if (IsDestinationReached(_stoppingDistance))
+                {
+                    _assignedGroup.StopRegrouping();
+                    _assignedGroup.ShareNoTarget();
+                    _assignedGroup.MoveRandom();
+                }
+            }
+
+            // If we are attacking
+            if (_isAttacking)
+            {
+                CharacterStats targetStats = _ownTarget.GetComponent<CharacterStats>();
+
+                if (targetStats != null)
+                {
+                    if (targetStats.isAlive)
+                    {
+                        _combat.Attack(targetStats);
+                    }
+                    /* Move this inside Attack -> DoDmg
+                    if (!targetStats.isAlive)
+                    {
+                        StopActionOnTarget();
+                        GetNewTarget();
+                        MoveAgain();
+                    }
+                    */
+                }
+            }
         }
     }
 
     // Set a Destination (not a target gameobject)
     public void SetRandomDestination(Vector3 destination)
     {
-        Stop(false);
         SlowSpeed();
         SetDestination(destination);
     }
@@ -257,7 +267,6 @@ public class AICharacter : EnvironmentMaterial {
     {
         _isEscaping = true;
         _ownTarget = null;
-        Stop(false);
         FastSpeed();
         // Calculate the newPosition where we must go
         Vector3 distance = transform.position - enemy.transform.position;
@@ -275,5 +284,12 @@ public class AICharacter : EnvironmentMaterial {
     public void SetIsMovingAround(bool isMovingAround)
     {
         _isMovingAround = isMovingAround;
+    }
+
+    public void Die()
+    {
+        _assignedGroup.RemoveItem(this.gameObject);
+        // Disappear ?
+        gameObject.SetActive(false);
     }
 }

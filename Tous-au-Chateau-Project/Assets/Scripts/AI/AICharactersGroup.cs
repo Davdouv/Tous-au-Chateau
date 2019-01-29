@@ -121,7 +121,7 @@ public class AICharactersGroup : MonoBehaviour {
         int index = _aiCharacters.IndexOf(aiCharacter);
         for (int i = 0; i < _aiCharacters.Count; ++i)
         {
-            if (i != index)
+            if (i != index && !_aiCharacters[i].IsAttacking())
             {
                 _aiCharacters[i].NoTarget();
                 _aiCharacters[i].SetTarget(newTarget);
@@ -172,6 +172,7 @@ public class AICharactersGroup : MonoBehaviour {
     // Make the rallyPoint the new destination of all the aiCharacters
     private void Regroup()
     {
+        Debug.Log("regroup");
         _regrouping = true;
         ShareTarget(_rallyPoint);
     }
