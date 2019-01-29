@@ -31,16 +31,16 @@ public class Villager : MapPhysicObject
         _rb = GetComponent<Rigidbody>();
         _villagerCollision = GetComponent<CollisionDetection>();
         _deathmode = GetComponent<DyingVillager>();
+        
+        _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
+        _stats = new CharacterStats();
         if (_isInfected)
         {
             gameObject.AddComponent<InfectionSpreading>();
         }
 
-        _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
-        _stats = new CharacterStats();
-        
-        
-        
+
+
         _rb.isKinematic = false;
         _rb.freezeRotation = !_isPassive;
         _canMove = !_isPassive;

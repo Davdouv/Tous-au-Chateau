@@ -5,7 +5,7 @@ using UnityEngine;
 // do not add update method when inheriting TriggerZone
 public class InfectionSpreading : TriggerZone
 {
-    private List<string> _canInfect; // defined by user but need to be replicated to runtime-made copies
+    private List<string> _canInfect; 
     private List<GameObject> _infectable;
     public int _duration = 20; // malus duration
     public int _countdown= 5; // exposition countdown before close units get infected
@@ -27,7 +27,7 @@ public class InfectionSpreading : TriggerZone
     // On Detection, 
     public override void TriggerEnter(GameObject target)
     {
-        //Debug.Log("INFECTION TRIGGER ENTER : " + target.name);
+        Debug.Log("INFECTION TRIGGER ENTER : " + target.name);
         // 
         if (_canInfect.Contains(target.tag))
         {
@@ -53,7 +53,7 @@ public class InfectionSpreading : TriggerZone
     // On Collision, 
     public override void CollisionEnter(Collision collision)
     {
-        //Debug.Log("COLLISION ENTER : " + collision.gameObject.name);
+        Debug.Log("COLLISION ENTER : " + collision.gameObject.name);
         // Check if it's the target we are aiming
         if (_infectable.Contains(collision.gameObject))
         {
@@ -61,13 +61,7 @@ public class InfectionSpreading : TriggerZone
             Infect(collision.gameObject);
         }
     }
-
-    // On Collision Exit, 
-    public override void CollisionExit(Collision collision)
-    {
-        //Debug.Log("COLLISION EXIT : " + collision.gameObject.name);
-        
-    }
+    
 
     private void Infect(GameObject target)
     {

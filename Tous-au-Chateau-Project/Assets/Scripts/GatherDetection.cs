@@ -11,7 +11,9 @@ public class GatherDetection : TriggerZone {
     void Start()
     {
         distanceDetection = _radius;
-        GetComponent<SphereCollider>().radius = _radius;
+        SphereCollider reach = gameObject.AddComponent<SphereCollider>();
+        reach.radius = _radius;
+        reach.isTrigger = true;
         targetTag.Add("Villager");
     }
 
@@ -31,24 +33,7 @@ public class GatherDetection : TriggerZone {
         }
 
     }
-
-    // On Detection Exit, 
-    public override void TriggerExit(GameObject target)
-    {
-        
-    }
-
-    // On Collision, 
-    public override void CollisionEnter(Collision collision)
-    {
-        
-    }
-
-    // On Collision Exit, 
-    public override void CollisionExit(Collision collision)
-    {
-        
-    }
+    
 
     private void CallOut(GameObject target)
     {

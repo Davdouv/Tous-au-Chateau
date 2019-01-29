@@ -405,32 +405,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1733444892 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1393693066860460, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
-    type: 2}
-  m_PrefabInternal: {fileID: 1808590583}
 --- !u!114 &1733444893 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114044175096227976, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
     type: 2}
   m_PrefabInternal: {fileID: 1808590583}
   m_Script: {fileID: 11500000, guid: 928dbe2b503e851489df15c7c66a1197, type: 3}
---- !u!114 &1733444894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1733444892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fab5fafee2d75ca45b9ce177fcc4613e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: []
-  distanceDetection: 5
-  _duration: 20
-  _countdown: 5
 --- !u!4 &1733444903 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4621161105210274, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
@@ -484,26 +464,6 @@ Prefab:
       propertyPath: _isPassive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114044175096227976, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
-        type: 2}
-      propertyPath: _hasJoined
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 54230117645955574, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
-        type: 2}
-      propertyPath: m_Drag
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 54230117645955574, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 195576720534962976, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
-        type: 2}
-      propertyPath: m_AngularSpeed
-      value: 120
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44, type: 2}
   m_IsPrefabAsset: 0
@@ -546,42 +506,18 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 54230117645955574, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
+    - target: {fileID: 114904470145642486, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
         type: 2}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 195576720534962976, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
-        type: 2}
-      propertyPath: m_Speed
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 195576720534962976, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
-        type: 2}
-      propertyPath: m_AngularSpeed
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 195576720534962976, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
-        type: 2}
-      propertyPath: m_Acceleration
-      value: 5
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114044175096227976, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
         type: 2}
-      propertyPath: _isPassive
-      value: 0
+      propertyPath: _isInfected
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 54230117645955574, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
-        type: 2}
-      propertyPath: m_AngularDrag
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 54230117645955574, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
-        type: 2}
-      propertyPath: m_Drag
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1820767114
@@ -804,6 +740,17 @@ Prefab:
       propertyPath: m_AngularSpeed
       value: 120
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114044175096227976, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
+        type: 2}
+      propertyPath: _isPassive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114904470145642486, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44, type: 2}
   m_IsPrefabAsset: 0
