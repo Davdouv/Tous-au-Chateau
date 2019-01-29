@@ -186,13 +186,13 @@ GameObject:
   - component: {fileID: 4621161105210274}
   - component: {fileID: 95075878474243558}
   - component: {fileID: 54230117645955574}
+  - component: {fileID: 195576720534962976}
   - component: {fileID: 65994427069943566}
   - component: {fileID: 135172331786323886}
   - component: {fileID: 114044175096227976}
   - component: {fileID: 114199621010696886}
-  - component: {fileID: 195576720534962976}
   - component: {fileID: 114954212585259168}
-  - component: {fileID: 114453992577752830}
+  - component: {fileID: 114904470145642486}
   m_Layer: 0
   m_Name: villager_male_a_1
   m_TagString: Villager
@@ -629,7 +629,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1393693066860460}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.84, y: 0, z: 0}
+  m_LocalPosition: {x: 3.86, y: 0, z: -3.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4264298004704402}
@@ -811,10 +811,10 @@ Rigidbody:
   m_GameObject: {fileID: 1393693066860460}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
@@ -859,6 +859,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 928dbe2b503e851489df15c7c66a1197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _motivation: 0
+  _isInfected: 0
+  _canMove: 0
+  _isPassive: 1
+  _isJoining: {fileID: 0}
+  _hasJoined: 0
 --- !u!114 &114199621010696886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -872,7 +878,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onPlatform: 0
   inDanger: 0
---- !u!114 &114453992577752830
+--- !u!114 &114904470145642486
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -880,13 +886,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1393693066860460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38768eac16864594b8dbb88465cf6271, type: 3}
+  m_Script: {fileID: 11500000, guid: 93c1e833c21b4564cbe36232c1e23975, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isAlive: 1
-  _life: 100
-  _speed: 1.5
-  _strength: 0
+  targetTag: []
+  distanceDetection: 5
+  _radius: 5
 --- !u!114 &114954212585259168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -991,11 +996,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 15
-  m_Acceleration: 8
+  m_Speed: 1.5
+  m_Acceleration: 5
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_AngularSpeed: 50
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

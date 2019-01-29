@@ -1,41 +1,62 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum Direction { RIGHT, LEFT, BACKWARD };
 
 
 public class Villager : MapPhysicObject
 {
-    
-    private int _motivation;
-    private bool _isInfected;
-    private bool _canMove;
-    private CharacterStats _stats;
     Rigidbody _rb;
+    private VillagersGroup _group;
+    public int _motivation;
+    public CharacterStats _stats;
+
+    public bool _isInfected;
+    public bool _canMove;
+
+    public bool _isPassive;
+    public GameObject _isJoining;
+    public bool _hasJoined;
 
     private CollisionDetection _villagerCollision;
     private DyingVillager _deathmode;
+    
 
     
 
-    public Villager() : this( false)
-    { }
-    public Villager(bool infected)
+    // Use this for initialization
+    void Start()
     {
-        if (infected)
+        _rb = GetComponent<Rigidbody>();
+        _villagerCollision = GetComponent<CollisionDetection>();
+        _deathmode = GetComponent<DyingVillager>();
+        if (_isInfected)
         {
             gameObject.AddComponent<InfectionSpreading>();
         }
-        _isInfected = infected;
+
+        _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
         _stats = new CharacterStats();
+        
+        
+        
+        _rb.isKinematic = false;
+        _rb.freezeRotation = !_isPassive;
+        _canMove = !_isPassive;
+        _hasJoined = !_isPassive;
+        _isJoining = null;
+        transform.LookAt(GameObject.Find("Objectif").transform.position);
     }
-    
+
     public override void Crush()
     {
 
     }
     private void Move()
     {
+        if (_isPassive)
+            print(" IM MOVING BUT IM PASSIVE WTFFFFFFFFFFFFFF");
         _rb.MovePosition(transform.position + transform.forward * _stats._speed * Time.fixedDeltaTime);
     }
     public void ChangeDirection(Direction dir)
@@ -71,23 +92,27 @@ public class Villager : MapPhysicObject
         // delete villager ?
         // callback on villagersgroup to erase from list ?
     }
-    
-    // Use this for initialization
-    void Start()
+    public bool IsPassive()
     {
-        _rb = GetComponent<Rigidbody>();
-        _villagerCollision = GetComponent<CollisionDetection>();
-        _deathmode = GetComponent<DyingVillager>();
-        transform.LookAt(GameObject.Find("Objectif").transform.position);
-        _rb.freezeRotation = true;
-        _rb.isKinematic = false;
-        _canMove = true;
+        return _isPassive;
     }
+    public void JoinIn(GameObject callguy)
+    {
+        print(name +" wants to join in");
+        _isJoining = callguy;
+        _isPassive = false;
+        // movement flag don't activate
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        agent.SetDestination(_isJoining.transform.position);
+    }
+
+    
     void FixedUpdate()
     {
         if (_canMove)
             Move();
-
+        
+            
     }
     // Update is called once per frame
     void Update()
@@ -109,10 +134,35 @@ public class Villager : MapPhysicObject
                 }
 
             }
+            if (!_hasJoined)
+            {
+                if (_isJoining)
+                {
+                    NavMeshAgent agent = GetComponent<NavMeshAgent>();
+                    agent.ResetPath();
+                    agent.SetDestination(_isJoining.transform.position);
+                    if (agent.remainingDistance < agent.stoppingDistance)
+                    {
+                        print(name + " has joined in");
+                        _hasJoined = true;
+                        _canMove = true;
+                        _rb.freezeRotation = true;
+                        transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
+                        print("forward de " + _isJoining.name + " : " + _isJoining.transform.forward);
+                        print("forward de " + name + " : " + transform.forward);
+                        print("looking at " + (transform.position + _isJoining.transform.forward - _isJoining.transform.position));
+                        _isJoining = null;
+                        agent.ResetPath();
+                    }
+                }
+
+            }
 
         }
-            
+
         
+
+
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CharacterStats : MonoBehaviour
+public class CharacterStats
 {
     public bool _isAlive;
     public int _life;
@@ -27,10 +27,5 @@ public class CharacterStats : MonoBehaviour
     public int GetLife() { return _life; }
     public float GetSpeed() { return _speed; }
     public float GetStrength() { return _strength; }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    
 }

@@ -7,14 +7,13 @@ public class InfectionSpreading : TriggerZone
 {
     private List<string> _canInfect; // defined by user but need to be replicated to runtime-made copies
     private List<GameObject> _infectable;
-    private CharacterStats _stats;
     public int _duration = 20; // malus duration
     public int _countdown= 5; // exposition countdown before close units get infected
 
     
     // Use this for initialization
     void Start () {
-        _stats = GetComponent<CharacterStats>();
+        CharacterStats _stats = GetComponent<Villager>()._stats;
         _canInfect = new List<string> { tag };
         Time.timeScale = 1;
         _infectable = new List<GameObject>();
@@ -28,7 +27,7 @@ public class InfectionSpreading : TriggerZone
     // On Detection, 
     public override void TriggerEnter(GameObject target)
     {
-        Debug.Log("INFECTION TRIGGER ENTER : " + target.name);
+        //Debug.Log("INFECTION TRIGGER ENTER : " + target.name);
         // 
         if (_canInfect.Contains(target.tag))
         {
@@ -41,7 +40,7 @@ public class InfectionSpreading : TriggerZone
     // On Detection Exit, 
     public override void TriggerExit(GameObject target)
     {
-        Debug.Log("INFECTION TRIGGER EXIT : " + target.name);
+        //Debug.Log("INFECTION TRIGGER EXIT : " + target.name);
         // 
         if (_canInfect.Contains(target.tag))
         {
@@ -54,7 +53,7 @@ public class InfectionSpreading : TriggerZone
     // On Collision, 
     public override void CollisionEnter(Collision collision)
     {
-        Debug.Log("COLLISION ENTER : " + collision.gameObject.name);
+        //Debug.Log("COLLISION ENTER : " + collision.gameObject.name);
         // Check if it's the target we are aiming
         if (_infectable.Contains(collision.gameObject))
         {
