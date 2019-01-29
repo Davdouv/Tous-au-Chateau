@@ -104,6 +104,7 @@ public class Villager : MapPhysicObject
         // movement flag don't activate
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         agent.SetDestination(_isJoining.transform.position);
+        
     }
 
     
@@ -139,23 +140,33 @@ public class Villager : MapPhysicObject
                 if (_isJoining)
                 {
                     NavMeshAgent agent = GetComponent<NavMeshAgent>();
-                    agent.ResetPath();
                     agent.SetDestination(_isJoining.transform.position);
-                    if (agent.remainingDistance < agent.stoppingDistance)
+                    if ( Vector3.Distance( _isJoining.transform.position, transform.position ) <= 2.0f )
                     {
                         print(name + " has joined in");
                         _hasJoined = true;
                         _canMove = true;
                         _rb.freezeRotation = true;
-                        transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
                         
-                        _group = _isJoining.transform.parent.gameObject.GetComponent<VillagersGroup>();
+                        _group = _isJoining.GetComponent<Villager>()._group;
                         _group.AddVillagers(GetComponent<Villager>());
                         transform.parent = _group.gameObject.transform;
+
+                        //transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
+                        agent.updateRotation = false;
+                        print("rotation" +_isJoining.transform.rotation.y);
+                        transform.rotation = _isJoining.transform.rotation;
+                        print("rotation" + transform.rotation.y);
+                        agent.isStopped = true;
+                        
+
                         _isJoining = null;
 
                         agent.ResetPath();
+
                     }
+                    
+                    
                 }
 
             }
