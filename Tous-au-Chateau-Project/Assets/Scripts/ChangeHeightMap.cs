@@ -5,21 +5,41 @@ using VRTK;
 
 public class ChangeHeightMap : MonoBehaviour {
 
-    public Terrain terrain;
-    public GameObject map;
+    public GameObject player;
+    private Vector3 _playerPosition;
 
-    //public VRTK_ControllerEvents leftControllerEvents;
-    //public VRTK_ControllerEvents rightControllerEvents;
-
-    public void Increase()
+    public void IncreaseX()
     {
-        terrain.transform.position = new Vector3(terrain.transform.position.x, terrain.transform.position.y + 0.01f, terrain.transform.position.z);
-        map.transform.position = new Vector3(map.transform.position.x, map.transform.position.y + 0.01f, map.transform.position.z);
+        ChangePosition(0.01f, 0, 0);
     }
 
-    public void Decrease()
+    public void DecreaseX()
     {
-        terrain.transform.position = new Vector3(terrain.transform.position.x, terrain.transform.position.y - 0.01f, terrain.transform.position.z);
-        map.transform.position = new Vector3(map.transform.position.x, map.transform.position.y - 0.01f, map.transform.position.z);
+        ChangePosition(-0.01f, 0, 0);
+    }
+
+    public void IncreaseY()
+    {
+        ChangePosition(0, 0.01f, 0);
+    }
+
+    public void DecreaseY()
+    {
+        ChangePosition(0, -0.01f, 0);
+    }
+
+    public void IncreaseZ()
+    {
+        ChangePosition(0, 0, 0.01f);
+    }
+
+    public void DecreaseZ()
+    {
+        ChangePosition(0, 0, -0.01f);
+    }
+
+    public Vector3 ChangePosition(float shiftX, float shiftY, float shiftZ)
+    {
+        return new Vector3(player.transform.position.x + shiftX, player.transform.position.y + shiftY, player.transform.position.z + shiftZ);
     }
 }
