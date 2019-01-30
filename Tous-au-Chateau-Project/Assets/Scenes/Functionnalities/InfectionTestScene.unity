@@ -235,7 +235,7 @@ MeshCollider:
   m_GameObject: {fileID: 929294042}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -332,7 +332,7 @@ BoxCollider:
   m_GameObject: {fileID: 929294042}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 10, y: 2.220446e-16, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
@@ -659,8 +659,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1894143919}
-  m_LocalRotation: {x: -0.036299452, y: -0.00989514, z: 0.00035989194, w: -0.99929196}
-  m_LocalPosition: {x: -0.6729379, y: 2.2359452, z: -7.2993894}
+  m_LocalRotation: {x: -0.3651603, y: 0.0047460007, z: -0.0018612932, w: -0.93093073}
+  m_LocalPosition: {x: 1.546936, y: 8.00964, z: -13.489912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -717,7 +717,7 @@ Prefab:
     - target: {fileID: 54230117645955574, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
         type: 2}
       propertyPath: m_Drag
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 195576720534962976, guid: 7ef23c9bcc6a2ed4dbd2a67187298f44,
         type: 2}

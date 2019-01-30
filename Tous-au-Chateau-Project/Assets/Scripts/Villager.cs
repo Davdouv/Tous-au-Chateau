@@ -8,6 +8,7 @@ public enum Direction { RIGHT, LEFT, BACKWARD };
 public class Villager : MapPhysicObject
 {
     Rigidbody _rb;
+    NavMeshAgent agent;
     public VillagersGroup _group;
     public int _motivation;
     public CharacterStats _stats;
@@ -29,6 +30,7 @@ public class Villager : MapPhysicObject
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        agent = GetComponent<NavMeshAgent>();
         _villagerCollision = GetComponent<CollisionDetection>();
         _deathmode = GetComponent<DyingVillager>();
         
@@ -57,6 +59,11 @@ public class Villager : MapPhysicObject
     {
         if (_isPassive)
             print(" IM MOVING BUT IM PASSIVE WTFFFFFFFFFFFFFF");
+        _rb.MovePosition(transform.position + transform.forward * _stats._speed * Time.fixedDeltaTime);
+    }
+    private void MoveTowardVillager(GameObject target)
+    {
+        transform.LookAt(_isJoining.transform.position);
         _rb.MovePosition(transform.position + transform.forward * _stats._speed * Time.fixedDeltaTime);
     }
     public void ChangeDirection(Direction dir)
@@ -102,8 +109,8 @@ public class Villager : MapPhysicObject
         _isJoining = callguy;
         _isPassive = false;
         // movement flag don't activate
-        NavMeshAgent agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(_isJoining.transform.position);
+        
+        //agent.SetDestination(_isJoining.transform.position);
         
     }
 
@@ -112,8 +119,40 @@ public class Villager : MapPhysicObject
     {
         if (_canMove)
             Move();
-        
-            
+        if (!_hasJoined)
+        {
+            if (_isJoining)
+            {
+                MoveTowardVillager(_isJoining);
+                if ((_isJoining.transform.position - transform.position).sqrMagnitude <= 4.0f)
+                {
+                    print(name + " has joined in");
+                    _hasJoined = true;
+                    _canMove = true;
+                    _rb.freezeRotation = true;
+
+                    _group = _isJoining.GetComponent<Villager>()._group;
+                    _group.AddVillagers(GetComponent<Villager>());
+                    transform.parent = _group.gameObject.transform;
+
+                    //transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
+
+                    // print("rotation" +_isJoining.transform.rotation.y);
+                    transform.rotation = _isJoining.transform.rotation;
+                    //print("rotation" + transform.rotation.y);
+
+
+
+                    _isJoining = null;
+
+
+                }
+
+
+            }
+
+        }
+
     }
     // Update is called once per frame
     void Update()
@@ -135,41 +174,7 @@ public class Villager : MapPhysicObject
                 }
 
             }
-            if (!_hasJoined)
-            {
-                if (_isJoining)
-                {
-                    NavMeshAgent agent = GetComponent<NavMeshAgent>();
-                    agent.SetDestination(_isJoining.transform.position);
-                    if ( Vector3.Distance( _isJoining.transform.position, transform.position ) <= 2.0f )
-                    {
-                        print(name + " has joined in");
-                        _hasJoined = true;
-                        _canMove = true;
-                        _rb.freezeRotation = true;
-                        
-                        _group = _isJoining.GetComponent<Villager>()._group;
-                        _group.AddVillagers(GetComponent<Villager>());
-                        transform.parent = _group.gameObject.transform;
-
-                        //transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
-                        agent.updateRotation = false;
-                        print("rotation" +_isJoining.transform.rotation.y);
-                        transform.rotation = _isJoining.transform.rotation;
-                        print("rotation" + transform.rotation.y);
-                        agent.isStopped = true;
-                        
-
-                        _isJoining = null;
-
-                        agent.ResetPath();
-
-                    }
-                    
-                    
-                }
-
-            }
+            
 
         }
 
