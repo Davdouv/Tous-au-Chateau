@@ -27,7 +27,8 @@ public class AICharacterAttack : MonoBehaviour {
     {
         if (_attackCooldown <= 0f)
         {
-            StartCoroutine(DoDamage(targetStats, attackDelay));
+            //StartCoroutine(DoDamage(targetStats, attackDelay));
+            DoDamage(targetStats);
             _attackCooldown = 1f / attackSpeed;
         }
     }
@@ -37,6 +38,22 @@ public class AICharacterAttack : MonoBehaviour {
         yield return new WaitForSeconds(delay);
 
         // Do damage
+        if (targetStats.isAlive)
+        {
+            targetStats.TakeDamage(_stats.strength);
+            if (!targetStats.isAlive)
+            {
+                AICharacter character = gameObject.GetComponent<AICharacter>();
+
+                character.StopActionOnTarget();
+                character.GetNewTarget();
+                character.MoveAgain();
+            }
+        }
+    }
+
+    private void DoDamage(CharacterStats targetStats)
+    {
         if (targetStats.isAlive)
         {
             targetStats.TakeDamage(_stats.strength);

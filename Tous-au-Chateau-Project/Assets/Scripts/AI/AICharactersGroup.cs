@@ -65,6 +65,8 @@ public class AICharactersGroup : MonoBehaviour {
             _rallyPointAgent.enabled = true;
             _rallyPointAgent.Warp(_rallyPoint.transform.position);
             _rallyPointAgent.speed = passiveSpeed;
+            _rallyPointAgent.radius = 0;
+            //_rallyPointAgent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         }
     }
 

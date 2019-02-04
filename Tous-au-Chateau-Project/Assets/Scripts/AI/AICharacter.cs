@@ -21,7 +21,7 @@ public class AICharacter : EnvironmentMaterial {
     private float passiveSpeed = 2.0f;
     private float actionSpeed = 3.5f;
 
-    private float _stoppingDistance = 1.0f;
+    private float _stoppingDistance = 1.25f;
 
     // States
     private bool _hasPriorityOnTarget = false;
@@ -193,18 +193,6 @@ public class AICharacter : EnvironmentMaterial {
             // Update the destination in case the target is moving
             _agent.SetDestination(_ownTarget.transform.position);
 
-            // If we are regrouping
-            if (_assignedGroup.IsRegrouping())
-            {
-                // Stop when one member has join the rally point (the actual target)
-                if (IsDestinationReached(_stoppingDistance))
-                {
-                    _assignedGroup.StopRegrouping();
-                    _assignedGroup.ShareNoTarget();
-                    _assignedGroup.MoveRandom();
-                }
-            }
-
             // If we are attacking
             if (_isAttacking)
             {
@@ -216,16 +204,20 @@ public class AICharacter : EnvironmentMaterial {
                     {
                         _combat.Attack(targetStats);
                     }
-                    /* Move this inside Attack -> DoDmg
-                    if (!targetStats.isAlive)
-                    {
-                        StopActionOnTarget();
-                        GetNewTarget();
-                        MoveAgain();
-                    }
-                    */
                 }
             }
+
+            // If we are regrouping
+            else if (_assignedGroup.IsRegrouping())
+            {
+                // Stop when one member has join the rally point (the actual target)
+                if (IsDestinationReached(_stoppingDistance))
+                {
+                    _assignedGroup.StopRegrouping();
+                    _assignedGroup.ShareNoTarget();
+                    _assignedGroup.MoveRandom();
+                }
+            }            
         }
     }
 
