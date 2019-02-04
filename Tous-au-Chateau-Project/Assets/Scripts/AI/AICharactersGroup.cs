@@ -79,7 +79,7 @@ public class AICharactersGroup : MonoBehaviour {
     public void AddTarget(GameObject target)
     {
         // Make sur we don't have listed this target already
-        if (!_targetDetected.Contains(target))
+        //if (!IsTargetRegistered(target))
         {
             _targetDetected.Add(target);
         }
@@ -291,5 +291,10 @@ public class AICharactersGroup : MonoBehaviour {
             character.SetRandomDestination(destination);
             character.SetIsMovingAround(true);
         }
+    }
+
+    public bool IsTargetRegistered(GameObject target)
+    {
+        return _targetDetected.Contains(target);
     }
 }

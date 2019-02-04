@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// TODO --> to get Dmg
 [RequireComponent(typeof(CharacterStats))]
 public class AICharacterAttack : MonoBehaviour {
 

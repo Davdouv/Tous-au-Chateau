@@ -284,4 +284,9 @@ public class AICharacter : EnvironmentMaterial {
         // Disappear ?
         gameObject.SetActive(false);
     }
+
+    public bool IsTargetRegistered(GameObject target)
+    {
+        return _assignedGroup.IsTargetRegistered(target);
+    }
 }
