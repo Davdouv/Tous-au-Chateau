@@ -109,6 +109,7 @@ public class AICharacter : EnvironmentMaterial {
     // Set no target
     public void NoTarget()
     {
+        _hasPriorityOnTarget = false;
         _ownTarget = null;
         _destination = _assignedGroup.GetRallyPoint().transform.position;
         SlowSpeed();
@@ -118,6 +119,7 @@ public class AICharacter : EnvironmentMaterial {
     // This method MUST call GetNewTarget() when it's done and before destroying the target
     public virtual void DoActionOnTarget()
     {
+        _hasPriorityOnTarget = true;
         _isAttacking = true;
         // Make the target stop moving because we are attacking it
         AICharacter aiTarget = _ownTarget.GetComponent<AICharacter>();
@@ -129,6 +131,7 @@ public class AICharacter : EnvironmentMaterial {
     
     public virtual void StopActionOnTarget()
     {
+        _hasPriorityOnTarget = false;
         _isAttacking = false;
     }
 
@@ -219,6 +222,22 @@ public class AICharacter : EnvironmentMaterial {
                 }
             }            
         }
+        else
+        {
+            if (_isAttacking)
+            {
+                StopActionOnTarget();
+                MoveAgain();
+                GetNewTarget();
+            }
+            /*
+            if (!_isMovingAround)
+            {
+                Debug.Log("JE PASSE PASSE");
+                _assignedGroup.MoveRandom();
+            }
+            */
+        }
     }
 
     // Set a Destination (not a target gameobject)
@@ -288,5 +307,10 @@ public class AICharacter : EnvironmentMaterial {
     public bool IsTargetRegistered(GameObject target)
     {
         return _assignedGroup.IsTargetRegistered(target);
+    }
+
+    public bool HasATarget()
+    {
+        return _ownTarget != null;
     }
 }
