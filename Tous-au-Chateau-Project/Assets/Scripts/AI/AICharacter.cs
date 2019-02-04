@@ -28,7 +28,8 @@ public class AICharacter : EnvironmentMaterial {
     private bool _isEscaping = false;
     private bool _isMovingAround = false;
     private bool _isAttacking = false;
-    
+    private bool _isAttacked = false;
+
 
     private void Awake()
     {
@@ -123,6 +124,7 @@ public class AICharacter : EnvironmentMaterial {
         _isAttacking = true;        
     }
 
+    // No need for this
     private void StopTarget()
     {
         // Make the target stop moving because we are attacking it
@@ -131,12 +133,25 @@ public class AICharacter : EnvironmentMaterial {
         {
             aiTarget.StopMoving();
         }
+        else
+        {
+            //if (_ownTarget.GetComponent<Villager>())
+        }
     }
     
     public virtual void StopActionOnTarget()
     {
         _hasPriorityOnTarget = false;
         _isAttacking = false;
+    }
+
+    public void IsAttacked(bool isAttacked)
+    {
+        _isAttacked = isAttacked;
+        if (!isAttacked)
+        {
+            MoveAgain();
+        }
     }
 
     public virtual void StopMoving()
@@ -174,76 +189,83 @@ public class AICharacter : EnvironmentMaterial {
 
     // We need to update the navMesh Destination if the target is moving
     private void Update()
-    {        
-        if (_isEscaping)
+    {
+        if (_isAttacked)
         {
-            GameObject ennemy = GetComponent<AIDetection>().GetEnemyNear();
-            // If there's still an ennemy close to us
-            if (ennemy && Vector3.Distance(ennemy.transform.position, transform.position) < GetComponent<AIDetection>().distanceDetection)
-            {
-                EscapeFrom(ennemy);
-            }
-            else
-            {
-                StopEscaping();
-            }
-        }
-        else if (_isMovingAround)
-        {
-            if (IsDestinationReached(_stoppingDistance))
-            {
-                SetRandomDestination(_assignedGroup.RandomNavmeshLocation());
-            }
-        }
-        if (_ownTarget != null && _ownTarget.activeSelf)
-        {
-            // Update the destination in case the target is moving
-            _agent.SetDestination(_ownTarget.transform.position);
-
-            // If we are attacking
-            if (_isAttacking)
-            {
-                CharacterStats targetStats = _ownTarget.GetComponent<CharacterStats>();
-
-                if (targetStats != null)
-                {
-                    if (targetStats.isAlive)
-                    {
-                        _combat.Attack(targetStats);
-                    }
-                }
-
-                StopTarget();
-            }
-
-            // If we are regrouping
-            else if (_assignedGroup.IsRegrouping())
-            {
-                // Stop when one member has join the rally point (the actual target)
-                if (IsDestinationReached(_stoppingDistance))
-                {
-                    _assignedGroup.StopRegrouping();
-                    _assignedGroup.ShareNoTarget();
-                    _assignedGroup.MoveRandom();
-                }
-            }            
+            StopMoving();
         }
         else
         {
-            if (_isAttacking)
+            if (_isEscaping)
             {
-                StopActionOnTarget();
-                MoveAgain();
-                GetNewTarget();
+                GameObject ennemy = GetComponent<AIDetection>().GetEnemyNear();
+                // If there's still an ennemy close to us
+                if (ennemy && Vector3.Distance(ennemy.transform.position, transform.position) < GetComponent<AIDetection>().distanceDetection)
+                {
+                    EscapeFrom(ennemy);
+                }
+                else
+                {
+                    StopEscaping();
+                }
             }
-            /*
-            if (!_isMovingAround)
+            else if (_isMovingAround)
             {
-                Debug.Log("JE PASSE PASSE");
-                _assignedGroup.MoveRandom();
+                if (IsDestinationReached(_stoppingDistance))
+                {
+                    SetRandomDestination(_assignedGroup.RandomNavmeshLocation());
+                }
             }
-            */
-        }
+            if (_ownTarget != null && _ownTarget.activeSelf)
+            {
+                // Update the destination in case the target is moving
+                _agent.SetDestination(_ownTarget.transform.position);
+
+                // If we are attacking
+                if (_isAttacking)
+                {
+                    CharacterStats targetStats = _ownTarget.GetComponent<CharacterStats>();
+
+                    if (targetStats != null)
+                    {
+                        if (targetStats.isAlive)
+                        {
+                            _combat.Attack(targetStats);
+                        }
+                    }
+
+                    //StopTarget();
+                }
+
+                // If we are regrouping
+                else if (_assignedGroup.IsRegrouping())
+                {
+                    // Stop when one member has join the rally point (the actual target)
+                    if (IsDestinationReached(_stoppingDistance))
+                    {
+                        _assignedGroup.StopRegrouping();
+                        _assignedGroup.ShareNoTarget();
+                        _assignedGroup.MoveRandom();
+                    }
+                }
+            }
+            else
+            {
+                if (_isAttacking)
+                {
+                    StopActionOnTarget();
+                    MoveAgain();
+                    GetNewTarget();
+                }
+                /*
+                if (!_isMovingAround)
+                {
+                    Debug.Log("JE PASSE PASSE");
+                    _assignedGroup.MoveRandom();
+                }
+                */
+            }
+        }        
     }
 
     // Set a Destination (not a target gameobject)

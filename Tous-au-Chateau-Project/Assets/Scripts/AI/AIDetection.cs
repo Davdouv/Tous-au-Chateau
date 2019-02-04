@@ -75,6 +75,11 @@ public class AIDetection : TriggerZone {
             _aiCharacter.DoActionOnTarget();
             _aiCharacter.StopMoving();
         }
+
+        if (vulnerableTo.Contains(collision.gameObject.tag))
+        {
+            _aiCharacter.IsAttacked(true);
+        }
     }
 
     // On Collision Exit, chase the target again
@@ -88,6 +93,11 @@ public class AIDetection : TriggerZone {
             _aiCharacter.StopActionOnTarget();
             _aiCharacter.MoveAgain();
             */
+        }
+
+        if (vulnerableTo.Contains(collision.gameObject.tag))
+        {
+            _aiCharacter.IsAttacked(false);
         }
     }
 
