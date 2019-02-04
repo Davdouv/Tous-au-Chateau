@@ -21,7 +21,7 @@ public class AICharacter : EnvironmentMaterial {
     private float passiveSpeed = 2.0f;
     private float actionSpeed = 3.5f;
 
-    private float _stoppingDistance = 1.25f;
+    private float _stoppingDistance = 1.5f;
 
     // States
     private bool _hasPriorityOnTarget = false;
@@ -120,7 +120,11 @@ public class AICharacter : EnvironmentMaterial {
     public virtual void DoActionOnTarget()
     {
         _hasPriorityOnTarget = true;
-        _isAttacking = true;
+        _isAttacking = true;        
+    }
+
+    private void StopTarget()
+    {
         // Make the target stop moving because we are attacking it
         AICharacter aiTarget = _ownTarget.GetComponent<AICharacter>();
         if (aiTarget)
@@ -208,6 +212,8 @@ public class AICharacter : EnvironmentMaterial {
                         _combat.Attack(targetStats);
                     }
                 }
+
+                StopTarget();
             }
 
             // If we are regrouping
