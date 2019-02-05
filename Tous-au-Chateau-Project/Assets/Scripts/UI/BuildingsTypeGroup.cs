@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BuildingsTypeGroup : MonoBehaviour {
 
-    BuildingsTypeGroup _instance;
+    private BuildingsTypeGroup _instance;
 
-    List<Building> _buildings = new List<Building>();
+    public List<Building> _buildings = new List<Building>();
 
     public void  instance(BuildingsTypeGroup _group)
     {
