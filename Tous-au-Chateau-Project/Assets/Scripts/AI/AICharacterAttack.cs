@@ -37,10 +37,10 @@ public class AICharacterAttack : MonoBehaviour {
         yield return new WaitForSeconds(delay);
 
         // Do damage
-        if (targetStats.isAlive)
+        if (targetStats.GetIsAlive())
         {
-            targetStats.TakeDamage(_stats.strength);
-            if (!targetStats.isAlive)
+            targetStats.TakeDamage(_stats.GetStrength());
+            if (!targetStats.GetIsAlive())
             {
                 AICharacter character = gameObject.GetComponent<AICharacter>();
 
@@ -53,10 +53,10 @@ public class AICharacterAttack : MonoBehaviour {
 
     private void DoDamage(CharacterStats targetStats)
     {
-        if (targetStats.isAlive)
+        if (targetStats.GetIsAlive())
         {
-            targetStats.TakeDamage(_stats.strength);
-            if (!targetStats.isAlive)
+            targetStats.TakeDamage(_stats.GetStrength());
+            if (!targetStats.GetIsAlive())
             {
                 AICharacter character = gameObject.GetComponent<AICharacter>();
 

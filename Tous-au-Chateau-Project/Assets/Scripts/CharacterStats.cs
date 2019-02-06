@@ -4,7 +4,7 @@ using System.Collections;
 public class CharacterStats : MonoBehaviour
 {
     private bool _isAlive;
-    private int _life;
+    private float _life;
     private float _speed = 1.50f;
     private float _strength;
     
@@ -20,9 +20,9 @@ public class CharacterStats : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
-        life -= dmg;
+        _life -= dmg;
         //Debug.Log(gameObject.name + " life = " + life);
-        if (life <= 0)
+        if (_life <= 0)
         {
             Debug.Log(gameObject.name + " dead");
             Die();
@@ -31,7 +31,7 @@ public class CharacterStats : MonoBehaviour
 
     private void Die()
     {
-        isAlive = false;
+        _isAlive = false;
         // AI Behaviour
         if (gameObject.GetComponent<AICharacter>())
         {
@@ -55,7 +55,7 @@ public class CharacterStats : MonoBehaviour
     public void SetStrength(float force) { _strength = force; }
     // Getters
     public bool GetIsAlive() { return _isAlive; }
-    public int GetLife() { return _life; }
+    public float GetLife() { return _life; }
     public float GetSpeed() { return _speed; }
     public float GetStrength() { return _strength; }
 }

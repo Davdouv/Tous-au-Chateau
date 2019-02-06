@@ -228,7 +228,7 @@ public class AICharacter : EnvironmentMaterial {
 
                     if (targetStats != null)
                     {
-                        if (targetStats.isAlive)
+                        if (targetStats.GetIsAlive())
                         {
                             _combat.Attack(targetStats);
                         }
