@@ -7,7 +7,7 @@ public class Villager : MonoBehaviour
 {
     Rigidbody _rb;
     NavMeshAgent agent;
-    public VillagersGroup _group;
+    private VillagersGroup _group;
     public int _motivation;
 
     public bool _isInfected;
@@ -27,7 +27,7 @@ public class Villager : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         _villagerCollision = GetComponent<CollisionDetection>();
-        _stats = new CharacterStats();
+        _stats = GetComponent<CharacterStats>();
 
         _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
         if (_isInfected)
@@ -59,7 +59,7 @@ public class Villager : MonoBehaviour
         agent.velocity = transform.forward * 1.00f;
         */
 
-        _rb.MovePosition(transform.position + transform.forward * _stats.GetSpeed() * Time.deltaTime);
+        _rb.MovePosition(transform.position + transform.forward * _stats.speed * Time.deltaTime);
 
     }
     private void MoveTowardVillager(GameObject target)

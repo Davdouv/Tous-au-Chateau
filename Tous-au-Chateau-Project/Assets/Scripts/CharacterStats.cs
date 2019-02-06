@@ -4,25 +4,25 @@ using System.Collections;
 public class CharacterStats : MonoBehaviour
 {
     private bool _isAlive;
-    private float _life;
-    private float _speed = 1.50f;
-    private float _strength;
+    public float life = 100;
+    public float speed = 1.50f;
+    public float strength = 0;
     
     public CharacterStats():this(true, 100, 2.0f, 0) { }
 
     public CharacterStats(bool live, float vie, float vitesse, float force)
     {
         _isAlive = live;
-        _life = vie;
-        _speed = vitesse;
-        _strength = force;
+        life = vie;
+        speed = vitesse;
+        strength = force;
     }
 
     public void TakeDamage(float dmg)
     {
-        _life -= dmg;
+        life -= dmg;
         //Debug.Log(gameObject.name + " life = " + life);
-        if (_life <= 0)
+        if (life <= 0)
         {
             Debug.Log(gameObject.name + " dead");
             Die();
@@ -50,12 +50,6 @@ public class CharacterStats : MonoBehaviour
     }
     // Setters
     public void SetIsAlive(bool live) { _isAlive = live; }
-    public void SetLife(int vie) { _life = vie; }
-    public void SetSpeed(float vitesse) { _speed = vitesse; }
-    public void SetStrength(float force) { _strength = force; }
     // Getters
-    public bool GetIsAlive() { return _isAlive; }
-    public float GetLife() { return _life; }
-    public float GetSpeed() { return _speed; }
-    public float GetStrength() { return _strength; }
+    public bool IsAlive() { return _isAlive; }
 }
