@@ -12,6 +12,7 @@ public class CharacterStats
 
     public CharacterStats(bool live, int vie, float vitesse, float force)
     {
+
         _isAlive = live;
         _life = vie;
         _speed = vitesse;
@@ -28,4 +29,5 @@ public class CharacterStats
     public float GetSpeed() { return _speed; }
     public float GetStrength() { return _strength; }
     
+
 }

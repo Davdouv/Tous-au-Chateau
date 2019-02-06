@@ -4,7 +4,6 @@ using UnityEngine.AI;
 
 public enum Direction { RIGHT, LEFT, BACKWARD };
 
-
 public class Villager : MonoBehaviour
 {
     Rigidbody _rb;
@@ -95,8 +94,6 @@ public class Villager : MonoBehaviour
 
             default:
                 break;
-
-
         }
     }
 

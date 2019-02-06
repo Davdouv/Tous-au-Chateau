@@ -4,7 +4,7 @@
 
     public class ToggleCustomHands : MonoBehaviour
     {
-        public VRTK_ControllerEvents leftController;
+        //public VRTK_ControllerEvents leftController;
         public VRTK_ControllerEvents rightController;
 
         public GameObject leftHandAvatar;
@@ -15,10 +15,10 @@
         protected virtual void OnEnable()
         {
             state = false;
-            if (leftController != null)
+            /*if (leftController != null)
             {
                 leftController.ButtonTwoPressed += ToggleHands;
-            }
+            }*/
 
             if (rightController != null)
             {
@@ -29,10 +29,10 @@
 
         protected virtual void OnDisable()
         {
-            if (leftController != null)
+            /*if (leftController != null)
             {
                 leftController.ButtonTwoPressed -= ToggleHands;
-            }
+            }*/
 
             if (rightController != null)
             {
