@@ -6,9 +6,6 @@ public class MainActions : MonoBehaviour {
 
     public ResourceManager resourceM;
     public GameObject spawnPoint;
-    public GameObject bridge;
-    public GameObject wall;
-    public GameObject plank;
     public Transform RightHand;
 
     VRTK.VRTK_ControllerEvents events;
@@ -90,32 +87,19 @@ public class MainActions : MonoBehaviour {
     {
         if (events.triggerPressed && !haveBuilding)
         {
-            if (other.tag == "bridge")
-            {
-                if (resourceM.RemoveResources(new ResourcesPack { wood = 5 }))
+            if (other.tag == "Building")
+            {   
+
+                //Get ResourcePack building
+                if (other.gameObject.GetComponent<Building>().CanBuy())
                 {
-                    newBuilding = Instantiate(bridge, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                    //Instantiate building
+                    newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
                     haveBuilding = true;
                 }
             }
-            else if (other.tag == "wall")
-            {
-                if (resourceM.RemoveResources(new ResourcesPack { stone = 5 }))
-                {
-                    newBuilding = Instantiate(wall, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
-                    haveBuilding = true;
-                }
-            }
-            else if (other.tag == "Plank")
-            {
-                if (resourceM.RemoveResources(new ResourcesPack { wood = 5 }))
-                {
-                    newBuilding = Instantiate(plank, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
-                    haveBuilding = true;
-                }
-            }
+
         }
     }
 
-    //void OnTrigg
 }
