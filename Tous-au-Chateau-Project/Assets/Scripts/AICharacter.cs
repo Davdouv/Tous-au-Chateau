@@ -12,10 +12,12 @@ public class AICharacter : EnvironmentMaterial {
     private GameObject _ownTarget;
     private Vector3 _destination;
 
-    private float slowSpeed = 2.0f;
-    private float fastSpeed = 3.5f;
+    private float passiveSpeed = 2.0f;
+    private float actionSpeed = 3.5f;
 
+    private bool _hasPriorityOnTarget = false;
     private bool _isEscaping = false;
+    private bool _isMovingAround = false;
 
     private void Awake()
     {
@@ -36,12 +38,14 @@ public class AICharacter : EnvironmentMaterial {
     // If target found, ask the group to share the target with all group objects
     public void TargetFound(GameObject target)
     {
+        _hasPriorityOnTarget = true;
         _assignedGroup.AddTarget(target);
         _assignedGroup.ShareTarget(target);
     }
 
     public void TargetNotFound()
     {
+        _hasPriorityOnTarget = false;
         _assignedGroup.ShareNoTarget();
     }
 
@@ -52,6 +56,7 @@ public class AICharacter : EnvironmentMaterial {
 
     public void CheckIfRemoveTarget(GameObject target)
     {
+        _hasPriorityOnTarget = false;
         _assignedGroup.CheckIfRemoveTarget(target);
 
         // If it was the target we were aiming
@@ -77,7 +82,8 @@ public class AICharacter : EnvironmentMaterial {
     // Set Destination only if there was no destination before
     public void SetTarget(GameObject target)
     {
-        if (_ownTarget == null && !_isEscaping) // No Destination before
+        SetIsMovingAround(false);
+        if ((_ownTarget == null && !_isEscaping) || (_ownTarget != null && !_hasPriorityOnTarget)) // No Target before OR didn't have priority on target
         {
             _ownTarget = target;
             if (_ownTarget) // Make sure target is not null
@@ -182,6 +188,13 @@ public class AICharacter : EnvironmentMaterial {
                 StopEscaping();
             }
         }
+        if (_isMovingAround)
+        {
+            if (IsDestinationReached(1.25f))
+            {
+                SetRandomDestination(_assignedGroup.RandomNavmeshLocation());
+            }
+        }
     }
 
     // Set a Destination (not a target gameobject)
@@ -195,11 +208,11 @@ public class AICharacter : EnvironmentMaterial {
     // Used by the AICharactersGroup
     public void SetSlowSpeed(float speed)
     {
-        slowSpeed = speed;
+        passiveSpeed = speed;
     }
     public void SetFastSpeed(float speed)
     {
-        fastSpeed = speed;
+        actionSpeed = speed;
     }
 
     // Used to change the speed of a character
@@ -207,14 +220,14 @@ public class AICharacter : EnvironmentMaterial {
     {
         if (gameObject.activeSelf)
         {
-            _agent.speed = slowSpeed;
+            _agent.speed = passiveSpeed;
         }        
     }
     private void FastSpeed()
     {
         if (gameObject.activeSelf)
         {
-            _agent.speed = fastSpeed;
+            _agent.speed = actionSpeed;
         }
     }
 
@@ -236,5 +249,10 @@ public class AICharacter : EnvironmentMaterial {
     {
         _isEscaping = false;
         _assignedGroup.NewTarget();
+    }
+
+    public void SetIsMovingAround(bool isMovingAround)
+    {
+        _isMovingAround = isMovingAround;
     }
 }
