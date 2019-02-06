@@ -3,9 +3,24 @@ using System.Collections.Generic;
 
 public class VillagersGroup : MonoBehaviour
 {
-    public List<Villager> _villagers;
+    //private static VillagersGroup _instance = null;
 
-    
+    public List<Villager> _villagers = new List<Villager>();
+    /*private VillagersGroup(){}
+    public static VillagersGroup Instance
+    {
+        get{
+            if (!_instance)
+            {
+                GameObject go = new GameObject("VillagersGroup");
+                _instance = go.AddComponent<VillagersGroup>();
+                
+            }
+            return _instance;
+        }
+        
+    }*/
+
     public void AddVillagers()
     {
         Villager villager = new Villager();
@@ -14,6 +29,14 @@ public class VillagersGroup : MonoBehaviour
     public void RemoveVillager()
     {
         _villagers.RemoveAt(_villagers.Count-1);
+    }
+    public void AddVillagers(Villager villager)
+    {
+        _villagers.Add(villager);
+    }
+    public void RemoveVillager(Villager villager)
+    {
+        _villagers.Remove(villager);
     }
     public void RemoveAllVillager()
     {
@@ -27,12 +50,7 @@ public class VillagersGroup : MonoBehaviour
     {
         return _villagers.Count;
     }
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
