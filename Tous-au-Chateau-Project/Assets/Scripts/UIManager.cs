@@ -18,11 +18,11 @@ public class UIManager : PauseScript
     public ResourceManager _ResourceManager;
 
     //For construction pagination
-    //public List<Building> buildings; // pointer sur la liste de building group
     public BuildingsTypeGroup _BuildingTypeGroup;
     public GameObject ConstructionPagination; //parent of each page content in hierarchy
 
-    private int constructionNbByPage = 4;
+    private List<List<Building>> _sortedBuildings; //sorted by type
+    private const int constructionNbByPage = 4;
     private int _nbOfPagesInUI = 0;
     private int _activeConstructionPage = 0;
     private GameObject[] _pages;
@@ -33,13 +33,7 @@ public class UIManager : PauseScript
     {
         if(_BuildingTypeGroup != null)
         {
-            _nbOfPagesInUI = Mathf.CeilToInt((float)_BuildingTypeGroup._buildings.Count / constructionNbByPage);
-            _pages = new GameObject[_nbOfPagesInUI];
-            _pageButtons = new GameObject[_nbOfPagesInUI];
-
-            UpdateBuildingInfo();
-            CreatePagesList();
-            CreateButtonsList();
+            CalculateNbOfPages();
         }
     }
 
@@ -47,13 +41,7 @@ public class UIManager : PauseScript
     {
         if (_BuildingTypeGroup != null && _pages == null && _pageButtons == null) //if fails on start
         {
-            _nbOfPagesInUI = Mathf.CeilToInt((float)_BuildingTypeGroup._buildings.Count / constructionNbByPage);
-            _pages = new GameObject[_nbOfPagesInUI];
-            _pageButtons = new GameObject[_nbOfPagesInUI];
-
-            UpdateBuildingInfo();
-            CreatePagesList();
-            CreateButtonsList();
+            CalculateNbOfPages();
         }
         else if (_isCostEmpty) //in case the costs are empty the info still needs to be updated
         {
@@ -180,31 +168,63 @@ public class UIManager : PauseScript
         }
     }
 
+    //only for beginning of program
+    private void CalculateNbOfPages()
+    {
+        _sortedBuildings = _BuildingTypeGroup.getBuildingsSortedByType();
+
+        if (_sortedBuildings == null)
+            return;
+
+        for(int i = 0; i < _sortedBuildings.Count; ++i)
+        {
+            _nbOfPagesInUI += Mathf.CeilToInt((float)_sortedBuildings[i].Count / constructionNbByPage);
+        }
+
+        _pages = new GameObject[_nbOfPagesInUI];
+        _pageButtons = new GameObject[_nbOfPagesInUI];
+
+        UpdateBuildingInfo();
+        CreatePagesList();
+        CreateButtonsList();
+    }
+
     //only used at beginning of program
     private void CreatePagesList ()
     {
-        for (int i = 0; i < _nbOfPagesInUI; ++i)
+        int currentPageIndex = 0;
+
+        for (int i = 0; i < _sortedBuildings.Count; ++i)
         {
-            GameObject page = Instantiate(new GameObject());
-            page.name = "Construction Panel Page " + i;
-            page.transform.parent = ConstructionPagination.transform;
+            //may be several pages per type
+            int nbOfPageForType = Mathf.CeilToInt((float)_sortedBuildings[i].Count / constructionNbByPage);
 
-            //Construction per page
-            for (int j = 0; j < constructionNbByPage; ++j)
+            for(int j = 0; j < nbOfPageForType; ++j)
             {
-                if (i * constructionNbByPage + j < _BuildingTypeGroup._buildings.Count)
+                GameObject page = Instantiate(new GameObject());
+                page.name = "Construction Panel Page " + currentPageIndex;
+                page.transform.parent = ConstructionPagination.transform;
+
+                //Construction per page
+                for (int k = 0; k < constructionNbByPage; ++k)
                 {
-                    _BuildingTypeGroup._buildings[i * constructionNbByPage + j].transform.parent = page.transform;
-                    _BuildingTypeGroup._buildings[i * constructionNbByPage + j].transform.position = ConstructionPagination.transform.position + Vector3.right * ((j * 0.2f - 0.3f) * -1.0f) / page.transform.localScale.x;
+                    int currentIndexInPage = j * constructionNbByPage + k;
+                    if (currentIndexInPage < _sortedBuildings[i].Count)
+                    {
+                        _sortedBuildings[i][currentIndexInPage].transform.parent = page.transform;
+                        _sortedBuildings[i][currentIndexInPage].transform.position = ConstructionPagination.transform.position + Vector3.right * ((k * 0.2f - 0.3f) * -1.0f) / page.transform.localScale.x;
+                    }
                 }
-            }
 
-            page.transform.position = Vector3.zero + Vector3.up * 0.07f / page.transform.localScale.y;
-            _pages[i] = page;
+                page.transform.position = Vector3.zero + Vector3.up * 0.07f / page.transform.localScale.y;
+                _pages[i] = page;
 
-            if (i != 0)
-            {
-                page.SetActive(false);
+                if (i != 0)
+                {
+                    page.SetActive(false);
+                }
+
+                ++currentPageIndex;
             }
         }
     }
@@ -221,9 +241,12 @@ public class UIManager : PauseScript
             button.name = "Construction Panel Button " + i;
             button.transform.parent = ConstructionPagination.transform;
 
-            button.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
             button.transform.rotation = ConstructionPagination.transform.rotation;
-            button.transform.position = ConstructionPagination.transform.position + Vector3.forward * 0.02f + Vector3.right * 0.4f + Vector3.up * (0.15f - i * 0.05f);
+            button.transform.position = ConstructionPagination.transform.position 
+                + Vector3.forward * 0.02f / _pages[i].transform.localScale.z 
+                + Vector3.right * 0.44f / _pages[i].transform.localScale.x
+                + Vector3.up * (0.15f - i * 0.05f) / _pages[i].transform.localScale.y;
+            button.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
 
             _pageButtons[i] = button;
         }
