@@ -13,7 +13,7 @@ public class InfectionSpreading : TriggerZone
     
     // Use this for initialization
     void Start () {
-        CharacterStats _stats = GetComponent<Villager>()._stats;
+        CharacterStats _stats = GetComponent<Villager>().GetStats();
         _canInfect = new List<string> { tag };
         Time.timeScale = 1;
         _infectable = new List<GameObject>();

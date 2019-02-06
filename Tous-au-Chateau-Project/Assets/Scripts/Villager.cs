@@ -18,7 +18,7 @@ public class Villager : MonoBehaviour
     public bool _hasJoined;
 
     private CollisionDetection _villagerCollision;
-    public CharacterStats _stats;
+    private CharacterStats _stats;
 
 
     // Use this for initialization
@@ -101,6 +101,12 @@ public class Villager : MonoBehaviour
         _isInfected = true;
         gameObject.AddComponent<InfectionSpreading>();
     }
+
+    public CharacterStats GetStats()
+    {
+        return _stats;
+    }
+
     private void Die()
     {
         //_stats.SetIsAlive( false);
@@ -121,9 +127,7 @@ public class Villager : MonoBehaviour
         agent.updatePosition = true;
         agent.updateRotation = true;
         agent.SetDestination(_isJoining.transform.position);
-
     }
-
 
     void Update()
     {
@@ -164,11 +168,8 @@ public class Villager : MonoBehaviour
             }
 
         }
-
-
-
-
     }
+
     // Update is called once per frame
     /*
     void Update()

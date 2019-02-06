@@ -67,10 +67,11 @@ public class AIDetection : TriggerZone {
     // On Collision, stop moving
     public override void CollisionEnter(Collision collision)
     {
+        Debug.Log(this.name + " : COLLISION ENTER : " + collision.gameObject.name);
         // Check if it's the target we are aiming
         if (_aiCharacter.IsTheTarget(collision.gameObject))
         {
-            //Debug.Log(this.name + " : COLLISION ENTER : " + collision.gameObject.name);
+            Debug.Log(this.name + " : COLLISION ENTER : " + collision.gameObject.name);
             _aiCharacter.ChangeOtherTarget(collision.gameObject); // Set a new target to the other members of the group
             _aiCharacter.DoActionOnTarget();
             _aiCharacter.StopMoving();
