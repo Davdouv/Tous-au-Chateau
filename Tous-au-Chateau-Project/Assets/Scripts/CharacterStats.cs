@@ -8,7 +8,7 @@ public class CharacterStats
     public float _speed = 1.50f;
     public float _strength;
     
-    public CharacterStats():this(true, 100, 1.50f, 0) { }
+    public CharacterStats():this(true, 100, 2.0f, 0) { }
 
     public CharacterStats(bool live, int vie, float vitesse, float force)
     {

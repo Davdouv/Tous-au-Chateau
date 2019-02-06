@@ -5,13 +5,12 @@ using UnityEngine.AI;
 public enum Direction { RIGHT, LEFT, BACKWARD };
 
 
-public class Villager : MapPhysicObject
+public class Villager : MonoBehaviour
 {
     Rigidbody _rb;
     NavMeshAgent agent;
     public VillagersGroup _group;
     public int _motivation;
-    public CharacterStats _stats;
 
     public bool _isInfected;
     public bool _canMove;
@@ -21,10 +20,8 @@ public class Villager : MapPhysicObject
     public bool _hasJoined;
 
     private CollisionDetection _villagerCollision;
-    private DyingVillager _deathmode;
-    
+    public CharacterStats _stats;
 
-    
 
     // Use this for initialization
     void Start()
@@ -32,39 +29,55 @@ public class Villager : MapPhysicObject
         _rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         _villagerCollision = GetComponent<CollisionDetection>();
-        _deathmode = GetComponent<DyingVillager>();
-        
-        _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
         _stats = new CharacterStats();
+
+        _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
         if (_isInfected)
         {
             gameObject.AddComponent<InfectionSpreading>();
         }
 
-
+        
+        agent.enabled = _isPassive;
 
         _rb.isKinematic = false;
         _rb.freezeRotation = !_isPassive;
+        _rb.interpolation = RigidbodyInterpolation.None;
         _canMove = !_isPassive;
         _hasJoined = !_isPassive;
         _isJoining = null;
-        transform.LookAt(GameObject.Find("Objectif").transform.position);
+        Vector3 objectif = GameObject.Find("Objectif").transform.position;
+        transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
     }
 
-    public override void Crush()
+    public void Crush()
     {
 
     }
     private void Move()
     {
-        if (_isPassive)
-            print(" IM MOVING BUT IM PASSIVE WTFFFFFFFFFFFFFF");
-        _rb.MovePosition(transform.position + transform.forward * _stats._speed * Time.fixedDeltaTime);
+        /*agent.ResetPath();
+        agent.updatePosition = true;
+        agent.velocity = transform.forward * 1.00f;
+        */
+
+        _rb.MovePosition(transform.position + transform.forward * _stats.GetSpeed() * Time.deltaTime);
+
     }
     private void MoveTowardVillager(GameObject target)
     {
-        transform.LookAt(_isJoining.transform.position);
-        _rb.MovePosition(transform.position + transform.forward * _stats._speed * Time.fixedDeltaTime);
+        const float THRESHOLD = 2;
+        var pos = target.transform.position;
+        transform.LookAt(pos);
+
+        //_rb.MovePosition(transform.position + transform.forward * _stats._speed * Time.fixedDeltaTime);
+        //print(name + " dst sqr : " + (agent.destination - pos).sqrMagnitude);
+        if ((agent.destination - pos).sqrMagnitude > THRESHOLD)
+        {
+            //print(name + "New destination : " + pos);
+            agent.SetDestination(pos);
+
+        }
     }
     public void ChangeDirection(Direction dir)
     {
@@ -82,11 +95,11 @@ public class Villager : MapPhysicObject
 
             default:
                 break;
-            
-                
+
+
         }
     }
-    
+
     public void GetInfected()
     {
         _isInfected = true;
@@ -94,10 +107,10 @@ public class Villager : MapPhysicObject
     }
     private void Die()
     {
-        _stats.SetIsAlive( false);
-        _deathmode.isAlive = false;
-        // delete villager ?
-        // callback on villagersgroup to erase from list ?
+        //_stats.SetIsAlive( false);
+        // _deathmode.isAlive = false;
+
+        _group.RemoveVillager(this);
     }
     public bool IsPassive()
     {
@@ -105,20 +118,22 @@ public class Villager : MapPhysicObject
     }
     public void JoinIn(GameObject callguy)
     {
-        print(name +" wants to join in");
+        print(name + " wants to join in");
         _isJoining = callguy;
         _isPassive = false;
-        // movement flag don't activate
-        
-        //agent.SetDestination(_isJoining.transform.position);
-        
+
+        agent.updatePosition = true;
+        agent.updateRotation = true;
+        agent.SetDestination(_isJoining.transform.position);
+
     }
 
-    
-    void FixedUpdate()
+
+    void Update()
     {
         if (_canMove)
             Move();
+
         if (!_hasJoined)
         {
             if (_isJoining)
@@ -141,7 +156,8 @@ public class Villager : MapPhysicObject
                     transform.rotation = _isJoining.transform.rotation;
                     //print("rotation" + transform.rotation.y);
 
-
+                    agent.ResetPath();
+                    agent.enabled = false;
 
                     _isJoining = null;
 
@@ -153,8 +169,12 @@ public class Villager : MapPhysicObject
 
         }
 
+
+
+
     }
     // Update is called once per frame
+    /*
     void Update()
     {
         if (_stats.GetIsAlive()){
@@ -182,5 +202,5 @@ public class Villager : MapPhysicObject
 
 
 
-    }
+    }*/
 }
