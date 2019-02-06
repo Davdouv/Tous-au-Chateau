@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33464814619066906}
   - component: {fileID: 208032953216465002}
   - component: {fileID: 65365586591055884}
+  - component: {fileID: 114749521887215908}
   m_Layer: 0
   m_Name: LTree
   m_TagString: Wood
@@ -61,6 +62,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 8, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114749521887215908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762859638245974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 10
+  stoneGain: 0
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!208 &208032953216465002
 NavMeshObstacle:
   m_ObjectHideFlags: 1
