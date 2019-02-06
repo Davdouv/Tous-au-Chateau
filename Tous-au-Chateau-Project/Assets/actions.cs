@@ -8,6 +8,7 @@ public class actions : MonoBehaviour {
     public GameObject spawnPoint;
     public GameObject bridge;
     public GameObject wall;
+    public GameObject plank;
     public Transform RightHand;
 
     VRTK.VRTK_ControllerEvents events;
@@ -146,6 +147,14 @@ public class actions : MonoBehaviour {
                 if (resourceM.RemoveResources(new ResourcesPack { stone = 5 }))
                 {
                     newBuilding = Instantiate(wall, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                    haveBuilding = true;
+                }
+            }
+            else if (other.tag == "Plank")
+            {
+                if (resourceM.RemoveResources(new ResourcesPack { wood = 5 }))
+                {
+                    newBuilding = Instantiate(plank, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
                     haveBuilding = true;
                 }
             }
