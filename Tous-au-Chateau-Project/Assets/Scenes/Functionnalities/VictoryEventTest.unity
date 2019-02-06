@@ -225,6 +225,34 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4b9d2a20832a6c4fa6b72273ac171d4, type: 3}
   m_IsPrefabAsset: 0
+--- !u!1 &1263481940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1263481941}
+  m_Layer: 0
+  m_Name: destination
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1263481941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1263481940}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.7545815, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1847961938}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1421520930 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100044, guid: b4b9d2a20832a6c4fa6b72273ac171d4,
@@ -242,21 +270,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1421520932
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1421520930}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1476379930 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100050, guid: 2896aa7a4832a084f820587f55b1e593,
@@ -534,7 +547,7 @@ MonoBehaviour:
   targetTag:
   - Villager
   distanceDetection: 10
-  castleDestination: {fileID: 1847961932}
+  castleDestination: {fileID: 1263481940}
   escapeDestination: {fileID: 2032574769}
   evilLord: {fileID: 1421520930}
   villagers: []
@@ -566,6 +579,11 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &1847961938 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 48d2b35f364abfd4ba9f599792f0d79b,
+    type: 3}
+  m_PrefabInternal: {fileID: 1847961931}
 --- !u!1 &2032574769
 GameObject:
   m_ObjectHideFlags: 0
