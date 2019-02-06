@@ -241,12 +241,11 @@ public class UIManager : PauseScript
             button.name = "Construction Panel Button " + i;
             button.transform.parent = ConstructionPagination.transform;
 
-            button.transform.rotation = ConstructionPagination.transform.rotation;
-            button.transform.position = ConstructionPagination.transform.position 
-                + Vector3.forward * 0.02f / _pages[i].transform.localScale.z 
-                + Vector3.right * 0.44f / _pages[i].transform.localScale.x
-                + Vector3.up * (0.15f - i * 0.05f) / _pages[i].transform.localScale.y;
             button.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
+            button.transform.position = ConstructionPagination.transform.position 
+                + Vector3.forward * 0.02f / 0.01f 
+                + Vector3.right * 0.44f / 0.01f
+                + Vector3.up * (0.15f - i * 0.05f) / 0.01f;
 
             _pageButtons[i] = button;
         }
