@@ -19,6 +19,7 @@ public class Villager : MonoBehaviour
 
     private CollisionDetection _villagerCollision;
     public CharacterStats _stats;
+    private DyingVillager _deathmode;
 
 
     // Use this for initialization
@@ -28,6 +29,7 @@ public class Villager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         _villagerCollision = GetComponent<CollisionDetection>();
         _stats = new CharacterStats();
+        _deathmode = GetComponent<DyingVillager>();
 
         _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
         if (_isInfected)
@@ -44,7 +46,8 @@ public class Villager : MonoBehaviour
         _canMove = !_isPassive;
         _hasJoined = !_isPassive;
         _isJoining = null;
-        Vector3 objectif = GameObject.Find("Objectif").transform.position;
+        Vector3 objectif = 
+            GameObject.Find("Objectif").transform.position;
         transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
     }
 
@@ -103,9 +106,9 @@ public class Villager : MonoBehaviour
     }
     private void Die()
     {
-        //_stats.SetIsAlive( false);
-        // _deathmode.isAlive = false;
-
+        _deathmode.isAlive = false;
+        _stats.SetIsAlive(false);
+        _canMove = false;
         _group.RemoveVillager(this);
     }
     public bool IsPassive()
@@ -127,6 +130,23 @@ public class Villager : MonoBehaviour
 
     void Update()
     {
+        if (_stats.GetIsAlive())
+        {
+            if (_stats.GetLife() <= 0)
+            {
+                Die();
+                
+            }
+            
+            if (_villagerCollision.inDanger)
+            {
+                if (!_villagerCollision.onPlatform)
+                {
+                    _stats.SetLife(0);
+                }
+
+            }
+        }
         if (_canMove)
             Move();
 
@@ -156,17 +176,9 @@ public class Villager : MonoBehaviour
                     agent.enabled = false;
 
                     _isJoining = null;
-
-
                 }
-
-
             }
-
         }
-
-
-
 
     }
     // Update is called once per frame
