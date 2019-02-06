@@ -27,6 +27,7 @@ public class UIManager : PauseScript
     private int _activeConstructionPage = 0;
     private GameObject[] _pages;
     private GameObject[] _pageButtons;
+    private bool _isCostEmpty = true;
 
     private void Start()
     {
@@ -53,6 +54,10 @@ public class UIManager : PauseScript
             UpdateBuildingInfo();
             CreatePagesList();
             CreateButtonsList();
+        }
+        else if (_isCostEmpty) //in case the costs are empty the info still needs to be updated
+        {
+            UpdateBuildingInfo();
         }
 
         woodTxt.text = "" + _ResourceManager.GetWood();
@@ -167,9 +172,10 @@ public class UIManager : PauseScript
 
             Transform cost = _BuildingTypeGroup._buildings[i].transform.Find("Display/HelpTextCanvas/Cost");
 
-            if (cost != null)
+            if (cost != null && _BuildingTypeGroup._buildings[i].GetCostString() != "")
             {
                 cost.GetComponent<Text>().text = _BuildingTypeGroup._buildings[i].GetCostString();
+                _isCostEmpty = _isCostEmpty || false;
             }
         }
     }
