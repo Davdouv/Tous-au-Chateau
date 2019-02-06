@@ -106,7 +106,7 @@ public abstract class TriggerZone : MonoBehaviour {
     }
 
     private void Update()
-    {        
+    {
         for (int i = 0; i < _targetList.Count; ++i)
         {
             // If not triggered yet, check if it's a the good distance
