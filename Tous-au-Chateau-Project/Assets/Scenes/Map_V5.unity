@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.105268255, g: 0.28903043, b: 0.7487039, a: 1}
+  m_IndirectSpecularColor: {r: 0.105295464, g: 0.28905082, b: 0.7486986, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2838,8 +2838,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 271799130}
-  m_LocalRotation: {x: 0.23353437, y: 0.028290063, z: 0.0067985756, w: -0.97191316}
-  m_LocalPosition: {x: 38.579494, y: -10.284876, z: -2.6651256}
+  m_LocalRotation: {x: -0.20159589, y: 0.79195035, z: 0.34685695, w: 0.46028695}
+  m_LocalPosition: {x: 10.341549, y: -33.586487, z: -40.284325}
   m_LocalScale: {x: 0.8381444, y: 0.916419, z: 0.9121032}
   m_Children: []
   m_Father: {fileID: 197541977}
@@ -11159,8 +11159,8 @@ MonoBehaviour:
   invalidCollisionColor: {r: 1, g: 0, b: 0, a: 1}
   tracerVisibility: 0
   cursorVisibility: 0
-  maximumLength: 100
-  scaleFactor: 0.002
+  maximumLength: 500
+  scaleFactor: 0.2
   cursorScaleMultiplier: 25
   cursorMatchTargetRotation: 0
   cursorDistanceRescale: 0
@@ -11231,7 +11231,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 938925695}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 947b27445602ed640b885db7e667dfc1, type: 3}
   m_Name: 
@@ -13019,8 +13019,8 @@ MonoBehaviour:
   invalidCollisionColor: {r: 1, g: 0, b: 0, a: 1}
   tracerVisibility: 0
   cursorVisibility: 0
-  maximumLength: 100
-  scaleFactor: 0.002
+  maximumLength: 500
+  scaleFactor: 0.2
   cursorScaleMultiplier: 25
   cursorMatchTargetRotation: 0
   cursorDistanceRescale: 0
@@ -13091,7 +13091,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1034535787}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 947b27445602ed640b885db7e667dfc1, type: 3}
   m_Name: 
@@ -20668,7 +20668,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.17666666
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 73c316d1680bc154e91fd509d4d72054, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: cf29d060f29c5b4409cd853c2b33a04b, type: 2}
 --- !u!1 &1784388867
 GameObject:
   m_ObjectHideFlags: 0
