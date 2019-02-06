@@ -34,7 +34,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4394646532362876}
-  - component: {fileID: 65086816774224236}
   - component: {fileID: 23862585495168706}
   m_Layer: 0
   m_Name: Panneau
@@ -152,9 +151,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4254714503749770}
   - component: {fileID: 114046573780057168}
+  - component: {fileID: 65751936518788032}
   m_Layer: 0
   m_Name: Directional Panel UI
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,18 +380,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1578145637258028}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65086816774224236
+--- !u!65 &65751936518788032
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1106956035898268}
+  m_GameObject: {fileID: 1774256326975916}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.3774323, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10.48, y: 6.05, z: 0.98}
+  m_Center: {x: 0, y: -1.12, z: 1.74}
 --- !u!114 &114044429667792052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -431,6 +431,7 @@ MonoBehaviour:
   foodCost: 0
   workForceCost: 0
   motivationCost: 0
+  prefab: {fileID: 1750304352602756, guid: 5cea4a98f45c0184cb37455da1d632e2, type: 2}
   direction: 1
 --- !u!114 &114173224843859734
 MonoBehaviour:

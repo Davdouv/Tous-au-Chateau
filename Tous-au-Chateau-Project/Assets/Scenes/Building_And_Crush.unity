@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -981,8 +981,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 89235588}
-  m_LocalRotation: {x: -0.034855936, y: 0.96513957, z: 0.18192513, w: 0.18491596}
-  m_LocalPosition: {x: -67.880295, y: -42.329308, z: 10.698588}
+  m_LocalRotation: {x: -0.2124035, y: 0.36628744, z: 0.0862709, w: 0.901818}
+  m_LocalPosition: {x: -51.805153, y: -31.758043, z: -64.98447}
   m_LocalScale: {x: 0.8381444, y: 0.916419, z: 0.9121032}
   m_Children: []
   m_Father: {fileID: 1704404844}
@@ -2941,9 +2941,10 @@ GameObject:
   - component: {fileID: 209805737}
   - component: {fileID: 209805736}
   - component: {fileID: 209805735}
+  - component: {fileID: 209805738}
   m_Layer: 0
   m_Name: rock
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3015,6 +3016,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 209805733}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &209805738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 209805733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1 &217768923
 GameObject:
   m_ObjectHideFlags: 0
@@ -4887,9 +4905,10 @@ GameObject:
   - component: {fileID: 304399219}
   - component: {fileID: 304399218}
   - component: {fileID: 304399217}
+  - component: {fileID: 304399220}
   m_Layer: 0
   m_Name: rock (5)
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4961,6 +4980,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 304399215}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &304399220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 304399215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1001 &309914990
 Prefab:
   m_ObjectHideFlags: 0
@@ -5125,16 +5161,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1774256326975916, guid: 45c7ff8691e959749a47f1d455c12c96, type: 2}
-      propertyPath: m_TagString
-      value: Building
-      objectReference: {fileID: 0}
-    - target: {fileID: 114046573780057168, guid: 45c7ff8691e959749a47f1d455c12c96,
-        type: 2}
-      propertyPath: prefab
-      value: 
-      objectReference: {fileID: 1750304352602756, guid: 5cea4a98f45c0184cb37455da1d632e2,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c7ff8691e959749a47f1d455c12c96, type: 2}
   m_IsPrefabAsset: 0
@@ -6107,9 +6133,10 @@ GameObject:
   - component: {fileID: 514040918}
   - component: {fileID: 514040917}
   - component: {fileID: 514040916}
+  - component: {fileID: 514040919}
   m_Layer: 0
   m_Name: rock (6)
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6181,6 +6208,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 514040914}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &514040919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 514040914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1 &516476449
 GameObject:
   m_ObjectHideFlags: 0
@@ -6192,9 +6236,10 @@ GameObject:
   - component: {fileID: 516476453}
   - component: {fileID: 516476452}
   - component: {fileID: 516476451}
+  - component: {fileID: 516476454}
   m_Layer: 0
   m_Name: rock (1)
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6266,6 +6311,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 516476449}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &516476454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 516476449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1 &517732776
 GameObject:
   m_ObjectHideFlags: 0
@@ -7707,9 +7769,10 @@ GameObject:
   - component: {fileID: 661039022}
   - component: {fileID: 661039021}
   - component: {fileID: 661039020}
+  - component: {fileID: 661039023}
   m_Layer: 0
   m_Name: rock (4)
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7781,6 +7844,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 661039018}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &661039023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 661039018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1 &662989103
 GameObject:
   m_ObjectHideFlags: 0
@@ -8415,9 +8495,10 @@ GameObject:
   - component: {fileID: 700579815}
   - component: {fileID: 700579814}
   - component: {fileID: 700579813}
+  - component: {fileID: 700579816}
   m_Layer: 0
   m_Name: rock (3)
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8489,6 +8570,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 700579811}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &700579816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 700579811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1 &706328881
 GameObject:
   m_ObjectHideFlags: 0
@@ -8539,9 +8637,10 @@ GameObject:
   - component: {fileID: 709058497}
   - component: {fileID: 709058496}
   - component: {fileID: 709058495}
+  - component: {fileID: 709058498}
   m_Layer: 0
   m_Name: rock (2)
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8613,6 +8712,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 709058493}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &709058498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 709058493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1001 &718489134
 Prefab:
   m_ObjectHideFlags: 0
@@ -9590,9 +9706,10 @@ GameObject:
   - component: {fileID: 830993876}
   - component: {fileID: 830993875}
   - component: {fileID: 830993874}
+  - component: {fileID: 830993877}
   m_Layer: 0
   m_Name: rock (7)
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9664,6 +9781,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 830993872}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &830993877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 830993872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1 &839208967
 GameObject:
   m_ObjectHideFlags: 0
@@ -10464,9 +10598,10 @@ GameObject:
   - component: {fileID: 922181514}
   - component: {fileID: 922181513}
   - component: {fileID: 922181512}
+  - component: {fileID: 922181515}
   m_Layer: 0
   m_Name: rock (9)
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10538,6 +10673,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 922181510}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &922181515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 922181510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1 &929520977
 GameObject:
   m_ObjectHideFlags: 0
@@ -11417,16 +11569,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1851684891941176, guid: 403f63e3e9f0ab14e8161f52406f7b9c, type: 2}
-      propertyPath: m_TagString
-      value: Building
-      objectReference: {fileID: 0}
-    - target: {fileID: 114383071381247166, guid: 403f63e3e9f0ab14e8161f52406f7b9c,
-        type: 2}
-      propertyPath: prefab
-      value: 
-      objectReference: {fileID: 1145261126087502, guid: c8228a55b9802f54bbb0825079c06b4e,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 403f63e3e9f0ab14e8161f52406f7b9c, type: 2}
   m_IsPrefabAsset: 0
@@ -13908,16 +14050,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1310125500452364, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
-      propertyPath: m_TagString
-      value: Building
-      objectReference: {fileID: 0}
-    - target: {fileID: 114117450727915320, guid: 4fef603fc95ef0744a447569b1d0dd6b,
-        type: 2}
-      propertyPath: prefab
-      value: 
-      objectReference: {fileID: 1604675484901090, guid: 33c46a1b7e3541b4b946be1b512772e7,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
   m_IsPrefabAsset: 0
@@ -14468,9 +14600,10 @@ GameObject:
   - component: {fileID: 1241481476}
   - component: {fileID: 1241481475}
   - component: {fileID: 1241481474}
+  - component: {fileID: 1241481477}
   m_Layer: 0
   m_Name: rock (8)
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14542,6 +14675,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1241481472}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1241481477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1241481472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1001 &1244232226
 Prefab:
   m_ObjectHideFlags: 0
@@ -21037,9 +21187,10 @@ GameObject:
   - component: {fileID: 1852324994}
   - component: {fileID: 1852324993}
   - component: {fileID: 1852324992}
+  - component: {fileID: 1852324995}
   m_Layer: 0
   m_Name: rock (10)
-  m_TagString: Stone
+  m_TagString: Crushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21111,6 +21262,23 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1852324990}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1852324995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1852324990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 10
+  foodGain: 0
+  workForceGain: 0
+  motivationGain: 0
 --- !u!1001 &1854282420
 Prefab:
   m_ObjectHideFlags: 0

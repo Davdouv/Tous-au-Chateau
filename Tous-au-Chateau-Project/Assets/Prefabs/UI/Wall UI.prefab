@@ -71,9 +71,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4188777913029896}
   - component: {fileID: 114117450727915320}
+  - component: {fileID: 65808866955424768}
   m_Layer: 0
   m_Name: Wall UI
-  m_TagString: wall
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +106,6 @@ GameObject:
   - component: {fileID: 4044468340426476}
   - component: {fileID: 33117639456572700}
   - component: {fileID: 23963741405541540}
-  - component: {fileID: 65325941176510770}
   - component: {fileID: 54496973968814248}
   m_Layer: 0
   m_Name: Wall
@@ -177,7 +177,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1310125500452364}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -258,18 +258,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65325941176510770
+--- !u!65 &65808866955424768
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1492625309240594}
+  m_GameObject: {fileID: 1310125500452364}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 15.93, y: 6.16, z: 4.26}
+  m_Center: {x: 0, y: 0, z: 2.14}
 --- !u!114 &114117450727915320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,6 +288,7 @@ MonoBehaviour:
   foodCost: 0
   workForceCost: 0
   motivationCost: 0
+  prefab: {fileID: 1604675484901090, guid: 33c46a1b7e3541b4b946be1b512772e7, type: 2}
 --- !u!114 &114125421857938626
 MonoBehaviour:
   m_ObjectHideFlags: 1
