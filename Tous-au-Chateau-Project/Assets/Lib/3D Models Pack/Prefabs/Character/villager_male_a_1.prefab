@@ -191,8 +191,8 @@ GameObject:
   - component: {fileID: 135172331786323886}
   - component: {fileID: 114044175096227976}
   - component: {fileID: 114199621010696886}
+  - component: {fileID: 114152112739552008}
   - component: {fileID: 114954212585259168}
-  - component: {fileID: 114904470145642486}
   m_Layer: 0
   m_Name: villager_male_a_1
   m_TagString: Villager
@@ -629,7 +629,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1393693066860460}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9.36}
+  m_LocalPosition: {x: 2.745, y: 0, z: -6.0369987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4264298004704402}
@@ -866,6 +866,20 @@ MonoBehaviour:
   _isPassive: 0
   _isJoining: {fileID: 0}
   _hasJoined: 0
+--- !u!114 &114152112739552008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1393693066860460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d98a3ab79eb2b34badd68b7f9a04393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: []
+  distanceDetection: 5
+  _radius: 5
 --- !u!114 &114199621010696886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -879,20 +893,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onPlatform: 0
   inDanger: 0
---- !u!114 &114904470145642486
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1393693066860460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93c1e833c21b4564cbe36232c1e23975, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: []
-  distanceDetection: 5
-  _radius: 5
 --- !u!114 &114954212585259168
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -997,7 +997,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1.5
+  m_Speed: 15
   m_Acceleration: 5
   avoidancePriority: 50
   m_AngularSpeed: 120

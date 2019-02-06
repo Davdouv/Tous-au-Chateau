@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum Direction { RIGHT, LEFT, BACKWARD };
 
 public class Villager : MonoBehaviour
 {
