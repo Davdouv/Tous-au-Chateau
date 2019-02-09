@@ -25,10 +25,10 @@ GameObject:
   - component: {fileID: 54721294459109730}
   m_Layer: 0
   m_Name: Wall
-  m_TagString: Platform
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4352801503811210
 Transform:
@@ -110,5 +110,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0964594, y: 0.99999976, z: 1.5697968}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
