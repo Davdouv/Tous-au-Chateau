@@ -39,11 +39,11 @@ GameObject:
   - component: {fileID: 65286181338280274}
   - component: {fileID: 135825077992891292}
   - component: {fileID: 54798970980017914}
+  - component: {fileID: 195930626400063352}
   - component: {fileID: 114497774470111296}
   - component: {fileID: 114301450595613960}
   - component: {fileID: 114014289715169834}
   - component: {fileID: 114026331390198488}
-  - component: {fileID: 195696939073070848}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Wolf
@@ -57,8 +57,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1952876099188524}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2, y: 0, z: -4.91}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.85, y: 0, z: -4.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4973774798618966}
@@ -72,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1467734191992192}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.0050001144, y: 0.547, z: -0.283}
+  m_LocalPosition: {x: 0.0050001144, y: 0.464, z: -0.283}
   m_LocalScale: {x: 23.221619, y: 23.221619, z: 23.221619}
   m_Children: []
   m_Father: {fileID: 4307380231071846}
@@ -145,8 +145,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1.1, z: 1.7}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.6, y: 1, z: 1.5}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &114014289715169834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,7 +172,7 @@ MonoBehaviour:
   targetTag:
   - Cow
   - Villager
-  distanceDetection: 4
+  distanceDetection: 5
   vulnerableTo: []
 --- !u!114 &114301450595613960
 MonoBehaviour:
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 100
   speed: 2
-  strength: 0
+  strength: 10
 --- !u!135 &135825077992891292
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -211,9 +211,9 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &195696939073070848
+--- !u!195 &195930626400063352
 NavMeshAgent:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
