@@ -17,6 +17,5 @@ public class GatherDetection : TriggerZone {
     private void CallOut(GameObject target)
     {
         target.GetComponent<Villager>().JoinIn(gameObject);
-
     }
 }

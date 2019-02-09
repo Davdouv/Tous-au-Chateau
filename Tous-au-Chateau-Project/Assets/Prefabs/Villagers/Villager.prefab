@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4219222216158774}
   - component: {fileID: 54041798965057724}
-  - component: {fileID: 195058648391040310}
   - component: {fileID: 135940879828553240}
   - component: {fileID: 65783827454432566}
   - component: {fileID: 114079941186006326}
@@ -28,6 +27,7 @@ GameObject:
   - component: {fileID: 114241641678293014}
   - component: {fileID: 114752624679174466}
   - component: {fileID: 114589392995402528}
+  - component: {fileID: 195200504844747520}
   m_Layer: 0
   m_Name: Villager
   m_TagString: Villager
@@ -59,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096130410665992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.864, y: 1.01, z: -8.194}
+  m_LocalPosition: {x: -0.864, y: 0, z: -8.194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4974353950416650}
@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1705048435969798}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: -0.44299996, y: 0.36100006, z: 0}
+  m_LocalPosition: {x: -0.44299996, y: 1.36, z: 0}
   m_LocalScale: {x: 30.000015, y: 20.000021, z: 20}
   m_Children: []
   m_Father: {fileID: 4219222216158774}
@@ -146,8 +146,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.59, y: 1.85, z: 0.61}
-  m_Center: {x: 0, y: -0.08, z: 0}
+  m_Size: {x: 1.15, y: 1.85, z: 0.65}
+  m_Center: {x: 0, y: 0.93, z: 0}
 --- !u!114 &114024287728163622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -204,7 +204,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e3f7246a99ad442a632e96f52f81a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 1
   turningRate: 20
   mesh: {fileID: 0}
 --- !u!114 &114752624679174466
@@ -232,7 +231,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!195 &195058648391040310
+--- !u!195 &195200504844747520
 NavMeshAgent:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}

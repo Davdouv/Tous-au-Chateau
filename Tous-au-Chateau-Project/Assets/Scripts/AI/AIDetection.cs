@@ -20,7 +20,7 @@ public class AIDetection : TriggerZone {
     // On Detection, send the target to the aiCharacter
     public override void TriggerEnter(GameObject target)
     {
-        //Debug.Log(this.name + " : TRIGGER ENTER : " + target.name);
+        Debug.Log(this.name + " : TRIGGER ENTER : " + target.name);
         // Danger, try to escape
         if (vulnerableTo.Contains(target.tag))
         {
@@ -75,6 +75,12 @@ public class AIDetection : TriggerZone {
             _aiCharacter.ChangeOtherTarget(collision.gameObject); // Set a new target to the other members of the group
             _aiCharacter.DoActionOnTarget();
             _aiCharacter.StopMoving();
+
+            CharacterStats targetStats = collision.gameObject.GetComponent<CharacterStats>();
+            if (targetStats)
+            {
+                targetStats.StopMovement();
+            }
         }
 
         if (vulnerableTo.Contains(collision.gameObject.tag))

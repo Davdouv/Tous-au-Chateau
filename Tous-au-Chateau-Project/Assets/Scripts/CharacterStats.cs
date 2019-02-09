@@ -7,6 +7,8 @@ public class CharacterStats : MonoBehaviour
     public float life = 100;
     public float speed = 1.50f;
     public float strength = 0;
+
+    private float _saveSpeed;
     
     public CharacterStats():this(true, 100, 2.0f, 0) { }
 
@@ -40,7 +42,7 @@ public class CharacterStats : MonoBehaviour
         // Villager Behaviour
         else if (gameObject.GetComponent<Villager>())
         {
-            gameObject.GetComponent<AICharacter>().Die();
+            gameObject.GetComponent<Villager>().Die();
         }
         // Default behaviour
         else
@@ -52,4 +54,15 @@ public class CharacterStats : MonoBehaviour
     public void SetIsAlive(bool live) { _isAlive = live; }
     // Getters
     public bool IsAlive() { return _isAlive; }
+
+    public void StopMovement()
+    {
+        _saveSpeed = speed;
+        speed = 0;
+    }
+
+    public void MoveAgain()
+    {
+        speed = _saveSpeed;
+    }
 }

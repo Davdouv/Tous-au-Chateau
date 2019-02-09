@@ -24,7 +24,6 @@ public class AICharacterAttack : MonoBehaviour {
 
     public virtual void Attack(CharacterStats targetStats)
     {
-        Debug.Log("Attack");
         if (_attackCooldown <= 0f)
         {
             //StartCoroutine(DoDamage(targetStats, attackDelay));
@@ -33,6 +32,7 @@ public class AICharacterAttack : MonoBehaviour {
         }
     }
     
+    // Not used for now
     IEnumerator DoDamage(CharacterStats targetStats, float delay)
     {
         yield return new WaitForSeconds(delay);

@@ -19,6 +19,7 @@ public class Villager : MonoBehaviour
 
     private CollisionDetection _villagerCollision;
     private CharacterStats _stats;
+    private DyingVillager _dyingVillager;
 
 
     // Use this for initialization
@@ -28,6 +29,7 @@ public class Villager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         _villagerCollision = GetComponent<CollisionDetection>();
         _stats = GetComponent<CharacterStats>();
+        _dyingVillager = GetComponent<DyingVillager>();
 
         _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
         if (_isInfected)
@@ -107,12 +109,18 @@ public class Villager : MonoBehaviour
         return _stats;
     }
 
-    private void Die()
+    public void Die()
     {
         //_stats.SetIsAlive( false);
         // _deathmode.isAlive = false;
-
-        _group.RemoveVillager(this);
+        if (_group)
+        {
+            _group.RemoveVillager(this);
+        }        
+        _dyingVillager.VillagerIsDead();
+        _rb.isKinematic = true;
+        agent.enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
     }
     public bool IsPassive()
     {

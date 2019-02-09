@@ -10,16 +10,13 @@ public class AICharacter : EnvironmentMaterial {
     // Components attached to object
     private NavMeshAgent _agent;
     private AICharacterAttack _combat;
+    private CharacterStats _stats;
 
     private AICharactersGroup _assignedGroup;
 
     // Target & destination for navMesh agent
     private GameObject _ownTarget;
     private Vector3 _destination;
-
-    // These variables are set by the assignedGroup !
-    private float passiveSpeed = 2.0f;
-    private float actionSpeed = 3.5f;
 
     private float _stoppingDistance = 1.5f;
 
@@ -34,10 +31,11 @@ public class AICharacter : EnvironmentMaterial {
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _stats = GetComponent<CharacterStats>();
     }
 
     private void Start()
-    {
+    {        
         _combat = GetComponent<AICharacterAttack>();
         _assignedGroup = transform.parent.GetComponent<AICharactersGroup>();
     }
@@ -51,9 +49,14 @@ public class AICharacter : EnvironmentMaterial {
     // If target found, ask the group to share the target with all group objects
     public void TargetFound(GameObject target)
     {
-        _hasPriorityOnTarget = true;
-        _assignedGroup.AddTarget(target);
-        _assignedGroup.ShareTarget(target);
+        CharacterStats _targetStats = target.GetComponent<CharacterStats>();
+        if (_targetStats && _targetStats.IsAlive())
+        {
+            _hasPriorityOnTarget = true;
+            _assignedGroup.AddTarget(target);
+            _assignedGroup.ShareTarget(target);
+        }
+        
     }
 
     public void TargetNotFound()
@@ -101,7 +104,7 @@ public class AICharacter : EnvironmentMaterial {
             _ownTarget = target;
             if (_ownTarget) // Make sure target is not null
             {
-                FastSpeed();
+                SetFastSpeed();
                 SetDestination(target.transform.position);
             }
         }
@@ -113,7 +116,7 @@ public class AICharacter : EnvironmentMaterial {
         _hasPriorityOnTarget = false;
         _ownTarget = null;
         _destination = _assignedGroup.GetRallyPoint().transform.position;
-        SlowSpeed();
+        SetNormalSpeed();
     }
 
     // What to do when Obstacle Reached ?
@@ -121,13 +124,15 @@ public class AICharacter : EnvironmentMaterial {
     public virtual void DoActionOnTarget()
     {
         _hasPriorityOnTarget = true;
-        _isAttacking = true;        
+        _isAttacking = true;
+        Debug.Log("ACTION");
     }
 
     // No need for this
     private void StopTarget()
     {
         // Make the target stop moving because we are attacking it
+        /*
         AICharacter aiTarget = _ownTarget.GetComponent<AICharacter>();
         if (aiTarget)
         {
@@ -135,7 +140,13 @@ public class AICharacter : EnvironmentMaterial {
         }
         else
         {
-            //if (_ownTarget.GetComponent<Villager>())
+            if (_ownTarget.GetComponent<Villager>())
+        }
+        */
+        CharacterStats targetStats = _ownTarget.GetComponent<CharacterStats>();
+        if (targetStats)
+        {
+            targetStats.StopMovement();
         }
     }
     
@@ -163,7 +174,7 @@ public class AICharacter : EnvironmentMaterial {
 
     public virtual void MoveAgain()
     {
-        FastSpeed();
+        SetFastSpeed();
     }
 
     // Remove the item from the list and get a new target
@@ -257,13 +268,6 @@ public class AICharacter : EnvironmentMaterial {
                     MoveAgain();
                     GetNewTarget();
                 }
-                /*
-                if (!_isMovingAround)
-                {
-                    Debug.Log("JE PASSE PASSE");
-                    _assignedGroup.MoveRandom();
-                }
-                */
             }
         }        
     }
@@ -271,34 +275,23 @@ public class AICharacter : EnvironmentMaterial {
     // Set a Destination (not a target gameobject)
     public void SetRandomDestination(Vector3 destination)
     {
-        SlowSpeed();
+        SetNormalSpeed();
         SetDestination(destination);
     }
 
-    // Used by the AICharactersGroup
-    public void SetSlowSpeed(float speed)
+    public float GetSpeed()
     {
-        passiveSpeed = speed;
-    }
-    public void SetFastSpeed(float speed)
-    {
-        actionSpeed = speed;
+        return _stats.speed;
     }
 
-    // Used to change the speed of a character
-    private void SlowSpeed()
+    public void SetNormalSpeed()
     {
-        if (gameObject.activeSelf)
-        {
-            _agent.speed = passiveSpeed;
-        }        
+        _agent.speed = GetComponent<CharacterStats>().speed;
     }
-    private void FastSpeed()
+
+    public void SetFastSpeed()
     {
-        if (gameObject.activeSelf)
-        {
-            _agent.speed = actionSpeed;
-        }
+        _agent.speed = GetComponent<CharacterStats>().speed * 2;
     }
 
     // Go away from the enemy
@@ -306,7 +299,7 @@ public class AICharacter : EnvironmentMaterial {
     {
         _isEscaping = true;
         _ownTarget = null;
-        FastSpeed();
+        SetFastSpeed();
         // Calculate the newPosition where we must go
         Vector3 distance = transform.position - enemy.transform.position;
         Vector3 newPos = transform.position + distance;

@@ -14,10 +14,6 @@ public class AICharactersGroup : MonoBehaviour {
     private GameObject _rallyPoint;
     private NavMeshAgent _rallyPointAgent;
 
-    // Speed of the group
-    public float passiveSpeed = 2.0f;
-    public float actionSpeed = 3.5f;
-
     // Range, how far can the group go ?
     public float movingDistance = 20.0f;
 
@@ -44,13 +40,14 @@ public class AICharactersGroup : MonoBehaviour {
             {
                 AICharacter aiCharacter = child.GetComponent<AICharacter>();
                 AddCharacter(aiCharacter);
-                aiCharacter.SetSlowSpeed(passiveSpeed);
-                aiCharacter.SetFastSpeed(actionSpeed);
             }            
         }
-        CreateRallyPoint();
-        MoveRandom();
-        //Regroup();
+        if (_aiCharacters.Count > 0)
+        {
+            CreateRallyPoint();
+            MoveRandom();
+            //Regroup();
+        }
     }
 
     private void CreateRallyPoint()
@@ -64,8 +61,8 @@ public class AICharactersGroup : MonoBehaviour {
             _rallyPointAgent = _rallyPoint.AddComponent<NavMeshAgent>();
             _rallyPointAgent.enabled = true;
             _rallyPointAgent.Warp(_rallyPoint.transform.position);
-            _rallyPointAgent.speed = passiveSpeed;
             _rallyPointAgent.radius = 0;
+            _rallyPointAgent.speed = _aiCharacters[0].GetSpeed();
             //_rallyPointAgent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         }
     }
@@ -80,9 +77,7 @@ public class AICharactersGroup : MonoBehaviour {
     {
         // Make sur we don't have listed this target already
         //if (!IsTargetRegistered(target))
-        {
-            _targetDetected.Add(target);
-        }
+        _targetDetected.Add(target);
     }
 
     // Send a common target
