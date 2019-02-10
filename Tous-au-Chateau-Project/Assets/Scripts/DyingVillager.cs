@@ -8,7 +8,7 @@ public class DyingVillager : MonoBehaviour {
     //public ParticleSystem ghost; // assigned in editor
     public GameObject mesh; // assigned in editor
 
-    private bool _startAnimation = false;
+    public bool isAlive = true;
    
     // Use this for initialization
     void Start () {
@@ -17,7 +17,7 @@ public class DyingVillager : MonoBehaviour {
 
     private void Update()
     {
-        if (_startAnimation)
+        if (!isAlive)
         {
             // Turn towards our target rotation.
             SetBlendedEulerAngles(new Vector3(90, 0, 0)); // rotation on x axis 
@@ -29,13 +29,5 @@ public class DyingVillager : MonoBehaviour {
     public void SetBlendedEulerAngles(Vector3 angles)
     {
         _targetRotation = Quaternion.Euler(angles);
-    }
-
-    // Called by Die() in Villager
-    public void VillagerIsDead()
-    {
-        Debug.Log("DEAD");
-        _startAnimation = true;
-        //ghost.Play();
     }
 }

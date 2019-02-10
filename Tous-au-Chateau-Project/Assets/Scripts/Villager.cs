@@ -28,7 +28,7 @@ public class Villager : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         _villagerCollision = GetComponent<CollisionDetection>();
-        _stats = new CharacterStats();
+        _stats = GetComponent<CharacterStats>();
         _deathmode = GetComponent<DyingVillager>();
 
         _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
@@ -142,23 +142,6 @@ public class Villager : MonoBehaviour
 
     void Update()
     {
-        if (_stats.GetIsAlive())
-        {
-            if (_stats.GetLife() <= 0)
-            {
-                Die();
-                
-            }
-            
-            if (_villagerCollision.inDanger)
-            {
-                if (!_villagerCollision.onPlatform)
-                {
-                    _stats.SetLife(0);
-                }
-
-            }
-        }
         if (_canMove)
         {
             Move();
