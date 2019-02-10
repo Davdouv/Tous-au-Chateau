@@ -14,10 +14,6 @@ public class AICharactersGroup : MonoBehaviour {
     private GameObject _rallyPoint;
     private NavMeshAgent _rallyPointAgent;
 
-    // Speed of the group
-    public float passiveSpeed = 2.0f;
-    public float actionSpeed = 3.5f;
-
     // Range, how far can the group go ?
     public float movingDistance = 20.0f;
 
@@ -44,13 +40,14 @@ public class AICharactersGroup : MonoBehaviour {
             {
                 AICharacter aiCharacter = child.GetComponent<AICharacter>();
                 AddCharacter(aiCharacter);
-                aiCharacter.SetSlowSpeed(passiveSpeed);
-                aiCharacter.SetFastSpeed(actionSpeed);
             }            
         }
-        CreateRallyPoint();
-        MoveRandom();
-        //Regroup();
+        if (_aiCharacters.Count > 0)
+        {
+            CreateRallyPoint();
+            MoveRandom();
+            //Regroup();
+        }
     }
 
     private void CreateRallyPoint()
@@ -64,7 +61,9 @@ public class AICharactersGroup : MonoBehaviour {
             _rallyPointAgent = _rallyPoint.AddComponent<NavMeshAgent>();
             _rallyPointAgent.enabled = true;
             _rallyPointAgent.Warp(_rallyPoint.transform.position);
-            _rallyPointAgent.speed = passiveSpeed;
+            _rallyPointAgent.radius = 0;
+            _rallyPointAgent.speed = _aiCharacters[0].GetSpeed();
+            //_rallyPointAgent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
         }
     }
 
@@ -77,10 +76,8 @@ public class AICharactersGroup : MonoBehaviour {
     public void AddTarget(GameObject target)
     {
         // Make sur we don't have listed this target already
-        if (!_targetDetected.Contains(target))
-        {
-            _targetDetected.Add(target);
-        }
+        //if (!IsTargetRegistered(target))
+        _targetDetected.Add(target);
     }
 
     // Send a common target
@@ -121,7 +118,7 @@ public class AICharactersGroup : MonoBehaviour {
         int index = _aiCharacters.IndexOf(aiCharacter);
         for (int i = 0; i < _aiCharacters.Count; ++i)
         {
-            if (i != index)
+            if (i != index && !_aiCharacters[i].IsAttacking())
             {
                 _aiCharacters[i].NoTarget();
                 _aiCharacters[i].SetTarget(newTarget);
@@ -172,6 +169,7 @@ public class AICharactersGroup : MonoBehaviour {
     // Make the rallyPoint the new destination of all the aiCharacters
     private void Regroup()
     {
+        Debug.Log("regroup");
         _regrouping = true;
         ShareTarget(_rallyPoint);
     }
@@ -257,7 +255,7 @@ public class AICharactersGroup : MonoBehaviour {
     private bool IsDestinationReached()
     {
         float stoppingDistance = 0.5f;
-        return (Vector3.Distance(_rallyPoint.transform.position, _rallyPointAgent.destination) < stoppingDistance);
+        return ((_rallyPoint.transform.position - _rallyPointAgent.destination) .sqrMagnitude < stoppingDistance* stoppingDistance);
     }
 
     public GameObject GetRallyPoint()
@@ -288,5 +286,10 @@ public class AICharactersGroup : MonoBehaviour {
             character.SetRandomDestination(destination);
             character.SetIsMovingAround(true);
         }
+    }
+
+    public bool IsTargetRegistered(GameObject target)
+    {
+        return _targetDetected.Contains(target);
     }
 }

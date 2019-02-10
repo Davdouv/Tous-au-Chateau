@@ -13,11 +13,11 @@ public class InfectionSpreading : TriggerZone
     
     // Use this for initialization
     void Start () {
-        CharacterStats _stats = GetComponent<Villager>()._stats;
+        CharacterStats _stats = GetComponent<Villager>().GetStats();
         _canInfect = new List<string> { tag };
         Time.timeScale = 1;
         _infectable = new List<GameObject>();
-        _stats.SetSpeed(_stats.GetSpeed() / 2);
+        _stats.speed = _stats.speed / 2;
         distanceDetection = 2.5f;
         GetComponent<SphereCollider>().radius = 2.5f;
         targetTag.AddRange(_canInfect);

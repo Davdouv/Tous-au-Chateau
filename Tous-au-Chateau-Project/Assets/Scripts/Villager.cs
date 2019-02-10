@@ -7,7 +7,7 @@ public class Villager : MonoBehaviour
 {
     Rigidbody _rb;
     NavMeshAgent agent;
-    public VillagersGroup _group;
+    private VillagersGroup _group;
     public int _motivation;
 
     public bool _isInfected;
@@ -62,7 +62,7 @@ public class Villager : MonoBehaviour
         agent.velocity = transform.forward * 1.00f;
         */
 
-        _rb.MovePosition(transform.position + transform.forward * _stats.GetSpeed() * Time.deltaTime);
+        _rb.MovePosition(transform.position + transform.forward * _stats.speed * Time.deltaTime);
 
     }
     private void MoveTowardVillager(GameObject target)
@@ -104,12 +104,26 @@ public class Villager : MonoBehaviour
         _isInfected = true;
         gameObject.AddComponent<InfectionSpreading>();
     }
-    private void Die()
+
+    public CharacterStats GetStats()
     {
+        return _stats;
+    }
+
+    public void Die()
+    {
+        //_stats.SetIsAlive( false);
+        // _deathmode.isAlive = false;
+        if (_group)
+        {
+            _group.RemoveVillager(this);
+        }        
         _deathmode.isAlive = false;
         _stats.SetIsAlive(false);
         _canMove = false;
-        _group.RemoveVillager(this);
+        _rb.isKinematic = true;
+        agent.enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
     }
     public bool IsPassive()
     {
@@ -124,9 +138,7 @@ public class Villager : MonoBehaviour
         agent.updatePosition = true;
         agent.updateRotation = true;
         agent.SetDestination(_isJoining.transform.position);
-
     }
-
 
     void Update()
     {
@@ -148,7 +160,9 @@ public class Villager : MonoBehaviour
             }
         }
         if (_canMove)
+        {
             Move();
+        }
 
         if (!_hasJoined)
         {
@@ -179,8 +193,8 @@ public class Villager : MonoBehaviour
                 }
             }
         }
-
     }
+
     // Update is called once per frame
     /*
     void Update()
