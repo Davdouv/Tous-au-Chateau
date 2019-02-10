@@ -255,7 +255,7 @@ public class AICharactersGroup : MonoBehaviour {
     private bool IsDestinationReached()
     {
         float stoppingDistance = 0.5f;
-        return (Vector3.Distance(_rallyPoint.transform.position, _rallyPointAgent.destination) < stoppingDistance);
+        return ((_rallyPoint.transform.position - _rallyPointAgent.destination) .sqrMagnitude < stoppingDistance* stoppingDistance);
     }
 
     public GameObject GetRallyPoint()

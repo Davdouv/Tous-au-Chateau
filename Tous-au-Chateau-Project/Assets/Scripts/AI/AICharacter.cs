@@ -195,7 +195,8 @@ public class AICharacter : EnvironmentMaterial {
     // Check if RallyPoint has reached destination
     private bool IsDestinationReached(float stoppingDistance)
     {
-        return (Vector3.Distance(_destination, transform.position) < stoppingDistance);
+        //return (Vector3.Distance(_destination, transform.position) < stoppingDistance);
+        return ((_destination - transform.position).sqrMagnitude < stoppingDistance * stoppingDistance);
     }
 
     // We need to update the navMesh Destination if the target is moving
@@ -210,8 +211,9 @@ public class AICharacter : EnvironmentMaterial {
             if (_isEscaping)
             {
                 GameObject ennemy = GetComponent<AIDetection>().GetEnemyNear();
+                float dist = GetComponent<AIDetection>().distanceDetection;
                 // If there's still an ennemy close to us
-                if (ennemy && Vector3.Distance(ennemy.transform.position, transform.position) < GetComponent<AIDetection>().distanceDetection)
+                if (ennemy && ((ennemy.transform.position - transform.position).sqrMagnitude < dist*dist))
                 {
                     EscapeFrom(ennemy);
                 }
