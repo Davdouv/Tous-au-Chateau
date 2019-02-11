@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpeechManager : MonoBehaviour {
 
-	public SpeechBubble sb;
 	public SpeechEvent[] events;
 	private Animator _anim;
 	private bool _canDisable = false;

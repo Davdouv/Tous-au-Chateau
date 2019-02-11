@@ -70,7 +70,7 @@ public class TreeManager : MonoBehaviour {
         _lastAxiom = _axiom;
         AxiomeIterations(); //create axiom
 
-        Debug.Log(_lastPoint);
+        // Debug.Log(_lastPoint);
 
         //first element & direction
         _startPoints.Push(_lastPoint);

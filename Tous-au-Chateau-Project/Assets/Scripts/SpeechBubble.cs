@@ -32,17 +32,17 @@ public class SpeechBubble : MonoBehaviour {
 		AdaptCanvasToText();
 	}
 
-	public void OnEnable()
-  {
-		FindCamera();
-		_panel = this.transform.Find("Panel").gameObject;
-		_text = this.transform.Find("Text").gameObject;
-		_dots = this.transform.Find("Dots").gameObject;
-		_textComp = _text.GetComponent<Text>();
-		_textComp.text = "";
-		animator = GetComponent<Animator>();
-		AdaptCanvasToText();
-  }
+	// public void OnEnable()
+  // {
+	// 	FindCamera();
+	// 	_panel = this.transform.Find("Panel").gameObject;
+	// 	_text = this.transform.Find("Text").gameObject;
+	// 	_dots = this.transform.Find("Dots").gameObject;
+	// 	_textComp = _text.GetComponent<Text>();
+	// 	_textComp.text = "";
+	// 	animator = GetComponent<Animator>();
+	// 	AdaptCanvasToText();
+  // }
 
 	private void AdaptCanvasToText()
 	{
@@ -60,6 +60,9 @@ public class SpeechBubble : MonoBehaviour {
 		} else if (GameObject.Find("Camera (eye)")) {
 			cameraTransform = GameObject.Find("Camera (eye)").transform;
 			return true;
+		} else if (GameObject.Find("Main Camera")) {
+			cameraTransform = GameObject.Find("Main Camera").transform;
+			return true;
 		}
 		return false;
 	}
@@ -68,9 +71,10 @@ public class SpeechBubble : MonoBehaviour {
 	{
 		if (!cameraTransform) {
 			FindCamera();
+		} else {
+			_panel.transform.rotation = Quaternion.LookRotation(_panel.transform.position - cameraTransform.position);
+			_text.transform.rotation = Quaternion.LookRotation(_text.transform.position - cameraTransform.position);
 		}
-		_panel.transform.rotation = Quaternion.LookRotation(_panel.transform.position - cameraTransform.position);
-		_text.transform.rotation = Quaternion.LookRotation(_text.transform.position - cameraTransform.position);
 	}
 
 	public void StartAnimation()
