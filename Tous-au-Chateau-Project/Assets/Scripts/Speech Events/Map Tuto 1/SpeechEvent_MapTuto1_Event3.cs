@@ -9,7 +9,10 @@ public class SpeechEvent_MapTuto1_Event3 : SpeechEvent {
 	public override bool MustOpen() {
 		// Open after previous event is done
 		if (_previousEvent != null && _previousEvent.IsDone()) {
-			return true;
+			// TODO
+			if (/* groups falls into the water*/false) {
+				return true;
+			}
 		}
 		return false;
 	}

@@ -7,9 +7,12 @@ using UnityEngine;
 public class SpeechEvent_MapTuto1_Event6 : SpeechEvent {
 
 	public override bool MustOpen() {
-		// TODO
-		if (/*group falls into the void == true*/false) {
-				return true;
+		// Open after previous event is done
+		if (_previousEvent != null && _previousEvent.IsDone()) {
+			// TODO
+			if (/*group falls into the void == true*/false) {
+					return true;
+			}
 		}
 		return false;
 	}

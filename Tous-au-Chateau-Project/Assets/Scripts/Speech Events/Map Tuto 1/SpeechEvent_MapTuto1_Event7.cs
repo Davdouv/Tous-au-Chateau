@@ -7,15 +7,18 @@ using UnityEngine;
 public class SpeechEvent_MapTuto1_Event7 : SpeechEvent {
 
 	public override bool MustOpen() {
-		// TO DO
-		if (/*group enters the house == true*/false) {
-				return true;
+		// Open after previous event is done
+		if (_previousEvent != null && _previousEvent.IsDone()) {
+			// TODO
+			if (/*group enters the house == true*/false) {
+					return true;
+			}
 		}
 		return false;
 	}
 
 	public override bool MustClose() {
-		// TO DO
+		// TODO
 		// Any action from the player
 		return false;
 	}
