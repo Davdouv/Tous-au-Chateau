@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -113,6 +113,43 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &67785299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 67785300}
+  m_Layer: 0
+  m_Name: SpeechEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &67785300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67785299}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 153.97778, y: -39.918186, z: 81.66108}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1165997200}
+  - {fileID: 1547503555}
+  - {fileID: 361578324}
+  - {fileID: 2055717806}
+  - {fileID: 1999646670}
+  - {fileID: 1122292664}
+  - {fileID: 1993590566}
+  - {fileID: 134439820}
+  - {fileID: 381627205}
+  m_Father: {fileID: 739599542}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &68949326
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +178,49 @@ Transform:
   m_Father: {fileID: 739599542}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &134439819
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134439820}
+  - component: {fileID: 134439821}
+  m_Layer: 0
+  m_Name: Event 6.1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &134439820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134439819}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67785300}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &134439821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 134439819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3258f67faf8b12f4eb88944ebb08accf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _message: You have to crush the right tree if we want to reach the house.
+  _bubble: {fileID: 173539588}
+  _previousEvent: {fileID: 1993590565}
 --- !u!1001 &157162087
 Prefab:
   m_ObjectHideFlags: 0
@@ -197,6 +277,67 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bda71d6907f26a4f855c28b6621553c, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &173539588 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114676084133759984, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+    type: 2}
+  m_PrefabInternal: {fileID: 883927758}
+  m_Script: {fileID: 11500000, guid: 01c947be01b31ec4b80e136a20cfe8c3, type: 3}
+--- !u!224 &173539592 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+    type: 2}
+  m_PrefabInternal: {fileID: 883927758}
+--- !u!1 &252608306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 252608307}
+  - component: {fileID: 252608308}
+  m_Layer: 0
+  m_Name: _SpeechManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &252608307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 252608306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 739599542}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &252608308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 252608306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7b7be29be264bb4a8f2b1d454854951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  events:
+  - {fileID: 1165997199}
+  - {fileID: 1547503554}
+  - {fileID: 361578323}
+  - {fileID: 2055717805}
+  - {fileID: 1999646671}
+  - {fileID: 1122292663}
+  - {fileID: 1993590565}
+  - {fileID: 134439821}
+  - {fileID: 381627206}
 --- !u!1001 &286861062
 Prefab:
   m_ObjectHideFlags: 0
@@ -234,7 +375,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4219222216158774, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
       propertyPath: m_Name
@@ -243,6 +384,96 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &361578322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 361578324}
+  - component: {fileID: 361578323}
+  m_Layer: 0
+  m_Name: Event 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &361578323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 361578322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f42a8e0028cf91c47a7107745df22f0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _message: "Great, you\u2019re here! Now there\u2019s nothing we can fear since you\u2019re
+    protecting us! Let\u2019s head over this house to recruit new villagers to join
+    our cause!"
+  _bubble: {fileID: 173539588}
+  _previousEvent: {fileID: 1547503554}
+--- !u!4 &361578324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 361578322}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67785300}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &381627204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381627205}
+  - component: {fileID: 381627206}
+  m_Layer: 0
+  m_Name: Event 7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &381627205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381627204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67785300}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &381627206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381627204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e23ee40addeb743908551597b7d8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _message: "Hourra! You\u2019ve led us to the house safely (for most of us at least...).
+    Our ranks are now widening. Our journey is not over yet, there\u2019s another
+    house we have to visit."
+  _bubble: {fileID: 173539588}
+  _previousEvent: {fileID: 1993590565}
 --- !u!4 &652602276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4219222216158774, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
@@ -349,6 +580,111 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &883927758
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1333575066}
+    m_Modifications:
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 4.7300005
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.8499985
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 105.576004
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 710
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 279
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114676084133759984, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
+        type: 2}
+      propertyPath: message
+      value: Message
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fb5adc7da9ca87a42b5ac24a2c060a41, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &970474264
 Prefab:
   m_ObjectHideFlags: 0
@@ -406,6 +742,95 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4606879666362078, guid: 7448143ad30e2a64e9534a27a5972310,
     type: 2}
   m_PrefabInternal: {fileID: 818983309}
+--- !u!1 &1122292662
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1122292664}
+  - component: {fileID: 1122292663}
+  m_Layer: 0
+  m_Name: Event 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1122292663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1122292662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f25712c75e130e24b8fbb87ff7d4e59a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _message: "There are enemies on our way, such as this wild wolf. Maybe you could,
+    you know\u2026 Crush it?"
+  _bubble: {fileID: 173539588}
+  _previousEvent: {fileID: 2055717805}
+--- !u!4 &1122292664
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1122292662}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67785300}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1165997198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1165997200}
+  - component: {fileID: 1165997199}
+  m_Layer: 0
+  m_Name: Event 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1165997199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1165997198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2551e0e901f06fd4890c1ae047fbb997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _message: Popularios! Dear God, can you hear us from up there? We are going to organize
+    our revolution against the Wicked Lord and we need your help! If you can hear
+    us, please crush the ground near us with your fist.
+  _bubble: {fileID: 173539588}
+  _previousEvent: {fileID: 0}
+--- !u!4 &1165997200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1165997198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67785300}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1233553866
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,8 +894,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1233553866}
-  m_LocalRotation: {x: 0.31637943, y: 0.35677284, z: 0.12954701, w: -0.8693876}
-  m_LocalPosition: {x: 128.995, y: 14.254639, z: 5.321722}
+  m_LocalRotation: {x: 0.19119933, y: 0.7463785, z: 0.24197394, w: -0.58975464}
+  m_LocalPosition: {x: 260.23077, y: -217.8794, z: 113.61853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -524,6 +949,7 @@ Transform:
   - {fileID: 1326241711}
   - {fileID: 1775915028}
   - {fileID: 1737788443}
+  - {fileID: 173539592}
   m_Father: {fileID: 1742449805}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -536,8 +962,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da7a71232e1cc0342a9feaa712fec41e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   _villagers:
   - {fileID: 0}
   - {fileID: 0}
@@ -585,11 +1011,56 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4219222216158774, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1547503553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1547503555}
+  - component: {fileID: 1547503554}
+  m_Layer: 0
+  m_Name: Event 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1547503554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1547503553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2619e924716cef1409829fb8be252b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _message: "Great, you\u2019re here! Now there\u2019s nothing we can fear since you\u2019re
+    protecting us! Let\u2019s head over this house to recruit new villagers to join
+    our cause!"
+  _bubble: {fileID: 173539588}
+  _previousEvent: {fileID: 1165997199}
+--- !u!4 &1547503555
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1547503553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67785300}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1601731021
 Prefab:
   m_ObjectHideFlags: 0
@@ -679,8 +1150,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_AgentTypeID: 0
   m_CollectObjects: 0
   m_Size: {x: 10, y: 10, z: 10}
@@ -816,7 +1287,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4219222216158774, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
       propertyPath: m_Name
@@ -862,7 +1333,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4219222216158774, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
       propertyPath: m_Name
@@ -993,18 +1464,150 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1988866041}
-  m_LocalRotation: {x: -0.32621837, y: -0.34893966, z: 0.13073957, w: -0.86875194}
-  m_LocalPosition: {x: 91.45728, y: 59.70027, z: 7.4348316}
+  m_LocalRotation: {x: -0.6003673, y: -0.020548346, z: -0.057214726, w: -0.7974104}
+  m_LocalPosition: {x: 177, y: 268, z: 26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 72.771, y: 20.034, z: 23.039001}
+--- !u!1 &1993590564
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1993590566}
+  - component: {fileID: 1993590565}
+  m_Layer: 0
+  m_Name: Event 6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1993590565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1993590564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cee50c3b010a6c459383dfd6466ea01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _message: We cannot reach the house, those trees are blocking the way. Get rid of
+    one of those to let us pass.
+  _bubble: {fileID: 173539588}
+  _previousEvent: {fileID: 1122292663}
+--- !u!4 &1993590566
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1993590564}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67785300}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1999646669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1999646670}
+  - component: {fileID: 1999646671}
+  m_Layer: 0
+  m_Name: Event 4.1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1999646670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1999646669}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67785300}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1999646671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1999646669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8f3da9ebe2aed43a7256cb5ce940ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _message: You need to place the board at the right place!
+  _bubble: {fileID: 173539588}
+  _previousEvent: {fileID: 2055717805}
 --- !u!4 &2042082652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4047924759742978, guid: 3e28f78286845d24f9c8e2131a034c4c,
     type: 2}
   m_PrefabInternal: {fileID: 970474264}
+--- !u!1 &2055717804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2055717806}
+  - component: {fileID: 2055717805}
+  m_Layer: 0
+  m_Name: Event 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2055717805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055717804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e3cf3b697a4cd49a8283461a6aa201, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _message: "Thanks to this new collected resource, you\u2019re now able to create
+    a bridge for us to cross the river. Select the wood board in your construction
+    panel and put it on the river."
+  _bubble: {fileID: 173539588}
+  _previousEvent: {fileID: 361578323}
+--- !u!4 &2055717806
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2055717804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 67785300}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2071464243
 Prefab:
   m_ObjectHideFlags: 0
@@ -1105,7 +1708,7 @@ Prefab:
     - target: {fileID: 114324077930030170, guid: bc4f23d04e42f4b559542ad840db6530,
         type: 2}
       propertyPath: specularLight
-      value:
+      value: 
       objectReference: {fileID: 1881763366}
     - target: {fileID: 4738923781260352, guid: bc4f23d04e42f4b559542ad840db6530, type: 2}
       propertyPath: m_LocalScale.x
