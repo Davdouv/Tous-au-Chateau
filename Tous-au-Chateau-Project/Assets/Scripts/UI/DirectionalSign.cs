@@ -10,8 +10,7 @@ public class DirectionalSign : Building
 
     void Start()
     {
-        // wood = 20, stone = 0, food = 0
-        _cost = new ResourcesPack(20);
+        _cost = new ResourcesPack { stone = stoneCost, wood = woodCost, food = foodCost, workForce = workForceCost, motivation = motivationCost };
     }
 
     public override bool ApplyEffect()

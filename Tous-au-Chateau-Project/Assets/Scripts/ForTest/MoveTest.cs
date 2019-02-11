@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class MoveTest : MonoBehaviour {
 
-    float speed = 10f;
-	
-	// Update is called once per frame
-	void Update ()
+    public float speed = 1.0f;
+    Rigidbody rb;
+
+    void Start()
     {
-        // Basic 2D movements for test
-        transform.Translate(new Vector3(Input.GetAxis("Horizontal") * Time.deltaTime * speed, 0, 0));
-        transform.Translate(new Vector3(0, Input.GetAxis("Vertical") * Time.deltaTime * speed, 0));
+        rb = GetComponent<Rigidbody>();
+    }
+    // Update is called once per frame
+    void FixedUpdate ()
+    {
+        rb.MovePosition(transform.position + transform.forward * speed * Time.deltaTime) ;
     }
 }
