@@ -27,7 +27,6 @@ public class ResourceManager : PauseScript
     }
     #endregion
 
-    public EndOfGameManager _EndOfGame;
     public VillagersGroup listOfVillagers;
 
     private ResourcesPack _currentResources;
