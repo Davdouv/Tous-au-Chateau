@@ -1116,6 +1116,57 @@ MonoBehaviour:
   m_VoxelSize: 0.17666666
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: a8c511b026cf2b74fa4a51dad168eeb1, type: 2}
+--- !u!1 &936326727
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 936326729}
+  - component: {fileID: 936326728}
+  m_Layer: 0
+  m_Name: AI Village
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &936326728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 936326727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5cbeedd03ec1654db0da4198daba38a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sizeOfVillageGridUnit: 7
+  typeOfHouse1: {fileID: 1173791510195794, guid: 3734f5a637c93414da39f97e3300d844,
+    type: 2}
+  typeOfHouse2: {fileID: 1590612275329154, guid: 880c8c42202959b4db6bb921969c6da4,
+    type: 2}
+  typeOfHouse3: {fileID: 1151173502942794, guid: 0eb3209f4c214da44a4dda780eb76247,
+    type: 2}
+  typeOfHouse4: {fileID: 1328132590391704, guid: 9e67a1af2e0b2f34fa340c05bc5f8195,
+    type: 2}
+  genotypeStr: 11110000111011111110001001110000001010110011010100111110001111110010011110101
+  villagePosition: {fileID: 936326729}
+--- !u!4 &936326729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 936326727}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 28.6, y: 0, z: -25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &937687514
 GameObject:
   m_ObjectHideFlags: 0
