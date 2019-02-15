@@ -122,20 +122,20 @@
             if (controller != null)
             {
                 VRTK_InteractTouch touch = controller.GetComponentInChildren<VRTK_InteractTouch>();
-                VRTK_InteractGrab grab = controller.GetComponentInChildren<VRTK_InteractGrab>();
+                //VRTK_InteractGrab grab = controller.GetComponentInChildren<VRTK_InteractGrab>();
                 touch.enabled = false;
-                grab.enabled = false;
+               // grab.enabled = false;
 
                 touch.customColliderContainer = null;
-                grab.ForceControllerAttachPoint(null);
+               // grab.ForceControllerAttachPoint(null);
 
                 if (avatar != null && state)
                 {
                     touch.customColliderContainer = avatar.transform.Find("HandColliders").gameObject;
-                    grab.ForceControllerAttachPoint(avatar.transform.Find("GrabAttachPoint").GetComponent<Rigidbody>());
+                  //  grab.ForceControllerAttachPoint(avatar.transform.Find("GrabAttachPoint").GetComponent<Rigidbody>());
                 }
                 touch.enabled = true;
-                grab.enabled = true;
+                //grab.enabled = true;
             }
         }
     }
