@@ -50,7 +50,7 @@ public class TreeManager : MonoBehaviour {
         _direction = new Stack<Vector3>();
         _coeff = new Stack<int>();
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("space"))
@@ -59,7 +59,7 @@ public class TreeManager : MonoBehaviour {
             _lastPoint = new Vector3(Random.Range(-50, 50), axeY, Random.Range(-50, 50));
             //_lastAxiom = _axiom;
             //AxiomeIterations(); //create axiom
-            BuildTree(); 
+            BuildTree();
         }
     }
 
@@ -69,6 +69,8 @@ public class TreeManager : MonoBehaviour {
         _lastPoint = new Vector3(0, axeY, 0);
         _lastAxiom = _axiom;
         AxiomeIterations(); //create axiom
+
+        // Debug.Log(_lastPoint);
 
         //first element & direction
         _startPoints.Push(_lastPoint);
