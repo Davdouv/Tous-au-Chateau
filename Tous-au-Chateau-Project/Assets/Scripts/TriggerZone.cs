@@ -89,8 +89,9 @@ public abstract class TriggerZone : MonoBehaviour {
 
     public bool IsInRange(Vector3 position)
     {
-        float distance = Vector3.Distance(transform.position, position);
-        return (distance < distanceDetection);
+        //float distance = Vector3.Distance(transform.position, position);
+        float distance = (transform.position - position).sqrMagnitude;
+        return (distance < distanceDetection*distanceDetection);
     }
 
     protected void RemoveTarget(GameObject target)

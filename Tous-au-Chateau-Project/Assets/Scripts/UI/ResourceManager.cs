@@ -28,6 +28,7 @@ public class ResourceManager : PauseScript
     #endregion
 
     public EndOfGameManager _EndOfGame;
+    public VillagersGroup listOfVillagers;
 
     private ResourcesPack _currentResources;
     private bool _isInPause;
@@ -41,7 +42,10 @@ public class ResourceManager : PauseScript
 
     private void Update()
     {
-        //Need to update villagers nb from Villagers group instance
+        if(listOfVillagers != null)
+        {
+            _currentResources.workForce = listOfVillagers.GetNumberOfVillagers();
+        }
     }
 
     private void InGameMotivation()
@@ -90,11 +94,12 @@ public class ResourceManager : PauseScript
     }
 
     //ADD
-
     public void AddResources(ResourcesPack toAdd)
     {
         if (toAdd.wood >= 0 && toAdd.stone >= 0 && toAdd.food >= 0 && toAdd.workForce >= 0 && toAdd.motivation >= 0)
             _currentResources += toAdd;
+
+        //Special case for workforce => add in villagersgroup and not here
 
         if (_currentResources.motivation > 100)
             _currentResources.motivation = 100;
@@ -128,6 +133,7 @@ public class ResourceManager : PauseScript
             return false; // end of game ?
 
         //every resource level is high enough
+        //Special case for workforce => remove in villagersgroup and not here
         _currentResources -= toRemove;
         return true;
     }
