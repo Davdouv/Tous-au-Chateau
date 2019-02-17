@@ -15,6 +15,8 @@ public class MapStation : MonoBehaviour {
 	public GameObject flag2;
 	public GameObject flag3;
 
+	public GameObject darkFlags;
+
 	public enum CompletionLevel {Locked = -1, Unlocked = 0, OneStar = 1, TwoStars = 2, ThreeStars = 3};
 
 	// Use this for initialization
@@ -52,6 +54,7 @@ public class MapStation : MonoBehaviour {
 	private void LockedDisplay() {
 		castleLocked.SetActive(true);
 		castleUnlocked.SetActive(false);
+		darkFlags.SetActive(false);
 		flag1.SetActive(false);
 		flag2.SetActive(false);
 		flag3.SetActive(false);
@@ -66,6 +69,7 @@ public class MapStation : MonoBehaviour {
 	private void UnlockedDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
+		darkFlags.SetActive(true);
 		flag1.SetActive(false);
 		flag2.SetActive(false);
 		flag3.SetActive(false);
@@ -80,6 +84,7 @@ public class MapStation : MonoBehaviour {
 	private void OneStarDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
+		darkFlags.SetActive(false);
 		flag1.SetActive(true);
 		flag2.SetActive(false);
 		flag3.SetActive(false);
@@ -94,6 +99,7 @@ public class MapStation : MonoBehaviour {
 	private void TwoStarsDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
+		darkFlags.SetActive(false);
 		flag1.SetActive(true);
 		flag2.SetActive(true);
 		flag3.SetActive(false);
@@ -108,6 +114,7 @@ public class MapStation : MonoBehaviour {
 	private void ThreeStarsDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
+		darkFlags.SetActive(false);
 		flag1.SetActive(true);
 		flag2.SetActive(true);
 		flag3.SetActive(true);
