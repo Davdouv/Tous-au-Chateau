@@ -7,14 +7,16 @@ using System.IO;
 public class GlobalScore : MonoBehaviour {
 
 	private List<LevelScore> _scores;
+	public bool ready;
 
 	// Use this for initialization
 	void Start () {
 		_scores = new List<LevelScore>();
 
 		CreateScoreDebug();
-		_scores = new List<LevelScore>();
-		FetchData();
+
+		ready = FetchData();
+		
 		Debug.Log(Application.persistentDataPath);
 		foreach (var score in _scores) {
 			Debug.Log(score.levelName + " : " + score.ComputeScore());
@@ -24,9 +26,10 @@ public class GlobalScore : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
 	}
 
-	private void FetchData() {
+	private bool FetchData() {
 		if (File.Exists(Application.persistentDataPath + "/score.dat")) {
       //get content of json string
       StreamReader file = new StreamReader(Application.persistentDataPath + "/score.dat");
@@ -35,10 +38,13 @@ public class GlobalScore : MonoBehaviour {
       file.Close();
       //save the loaded data
       _scores = loadedScores;
+			return true;
     }
+		return false;
 	}
 
 	public int GetScore(string levelName) {
+		Debug.Log(_scores);
 		foreach (var score in _scores) {
 			if (score.levelName == levelName) {
 				return score.ComputeScore();
@@ -47,7 +53,7 @@ public class GlobalScore : MonoBehaviour {
 		return -1;
 	}
 
-	private string scoresToJSON() {
+	private string ScoresToJSON() {
 		bool prettyPrint = true;
     return JsonHelperList.ToJson(_scores, prettyPrint); //serializing the list using a custom JsonHelper, adapting JsonUtility for Lists
 	}
@@ -97,7 +103,7 @@ public class GlobalScore : MonoBehaviour {
 
 		CreateFakeScores();
 
-		file.WriteLine(scoresToJSON());
+		file.WriteLine(ScoresToJSON());
 		file.Close();
 	}
 }
