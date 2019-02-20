@@ -16,7 +16,7 @@ public class GlobalScore : MonoBehaviour {
 		CreateScoreDebug();
 
 		ready = FetchData();
-		
+
 		Debug.Log(Application.persistentDataPath);
 		foreach (var score in _scores) {
 			Debug.Log(score.levelName + " : " + score.ComputeScore());
@@ -44,7 +44,6 @@ public class GlobalScore : MonoBehaviour {
 	}
 
 	public int GetScore(string levelName) {
-		Debug.Log(_scores);
 		foreach (var score in _scores) {
 			if (score.levelName == levelName) {
 				return score.ComputeScore();
