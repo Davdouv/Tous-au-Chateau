@@ -18,9 +18,17 @@ public class MapSelector : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		// DEBUG
 		if (debugLoadScene) {
 			SceneManager.LoadScene("TestScene");
 		}
+
+		foreach (var station in mapStations) {
+			if (station.isCrushed && station.GetScore() >= 0) {
+				SwitchScene(station.levelName);
+			}
+		}
+
 	}
 
 	private void UpdateStationsState() {
@@ -28,6 +36,10 @@ public class MapSelector : MonoBehaviour {
 			int score = _globalScore.GetScore(station.name);
 			station.SetCompletionLevel(score);
 		}
+	}
+
+	private void SwitchScene(string name) {
+		SceneManager.LoadScene(name);
 	}
 
 	private IEnumerator Setup() {

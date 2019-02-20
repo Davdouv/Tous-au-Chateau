@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapStation : MonoBehaviour {
+public class MapStation : MapPhysicObject {
 
 	public string name;
 	public CompletionLevel completionLevel = CompletionLevel.Locked;
@@ -18,6 +18,8 @@ public class MapStation : MonoBehaviour {
 	public GameObject darkFlags;
 
 	public enum CompletionLevel {Locked = -1, Unlocked = 0, OneStar = 1, TwoStars = 2, ThreeStars = 3};
+
+	public bool isCrushed = false;
 
 	// Use this for initialization
 	void Start () {
