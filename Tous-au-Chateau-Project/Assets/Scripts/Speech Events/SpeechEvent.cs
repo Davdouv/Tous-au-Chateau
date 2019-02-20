@@ -11,6 +11,8 @@ public class SpeechEvent : MonoBehaviour {
 	private bool _isDone = false;
 	public SpeechEvent _previousEvent;
 
+    public static VillagersGroup currentVillagersGroup;
+
 	// Use this for initialization
 	void Start () {
 		_bubble.setMessage(_message);

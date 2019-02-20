@@ -7,9 +7,10 @@ public class SpeechManager : MonoBehaviour {
 	public SpeechEvent[] events;
 	private Animator _anim;
 	private bool _canDisable = false;
-  private int _openParameterId;
-  const string _openTransitionName = "Open";
-  const string _closedStateName = "Closed";
+    private int _openParameterId;
+    const string _openTransitionName = "Open";
+    const string _closedStateName = "Closed";
+    public VillagersGroup firstVillagersGroup;
 
 	void Update() {
 
@@ -34,6 +35,7 @@ public class SpeechManager : MonoBehaviour {
   {
       //We cache the Hash to the "Open" Parameter, so we can feed to Animator.SetBool.
       _openParameterId = Animator.StringToHash(_openTransitionName);
+        SpeechEvent.currentVillagersGroup = firstVillagersGroup;
   }
 
 	private void Open(SpeechBubble bubble) {

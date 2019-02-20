@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3014,7 +3014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d5ef9630831694fbafa3bf83208c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _EndOfGame: {fileID: 1242743574}
   listOfVillagers: {fileID: 0}
 --- !u!4 &439394636
 Transform:
@@ -5533,8 +5532,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.13970485, y: 0.83762795, z: 0.46394166, w: 0.25223047}
-  m_LocalPosition: {x: -92.203575, y: -153.49918, z: 124.20389}
+  m_LocalRotation: {x: -0.31014344, y: 0.30639565, z: 0.10682184, w: 0.8936005}
+  m_LocalPosition: {x: 50.465004, y: 40.00251, z: -24.143429}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11112,6 +11111,7 @@ MonoBehaviour:
   - {fileID: 436246460}
   - {fileID: 596767925}
   - {fileID: 1638288666}
+  firstVillagersGroup: {fileID: 901544308}
 --- !u!1001 &1756607082
 Prefab:
   m_ObjectHideFlags: 0

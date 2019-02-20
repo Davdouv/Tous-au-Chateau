@@ -11,6 +11,7 @@ public class SpeechEvent_MapTuto1_Event5 : SpeechEvent {
 		if (_previousEvent != null && _previousEvent.IsDone()) {
 			// TODO
 			if (/*group gets eaten by a wolf == true*/false) {
+                Debug.Log("Villagers are dead !");
 					return true;
 			}
 		}
