@@ -32,6 +32,10 @@ public class Villager : MonoBehaviour
         _deathmode = GetComponent<DyingVillager>();
 
         _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
+        if (_group)
+        {
+            _group.AddVillagers(this);
+        }
         if (_isInfected)
         {
             gameObject.AddComponent<InfectionSpreading>();
@@ -117,10 +121,12 @@ public class Villager : MonoBehaviour
     {
         //_stats.SetIsAlive( false);
         // _deathmode.isAlive = false;
+        /*
         if (_group)
         {
             _group.RemoveVillager(this);
-        }        
+        }  
+        */
         _deathmode.isAlive = false;
         _stats.SetIsAlive(false);
         _canMove = false;

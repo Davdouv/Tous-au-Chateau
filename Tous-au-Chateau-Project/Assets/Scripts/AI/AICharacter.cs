@@ -56,7 +56,6 @@ public class AICharacter : EnvironmentMaterial {
             _assignedGroup.AddTarget(target);
             _assignedGroup.ShareTarget(target);
         }
-        
     }
 
     public void TargetNotFound()
@@ -334,5 +333,10 @@ public class AICharacter : EnvironmentMaterial {
     public bool HasATarget()
     {
         return _ownTarget != null;
+    }
+
+    public CharacterStats GetStats()
+    {
+        return _stats;
     }
 }

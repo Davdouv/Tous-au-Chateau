@@ -34,6 +34,7 @@ public class AICharacterAttack : MonoBehaviour {
     }
     
     // Not used for now
+    /*
     IEnumerator DoDamage(CharacterStats targetStats, float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -52,12 +53,13 @@ public class AICharacterAttack : MonoBehaviour {
             }
         }
     }
+    */
 
     private void DoDamage(CharacterStats targetStats)
     {
         if (targetStats.IsAlive())
         {
-            targetStats.TakeDamage(_stats.strength);
+            targetStats.TakeDamage(_stats.strength, aiType);
             if (!targetStats.IsAlive())
             {
                 AICharacter character = gameObject.GetComponent<AICharacter>();

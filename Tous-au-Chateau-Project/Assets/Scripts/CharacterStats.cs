@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum DeathReason { UNKNOWN, RIVER, VOID, PLAYER, WOLF, GOLEM, DEATH_REASONS_COUNT }
+public enum DeathReason { NOT_DEAD, UNKNOWN, RIVER, VOID, PLAYER, WOLF, GOLEM, DEATH_REASONS_COUNT }
 
 public class CharacterStats : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class CharacterStats : MonoBehaviour
     public float strength = 0;
 
     private float _saveSpeed;
-    private DeathReason _deathReason;
+    public DeathReason _deathReason = DeathReason.NOT_DEAD;
     
     public CharacterStats():this(true, 100, 2.0f, 0) { }
 

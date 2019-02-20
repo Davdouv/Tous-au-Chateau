@@ -5,7 +5,7 @@ public class VillagersGroup : MonoBehaviour
 {
     //private static VillagersGroup _instance = null;
 
-    public List<Villager> _villagers = new List<Villager>();
+    private List<Villager> _villagers = new List<Villager>();
     /*private VillagersGroup(){}
     public static VillagersGroup Instance
     {
@@ -50,7 +50,26 @@ public class VillagersGroup : MonoBehaviour
     {
         return _villagers.Count;
     }
-    
+
+    public int GetNumberOfVillagersAlive()
+    {
+        int count = 0;
+        _villagers.ForEach(villager => { if (villager.GetStats().IsAlive()) ++count; });
+        return count;
+    }
+
+    public bool IsDeathCausedBy(DeathReason deathReason)
+    {
+        foreach (Villager villager in _villagers)
+        {
+            if (villager.GetStats().GetDeathReason() == deathReason)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
     // Update is called once per frame
     void Update()
     {
