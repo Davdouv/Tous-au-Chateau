@@ -37,8 +37,9 @@ public class Villager : MonoBehaviour
             gameObject.AddComponent<InfectionSpreading>();
         }
 
-        
-        agent.enabled = _isPassive;
+
+        //agent.enabled = _isPassive;
+        agent.enabled = false;  // Set active only when we need it active
 
         _rb.isKinematic = false;
         _rb.freezeRotation = !_isPassive;
@@ -131,48 +132,55 @@ public class Villager : MonoBehaviour
     }
     public void JoinIn(GameObject callguy)
     {
-        print(name + " wants to join in");
-        _isJoining = callguy;
-        _isPassive = false;
+        if (_stats.IsAlive())
+        {
+            print(name + " wants to join in");
+            _isJoining = callguy;
+            _isPassive = false;
 
-        agent.updatePosition = true;
-        agent.updateRotation = true;
-        agent.SetDestination(_isJoining.transform.position);
+            agent.enabled = true;
+            agent.updatePosition = true;
+            agent.updateRotation = true;
+            agent.SetDestination(_isJoining.transform.position);
+        }
     }
 
     void Update()
     {
-        if (_canMove)
+        if (_stats.IsAlive())
         {
-            Move();
-        }
-
-        if (!_hasJoined)
-        {
-            if (_isJoining)
+            if (_canMove)
             {
-                MoveTowardVillager(_isJoining);
-                if ((_isJoining.transform.position - transform.position).sqrMagnitude <= 4.0f)
+                Move();
+            }
+
+            if (!_hasJoined)
+            {
+                if (_isJoining)
                 {
-                    print(name + " has joined in");
-                    _hasJoined = true;
-                    _canMove = true;
-                    _rb.freezeRotation = true;
+                    MoveTowardVillager(_isJoining);
+                    if ((_isJoining.transform.position - transform.position).sqrMagnitude <= 4.0f)
+                    {
+                        print(name + " has joined in");
+                        _hasJoined = true;
+                        _canMove = true;
+                        _rb.freezeRotation = true;
 
-                    _group = _isJoining.GetComponent<Villager>()._group;
-                    _group.AddVillagers(GetComponent<Villager>());
-                    transform.parent = _group.gameObject.transform;
+                        _group = _isJoining.GetComponent<Villager>()._group;
+                        _group.AddVillagers(GetComponent<Villager>());
+                        transform.parent = _group.gameObject.transform;
 
-                    //transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
+                        //transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
 
-                    // print("rotation" +_isJoining.transform.rotation.y);
-                    transform.rotation = _isJoining.transform.rotation;
-                    //print("rotation" + transform.rotation.y);
+                        // print("rotation" +_isJoining.transform.rotation.y);
+                        transform.rotation = _isJoining.transform.rotation;
+                        //print("rotation" + transform.rotation.y);
 
-                    agent.ResetPath();
-                    agent.enabled = false;
+                        agent.ResetPath();
+                        agent.enabled = false;
 
-                    _isJoining = null;
+                        _isJoining = null;
+                    }
                 }
             }
         }
