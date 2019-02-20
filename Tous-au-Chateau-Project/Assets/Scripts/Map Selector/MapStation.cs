@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapStation : MonoBehaviour {
+public class MapStation : MapPhysicObject {
 
 	public string name;
 	public CompletionLevel completionLevel = CompletionLevel.Locked;
