@@ -13,6 +13,7 @@ public class GlobalScore : MonoBehaviour {
 		_scores = new List<LevelScore>();
 
 		CreateScoreDebug();
+		_scores = new List<LevelScore>();
 		FetchData();
 		Debug.Log(Application.persistentDataPath);
 		foreach (var score in _scores) {
