@@ -9,10 +9,4 @@ public class StoneWall : Building
     {
         //if (this.gameObject.CompareTag("StoneWall"))
     }
-
-
-    public override bool ApplyEffect()
-    {
-        return true;
-    }
 }

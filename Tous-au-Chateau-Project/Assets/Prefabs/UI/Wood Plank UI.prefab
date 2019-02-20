@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 4456586308171016}
   - component: {fileID: 114383071381247166}
   - component: {fileID: 65488543556207976}
-  - component: {fileID: 114627575089566770}
   m_Layer: 0
   m_Name: Wood Plank UI
   m_TagString: Building
@@ -399,20 +398,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Wood Plank
---- !u!114 &114627575089566770
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1851684891941176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae86b6d5ab34c844b9e26076c79b2c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag:
-  - Controller
-  distanceDetection: 0
 --- !u!222 &222054702640867408
 CanvasRenderer:
   m_ObjectHideFlags: 1

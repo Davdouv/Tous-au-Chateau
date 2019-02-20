@@ -150,8 +150,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4254714503749770}
-  - component: {fileID: 114046573780057168}
   - component: {fileID: 65751936518788032}
+  - component: {fileID: 114046573780057168}
   - component: {fileID: 114685885166733660}
   m_Layer: 0
   m_Name: Directional Panel Left UI
@@ -534,9 +534,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag:
-  - Controller
+  - Villager
   distanceDetection: 5
-  villagerTag: Villager
 --- !u!222 &222223230545870424
 CanvasRenderer:
   m_ObjectHideFlags: 1

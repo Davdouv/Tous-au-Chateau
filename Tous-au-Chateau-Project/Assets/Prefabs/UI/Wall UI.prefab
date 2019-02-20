@@ -72,7 +72,6 @@ GameObject:
   - component: {fileID: 4188777913029896}
   - component: {fileID: 114117450727915320}
   - component: {fileID: 65808866955424768}
-  - component: {fileID: 114555850530618794}
   m_Layer: 0
   m_Name: Wall UI
   m_TagString: Building
@@ -345,20 +344,6 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Stone Wall
---- !u!114 &114555850530618794
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1310125500452364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae86b6d5ab34c844b9e26076c79b2c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag:
-  - Controller
-  distanceDetection: 0
 --- !u!114 &114771704655003240
 MonoBehaviour:
   m_ObjectHideFlags: 1
