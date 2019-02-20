@@ -9,6 +9,7 @@ public class AICharacterAttack : MonoBehaviour {
     private float _attackCooldown = 0f;
 
     public float attackDelay = .6f;
+    public DeathReason aiType;
 
     private CharacterStats _stats;
 
@@ -40,7 +41,7 @@ public class AICharacterAttack : MonoBehaviour {
         // Do damage
         if (targetStats.IsAlive())
         {
-            targetStats.TakeDamage(_stats.strength);
+            targetStats.TakeDamage(_stats.strength, aiType);
             if (!targetStats.IsAlive())
             {
                 AICharacter character = gameObject.GetComponent<AICharacter>();
