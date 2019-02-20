@@ -85,9 +85,11 @@ public class Villager : MonoBehaviour
     {
         switch (dir)
         {
+            /*
             case Direction.BACKWARD:
                 transform.Rotate(0, 180, 0);
                 break;
+            */
             case Direction.LEFT:
                 transform.Rotate(0, -90, 0);
                 break;
