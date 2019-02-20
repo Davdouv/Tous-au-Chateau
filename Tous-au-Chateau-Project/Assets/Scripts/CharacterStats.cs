@@ -23,10 +23,8 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         life -= dmg;
-        Debug.Log(gameObject.name + " life = " + life);
         if (life <= 0)
         {
-            Debug.Log(gameObject.name + " dead");
             Die();
         }
     }

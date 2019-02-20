@@ -134,7 +134,6 @@ public class Villager : MonoBehaviour
     {
         if (_stats.IsAlive())
         {
-            print(name + " wants to join in");
             _isJoining = callguy;
             _isPassive = false;
 
@@ -161,7 +160,6 @@ public class Villager : MonoBehaviour
                     MoveTowardVillager(_isJoining);
                     if ((_isJoining.transform.position - transform.position).sqrMagnitude <= 4.0f)
                     {
-                        print(name + " has joined in");
                         _hasJoined = true;
                         _canMove = true;
                         _rb.freezeRotation = true;

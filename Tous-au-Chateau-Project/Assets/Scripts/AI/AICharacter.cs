@@ -125,7 +125,6 @@ public class AICharacter : EnvironmentMaterial {
     {
         _hasPriorityOnTarget = true;
         _isAttacking = true;
-        Debug.Log("ACTION");
     }
 
     // No need for this
@@ -180,7 +179,6 @@ public class AICharacter : EnvironmentMaterial {
     // Remove the item from the list and get a new target
     public void GetNewTarget()
     {
-        Debug.Log("new target");
         _assignedGroup.RemoveItem(_ownTarget);
         _assignedGroup.CancelTarget(_ownTarget);
         _assignedGroup.NewTarget();

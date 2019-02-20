@@ -7,11 +7,14 @@ public class GatherDetection : TriggerZone {
     // On Detection, 
     public override void TriggerEnter(GameObject target)
     {
-        if (target.GetComponent<Villager>().IsPassive() && !GetComponent<Villager>().IsPassive())
+        if (target.GetComponent<Villager>().GetStats().IsAlive())
         {
-            Debug.Log(name + " GATHERING TRIGGER ENTER : " + target.name);
-            CallOut(target);
-        }
+            if (target.GetComponent<Villager>().IsPassive() && !GetComponent<Villager>().IsPassive())
+            {
+                //Debug.Log(name + " GATHERING TRIGGER ENTER : " + target.name);
+                CallOut(target);
+            }
+        }        
     }
 
     private void CallOut(GameObject target)
