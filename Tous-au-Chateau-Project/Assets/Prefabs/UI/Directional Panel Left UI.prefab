@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 4254714503749770}
   - component: {fileID: 114046573780057168}
   - component: {fileID: 65751936518788032}
+  - component: {fileID: 114685885166733660}
   m_Layer: 0
   m_Name: Directional Panel Left UI
   m_TagString: Building
@@ -521,6 +522,21 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Stone Wall
+--- !u!114 &114685885166733660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774256326975916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1f259f02aabf445b936075b4b93352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag:
+  - Controller
+  distanceDetection: 5
+  villagerTag: Villager
 --- !u!222 &222223230545870424
 CanvasRenderer:
   m_ObjectHideFlags: 1

@@ -87,23 +87,26 @@ public class Villager : MonoBehaviour
     }
     public void ChangeDirection(Direction dir)
     {
-        switch (dir)
+        if (_stats.IsAlive())
         {
-            /*
-            case Direction.BACKWARD:
-                transform.Rotate(0, 180, 0);
-                break;
-            */
-            case Direction.LEFT:
-                transform.Rotate(0, -90, 0);
-                break;
-            case Direction.RIGHT:
-                transform.Rotate(0, 90, 0);
-                break;
+            switch (dir)
+            {
+                /*
+                case Direction.BACKWARD:
+                    transform.Rotate(0, 180, 0);
+                    break;
+                */
+                case Direction.LEFT:
+                    transform.Rotate(0, -90, 0);
+                    break;
+                case Direction.RIGHT:
+                    transform.Rotate(0, 90, 0);
+                    break;
 
-            default:
-                break;
-        }
+                default:
+                    break;
+            }
+        }        
     }
 
     public void GetInfected()

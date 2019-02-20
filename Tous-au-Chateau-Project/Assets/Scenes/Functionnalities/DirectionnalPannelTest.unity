@@ -374,6 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 577384432}
+  - component: {fileID: 577384433}
   m_Layer: 0
   m_Name: Villagers
   m_TagString: Untagged
@@ -402,6 +403,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &577384433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 577384431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da7a71232e1cc0342a9feaa712fec41e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &601943598
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,8 +556,8 @@ GameObject:
   - component: {fileID: 1066377074}
   - component: {fileID: 1066377073}
   - component: {fileID: 1066377079}
-  - component: {fileID: 1066377078}
   - component: {fileID: 1066377080}
+  - component: {fileID: 1066377078}
   m_Layer: 0
   m_Name: Pannel
   m_TagString: Untagged
@@ -578,7 +590,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 2.12
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1066377075
@@ -644,13 +656,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1066377072}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09fd3f191f48aeb4ba2931e90fbf5feb, type: 3}
+  m_Script: {fileID: 11500000, guid: eb1f259f02aabf445b936075b4b93352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag:
-  - Ground
-  - Villager
-  distanceDetection: 3
+  - Controller
+  distanceDetection: 4
+  villagerTag: Villager
 --- !u!135 &1066377079
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -661,7 +673,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 4
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!114 &1066377080
 MonoBehaviour:
@@ -683,7 +695,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
-  direction: 2
+  direction: 0
 --- !u!1 &1144389589
 GameObject:
   m_ObjectHideFlags: 0
