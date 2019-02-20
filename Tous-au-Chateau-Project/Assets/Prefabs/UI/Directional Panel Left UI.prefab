@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 114046573780057168}
   - component: {fileID: 65751936518788032}
   m_Layer: 0
-  m_Name: Directional Panel UI
+  m_Name: Directional Panel Left UI
   m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,12 +426,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Directional Panel Left
   buildingType: 1
-  woodCost: 20
-  stoneCost: 0
-  foodCost: 0
-  workForceCost: 0
-  motivationCost: 0
   prefab: {fileID: 1750304352602756, guid: 5cea4a98f45c0184cb37455da1d632e2, type: 2}
+  _cost:
+    wood: 20
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
   direction: 1
 --- !u!114 &114173224843859734
 MonoBehaviour:
