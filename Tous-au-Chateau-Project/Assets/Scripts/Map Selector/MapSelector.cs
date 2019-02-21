@@ -23,11 +23,11 @@ public class MapSelector : MonoBehaviour {
 			SceneManager.LoadScene("TestScene");
 		}
 
-		foreach (var station in mapStations) {
-			if (station.isCrushed && station.GetScore() >= 0) {
-				SwitchScene(station.levelName);
-			}
-		}
+		// foreach (var station in mapStations) {
+		// 	if (station.isCrushed && station.GetScore() >= 0) {
+		// 		SwitchScene(station.levelName);
+		// 	}
+		// }
 
 	}
 
