@@ -8,6 +8,14 @@ public class ChangeHeightMap : MonoBehaviour {
     public GameObject player;
     private Vector3 _playerPosition;
 
+    void Start()
+    {
+        if (player == null)
+        {
+            player = GameObject.Find("[VRTK_SDKManager]");
+        }
+    }
+
     public void IncreaseX()
     {
         ChangePosition(0.01f, 0, 0);
@@ -20,12 +28,12 @@ public class ChangeHeightMap : MonoBehaviour {
 
     public void IncreaseY()
     {
-        ChangePosition(0, 0.01f, 0);
+        ChangePosition(0, 0.1f, 0);
     }
 
     public void DecreaseY()
     {
-        ChangePosition(0, -0.01f, 0);
+        ChangePosition(0, -0.1f, 0);
     }
 
     public void IncreaseZ()
@@ -38,8 +46,8 @@ public class ChangeHeightMap : MonoBehaviour {
         ChangePosition(0, 0, -0.01f);
     }
 
-    public Vector3 ChangePosition(float shiftX, float shiftY, float shiftZ)
+    public void ChangePosition(float shiftX, float shiftY, float shiftZ)
     {
-        return new Vector3(player.transform.position.x + shiftX, player.transform.position.y + shiftY, player.transform.position.z + shiftZ);
+        player.transform.position = new Vector3(player.transform.position.x + shiftX, player.transform.position.y + shiftY, player.transform.position.z + shiftZ);
     }
 }

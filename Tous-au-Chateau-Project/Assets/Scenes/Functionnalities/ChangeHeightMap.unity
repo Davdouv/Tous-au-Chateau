@@ -3492,8 +3492,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 271799130}
-  m_LocalRotation: {x: 0.058771085, y: 0.017065173, z: 0.0010062198, w: -0.99812514}
-  m_LocalPosition: {x: 47575.906, y: -27874.496, z: -31763.621}
+  m_LocalRotation: {x: -0.13992615, y: 0.8600603, z: 0.3493448, w: 0.3444928}
+  m_LocalPosition: {x: -189.34315, y: -332.75357, z: 89.62451}
   m_LocalScale: {x: 0.8381444, y: 0.916419, z: 0.9121032}
   m_Children: []
   m_Father: {fileID: 197541977}
@@ -12359,8 +12359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b02eb4aa27cf14f90db5b857a01fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrain: {fileID: 1633391056}
-  map: {fileID: 851190973}
+  player: {fileID: 1342220782}
 --- !u!114 &853650083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12372,8 +12371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b02eb4aa27cf14f90db5b857a01fa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terrain: {fileID: 1633391056}
-  map: {fileID: 851190973}
+  player: {fileID: 0}
 --- !u!1 &857362631
 GameObject:
   m_ObjectHideFlags: 0
@@ -18420,7 +18418,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 853650083}
-        m_MethodName: Increase
+        m_MethodName: IncreaseY
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20658,7 +20656,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 853650083}
-        m_MethodName: Decrease
+        m_MethodName: DecreaseY
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
