@@ -15,7 +15,9 @@ public class MapStation : MapPhysicObject {
 	public GameObject flag2;
 	public GameObject flag3;
 
-	public GameObject darkFlags;
+	public GameObject darkFlag1;
+	public GameObject darkFlag2;
+	public GameObject darkFlag3;
 
 	public enum CompletionLevel {Locked = -1, Unlocked = 0, OneStar = 1, TwoStars = 2, ThreeStars = 3};
 
@@ -56,7 +58,9 @@ public class MapStation : MapPhysicObject {
 	private void LockedDisplay() {
 		castleLocked.SetActive(true);
 		castleUnlocked.SetActive(false);
-		darkFlags.SetActive(false);
+		darkFlag1.SetActive(false);
+		darkFlag2.SetActive(false);
+		darkFlag3.SetActive(false);
 		flag1.SetActive(false);
 		flag2.SetActive(false);
 		flag3.SetActive(false);
@@ -71,7 +75,9 @@ public class MapStation : MapPhysicObject {
 	private void UnlockedDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
-		darkFlags.SetActive(true);
+		darkFlag1.SetActive(true);
+		darkFlag2.SetActive(true);
+		darkFlag3.SetActive(true);
 		flag1.SetActive(false);
 		flag2.SetActive(false);
 		flag3.SetActive(false);
@@ -86,7 +92,9 @@ public class MapStation : MapPhysicObject {
 	private void OneStarDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
-		darkFlags.SetActive(false);
+		darkFlag1.SetActive(false);
+		darkFlag2.SetActive(true);
+		darkFlag3.SetActive(true);
 		flag1.SetActive(true);
 		flag2.SetActive(false);
 		flag3.SetActive(false);
@@ -101,7 +109,9 @@ public class MapStation : MapPhysicObject {
 	private void TwoStarsDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
-		darkFlags.SetActive(false);
+		darkFlag1.SetActive(false);
+		darkFlag2.SetActive(false);
+		darkFlag3.SetActive(true);
 		flag1.SetActive(true);
 		flag2.SetActive(true);
 		flag3.SetActive(false);
@@ -116,7 +126,9 @@ public class MapStation : MapPhysicObject {
 	private void ThreeStarsDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
-		darkFlags.SetActive(false);
+		darkFlag1.SetActive(false);
+		darkFlag2.SetActive(false);
+		darkFlag3.SetActive(false);
 		flag1.SetActive(true);
 		flag2.SetActive(true);
 		flag3.SetActive(true);
