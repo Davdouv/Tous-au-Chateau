@@ -16,6 +16,8 @@ public class UIManager : PauseScript
     public GameObject GameOverPanel;
     public Text gameOverVillagersText;
     public ResourceManager _ResourceManager;
+    public Material defaultMaterial;
+    public Material notEnoughResourceMaterial;
 
     //For construction pagination
     public BuildingsTypeGroup _BuildingTypeGroup;
@@ -53,6 +55,39 @@ public class UIManager : PauseScript
         foodTxt.text = "" + _ResourceManager.GetFood();
         villagersTxt.text = "" + _ResourceManager.GetWorkForce();
         motivation.value = _ResourceManager.GetMotivation();
+
+        /* Updates the ability to purchase or not each building */
+        for(int i=0; i<_sortedBuildings.Count; ++i)
+        {
+            for(int j=0; j<_sortedBuildings[i].Count; ++j)
+            {
+                Building currentBuilding = _sortedBuildings[i][j];
+                if (_ResourceManager.HasEnoughResources(currentBuilding.getCost()))
+                {
+                    //make it normal
+                    currentBuilding.transform.GetChild(2).GetComponent<MeshRenderer>().material = defaultMaterial;
+                    if(currentBuilding.transform.GetChild(2).childCount > 0)
+                    {
+                        for(int k=0; k< currentBuilding.transform.GetChild(2).childCount; ++k)
+                        {
+                            currentBuilding.transform.GetChild(2).GetChild(k).GetComponent<MeshRenderer>().material = defaultMaterial;
+                        }
+                    }
+                }
+                else
+                {
+                    //make it blocked
+                    currentBuilding.transform.GetChild(2).GetComponent<MeshRenderer>().material = notEnoughResourceMaterial;
+                    if (currentBuilding.transform.GetChild(2).childCount > 0)
+                    {
+                        for (int k = 0; k < currentBuilding.transform.GetChild(2).childCount; ++k)
+                        {
+                            currentBuilding.transform.GetChild(2).GetChild(k).GetComponent<MeshRenderer>().material = notEnoughResourceMaterial;
+                        }
+                    }
+                }
+            }
+        }
 
         //Test for pagination functions
         if (Input.GetKeyUp("right"))

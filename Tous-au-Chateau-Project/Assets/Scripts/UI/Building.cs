@@ -7,4 +7,7 @@
     }          public bool HasLanded()
     {
         return _hasLanded;
+    }      public ResourcesPack getCost()
+    {
+        return _cost;
     } } 
