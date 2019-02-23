@@ -13,8 +13,8 @@ public class SpeechEvent_MapTuto1_Event6_1 : SpeechEvent {
     public override bool MustOpen() {
 		// Open after previous event is done
 		if (_previousEvent != null && _previousEvent.IsDone()) {
-            //TODO
-            if (currentVillagersGroup.GetNumberOfVillagersAlive() == 0)
+            //at least one villager is dead
+            if (currentVillagersGroup.GetNumberOfVillagersAlive() < currentVillagersGroup.GetNumberOfVillagers())
             {
                 // Check if at least one has fallen in the void
                 if (currentVillagersGroup.IsDeathCausedBy(DeathReason.VOID))
