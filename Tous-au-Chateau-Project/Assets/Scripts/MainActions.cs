@@ -102,4 +102,8 @@ public class MainActions : MonoBehaviour {
         }
     }
 
+    public bool IsCrushModeActive()
+    {
+        return crushMode;
+    }
 }

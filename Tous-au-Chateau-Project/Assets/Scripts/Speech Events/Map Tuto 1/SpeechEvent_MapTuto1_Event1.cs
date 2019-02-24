@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class SpeechEvent_MapTuto1_Event1 : SpeechEvent {
 	private bool _hasOpenedAlready = false;
+    public bool hasCrushedGround = false;
 
 	public override bool MustOpen() {
 		Debug.Log("mustOpen");
@@ -18,8 +19,8 @@ public class SpeechEvent_MapTuto1_Event1 : SpeechEvent {
 	}
 
 	public override bool MustClose() {
-		// TODO
-		// When crushing the ground near the People.
-		return false;
+        // TODO
+        // When crushing the ground near the People.
+        return hasCrushedGround;
 	}
 }
