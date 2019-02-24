@@ -48,6 +48,27 @@ public class VillagersGroup : MonoBehaviour
         return count;
     }
 
+    public bool HasGroupReachedObjectif()
+    {
+        int alive = 0;
+        foreach (Villager villager in _villagers)
+        {
+            if (villager.GetStats().IsAlive())
+            {
+                ++alive;
+                if (!villager.HasReachedObjectif())
+                {
+                    return false;
+                }
+            }
+        }
+        if (alive > 0)
+        {
+            return true;
+        }
+        return false;
+    }
+
     public bool IsDeathCausedBy(DeathReason deathReason)
     {
         foreach (Villager villager in _villagers)

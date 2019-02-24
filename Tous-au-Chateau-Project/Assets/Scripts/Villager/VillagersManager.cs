@@ -46,4 +46,10 @@ public class VillagersManager : MonoBehaviour
         _villagersGroup.ForEach(group => count += group.GetNumberOfVillagersAlive());
         return count;
     }
+
+    // Check only if the last group has joined the objectif
+    public bool HasLastVillagersReachedObjectif()
+    {
+        return _villagersGroup[_villagersGroup.Count - 1].HasGroupReachedObjectif();
+    }
 }

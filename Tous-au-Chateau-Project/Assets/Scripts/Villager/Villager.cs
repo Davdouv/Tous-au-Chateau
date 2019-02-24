@@ -16,6 +16,7 @@ public class Villager : MonoBehaviour
     public bool _isPassive;
     public GameObject _isJoining;
     public bool _hasJoined;
+    private bool _hasReachedObjectif;
 
     private CollisionDetection _villagerCollision;
     public CharacterStats _stats;
@@ -193,6 +194,16 @@ public class Villager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void SetHasReachedObjectif()
+    {
+        _hasReachedObjectif = true;
+    }
+
+    public bool HasReachedObjectif()
+    {
+        return _hasReachedObjectif;
     }
 
     // Update is called once per frame

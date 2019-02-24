@@ -2767,6 +2767,49 @@ MonoBehaviour:
     fallbackTypeName: VRTK.SDK_FallbackController
     typeName: VRTK.SDK_UnityController
     descriptionIndex: 1
+--- !u!1 &480095908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000316117322088, guid: 7448143ad30e2a64e9534a27a5972310,
+    type: 2}
+  m_PrefabInternal: {fileID: 1150327748}
+--- !u!65 &480095909
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 480095908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.282843, y: 5.5139523, z: 5.879411}
+  m_Center: {x: -0.00000047683716, y: 0.00000059604645, z: -0.0000023841858}
+--- !u!114 &480095910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 480095908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 675f909ffcbf0c643a4d7755213dcb13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag:
+  - Villager
+  distanceDetection: 5
+--- !u!135 &480095912
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 480095908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: -0.00000047683716, y: 0.00000059604645, z: -0.0000023841858}
 --- !u!1001 &482943316
 Prefab:
   m_ObjectHideFlags: 0
@@ -4856,8 +4899,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.2386428, y: 0.48432365, z: 0.13976575, w: 0.8300276}
-  m_LocalPosition: {x: 47.04355, y: 49.213905, z: -17.55942}
+  m_LocalRotation: {x: -0.19408172, y: 0.58683354, z: 0.1480768, w: 0.77203107}
+  m_LocalPosition: {x: 30.87587, y: 39.81952, z: 34.943806}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12460,8 +12503,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2104046598}
-  m_LocalRotation: {x: -0.5444382, y: 0.2538706, z: 0.2594255, w: 0.75619787}
-  m_LocalPosition: {x: 177, y: -142.86087, z: 26}
+  m_LocalRotation: {x: -0.20115755, y: 0.3579545, z: 0.07974244, w: 0.90832007}
+  m_LocalPosition: {x: 14.158325, y: 20.572868, z: -29.121902}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
