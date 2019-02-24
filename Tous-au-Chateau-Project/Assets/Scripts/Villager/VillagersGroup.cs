@@ -3,23 +3,13 @@ using System.Collections.Generic;
 
 public class VillagersGroup : MonoBehaviour
 {
-    //private static VillagersGroup _instance = null;
-
     private List<Villager> _villagers = new List<Villager>();
-    /*private VillagersGroup(){}
-    public static VillagersGroup Instance
+
+    // Register the group into the villagers Manager
+    private void Start()
     {
-        get{
-            if (!_instance)
-            {
-                GameObject go = new GameObject("VillagersGroup");
-                _instance = go.AddComponent<VillagersGroup>();
-                
-            }
-            return _instance;
-        }
-        
-    }*/
+        VillagersManager.Instance.AddGroup(this);
+    }
 
     public void AddVillagers()
     {
