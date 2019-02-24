@@ -28,9 +28,16 @@ public class VillagersManager : MonoBehaviour
 
     private List<VillagersGroup> _villagersGroup = new List<VillagersGroup>();
 
+    public bool isTutorial = true;
+
     public void AddGroup(VillagersGroup villagersGroup)
     {
         _villagersGroup.Add(villagersGroup);
+
+        if (isTutorial)
+        {
+            SpeechEvent.currentVillagersGroup = villagersGroup;
+        }        
     }
 
     public int GetNumberOfVillagersAlive()
