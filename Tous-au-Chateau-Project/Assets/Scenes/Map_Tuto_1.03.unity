@@ -2523,7 +2523,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d5ef9630831694fbafa3bf83208c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfVillagers: {fileID: 0}
+  _currentResources:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
 --- !u!4 &439394636
 Transform:
   m_ObjectHideFlags: 0
@@ -4850,8 +4855,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.5444382, y: 0.2538706, z: 0.2594255, w: 0.75619787}
-  m_LocalPosition: {x: 177, y: -142.86087, z: 26}
+  m_LocalRotation: {x: -0.2386428, y: 0.48432365, z: 0.13976575, w: 0.8300276}
+  m_LocalPosition: {x: 21.515018, y: 26.967224, z: -17.15863}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10980,9 +10985,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1893422064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b1a381574a3824439b5da7962f5f10c, type: 3}
+  m_Script: {fileID: 11500000, guid: 163c4ef54e86e254fa2ce446425c9f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speechEvent: {fileID: 2050851015}
 --- !u!1 &1931867879
 GameObject:
   m_ObjectHideFlags: 0
@@ -11748,7 +11754,7 @@ MonoBehaviour:
     panel and put it on the river."
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 698406504}
-  currentBuilding: {fileID: 0}
+  hasWookPlankLanded: 0
 --- !u!4 &2050851016
 Transform:
   m_ObjectHideFlags: 0
