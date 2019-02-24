@@ -27,8 +27,9 @@ public class ResourceManager : PauseScript
     }
     #endregion
 
-    public VillagersGroup listOfVillagers;
+    //public VillagersGroup listOfVillagers;
 
+    [SerializeField]
     private ResourcesPack _currentResources;
     private bool _isInPause;
 
@@ -41,10 +42,13 @@ public class ResourceManager : PauseScript
 
     private void Update()
     {
+        /*
         if(listOfVillagers != null)
         {
             _currentResources.workForce = listOfVillagers.GetNumberOfVillagers();
         }
+        */
+        _currentResources.workForce = VillagersManager.Instance.GetNumberOfVillagersAlive();
     }
 
     private void InGameMotivation()

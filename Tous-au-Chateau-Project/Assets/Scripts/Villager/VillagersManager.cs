@@ -32,4 +32,11 @@ public class VillagersManager : MonoBehaviour
     {
         _villagersGroup.Add(villagersGroup);
     }
+
+    public int GetNumberOfVillagersAlive()
+    {
+        int count = 0;
+        _villagersGroup.ForEach(group => count += group.GetNumberOfVillagersAlive());
+        return count;
+    }
 }
