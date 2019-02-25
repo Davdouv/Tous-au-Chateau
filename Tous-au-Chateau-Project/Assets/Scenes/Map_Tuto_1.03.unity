@@ -1028,6 +1028,7 @@ MonoBehaviour:
     our cause!"
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 564704340}
+  hasDoneAction: 0
 --- !u!4 &104874727
 Transform:
   m_ObjectHideFlags: 0
@@ -1219,7 +1220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2483,6 +2484,7 @@ MonoBehaviour:
     one of those to let us pass.
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 508803583}
+  hasDoneAction: 0
   _ResourceManager: {fileID: 439394635}
 --- !u!4 &436246461
 Transform:
@@ -3045,6 +3047,7 @@ MonoBehaviour:
     you know\u2026 Crush it?"
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 2050851015}
+  hasDoneAction: 0
   wolf: {fileID: 0}
 --- !u!4 &508803584
 Transform:
@@ -3357,6 +3360,7 @@ MonoBehaviour:
   _message: You need to place the board at the right place!
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 2050851015}
+  hasDoneAction: 0
 --- !u!1 &562099679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3417,6 +3421,7 @@ MonoBehaviour:
     us, please crush the ground near us with your fist.
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 0}
+  hasDoneAction: 0
   hasCrushedGround: 0
 --- !u!4 &564704341
 Transform:
@@ -3510,6 +3515,7 @@ MonoBehaviour:
   _message: You have to crush the right tree if we want to reach the house.
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 436246460}
+  hasDoneAction: 0
   _ResourceManager: {fileID: 439394635}
 --- !u!1 &614729558
 GameObject:
@@ -4037,6 +4043,7 @@ MonoBehaviour:
     our cause!"
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 104874726}
+  hasDoneAction: 0
 --- !u!4 &698406505
 Transform:
   m_ObjectHideFlags: 0
@@ -8262,7 +8269,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 130
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 300
@@ -9414,6 +9421,7 @@ MonoBehaviour:
     house we have to visit."
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 436246460}
+  hasDoneAction: 0
 --- !u!1 &1650279934
 GameObject:
   m_ObjectHideFlags: 0
@@ -11755,6 +11763,7 @@ MonoBehaviour:
     panel and put it on the river."
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 698406504}
+  hasDoneAction: 0
   hasWookPlankLanded: 0
 --- !u!4 &2050851016
 Transform:
@@ -11795,7 +11804,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2060526346}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_Children:
   - {fileID: 1355639720}
@@ -11805,7 +11814,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.447}
+  m_AnchoredPosition: {x: 0, y: 0.41}
   m_SizeDelta: {x: 1500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060526348
@@ -12181,6 +12190,9 @@ MonoBehaviour:
   resourceM: {fileID: 439394635}
   spawnPoint: {fileID: 1787859272}
   RightHand: {fileID: 1235158201}
+  speechEvent2: {fileID: 0}
+  speechEvent4_1: {fileID: 0}
+  speechEvent7: {fileID: 0}
 --- !u!114 &2092337014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12459,8 +12471,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2104046598}
-  m_LocalRotation: {x: -0.20115755, y: 0.3579545, z: 0.07974244, w: 0.90832007}
-  m_LocalPosition: {x: 14.158325, y: 20.572868, z: -29.121902}
+  m_LocalRotation: {x: -0.5444382, y: 0.2538706, z: 0.2594255, w: 0.75619787}
+  m_LocalPosition: {x: 177, y: -142.86087, z: 26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
