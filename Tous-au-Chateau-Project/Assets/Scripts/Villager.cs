@@ -17,7 +17,7 @@ public class Villager : MonoBehaviour
     public GameObject _isJoining;
     public bool _hasJoined;
 
-    private CollisionDetection _villagerCollision;
+    private DangerDetection _villagerCollision;
     public CharacterStats _stats;
     private DyingVillager _deathmode;
 
@@ -27,7 +27,7 @@ public class Villager : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
-        _villagerCollision = GetComponent<CollisionDetection>();
+        _villagerCollision = GetComponent<DangerDetection>();
         _stats = GetComponent<CharacterStats>();
         _deathmode = GetComponent<DyingVillager>();
 

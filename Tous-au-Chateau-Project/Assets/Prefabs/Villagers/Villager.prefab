@@ -59,7 +59,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096130410665992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.864, y: 0, z: -8.194}
+  m_LocalPosition: {x: 1.763, y: -5.824, z: 0.119}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4974353950416650}
@@ -179,6 +179,7 @@ MonoBehaviour:
   _isPassive: 0
   _isJoining: {fileID: 0}
   _hasJoined: 0
+  _stats: {fileID: 0}
 --- !u!114 &114241641678293014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turningRate: 20
   mesh: {fileID: 0}
+  isAlive: 1
 --- !u!114 &114752624679174466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -217,8 +219,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e2d81a41321de42b184cb0bb49f696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onPlatform: 0
-  inDanger: 0
+  targetTag:
+  - DangerArea
+  - Platform
+  distanceDetection: 5
 --- !u!135 &135940879828553240
 SphereCollider:
   m_ObjectHideFlags: 1
