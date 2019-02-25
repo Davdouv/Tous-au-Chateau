@@ -22,7 +22,6 @@ public class TerrainDetection_Tuto1 : MonoBehaviour {
             if (collision.gameObject.GetComponent<MainActions>().IsCrushModeActive())
             {
                 speechEvent1.hasCrushedGround = true;
-                Debug.Log("yeay");
             }
         }
     }

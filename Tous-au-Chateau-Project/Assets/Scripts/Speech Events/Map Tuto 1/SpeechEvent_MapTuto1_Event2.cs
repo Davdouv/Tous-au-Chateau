@@ -15,7 +15,11 @@ public class SpeechEvent_MapTuto1_Event2 : SpeechEvent {
 	}
 
 	public override bool MustClose() {
-		// When any action is done from the player (any key pressed)
-		return hasDoneAction;
+        // When any action is done from the player (any key pressed)
+        if (hasDoneAction)
+        {
+            currentVillagersGroup.SetVillagersCanMove(true);
+        }
+        return hasDoneAction;
 	}
 }

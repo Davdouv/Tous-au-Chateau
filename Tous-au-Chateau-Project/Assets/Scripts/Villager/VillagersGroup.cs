@@ -86,4 +86,9 @@ public class VillagersGroup : MonoBehaviour
     {
 
     }
+
+    public void SetVillagersCanMove(bool canMove)
+    {
+        _villagers.ForEach(villager => villager._canMove = canMove);
+    }
 }

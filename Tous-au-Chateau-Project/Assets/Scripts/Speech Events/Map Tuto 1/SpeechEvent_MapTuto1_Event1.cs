@@ -9,7 +9,9 @@ public class SpeechEvent_MapTuto1_Event1 : SpeechEvent {
     public bool hasCrushedGround = false;
 
 	public override bool MustOpen() {
-		Debug.Log("mustOpen");
+        currentVillagersGroup.SetVillagersCanMove(false);
+
+        Debug.Log("mustOpen");
 		// Open automatically
 		if (!_hasOpenedAlready) {
 			_hasOpenedAlready = true;
@@ -19,7 +21,6 @@ public class SpeechEvent_MapTuto1_Event1 : SpeechEvent {
 	}
 
 	public override bool MustClose() {
-        // TODO
         // When crushing the ground near the People.
         return hasCrushedGround;
 	}
