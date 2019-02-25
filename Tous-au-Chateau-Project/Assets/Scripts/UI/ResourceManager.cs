@@ -49,6 +49,10 @@ public class ResourceManager : PauseScript
         }
         */
         _currentResources.workForce = VillagersManager.Instance.GetNumberOfVillagersAlive();
+        if(_currentResources.workForce <= 0 && !GameManager.Instance.tuto)
+        {
+            GameManager.Instance.GameLost();
+        }
     }
 
     private void InGameMotivation()
@@ -56,6 +60,10 @@ public class ResourceManager : PauseScript
         if (!_isInPause)
         {
             RemoveResources(new ResourcesPack { motivation = 1 });
+            if(_currentResources.motivation <= 0 && !GameManager.Instance.tuto)
+            {
+                GameManager.Instance.GameLost();
+            }
         }
     }
 

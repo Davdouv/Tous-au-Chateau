@@ -34,17 +34,12 @@ public class UIManager : MonoBehaviour
     private GameObject[] _pageButtons;
     private bool _isCostEmpty = true;
 
-    //For Game Over
-    private GameManager _GameManager;
-
     private void Start()
     {
         if(_BuildingTypeGroup != null)
         {
             CalculateNbOfPages();
         }
-
-        _GameManager = GameManager.Instance;
     }
 
     private void Update()
@@ -65,12 +60,12 @@ public class UIManager : MonoBehaviour
         motivation.value = _ResourceManager.GetMotivation();
 
         /* Test for end of game */
-        if (_GameManager.IsGameWon())
+        if (GameManager.Instance.IsGameWon())
         {
             DisplayGameOverPanel(true);
         }
 
-        if (_GameManager.IsGameLost())
+        if (GameManager.Instance.IsGameLost())
         {
             DisplayGameOverPanel(false);
         }
