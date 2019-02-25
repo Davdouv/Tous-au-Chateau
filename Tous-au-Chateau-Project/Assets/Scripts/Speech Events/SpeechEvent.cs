@@ -11,6 +11,8 @@ public class SpeechEvent : MonoBehaviour {
 	private bool _isDone = false;
 	public SpeechEvent _previousEvent;
 
+    public bool hasDoneAction;  // For events that need to detect if player has done an action
+
     public static VillagersGroup currentVillagersGroup;
 
 	// Use this for initialization
