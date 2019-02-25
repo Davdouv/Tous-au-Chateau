@@ -5,12 +5,9 @@ using VRTK;
 
 public class InputManager : MonoBehaviour {
 
+    #region Singleton
     private static InputManager _instance;
-    
-    public VRTK_ControllerEvents leftControllerEvents;
-    public VRTK_ControllerEvents rightControllerEvents;
 
-    // ***** SINGLETON *****/
     public static InputManager Instance
     {
         get
@@ -27,7 +24,11 @@ public class InputManager : MonoBehaviour {
     {
         _instance = this;
     }
+    #endregion
 
+    public VRTK_ControllerEvents leftControllerEvents;
+    public VRTK_ControllerEvents rightControllerEvents;
+    
     void Update()
     {
         // ***** KEYBOARD EVENTS *****/

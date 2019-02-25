@@ -13,6 +13,11 @@ public abstract class TriggerZone : MonoBehaviour {
 
     private void Start()
     {
+        Init();
+    }
+
+    protected virtual void Init()
+    {
         SphereCollider sphereCollider = gameObject.GetComponent<SphereCollider>();
         if (sphereCollider && sphereCollider.isTrigger)
         {
@@ -48,6 +53,10 @@ public abstract class TriggerZone : MonoBehaviour {
 
             CollisionEnter(collision);
         }
+        else
+        {
+            CollisionEnterOther(collision);
+        }
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -56,6 +65,10 @@ public abstract class TriggerZone : MonoBehaviour {
             _isInContact = false;
 
             CollisionExit(collision);
+        }
+        else
+        {
+            CollisionExitOther(collision);
         }
     }
 
@@ -86,11 +99,14 @@ public abstract class TriggerZone : MonoBehaviour {
     public virtual void TriggerExit(GameObject target) { }
     public virtual void CollisionEnter(Collision collision) { }
     public virtual void CollisionExit(Collision collision) { }
+    public virtual void CollisionEnterOther(Collision collision) { }
+    public virtual void CollisionExitOther(Collision collision) { }
 
     public bool IsInRange(Vector3 position)
     {
-        float distance = Vector3.Distance(transform.position, position);
-        return (distance < distanceDetection);
+        //float distance = Vector3.Distance(transform.position, position);
+        float distance = (transform.position - position).sqrMagnitude;
+        return (distance < distanceDetection*distanceDetection);
     }
 
     protected void RemoveTarget(GameObject target)
@@ -106,7 +122,7 @@ public abstract class TriggerZone : MonoBehaviour {
     }
 
     private void Update()
-    {        
+    {
         for (int i = 0; i < _targetList.Count; ++i)
         {
             // If not triggered yet, check if it's a the good distance

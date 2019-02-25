@@ -31,6 +31,7 @@ public class TreeManager : MonoBehaviour {
     public float _widthMax = 0.7f;
     public float _widthMin = 0.5f;
     public float _sizeLeaf = 1;
+    public float axeY = -3;
 
 
     //Matrix for movement
@@ -39,35 +40,36 @@ public class TreeManager : MonoBehaviour {
 
     Vector3 _lastPoint;
 
-
-    // Use this for initialization
-    void Start () {
+    private void Awake()
+    {
         _pointOfBranch = new List<Vector3>();
         _points = new Stack<Vector3>();
         _startPoints = new Stack<Vector3>();
-        _lastPoint = new Vector3(0, 0, 0);
+        _lastPoint = new Vector3(0, axeY, 0);
         _direction = new Stack<Vector3>();
         _coeff = new Stack<int>();
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (Input.GetKeyDown("space"))
         {
             _points.Clear();
-            _lastPoint = new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50));
+            _lastPoint = new Vector3(Random.Range(-50, 50), axeY, Random.Range(-50, 50));
             //_lastAxiom = _axiom;
             //AxiomeIterations(); //create axiom
-            BuildTree(); 
+            BuildTree();
         }
     }
 
     public GameObject BuildTree()
     {
         //Axiom
-        _lastPoint = new Vector3(0, 0, 0);
+        _lastPoint = new Vector3(0, axeY, 0);
         _lastAxiom = _axiom;
         AxiomeIterations(); //create axiom
+
+        // Debug.Log(_lastPoint);
 
         //first element & direction
         _startPoints.Push(_lastPoint);
