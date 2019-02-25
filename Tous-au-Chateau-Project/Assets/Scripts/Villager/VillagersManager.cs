@@ -27,14 +27,18 @@ public class VillagersManager : MonoBehaviour
     #endregion
 
     private List<VillagersGroup> _villagersGroup = new List<VillagersGroup>();
+    public static uint count = 0;
 
-    public bool isTutorial = true;
+    public Transform villagerSpawnTransform;
+    public GameObject prefabVillagersGroup;
 
     public void AddGroup(VillagersGroup villagersGroup)
     {
+        ++count;
         _villagersGroup.Add(villagersGroup);
+        villagersGroup.id = count;
 
-        if (isTutorial)
+        if (GameManager.Instance.tuto)
         {
             SpeechEvent.currentVillagersGroup = villagersGroup;
         }        
@@ -51,5 +55,10 @@ public class VillagersManager : MonoBehaviour
     public bool HasLastVillagersReachedObjectif()
     {
         return _villagersGroup[_villagersGroup.Count - 1].HasGroupReachedObjectif();
+    }
+
+    public void SpawnGroup()
+    {
+        Instantiate(prefabVillagersGroup, villagerSpawnTransform.position, villagerSpawnTransform.rotation);
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class VillagersGroup : MonoBehaviour
 {
     private List<Villager> _villagers = new List<Villager>();
+    public uint id = 0;
 
     // Register the group into the villagers Manager
     private void Start()

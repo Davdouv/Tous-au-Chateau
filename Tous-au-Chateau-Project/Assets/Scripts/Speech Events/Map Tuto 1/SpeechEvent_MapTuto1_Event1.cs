@@ -9,7 +9,7 @@ public class SpeechEvent_MapTuto1_Event1 : SpeechEvent {
     public bool hasCrushedGround = false;
 
 	public override bool MustOpen() {
-        currentVillagersGroup.SetVillagersCanMove(false);
+        currentVillagersGroup.SetVillagersCanMove(true);
 
         Debug.Log("mustOpen");
 		// Open automatically
