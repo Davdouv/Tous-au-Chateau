@@ -30,6 +30,11 @@ public class SpeechManager : MonoBehaviour {
 				Close(evento.bubble);
 			}
 		}
+
+		if (GameManager.Instance.tuto && SpeechEvent.AreAllVillagersDead())
+		{
+			VillagersManager.Instance.SpawnGroup();
+		}
 	}
 
   void Start()

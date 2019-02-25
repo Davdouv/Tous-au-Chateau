@@ -33,4 +33,8 @@ public class SpeechEvent : MonoBehaviour {
 		_isOpen = bo;
 	}
 	public void SetIsDone(bool bo) { _isDone = bo; }
+
+	public static bool AreAllVillagersDead() {
+		return currentVillagersGroup.GetNumberOfVillagersAlive() == 0;
+	}
 }
