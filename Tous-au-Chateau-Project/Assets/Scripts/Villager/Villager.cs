@@ -206,6 +206,11 @@ public class Villager : MonoBehaviour
         return _hasReachedObjectif;
     }
 
+    public VillagersGroup GetGroup()
+    {
+        return _group;
+    }
+
     // Update is called once per frame
     /*
     void Update()
