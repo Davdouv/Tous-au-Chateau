@@ -16,11 +16,16 @@ public static class SaveManager {
 
 		// Remove the exisiting score if it exists for the current level
 		for (int i = 0; i < existingScores.Count; ++i) {
-			if (existingScores[i].levelName == newScore.levelName && existingScores[i].stars < newScore.stars) {
-				existingScores.Remove(existingScores[i]); // Remove precedent score
-				existingScores.Add(newScore); // Add new score into the list
+			if (existingScores[i].levelName == newScore.levelName) {
+				if (existingScores[i].stars < newScore.stars) {
+					existingScores.Remove(existingScores[i]); // Remove precedent score
+				} else {
+					newScore = existingScores[i];
+				}
 			}
 		}
+
+		existingScores.Add(newScore); // Add new score into the list
 
 		string newData = JsonHelperList.ToJson(existingScores, true);
 
