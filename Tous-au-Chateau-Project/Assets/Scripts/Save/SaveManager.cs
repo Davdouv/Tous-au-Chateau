@@ -16,13 +16,12 @@ public static class SaveManager {
 
 		// Remove the exisiting score if it exists for the current level
 		for (int i = 0; i < existingScores.Count; ++i) {
-			if (existingScores[i].levelName == newScore.levelName) {
-				existingScores.Remove(existingScores[i]);
+			if (existingScores[i].levelName == newScore.levelName && existingScores[i].stars < newScore.stars) {
+				existingScores.Remove(existingScores[i]); // Remove precedent score
+				existingScores.Add(newScore); // Add new score into the list
 			}
 		}
 
-		// Add new score into the list
-		existingScores.Add(newScore);
 		string newData = JsonHelperList.ToJson(existingScores, true);
 
 		StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/score.dat");
