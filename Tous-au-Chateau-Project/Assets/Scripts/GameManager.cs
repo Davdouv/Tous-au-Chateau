@@ -52,6 +52,11 @@ public class GameManager : MonoBehaviour {
         return _hasWin;
     }
 
+    public bool IsGameLost()
+    {
+        return _hasLost;
+    }
+
     // PAUSE GAME
     public bool IsPaused()
     {
