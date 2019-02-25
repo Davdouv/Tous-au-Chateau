@@ -13,13 +13,14 @@ public class GlobalScore : MonoBehaviour {
 	void Start () {
 		_scores = new List<LevelScore>();
 
-		CreateScoreDebug();
+		CreateScoreDebug(); // DEBUG
 
 		ready = FetchData();
 
+		// DEBUG
 		Debug.Log(Application.persistentDataPath);
 		foreach (var score in _scores) {
-			Debug.Log(score.levelName + " : " + score.ComputeScore());
+			Debug.Log(score.levelName + " : " + score.stars);
 		}
 	}
 
@@ -46,7 +47,7 @@ public class GlobalScore : MonoBehaviour {
 	public int GetScore(string levelName) {
 		foreach (var score in _scores) {
 			if (score.levelName == levelName) {
-				return score.ComputeScore();
+				return score.stars;
 			}
 		}
 		return -1;
@@ -61,38 +62,23 @@ public class GlobalScore : MonoBehaviour {
 	private void CreateFakeScores() {
 		// Create Fake Scores
 		// 3 stars
-		var score1 = new LevelScore();
-		score1.remainingVillagers = 11;
-		score1.duration = 0.1f;
-		score1.levelName = "Tutorial 1";
+		var score1 = new LevelScore("Tutorial 1", 11, 0.1f);
 		_scores.Add(score1);
 
 		// 2 stars
-		var score2 = new LevelScore();
-		score2.remainingVillagers = 9;
-		score2.duration = 0.4f;
-		score2.levelName = "Tutorial 2";
+		var score2 = new LevelScore("Tutorial 2", 9, 0.4f);
 		_scores.Add(score2);
 
 		// 3 stars
-		var score3 = new LevelScore();
-		score3.remainingVillagers = 11;
-		score3.duration = 0.13f;
-		score3.levelName = "Tutorial 3";
+		var score3 = new LevelScore("Tutorial 3", 11, 0.13f);
 		_scores.Add(score3);
 
 		// 1 star
-		var score4 = new LevelScore();
-		score4.remainingVillagers = 1;
-		score4.duration = 0.4f;
-		score4.levelName = "Very Easy";
+		var score4 = new LevelScore("Very Easy", 1, 0.4f);
 		_scores.Add(score4);
 
 		// 0 star
-		var score5 = new LevelScore();
-		score5.remainingVillagers = 0;
-		score5.duration = 0.13f;
-		score5.levelName = "Easy";
+		var score5 = new LevelScore("Easy", 0, 0.13f);
 		_scores.Add(score5);
 	}
 
