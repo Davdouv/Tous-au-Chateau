@@ -169,7 +169,6 @@ public class AICharactersGroup : MonoBehaviour {
     // Make the rallyPoint the new destination of all the aiCharacters
     private void Regroup()
     {
-        Debug.Log("regroup");
         _regrouping = true;
         ShareTarget(_rallyPoint);
     }

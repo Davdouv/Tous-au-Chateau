@@ -9,8 +9,7 @@ public class SpeechEvent_MapTuto1_Event7 : SpeechEvent {
 	public override bool MustOpen() {
 		// Open after previous event is done
 		if (_previousEvent != null && _previousEvent.IsDone()) {
-			// TODO
-			if (/*group enters the house == true*/false) {
+			if (GameManager.Instance.IsGameWon()) {
 					return true;
 			}
 		}
@@ -18,8 +17,7 @@ public class SpeechEvent_MapTuto1_Event7 : SpeechEvent {
 	}
 
 	public override bool MustClose() {
-		// TODO
 		// Any action from the player
-		return false;
+		return hasDoneAction;
 	}
 }

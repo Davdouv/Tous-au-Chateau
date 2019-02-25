@@ -40,9 +40,8 @@ public class TreeManager : MonoBehaviour {
 
     Vector3 _lastPoint;
 
-
-    // Use this for initialization
-    void Start () {
+    private void Awake()
+    {
         _pointOfBranch = new List<Vector3>();
         _points = new Stack<Vector3>();
         _startPoints = new Stack<Vector3>();

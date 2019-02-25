@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : PauseScript
+public class UIManager : MonoBehaviour
 {
     //To know where to update the display
     public Text woodTxt;
@@ -14,8 +14,13 @@ public class UIManager : PauseScript
 
     //For gameplay purposes
     public GameObject GameOverPanel;
+    public Text gameOverTitleText;
     public Text gameOverVillagersText;
+    public Color victoryTextColor;
+    public Color gameoverTextColor;
     public ResourceManager _ResourceManager;
+    public Material defaultMaterial;
+    public Material notEnoughResourceMaterial;
 
     //For construction pagination
     public BuildingsTypeGroup _BuildingTypeGroup;
@@ -29,12 +34,17 @@ public class UIManager : PauseScript
     private GameObject[] _pageButtons;
     private bool _isCostEmpty = true;
 
+    //For Game Over
+    private GameManager _GameManager;
+
     private void Start()
     {
         if(_BuildingTypeGroup != null)
         {
             CalculateNbOfPages();
         }
+
+        _GameManager = GameManager.Instance;
     }
 
     private void Update()
@@ -53,6 +63,50 @@ public class UIManager : PauseScript
         foodTxt.text = "" + _ResourceManager.GetFood();
         villagersTxt.text = "" + _ResourceManager.GetWorkForce();
         motivation.value = _ResourceManager.GetMotivation();
+
+        /* Test for end of game */
+        if (_GameManager.IsGameWon())
+        {
+            DisplayGameOverPanel(true);
+        }
+
+        if (_GameManager.IsGameLost())
+        {
+            DisplayGameOverPanel(false);
+        }
+
+        /* Updates the ability to purchase or not each building */
+        for (int i=0; i<_sortedBuildings.Count; ++i)
+        {
+            for(int j=0; j<_sortedBuildings[i].Count; ++j)
+            {
+                Building currentBuilding = _sortedBuildings[i][j];
+                if (_ResourceManager.HasEnoughResources(currentBuilding.getCost()))
+                {
+                    //make it normal
+                    currentBuilding.transform.GetChild(2).GetComponent<MeshRenderer>().material = defaultMaterial;
+                    if(currentBuilding.transform.GetChild(2).childCount > 0)
+                    {
+                        for(int k=0; k< currentBuilding.transform.GetChild(2).childCount; ++k)
+                        {
+                            currentBuilding.transform.GetChild(2).GetChild(k).GetComponent<MeshRenderer>().material = defaultMaterial;
+                        }
+                    }
+                }
+                else
+                {
+                    //make it blocked
+                    currentBuilding.transform.GetChild(2).GetComponent<MeshRenderer>().material = notEnoughResourceMaterial;
+                    if (currentBuilding.transform.GetChild(2).childCount > 0)
+                    {
+                        for (int k = 0; k < currentBuilding.transform.GetChild(2).childCount; ++k)
+                        {
+                            currentBuilding.transform.GetChild(2).GetChild(k).GetComponent<MeshRenderer>().material = notEnoughResourceMaterial;
+                        }
+                    }
+                }
+            }
+        }
 
         //Test for pagination functions
         if (Input.GetKeyUp("right"))
@@ -88,8 +142,19 @@ public class UIManager : PauseScript
 
     }
 
-    public void DisplayGameOverPanel()
+    public void DisplayGameOverPanel(bool isPlayerVictorious)
     {
+        if (isPlayerVictorious)
+        {
+            gameOverTitleText.text = "VICTORY";
+            gameOverTitleText.color = victoryTextColor;
+        }
+        else
+        {
+            gameOverTitleText.text = "GAME OVER";
+            gameOverTitleText.color = gameoverTextColor;
+        }
+
         GameOverPanel.SetActive(true);
         gameOverVillagersText.text = "Remaining Villagers : " + _ResourceManager.GetWorkForce();
     }
@@ -104,6 +169,7 @@ public class UIManager : PauseScript
         // constructionPanel.SetActive(false);
     }
 
+    /* Pagination */
     public void DisplayConstructionPage(int index)
     {
         if (index < 0 || index >= _nbOfPagesInUI)
@@ -249,25 +315,6 @@ public class UIManager : PauseScript
 
             _pageButtons[i] = button;
         }
-    }
-
-    override public void Pause()
-    {
-        /*Button[] interactables = constructionPanel.GetComponentsInChildren<Button>();
-        for(int i = 0; i < interactables.Length; ++i)
-        {
-            interactables[i].enabled = false;
-        }*/
-    }
-
-    override public void UnPause()
-    {
-        /*Button[] interactables = constructionPanel.GetComponentsInChildren<Button>();
-
-        for (int i = 0; i < interactables.Length; ++i)
-        {
-            interactables[i].enabled = true;
-        }*/
     }
 
 }

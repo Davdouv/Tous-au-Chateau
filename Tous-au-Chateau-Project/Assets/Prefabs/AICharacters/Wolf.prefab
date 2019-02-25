@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4973774798618966}
   - component: {fileID: 33233700634324864}
   - component: {fileID: 23883169119171988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wolfModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 114301450595613960}
   - component: {fileID: 114014289715169834}
   - component: {fileID: 114026331390198488}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wolf
   m_TagString: Wolf
   m_Icon: {fileID: 0}
@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: 1
   attackDelay: 0.6
+  aiType: 5
 --- !u!114 &114497774470111296
 MonoBehaviour:
   m_ObjectHideFlags: 1

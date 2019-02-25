@@ -16,8 +16,9 @@ public class Villager : MonoBehaviour
     public bool _isPassive;
     public GameObject _isJoining;
     public bool _hasJoined;
+    private bool _hasReachedObjectif;
 
-    private CollisionDetection _villagerCollision;
+    private DangerDetection _villagerCollision;
     public CharacterStats _stats;
     private DyingVillager _deathmode;
 
@@ -27,18 +28,23 @@ public class Villager : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
-        _villagerCollision = GetComponent<CollisionDetection>();
+        _villagerCollision = GetComponent<DangerDetection>();
         _stats = GetComponent<CharacterStats>();
         _deathmode = GetComponent<DyingVillager>();
 
         _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
+        if (_group)
+        {
+            _group.AddVillagers(this);
+        }
         if (_isInfected)
         {
             gameObject.AddComponent<InfectionSpreading>();
         }
 
-        
-        agent.enabled = _isPassive;
+
+        //agent.enabled = _isPassive;
+        agent.enabled = false;  // Set active only when we need it active
 
         _rb.isKinematic = false;
         _rb.freezeRotation = !_isPassive;
@@ -82,21 +88,26 @@ public class Villager : MonoBehaviour
     }
     public void ChangeDirection(Direction dir)
     {
-        switch (dir)
+        if (_stats.IsAlive())
         {
-            case Direction.BACKWARD:
-                transform.Rotate(0, 180, 0);
-                break;
-            case Direction.LEFT:
-                transform.Rotate(0, -90, 0);
-                break;
-            case Direction.RIGHT:
-                transform.Rotate(0, 90, 0);
-                break;
+            switch (dir)
+            {
+                /*
+                case Direction.BACKWARD:
+                    transform.Rotate(0, 180, 0);
+                    break;
+                */
+                case Direction.LEFT:
+                    transform.Rotate(0, -90, 0);
+                    break;
+                case Direction.RIGHT:
+                    transform.Rotate(0, 90, 0);
+                    break;
 
-            default:
-                break;
-        }
+                default:
+                    break;
+            }
+        }        
     }
 
     public void GetInfected()
@@ -114,10 +125,12 @@ public class Villager : MonoBehaviour
     {
         //_stats.SetIsAlive( false);
         // _deathmode.isAlive = false;
+        /*
         if (_group)
         {
             _group.RemoveVillager(this);
-        }        
+        }  
+        */
         _deathmode.isAlive = false;
         _stats.SetIsAlive(false);
         _canMove = false;
@@ -131,51 +144,66 @@ public class Villager : MonoBehaviour
     }
     public void JoinIn(GameObject callguy)
     {
-        print(name + " wants to join in");
-        _isJoining = callguy;
-        _isPassive = false;
+        if (_stats.IsAlive())
+        {
+            _isJoining = callguy;
+            _isPassive = false;
 
-        agent.updatePosition = true;
-        agent.updateRotation = true;
-        agent.SetDestination(_isJoining.transform.position);
+            agent.enabled = true;
+            agent.updatePosition = true;
+            agent.updateRotation = true;
+            agent.SetDestination(_isJoining.transform.position);
+        }
     }
 
     void Update()
     {
-        if (_canMove)
+        if (_stats.IsAlive())
         {
-            Move();
-        }
-
-        if (!_hasJoined)
-        {
-            if (_isJoining)
+            if (_canMove)
             {
-                MoveTowardVillager(_isJoining);
-                if ((_isJoining.transform.position - transform.position).sqrMagnitude <= 4.0f)
+                Move();
+            }
+
+            if (!_hasJoined)
+            {
+                if (_isJoining)
                 {
-                    print(name + " has joined in");
-                    _hasJoined = true;
-                    _canMove = true;
-                    _rb.freezeRotation = true;
+                    MoveTowardVillager(_isJoining);
+                    if ((_isJoining.transform.position - transform.position).sqrMagnitude <= 4.0f)
+                    {
+                        _hasJoined = true;
+                        _canMove = true;
+                        _rb.freezeRotation = true;
 
-                    _group = _isJoining.GetComponent<Villager>()._group;
-                    _group.AddVillagers(GetComponent<Villager>());
-                    transform.parent = _group.gameObject.transform;
+                        _group = _isJoining.GetComponent<Villager>()._group;
+                        _group.AddVillagers(GetComponent<Villager>());
+                        transform.parent = _group.gameObject.transform;
 
-                    //transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
+                        //transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
 
-                    // print("rotation" +_isJoining.transform.rotation.y);
-                    transform.rotation = _isJoining.transform.rotation;
-                    //print("rotation" + transform.rotation.y);
+                        // print("rotation" +_isJoining.transform.rotation.y);
+                        transform.rotation = _isJoining.transform.rotation;
+                        //print("rotation" + transform.rotation.y);
 
-                    agent.ResetPath();
-                    agent.enabled = false;
+                        agent.ResetPath();
+                        agent.enabled = false;
 
-                    _isJoining = null;
+                        _isJoining = null;
+                    }
                 }
             }
         }
+    }
+
+    public void SetHasReachedObjectif()
+    {
+        _hasReachedObjectif = true;
+    }
+
+    public bool HasReachedObjectif()
+    {
+        return _hasReachedObjectif;
     }
 
     // Update is called once per frame
