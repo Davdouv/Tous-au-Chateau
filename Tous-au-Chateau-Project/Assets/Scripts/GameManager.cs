@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour {
     private static bool _isWorldPaused;
 
     public GameObject pauseMenu;
+    public bool tuto = true;
 
     // ***** STATES OF THE GAME *****/
     public void GameStarted()

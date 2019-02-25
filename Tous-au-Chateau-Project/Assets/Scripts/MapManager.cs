@@ -32,7 +32,6 @@ public class MapManager : MonoBehaviour {
     public GameObject _TreesPosition;
 
     #region Tuto
-    bool tuto = true;
     bool once = true;
     public GameObject firstTree = null;
     #endregion
@@ -49,7 +48,7 @@ public class MapManager : MonoBehaviour {
             GameObject go = this.GetComponent<TreeManager>().BuildTree();
             go.transform.position = _TreesPosition.transform.GetChild(i).gameObject.transform.position;
 
-            if (once && tuto)
+            if (once && GameManager.Instance.tuto)
             {
                 firstTree = go;
             }

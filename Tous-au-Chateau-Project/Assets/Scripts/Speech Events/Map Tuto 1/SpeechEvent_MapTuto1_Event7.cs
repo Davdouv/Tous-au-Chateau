@@ -17,8 +17,7 @@ public class SpeechEvent_MapTuto1_Event7 : SpeechEvent {
 	}
 
 	public override bool MustClose() {
-		// TODO
 		// Any action from the player
-		return false;
+		return hasDoneAction;
 	}
 }
