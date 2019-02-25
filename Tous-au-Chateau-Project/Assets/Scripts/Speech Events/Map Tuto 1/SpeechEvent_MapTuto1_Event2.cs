@@ -8,20 +8,19 @@ public class SpeechEvent_MapTuto1_Event2 : SpeechEvent {
 
 	public override bool MustOpen() {
 		// Open after previous event is done
-		if (_previousEvent != null && _previousEvent.IsDone()) {
+		if (previousEvent != null && previousEvent.IsDone()) {
 			return true;
 		}
 		return false;
 	}
 
 	public override bool MustClose() {
-				Debug.Log("Must Close Event 2");
         // When any action is done from the player (any key pressed)
-        if (/*hasDoneAction*/ false)
-        {
-            currentVillagersGroup.SetVillagersCanMove(true);
-        }
-        // return hasDoneAction;
-				return false;
-	}
+				// hasDoneAction = false;
+				if (hasDoneAction)
+	      {
+	         currentVillagersGroup.SetVillagersCanMove(true);
+	      }
+        return hasDoneAction;
+			}
 }

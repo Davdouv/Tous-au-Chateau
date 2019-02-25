@@ -10,7 +10,7 @@ public class SpeechEvent_MapTuto1_Event5 : SpeechEvent {
 
 	public override bool MustOpen() {
 		// Open after previous event is done
-		if (_previousEvent != null && _previousEvent.IsDone()) {
+		if (previousEvent != null && previousEvent.IsDone()) {
             // Check if all group is dead
             if (currentVillagersGroup.GetNumberOfVillagersAlive() == 0)
             {

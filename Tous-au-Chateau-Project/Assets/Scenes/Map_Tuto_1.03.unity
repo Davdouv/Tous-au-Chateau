@@ -972,11 +972,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2619e924716cef1409829fb8be252b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: "Great, you\u2019re here! Now there\u2019s nothing we can fear since you\u2019re
+  message: "Great, you\u2019re here! Now there\u2019s nothing we can fear since you\u2019re
     protecting us! Let\u2019s head over this house to recruit new villagers to join
     our cause!"
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 564704340}
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 564704340}
   hasDoneAction: 0
 --- !u!4 &104874727
 Transform:
@@ -2529,10 +2529,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cee50c3b010a6c459383dfd6466ea01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: We cannot reach the house, those trees are blocking the way. Get rid of
+  message: We cannot reach the house, those trees are blocking the way. Get rid of
     one of those to let us pass.
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 508803583}
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 508803583}
   hasDoneAction: 0
   _ResourceManager: {fileID: 439394635}
 --- !u!4 &436246461
@@ -3041,12 +3041,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25712c75e130e24b8fbb87ff7d4e59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: "There are enemies on our way, such as this wild wolf. Maybe you could,
+  message: "There are enemies on our way, such as this wild wolf. Maybe you could,
     you know\u2026 Crush it?"
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 2050851015}
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 2050851015}
   hasDoneAction: 0
-  wolf: {fileID: 0}
+  wolf: {fileID: 1643772101}
 --- !u!4 &508803584
 Transform:
   m_ObjectHideFlags: 0
@@ -3359,9 +3359,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8f3da9ebe2aed43a7256cb5ce940ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: You need to place the board at the right place!
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 2050851015}
+  message: You need to place the board at the right place!
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 2050851015}
   hasDoneAction: 0
 --- !u!1 &562099679
 GameObject:
@@ -3418,11 +3418,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2551e0e901f06fd4890c1ae047fbb997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: Popularios! Dear God, can you hear us from up there? We are going to organize
-    our revolution against the Wicked Lord and we need your help! If you can hear
-    us, please crush the ground near us with your fist.
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 0}
+  message: "Popularios! Dear God, can you hear us from up there? We are going to organize\r
+    our revolution against the Wicked Lord and we need your help! If you can hear\r
+    us, please crush the ground near us with your fist."
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 0}
   hasDoneAction: 0
   hasCrushedGround: 0
 --- !u!4 &564704341
@@ -3514,9 +3514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3258f67faf8b12f4eb88944ebb08accf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: You have to crush the right tree if we want to reach the house.
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 436246460}
+  message: You have to crush the right tree if we want to reach the house.
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 436246460}
   hasDoneAction: 0
   _ResourceManager: {fileID: 439394635}
 --- !u!1 &614729558
@@ -4082,11 +4082,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42a8e0028cf91c47a7107745df22f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: "Great, you\u2019re here! Now there\u2019s nothing we can fear since you\u2019re
-    protecting us! Let\u2019s head over this house to recruit new villagers to join
-    our cause!"
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 104874726}
+  message: Well, this world seems more dangerous that we thought. We will need some
+    more active help from your side, Popularios. Please, crush this tree over there.
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 104874726}
   hasDoneAction: 0
 --- !u!4 &698406505
 Transform:
@@ -4953,8 +4952,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.08438132, y: 0.6554454, z: 0.07405433, w: 0.7468515}
-  m_LocalPosition: {x: 34.444878, y: 43.50039, z: -11.466831}
+  m_LocalRotation: {x: 0.11951098, y: 0.8013535, z: 0.17080729, w: -0.5606912}
+  m_LocalPosition: {x: 239.01111, y: -36.474335, z: 43.691963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6853,6 +6852,10 @@ Prefab:
     - target: {fileID: 4276074346133434, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738572890789316, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
@@ -9309,12 +9312,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e23ee40addeb743908551597b7d8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: "Hourra! You\u2019ve led us to the house safely (for most of us at least...).
+  message: "Hourra! You\u2019ve led us to the house safely (for most of us at least...).
     Our ranks are now widening. Our journey is not over yet, there\u2019s another
     house we have to visit."
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 436246460}
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 436246460}
   hasDoneAction: 0
+--- !u!114 &1643772101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114014289715169834, guid: 6bda71d6907f26a4f855c28b6621553c,
+    type: 2}
+  m_PrefabInternal: {fileID: 391892027}
+  m_Script: {fileID: 11500000, guid: a2d4a616a4e0b294f86fb4a9a2b0754d, type: 3}
 --- !u!1 &1650279934
 GameObject:
   m_ObjectHideFlags: 0
@@ -9905,7 +9914,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1747281933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -100, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 756081873}
@@ -10889,7 +10898,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163c4ef54e86e254fa2ce446425c9f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speechEvent1: {fileID: 564704340}
   speechEvent4: {fileID: 2050851015}
 --- !u!1 &1931867879
 GameObject:
@@ -11267,7 +11275,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1959580051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.542892, y: -88.2, z: 78.2}
+  m_LocalPosition: {x: 14.542892, y: -234, z: 78.2}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11651,11 +11659,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e3cf3b697a4cd49a8283461a6aa201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: "Thanks to this new collected resource, you\u2019re now able to create
+  message: "Thanks to this new collected resource, you\u2019re now able to create
     a bridge for us to cross the river. Select the wood board in your construction
     panel and put it on the river."
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 698406504}
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 698406504}
   hasDoneAction: 0
   hasWookPlankLanded: 0
 --- !u!4 &2050851016
@@ -12036,9 +12044,10 @@ MonoBehaviour:
   resourceM: {fileID: 439394635}
   spawnPoint: {fileID: 1787859272}
   RightHand: {fileID: 1235158201}
-  speechEvent2: {fileID: 0}
-  speechEvent4_1: {fileID: 0}
-  speechEvent7: {fileID: 0}
+  speechEvent1: {fileID: 564704340}
+  speechEvent2: {fileID: 104874726}
+  speechEvent4_1: {fileID: 537798008}
+  speechEvent7: {fileID: 1638288666}
 --- !u!114 &2092337014
 MonoBehaviour:
   m_ObjectHideFlags: 0

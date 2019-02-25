@@ -135,7 +135,7 @@ public class MainActions : MonoBehaviour {
     {
         if (speechEvent)
         {
-            if (speechEvent.IsOpen() && !speechEvent.hasDoneAction)
+            if (speechEvent.IsOpen() && speechEvent.bubble.canClose && !speechEvent.hasDoneAction)
             {
                 speechEvent.hasDoneAction = true;
             }

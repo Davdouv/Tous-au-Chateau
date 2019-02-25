@@ -12,7 +12,7 @@ public class SpeechEvent_MapTuto1_Event4 : SpeechEvent
 
 	public override bool MustOpen() {
 		// Open after previous event is done
-		if (_previousEvent != null && _previousEvent.IsDone()) {
+		if (previousEvent != null && previousEvent.IsDone()) {
 			return true;
 		}
 		return false;
