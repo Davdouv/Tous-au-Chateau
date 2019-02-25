@@ -5,9 +5,8 @@ using UnityEngine.AI;
 
 public class MapManager : MonoBehaviour {
 
+    #region Singleton
     private static MapManager _instance;
-
-    public GameObject _TreesPosition;
 
     // ***** SINGLETON *****/
     public static MapManager Instance
@@ -28,12 +27,19 @@ public class MapManager : MonoBehaviour {
     {
         _instance = this;
     }
+    #endregion
+
+    public GameObject _TreesPosition;
+
+    #region Tuto
+    bool once = true;
+    public GameObject firstTree = null;
+    #endregion
 
     private void Start()
     {
         Generate();
     }
-
 
     public void Generate()
     {
@@ -42,6 +48,10 @@ public class MapManager : MonoBehaviour {
             GameObject go = this.GetComponent<TreeManager>().BuildTree();
             go.transform.position = _TreesPosition.transform.GetChild(i).gameObject.transform.position;
 
+            if (once && GameManager.Instance.tuto)
+            {
+                firstTree = go;
+            }
         }
     }
 }

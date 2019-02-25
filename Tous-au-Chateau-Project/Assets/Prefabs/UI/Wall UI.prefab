@@ -283,12 +283,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Wall
   buildingType: 0
-  woodCost: 0
-  stoneCost: 10
-  foodCost: 0
-  workForceCost: 0
-  motivationCost: 0
   prefab: {fileID: 1604675484901090, guid: 33c46a1b7e3541b4b946be1b512772e7, type: 2}
+  _cost:
+    wood: 0
+    stone: 10
+    food: 0
+    workForce: 0
+    motivation: 0
 --- !u!114 &114125421857938626
 MonoBehaviour:
   m_ObjectHideFlags: 1

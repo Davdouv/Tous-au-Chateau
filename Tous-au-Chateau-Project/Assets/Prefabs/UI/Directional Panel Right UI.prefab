@@ -152,8 +152,9 @@ GameObject:
   - component: {fileID: 4254714503749770}
   - component: {fileID: 114046573780057168}
   - component: {fileID: 65751936518788032}
+  - component: {fileID: 114704269652355304}
   m_Layer: 0
-  m_Name: Directional Panel UI
+  m_Name: Directional Panel Right UI
   m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -424,15 +425,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af561be8694ef0240b78fdae8b0765d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Directional Panel Left
+  _name: Directional Panel Right
   buildingType: 1
-  woodCost: 20
-  stoneCost: 0
-  foodCost: 0
-  workForceCost: 0
-  motivationCost: 0
   prefab: {fileID: 1750304352602756, guid: 5cea4a98f45c0184cb37455da1d632e2, type: 2}
-  direction: 1
+  _cost:
+    wood: 20
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  direction: 0
 --- !u!114 &114173224843859734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -520,6 +522,20 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Stone Wall
+--- !u!114 &114704269652355304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774256326975916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1f259f02aabf445b936075b4b93352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag:
+  - Villager
+  distanceDetection: 5
 --- !u!222 &222223230545870424
 CanvasRenderer:
   m_ObjectHideFlags: 1
