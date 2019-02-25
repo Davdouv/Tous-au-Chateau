@@ -17,7 +17,7 @@ public class SpeechEvent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		_bubble.setMessage(_message);
+		// _bubble.setMessage(_message);
 	}
 
 	public virtual bool MustOpen() { return false; }
@@ -26,7 +26,12 @@ public class SpeechEvent : MonoBehaviour {
 
 	public bool IsOpen() { return _isOpen; }
 	public bool IsDone() { return _isDone; }
-	public void SetIsOpen(bool bo) { _isOpen = bo; }
+	public void SetIsOpen(bool bo) {
+		if (bo) {
+			_bubble.setMessage(_message);
+		}
+		_isOpen = bo;
+	}
 	public void SetIsDone(bool bo) { _isDone = bo; }
 
 	// Update is called once per frame

@@ -11,9 +11,11 @@ public class SpeechEvent_MapTuto1_Event3 : SpeechEvent {
 		if (_previousEvent != null && _previousEvent.IsDone()) {
             if (currentVillagersGroup.GetNumberOfVillagersAlive() == 0)
             {
+								Debug.Log("Death Group");
                 // Check if at least one has been killed by the river
                 if (currentVillagersGroup.IsDeathCausedBy(DeathReason.RIVER))
                 {
+										Debug.Log("Death River");
                     VillagersManager.Instance.SpawnGroup();
                     return true;
                 }

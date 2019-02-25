@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114241641678293014}
   - component: {fileID: 114589392995402528}
   - component: {fileID: 195200504844747520}
-  - component: {fileID: 114973890667162444}
+  - component: {fileID: 114077937849614894}
   m_Layer: 0
   m_Name: Villager
   m_TagString: Villager
@@ -163,6 +163,22 @@ MonoBehaviour:
   speed: 2
   strength: 0
   _deathReason: 0
+--- !u!114 &114077937849614894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1096130410665992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae20244bf024849a92a7da0bc3bf5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag:
+  - Void
+  - River
+  - Plank
+  distanceDetection: 5
 --- !u!114 &114079941186006326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,22 +225,6 @@ MonoBehaviour:
   turningRate: 20
   mesh: {fileID: 0}
   isAlive: 1
---- !u!114 &114973890667162444
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1096130410665992}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d435b5a1e9751f142adf98bf7fecf27c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag:
-  - Plank
-  - Void
-  - River
-  distanceDetection: 5
 --- !u!135 &135940879828553240
 SphereCollider:
   m_ObjectHideFlags: 1

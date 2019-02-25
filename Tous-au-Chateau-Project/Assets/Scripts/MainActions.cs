@@ -18,6 +18,7 @@ public class MainActions : MonoBehaviour {
 
     GameObject newBuilding;
 
+    public SpeechEvent_MapTuto1_Event1 speechEvent1 = null;
     public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
     public SpeechEvent_MapTuto1_Event4_1 speechEvent4_1 = null;
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
@@ -30,7 +31,7 @@ public class MainActions : MonoBehaviour {
         crushMode = false;
         haveBuilding = false;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -85,7 +86,7 @@ public class MainActions : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
+        //Debug.Log(other.tag);
         if (crushMode && !handStillClose) //Destroy element of the nature
         {
             if (other.tag == "Crushable")
@@ -96,6 +97,15 @@ public class MainActions : MonoBehaviour {
                 other.gameObject.GetComponent<Crushable>().Crush();
                 handStillClose = true;
             }
+
+            if (GameManager.Instance.tuto)
+            {
+              if (other.gameObject.tag == "Ground")
+              {
+                speechEvent1.hasCrushedGround = true;
+              }
+            }
+
         }
     }
 

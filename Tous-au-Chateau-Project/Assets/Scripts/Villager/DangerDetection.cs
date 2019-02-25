@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 
 public class DangerDetection : TriggerZone {
-    
+
     private bool _onPlatform = false;
     private CharacterStats _stats;
 
@@ -16,7 +16,6 @@ public class DangerDetection : TriggerZone {
 
     public override void CollisionEnter(Collision collision)
     {
-        Debug.Log("COLLISION ENTER : " + collision.gameObject.name);
         if (collision.gameObject.GetComponent<Building>())
         {
             _onPlatform = true;
@@ -43,7 +42,7 @@ public class DangerDetection : TriggerZone {
             _onPlatform = false;
         }
     }
-    
-    
-    
+
+
+
 }

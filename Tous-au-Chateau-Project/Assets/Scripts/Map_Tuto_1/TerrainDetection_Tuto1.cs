@@ -17,12 +17,17 @@ public class TerrainDetection_Tuto1 : MonoBehaviour {
                 speechEvent4.hasWookPlankLanded = true;
             }
         }
-        else if (collision.gameObject.GetComponent<MainActions>())
+        /*
+        else if (collision.gameObject.GetComponent<MainActions>()
+                  collision.gameObject.tag == "Controller")
         {
+          Debug.Log("Collision avec la main");
             if (collision.gameObject.GetComponent<MainActions>().IsCrushModeActive())
             {
+                Debug.Log("Collision avec le sol");
                 speechEvent1.hasCrushedGround = true;
             }
         }
+        */
     }
 }
