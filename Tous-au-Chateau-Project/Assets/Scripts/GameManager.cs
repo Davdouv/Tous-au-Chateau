@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour {
     private static bool _isWorldPaused;
 
     public GameObject pauseMenu;
+    public bool tuto = true;
 
     // ***** STATES OF THE GAME *****/
     public void GameStarted()
@@ -46,6 +47,15 @@ public class GameManager : MonoBehaviour {
     public void GameLost()
     {
         _hasLost = true;
+    }
+    public bool IsGameWon()
+    {
+        return _hasWin;
+    }
+
+    public bool IsGameLost()
+    {
+        return _hasLost;
     }
 
     // PAUSE GAME

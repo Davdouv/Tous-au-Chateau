@@ -325,12 +325,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Plank
   buildingType: 0
-  woodCost: 5
-  stoneCost: 0
-  foodCost: 0
-  workForceCost: 0
-  motivationCost: 0
   prefab: {fileID: 1145261126087502, guid: c8228a55b9802f54bbb0825079c06b4e, type: 2}
+  _cost:
+    wood: 10
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
 --- !u!114 &114562461992501056
 MonoBehaviour:
   m_ObjectHideFlags: 1

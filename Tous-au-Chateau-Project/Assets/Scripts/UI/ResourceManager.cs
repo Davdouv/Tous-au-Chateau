@@ -27,8 +27,9 @@ public class ResourceManager : PauseScript
     }
     #endregion
 
-    public VillagersGroup listOfVillagers;
+    //public VillagersGroup listOfVillagers;
 
+    [SerializeField]
     private ResourcesPack _currentResources;
     private bool _isInPause;
 
@@ -41,10 +42,13 @@ public class ResourceManager : PauseScript
 
     private void Update()
     {
+        /*
         if(listOfVillagers != null)
         {
             _currentResources.workForce = listOfVillagers.GetNumberOfVillagers();
         }
+        */
+        _currentResources.workForce = VillagersManager.Instance.GetNumberOfVillagersAlive();
     }
 
     private void InGameMotivation()
@@ -107,33 +111,45 @@ public class ResourceManager : PauseScript
     //REMOVE
     public bool RemoveResources(ResourcesPack toRemove)
     {
-        //non valid values
-        if (toRemove.wood < 0 || toRemove.stone < 0 || toRemove.food < 0 || toRemove.workForce < 0 || toRemove.motivation < 0)
+        bool hasEnoughResource = HasEnoughResources(toRemove);
+
+        if (!hasEnoughResource)
+        {
             return false;
+        }
 
-        //case where not enough wood to remove
-        if(toRemove.wood > 0 && _currentResources.wood - toRemove.wood < 0)
-            return false;
-
-        //case where not enough stone to remove
-        if (toRemove.stone > 0 && _currentResources.stone - toRemove.stone < 0)
-            return false;
-
-        //case where not enough food to remove
-        if (toRemove.food > 0 && _currentResources.food - toRemove.food < 0)
-            return false;
-
-        //case where not enough workForce to remove
-        if (toRemove.workForce > 0 && _currentResources.workForce - toRemove.workForce < 0)
-            return false; // end of game ?
-
-        //case where not enough motivation to remove
-        if (toRemove.motivation > 0 && _currentResources.motivation - toRemove.motivation < 0)
-            return false; // end of game ?
-
-        //every resource level is high enough
         //Special case for workforce => remove in villagersgroup and not here
         _currentResources -= toRemove;
+        return true;
+    }
+
+    public bool HasEnoughResources(ResourcesPack toCheck)
+    {
+        //non valid values
+        if (toCheck.wood < 0 || toCheck.stone < 0 || toCheck.food < 0 || toCheck.workForce < 0 || toCheck.motivation < 0)
+            return false;
+
+        //case where not enough wood
+        if (toCheck.wood > 0 && _currentResources.wood - toCheck.wood < 0)
+            return false;
+
+        //case where not enough stone
+        if (toCheck.stone > 0 && _currentResources.stone - toCheck.stone < 0)
+            return false;
+
+        //case where not enough food
+        if (toCheck.food > 0 && _currentResources.food - toCheck.food < 0)
+            return false;
+
+        //case where not enough workForce
+        if (toCheck.workForce > 0 && _currentResources.workForce - toCheck.workForce < 0)
+            return false;
+
+        //case where not enough motivation
+        if (toCheck.motivation > 0 && _currentResources.motivation - toCheck.motivation < 0)
+            return false;
+
+        //every resource level is high enough
         return true;
     }
 }
