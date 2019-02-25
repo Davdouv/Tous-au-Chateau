@@ -1129,6 +1129,7 @@ MonoBehaviour:
     our cause!"
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 564704340}
+  hasDoneAction: 0
 --- !u!4 &104874727
 Transform:
   m_ObjectHideFlags: 0
@@ -1249,8 +1250,13 @@ MonoBehaviour:
   villagersTxt: {fileID: 1185597900}
   motivation: {fileID: 1931867881}
   GameOverPanel: {fileID: 253097581}
+  gameOverTitleText: {fileID: 0}
   gameOverVillagersText: {fileID: 199488035}
+  victoryTextColor: {r: 0, g: 0, b: 0, a: 0}
+  gameoverTextColor: {r: 0, g: 0, b: 0, a: 0}
   _ResourceManager: {fileID: 439394635}
+  defaultMaterial: {fileID: 0}
+  notEnoughResourceMaterial: {fileID: 0}
   _BuildingTypeGroup: {fileID: 1453698697}
   ConstructionPagination: {fileID: 1290662491}
 --- !u!4 &178656204
@@ -2972,6 +2978,8 @@ MonoBehaviour:
     one of those to let us pass.
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 508803583}
+  hasDoneAction: 0
+  _ResourceManager: {fileID: 0}
 --- !u!4 &436246461
 Transform:
   m_ObjectHideFlags: 0
@@ -3014,7 +3022,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d5ef9630831694fbafa3bf83208c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listOfVillagers: {fileID: 0}
+  _currentResources:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
 --- !u!4 &439394636
 Transform:
   m_ObjectHideFlags: 0
@@ -3487,6 +3500,8 @@ MonoBehaviour:
     you know\u2026 Crush it?"
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 2050851015}
+  hasDoneAction: 0
+  wolf: {fileID: 0}
 --- !u!4 &508803584
 Transform:
   m_ObjectHideFlags: 0
@@ -3798,6 +3813,7 @@ MonoBehaviour:
   _message: You need to place the board at the right place!
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 2050851015}
+  hasDoneAction: 0
 --- !u!1 &562099679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3858,6 +3874,8 @@ MonoBehaviour:
     us, please crush the ground near us with your fist.
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 0}
+  hasDoneAction: 0
+  hasCrushedGround: 0
 --- !u!4 &564704341
 Transform:
   m_ObjectHideFlags: 0
@@ -3950,6 +3968,8 @@ MonoBehaviour:
   _message: You have to crush the right tree if we want to reach the house.
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 436246460}
+  hasDoneAction: 0
+  _ResourceManager: {fileID: 0}
 --- !u!1 &608698791
 GameObject:
   m_ObjectHideFlags: 0
@@ -4555,6 +4575,7 @@ MonoBehaviour:
     our cause!"
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 104874726}
+  hasDoneAction: 0
 --- !u!4 &698406505
 Transform:
   m_ObjectHideFlags: 0
@@ -5532,8 +5553,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: 0.32673115, y: 0.66943187, z: 0.51347715, w: -0.4259683}
-  m_LocalPosition: {x: 87.2716, y: -7.910034, z: 18.28225}
+  m_LocalRotation: {x: 0.19719571, y: 0.6751165, z: 0.19472803, w: -0.6836759}
+  m_LocalPosition: {x: 106.75051, y: 45.124855, z: 4.6737456}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6074,11 +6095,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7a71232e1cc0342a9feaa712fec41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _villagers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &903041937
 GameObject:
   m_ObjectHideFlags: 0
@@ -8445,7 +8461,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _UiManager: {fileID: 0}
   pauseObjects:
-  - {fileID: 178656203}
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!4 &1242743575
 Transform:
@@ -10427,6 +10443,7 @@ MonoBehaviour:
     house we have to visit."
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 436246460}
+  hasDoneAction: 0
 --- !u!1 &1650279934
 GameObject:
   m_ObjectHideFlags: 0
@@ -11141,6 +11158,7 @@ MonoBehaviour:
   - {fileID: 436246460}
   - {fileID: 596767925}
   - {fileID: 1638288666}
+  firstVillagersGroup: {fileID: 0}
 --- !u!1001 &1756607082
 Prefab:
   m_ObjectHideFlags: 0
@@ -12418,7 +12436,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1960962545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.589996, y: 8.100002, z: 35}
+  m_LocalPosition: {x: 22.589996, y: -2, z: 35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1404571497}
@@ -12819,6 +12837,8 @@ MonoBehaviour:
     panel and put it on the river."
   _bubble: {fileID: 1077681572}
   _previousEvent: {fileID: 698406504}
+  hasDoneAction: 0
+  hasWookPlankLanded: 0
 --- !u!4 &2050851016
 Transform:
   m_ObjectHideFlags: 0
@@ -13244,6 +13264,9 @@ MonoBehaviour:
   resourceM: {fileID: 439394635}
   spawnPoint: {fileID: 1787859272}
   RightHand: {fileID: 1235158201}
+  speechEvent2: {fileID: 0}
+  speechEvent4_1: {fileID: 0}
+  speechEvent7: {fileID: 0}
 --- !u!114 &2092337014
 MonoBehaviour:
   m_ObjectHideFlags: 0

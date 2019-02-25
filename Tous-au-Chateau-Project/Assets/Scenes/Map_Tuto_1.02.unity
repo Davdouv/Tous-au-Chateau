@@ -221,6 +221,8 @@ MonoBehaviour:
   _message: You have to crush the right tree if we want to reach the house.
   _bubble: {fileID: 173539588}
   _previousEvent: {fileID: 1993590565}
+  hasDoneAction: 0
+  _ResourceManager: {fileID: 0}
 --- !u!1001 &157162087
 Prefab:
   m_ObjectHideFlags: 0
@@ -288,6 +290,47 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 224137818958217414, guid: fb5adc7da9ca87a42b5ac24a2c060a41,
     type: 2}
   m_PrefabInternal: {fileID: 883927758}
+--- !u!1 &224439469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224439470}
+  - component: {fileID: 224439471}
+  m_Layer: 0
+  m_Name: River
+  m_TagString: River
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &224439470
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 224439469}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 22.590004, y: 9.6, z: 28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1381937080}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &224439471
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 224439469}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 43.2, y: 1, z: 28.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &252608306
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,6 +381,7 @@ MonoBehaviour:
   - {fileID: 1993590565}
   - {fileID: 134439821}
   - {fileID: 381627206}
+  firstVillagersGroup: {fileID: 0}
 --- !u!1001 &286861062
 Prefab:
   m_ObjectHideFlags: 0
@@ -416,6 +460,7 @@ MonoBehaviour:
     our cause!"
   _bubble: {fileID: 173539588}
   _previousEvent: {fileID: 1547503554}
+  hasDoneAction: 0
 --- !u!4 &361578324
 Transform:
   m_ObjectHideFlags: 0
@@ -474,6 +519,7 @@ MonoBehaviour:
     house we have to visit."
   _bubble: {fileID: 173539588}
   _previousEvent: {fileID: 1993590565}
+  hasDoneAction: 0
 --- !u!4 &652602276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4219222216158774, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
@@ -494,8 +540,8 @@ GameObject:
   - component: {fileID: 778413044}
   - component: {fileID: 778413045}
   m_Layer: 0
-  m_Name: DeathZone
-  m_TagString: DangerArea
+  m_Name: Void
+  m_TagString: Void
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -507,10 +553,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 778413043}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.59, y: 8.1, z: 33.6}
+  m_LocalPosition: {x: 22.590004, y: 3.1000004, z: 33.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1478680830}
+  m_Father: {fileID: 1381937080}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &778413045
@@ -773,6 +819,8 @@ MonoBehaviour:
     you know\u2026 Crush it?"
   _bubble: {fileID: 173539588}
   _previousEvent: {fileID: 2055717805}
+  hasDoneAction: 0
+  wolf: {fileID: 0}
 --- !u!4 &1122292664
 Transform:
   m_ObjectHideFlags: 0
@@ -818,6 +866,8 @@ MonoBehaviour:
     us, please crush the ground near us with your fist.
   _bubble: {fileID: 173539588}
   _previousEvent: {fileID: 0}
+  hasDoneAction: 0
+  hasCrushedGround: 0
 --- !u!4 &1165997200
 Transform:
   m_ObjectHideFlags: 0
@@ -894,8 +944,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1233553866}
-  m_LocalRotation: {x: 0.38460287, y: 0.011916943, z: 0.004965645, w: -0.9229919}
-  m_LocalPosition: {x: 107.86906, y: 3.7580261, z: -10.883583}
+  m_LocalRotation: {x: 0.44283205, y: 0.5524938, z: 0.5452681, w: -0.44870153}
+  m_LocalPosition: {x: 99.976555, y: -5.230316, z: 35.26553}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -964,11 +1014,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7a71232e1cc0342a9feaa712fec41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _villagers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+--- !u!1 &1381937079
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1381937080}
+  m_Layer: 0
+  m_Name: DeathZones
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1381937080
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1381937079}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 778413044}
+  - {fileID: 224439470}
+  m_Father: {fileID: 1478680830}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1478680830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4451629645260310, guid: 7448143ad30e2a64e9534a27a5972310,
@@ -1043,8 +1118,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d5ef9630831694fbafa3bf83208c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _EndOfGame: {fileID: 0}
-  listOfVillagers: {fileID: 1333575067}
+  _currentResources:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
 --- !u!4 &1542818092
 Transform:
   m_ObjectHideFlags: 0
@@ -1090,6 +1169,7 @@ MonoBehaviour:
     our cause!"
   _bubble: {fileID: 173539588}
   _previousEvent: {fileID: 1165997199}
+  hasDoneAction: 0
 --- !u!4 &1547503555
 Transform:
   m_ObjectHideFlags: 0
@@ -1544,6 +1624,8 @@ MonoBehaviour:
     one of those to let us pass.
   _bubble: {fileID: 173539588}
   _previousEvent: {fileID: 1122292663}
+  hasDoneAction: 0
+  _ResourceManager: {fileID: 0}
 --- !u!4 &1993590566
 Transform:
   m_ObjectHideFlags: 0
@@ -1600,6 +1682,7 @@ MonoBehaviour:
   _message: You need to place the board at the right place!
   _bubble: {fileID: 173539588}
   _previousEvent: {fileID: 2055717805}
+  hasDoneAction: 0
 --- !u!4 &2042082652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4047924759742978, guid: 3e28f78286845d24f9c8e2131a034c4c,
@@ -1637,6 +1720,8 @@ MonoBehaviour:
     panel and put it on the river."
   _bubble: {fileID: 173539588}
   _previousEvent: {fileID: 361578323}
+  hasDoneAction: 0
+  hasWookPlankLanded: 0
 --- !u!4 &2055717806
 Transform:
   m_ObjectHideFlags: 0
