@@ -17,22 +17,28 @@ public class DangerDetection : TriggerZone {
     public override void CollisionEnter(Collision collision)
     {
         Debug.Log("COLLISION ENTER : " + collision.gameObject.name);
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.GetComponent<Building>())
         {
             _onPlatform = true;
         }
 
-        if (collision.gameObject.tag == "DangerArea")
+        if (collision.gameObject.tag == "River")
         {
             if (!_onPlatform)
-                _stats.TakeDamage(9999);
+                _stats.TakeDamage(9999,DeathReason.RIVER);
                 return;
+        }
+        if (collision.gameObject.tag == "Void")
+        {
+            if (!_onPlatform)
+                _stats.TakeDamage(9999, DeathReason.VOID);
+            return;
         }
     }
 
     public override void CollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.GetComponent<Building>())
         {
             _onPlatform = false;
         }
