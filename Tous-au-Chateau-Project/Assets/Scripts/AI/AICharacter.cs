@@ -264,6 +264,7 @@ public class AICharacter : EnvironmentMaterial {
             }
             else
             {
+                // If he was attacking but has no longer a target to attack
                 if (_isAttacking)
                 {
                     StopActionOnTarget();
