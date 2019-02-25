@@ -28,6 +28,8 @@ public class ResourceManager : PauseScript
     #endregion
 
     //public VillagersGroup listOfVillagers;
+    [Range(0.0f, 5.0f)]
+    public float frequenceToReduceMotivation = 3.0f;
 
     [SerializeField]
     private ResourcesPack _currentResources;
@@ -37,7 +39,7 @@ public class ResourceManager : PauseScript
     {
         _currentResources = new ResourcesPack { motivation = 100, workForce = 10};
         _isInPause = false;
-        InvokeRepeating("InGameMotivation", 0.0f, 3.0f);
+        InvokeRepeating("InGameMotivation", 0.0f, frequenceToReduceMotivation);
     }
 
     private void Update()
