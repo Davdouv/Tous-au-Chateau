@@ -27,17 +27,36 @@ public class CollisionDetection : MonoBehaviour {
 
 
 
-    void OnTriggerEnter(Collider collisionInfo)
+    void OnCollisionStay(Collision collisionInfo)
     {
-        if(collisionInfo.tag == "Platform")
+        if(collisionInfo.gameObject.tag == "Platform")
         {
-            print("UNIT " + name + " IN PLATFORM AREA "+collisionInfo.name);
+            print("UNIT " + name + " IN PLATFORM AREA "+collisionInfo.gameObject.name);
             onPlatform = true;
         }
-        if (!onPlatform && collisionInfo.tag == "DangerArea")
+        if (!onPlatform && collisionInfo.gameObject.tag == "DangerArea" && !inDanger)
         {
-            print("UNIT " + name + " IN DANGER AREA" + collisionInfo.name);
-            inDanger = true;
+            /*
+             Collision system need rework, as it is not properly made : gameobject should only have one collider
+             -> use empty children carrying each collider instead
+
+             Changes shall be made with freetime : triggerzone system shall be updated
+             */
+            foreach(ContactPoint contactpoints in collisionInfo.contacts)
+            {
+                if (Vector3.SqrMagnitude(transform.position - contactpoints.point) < 1.0f)
+                {
+                    print("UNIT " + name + " IN DANGER AREA" + collisionInfo.gameObject.name);
+                    inDanger = true;
+                    return;
+                }
+                else
+                {
+                    inDanger = false;
+                }
+            }
+            
+            
             
         }
     }

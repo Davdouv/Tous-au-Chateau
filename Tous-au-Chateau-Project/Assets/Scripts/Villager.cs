@@ -18,8 +18,8 @@ public class Villager : MonoBehaviour
     public bool _hasJoined;
 
     private CollisionDetection _villagerCollision;
-    private CharacterStats _stats;
-    private DyingVillager _dyingVillager;
+    public CharacterStats _stats;
+    private DyingVillager _deathmode;
 
 
     // Use this for initialization
@@ -29,7 +29,7 @@ public class Villager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         _villagerCollision = GetComponent<CollisionDetection>();
         _stats = GetComponent<CharacterStats>();
-        _dyingVillager = GetComponent<DyingVillager>();
+        _deathmode = GetComponent<DyingVillager>();
 
         _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
         if (_isInfected)
@@ -46,7 +46,8 @@ public class Villager : MonoBehaviour
         _canMove = !_isPassive;
         _hasJoined = !_isPassive;
         _isJoining = null;
-        Vector3 objectif = GameObject.Find("Objectif").transform.position;
+        Vector3 objectif = 
+            GameObject.Find("Objectif").transform.position;
         transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
     }
 
@@ -117,7 +118,9 @@ public class Villager : MonoBehaviour
         {
             _group.RemoveVillager(this);
         }        
-        _dyingVillager.VillagerIsDead();
+        _deathmode.isAlive = false;
+        _stats.SetIsAlive(false);
+        _canMove = false;
         _rb.isKinematic = true;
         agent.enabled = false;
         GetComponent<BoxCollider>().enabled = false;
@@ -140,7 +143,9 @@ public class Villager : MonoBehaviour
     void Update()
     {
         if (_canMove)
+        {
             Move();
+        }
 
         if (!_hasJoined)
         {
@@ -168,13 +173,8 @@ public class Villager : MonoBehaviour
                     agent.enabled = false;
 
                     _isJoining = null;
-
-
                 }
-
-
             }
-
         }
     }
 
