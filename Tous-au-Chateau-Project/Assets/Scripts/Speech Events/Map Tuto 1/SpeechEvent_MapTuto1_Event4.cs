@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class SpeechEvent_MapTuto1_Event4 : SpeechEvent
 {
-    // TODO --> Need to set the currentBuilding somewhere
     //public WoodPlank currentBuilding;
     public bool hasWookPlankLanded = false;
 
@@ -19,7 +18,6 @@ public class SpeechEvent_MapTuto1_Event4 : SpeechEvent
 	}
 
 	public override bool MustClose() {
-        // TODO
         // Opening the Construction Panel and placing the wood board
         // (not necessary at the right place, could be anywhere)
         //if (currentBuilding.HasLanded())
