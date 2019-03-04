@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -972,11 +972,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2619e924716cef1409829fb8be252b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: "Great, you\u2019re here! Now there\u2019s nothing we can fear since you\u2019re
+  message: "Great, you\u2019re here! Now there\u2019s nothing we can fear since you\u2019re
     protecting us! Let\u2019s head over this house to recruit new villagers to join
     our cause!"
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 564704340}
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 564704340}
   hasDoneAction: 0
 --- !u!4 &104874727
 Transform:
@@ -1122,6 +1122,91 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &182145633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 182145634}
+  - component: {fileID: 182145637}
+  - component: {fileID: 182145636}
+  - component: {fileID: 182145635}
+  m_Layer: 0
+  m_Name: LeftBorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &182145634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 182145633}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -25.029999, y: 1.8999977, z: 0}
+  m_LocalScale: {x: 1, y: 70.165085, z: 6.2269597}
+  m_Children: []
+  m_Father: {fileID: 377451604}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &182145635
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 182145633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &182145636
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 182145633}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &182145637
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 182145633}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &199488033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,7 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2218,6 +2303,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 374707014}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &377451603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 377451604}
+  m_Layer: 0
+  m_Name: Borders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &377451604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 377451603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25, y: 10, z: 35}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 182145634}
+  - {fileID: 864027027}
+  - {fileID: 1075078517}
+  - {fileID: 558350311}
+  m_Father: {fileID: 1150327749}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &389500614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,10 +2646,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cee50c3b010a6c459383dfd6466ea01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: We cannot reach the house, those trees are blocking the way. Get rid of
+  message: We cannot reach the house, those trees are blocking the way. Get rid of
     one of those to let us pass.
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 508803583}
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 508803583}
   hasDoneAction: 0
   _ResourceManager: {fileID: 439394635}
 --- !u!4 &436246461
@@ -2577,6 +2694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13d5ef9630831694fbafa3bf83208c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frequenceToReduceMotivation: 3
   _currentResources:
     wood: 0
     stone: 0
@@ -3041,12 +3159,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f25712c75e130e24b8fbb87ff7d4e59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: "There are enemies on our way, such as this wild wolf. Maybe you could,
+  message: "There are enemies on our way, such as this wild wolf. Maybe you could,
     you know\u2026 Crush it?"
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 2050851015}
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 2050851015}
   hasDoneAction: 0
-  wolf: {fileID: 0}
+  wolf: {fileID: 1643772101}
 --- !u!4 &508803584
 Transform:
   m_ObjectHideFlags: 0
@@ -3359,10 +3477,95 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8f3da9ebe2aed43a7256cb5ce940ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: You need to place the board at the right place!
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 2050851015}
+  message: You need to place the board at the right place!
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 2050851015}
   hasDoneAction: 0
+--- !u!1 &558350310
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 558350311}
+  - component: {fileID: 558350314}
+  - component: {fileID: 558350313}
+  - component: {fileID: 558350312}
+  m_Layer: 0
+  m_Name: BottomBorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &558350311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558350310}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: -2.9700012, y: 1.8999977, z: -34.84}
+  m_LocalScale: {x: 1, y: 45, z: 6.2269597}
+  m_Children: []
+  m_Father: {fileID: 377451604}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
+--- !u!65 &558350312
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558350310}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &558350313
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558350310}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &558350314
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 558350310}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &562099679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3418,11 +3621,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2551e0e901f06fd4890c1ae047fbb997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: Popularios! Dear God, can you hear us from up there? We are going to organize
-    our revolution against the Wicked Lord and we need your help! If you can hear
-    us, please crush the ground near us with your fist.
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 0}
+  message: "Popularios! Dear God, can you hear us from up there? We are going to organize\r
+    our revolution against the Wicked Lord and we need your help! If you can hear\r
+    us, please crush the ground near us with your fist."
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 0}
   hasDoneAction: 0
   hasCrushedGround: 0
 --- !u!4 &564704341
@@ -3514,9 +3717,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3258f67faf8b12f4eb88944ebb08accf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: You have to crush the right tree if we want to reach the house.
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 436246460}
+  message: You have to crush the right tree if we want to reach the house.
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 436246460}
   hasDoneAction: 0
   _ResourceManager: {fileID: 439394635}
 --- !u!1 &614729558
@@ -3789,6 +3992,26 @@ Prefab:
     - target: {fileID: 4420952555683080, guid: 608502abe405b924e9a8cbfbdb28927e, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114388789517994288, guid: 608502abe405b924e9a8cbfbdb28927e,
+        type: 2}
+      propertyPath: canBeCrushed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114538232631805936, guid: 608502abe405b924e9a8cbfbdb28927e,
+        type: 2}
+      propertyPath: canBeCrushed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114220800332539712, guid: 608502abe405b924e9a8cbfbdb28927e,
+        type: 2}
+      propertyPath: canBeCrushed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114927377938857108, guid: 608502abe405b924e9a8cbfbdb28927e,
+        type: 2}
+      propertyPath: canBeCrushed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 608502abe405b924e9a8cbfbdb28927e, type: 2}
@@ -4082,11 +4305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42a8e0028cf91c47a7107745df22f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: "Great, you\u2019re here! Now there\u2019s nothing we can fear since you\u2019re
-    protecting us! Let\u2019s head over this house to recruit new villagers to join
-    our cause!"
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 104874726}
+  message: Well, this world seems more dangerous that we thought. We will need some
+    more active help from your side, Popularios. Please, crush this tree over there.
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 104874726}
   hasDoneAction: 0
 --- !u!4 &698406505
 Transform:
@@ -4583,7 +4805,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -4953,8 +5175,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.051550094, y: 0.7131818, z: 0.05273783, w: 0.697089}
-  m_LocalPosition: {x: 26.901337, y: 47.296318, z: -3.1755788}
+  m_LocalRotation: {x: -0.030258596, y: 0.9656627, z: 0.22016947, w: 0.13455641}
+  m_LocalPosition: {x: 56.254414, y: 28.577904, z: 65.62935}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5206,6 +5428,91 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 857423289}
   m_CullTransparentMesh: 0
+--- !u!1 &864027026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 864027027}
+  - component: {fileID: 864027030}
+  - component: {fileID: 864027029}
+  - component: {fileID: 864027028}
+  m_Layer: 0
+  m_Name: RightBorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &864027027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864027026}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 20.3, y: 1.9, z: 0}
+  m_LocalScale: {x: 1, y: 70.16504, z: 6.226958}
+  m_Children: []
+  m_Father: {fileID: 377451604}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &864027028
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864027026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &864027029
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864027026}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &864027030
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 864027026}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &871371347
 GameObject:
   m_ObjectHideFlags: 0
@@ -5247,7 +5554,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &874571726
 GameObject:
@@ -6104,6 +6411,91 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1075078516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075078517}
+  - component: {fileID: 1075078520}
+  - component: {fileID: 1075078519}
+  - component: {fileID: 1075078518}
+  m_Layer: 0
+  m_Name: TopBorder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1075078517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1075078516}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: -2.97, y: 1.8999977, z: 34.6}
+  m_LocalScale: {x: 1, y: 45, z: 6.226958}
+  m_Children: []
+  m_Father: {fileID: 377451604}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
+--- !u!65 &1075078518
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1075078516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1075078519
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1075078516}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1075078520
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1075078516}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1077681572 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114649393900729038, guid: 608502abe405b924e9a8cbfbdb28927e,
@@ -6201,7 +6593,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 40
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -6212,7 +6604,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: WOOD
+  m_Text: Wood
 --- !u!222 &1093322261
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6221,6 +6613,60 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1093322258}
   m_CullTransparentMesh: 0
+--- !u!1001 &1096746916
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1150327749}
+    m_Modifications:
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 22.400002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.3999977
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 2263.8584
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 3477.8833
+      objectReference: {fileID: 0}
+    - target: {fileID: 4809835708273114, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 207.17805
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09574ad3b46f3bf468953498d0a25676, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1116480039
 GameObject:
   m_ObjectHideFlags: 0
@@ -6844,15 +7290,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4606879666362078, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4726594110778856, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4276074346133434, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1738572890789316, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
+      propertyPath: m_TagString
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
@@ -6883,7 +7333,7 @@ GameObject:
   - component: {fileID: 1157746584}
   m_Layer: 0
   m_Name: DeathZone
-  m_TagString: DangerArea
+  m_TagString: River
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6895,7 +7345,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1157746582}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 22.59, y: 8.1, z: 33.6}
+  m_LocalPosition: {x: 22.59, y: 9.3, z: 33.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1150327753}
@@ -8136,7 +8586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -9}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1400, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355639721
@@ -8160,7 +8610,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: eb35eaf07b76cca458fde6a4014fd436, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 130
     m_FontStyle: 0
     m_BestFit: 0
@@ -9309,12 +9759,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8e23ee40addeb743908551597b7d8dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: "Hourra! You\u2019ve led us to the house safely (for most of us at least...).
+  message: "Hourra! You\u2019ve led us to the house safely (for most of us at least...).
     Our ranks are now widening. Our journey is not over yet, there\u2019s another
     house we have to visit."
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 436246460}
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 436246460}
   hasDoneAction: 0
+--- !u!114 &1643772101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114014289715169834, guid: 6bda71d6907f26a4f855c28b6621553c,
+    type: 2}
+  m_PrefabInternal: {fileID: 391892027}
+  m_Script: {fileID: 11500000, guid: a2d4a616a4e0b294f86fb4a9a2b0754d, type: 3}
 --- !u!1 &1650279934
 GameObject:
   m_ObjectHideFlags: 0
@@ -9905,7 +10361,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1747281933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -100, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 756081873}
@@ -10889,7 +11345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 163c4ef54e86e254fa2ce446425c9f52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speechEvent1: {fileID: 564704340}
   speechEvent4: {fileID: 2050851015}
 --- !u!1 &1931867879
 GameObject:
@@ -11267,7 +11722,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1959580051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.542892, y: -88.2, z: 78.2}
+  m_LocalPosition: {x: 14.542892, y: -234, z: 78.2}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11651,11 +12106,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81e3cf3b697a4cd49a8283461a6aa201, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _message: "Thanks to this new collected resource, you\u2019re now able to create
+  message: "Thanks to this new collected resource, you\u2019re now able to create
     a bridge for us to cross the river. Select the wood board in your construction
     panel and put it on the river."
-  _bubble: {fileID: 1077681572}
-  _previousEvent: {fileID: 698406504}
+  bubble: {fileID: 1077681572}
+  previousEvent: {fileID: 698406504}
   hasDoneAction: 0
   hasWookPlankLanded: 0
 --- !u!4 &2050851016
@@ -11697,7 +12152,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2060526346}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_Children:
   - {fileID: 1355639720}
@@ -11707,7 +12162,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.41}
+  m_AnchoredPosition: {x: 0, y: 0.447}
   m_SizeDelta: {x: 1500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060526348
@@ -12036,9 +12491,10 @@ MonoBehaviour:
   resourceM: {fileID: 439394635}
   spawnPoint: {fileID: 1787859272}
   RightHand: {fileID: 1235158201}
-  speechEvent2: {fileID: 0}
-  speechEvent4_1: {fileID: 0}
-  speechEvent7: {fileID: 0}
+  speechEvent1: {fileID: 564704340}
+  speechEvent2: {fileID: 104874726}
+  speechEvent4_1: {fileID: 537798008}
+  speechEvent7: {fileID: 1638288666}
 --- !u!114 &2092337014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12317,8 +12773,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2104046598}
-  m_LocalRotation: {x: -0.5444382, y: 0.2538706, z: 0.2594255, w: 0.75619787}
-  m_LocalPosition: {x: 177, y: -142.86087, z: 26}
+  m_LocalRotation: {x: -0.20115755, y: 0.3579545, z: 0.07974244, w: 0.90832007}
+  m_LocalPosition: {x: 14.158325, y: 20.572868, z: -29.121902}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

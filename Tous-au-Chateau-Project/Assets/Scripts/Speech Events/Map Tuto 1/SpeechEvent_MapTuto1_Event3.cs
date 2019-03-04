@@ -8,26 +8,23 @@ public class SpeechEvent_MapTuto1_Event3 : SpeechEvent {
 
 	public override bool MustOpen() {
 		// Open after previous event is done
-		if (_previousEvent != null && _previousEvent.IsDone()) {
-            if (currentVillagersGroup.GetNumberOfVillagersAlive() == 0)
-            {
-                // Check if at least one has been killed by the river
-                if (currentVillagersGroup.IsDeathCausedBy(DeathReason.RIVER))
-                {
-                    VillagersManager.Instance.SpawnGroup();
-                    return true;
-                }
-            }
+		if (previousEvent != null && previousEvent.IsDone())
+        {
+		    if (AreAllVillagersDead() &&
+                currentVillagersGroup.IsDeathCausedBy(DeathReason.RIVER))
+			{
+				return true;
+			}
         }
 		return false;
 	}
 
 	public override bool MustClose() {
-		// When crushing the flickering tree.
-        if (MapManager.Instance.firstTree != null && ResourceManager.Instance.GetWood() > 0)
-        {
-            return true;
-        }
+		// When crushing the flickering tree. // Destroying the firstTree will set it to null
+    if (MapManager.Instance.firstTree == null && ResourceManager.Instance.GetWood() > 0)
+    {
+      return true;
+    }
 		return false;
 	}
 }

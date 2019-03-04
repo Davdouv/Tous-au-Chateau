@@ -25,9 +25,10 @@ GameObject:
   - component: {fileID: 114503115700500390}
   - component: {fileID: 114098027297381584}
   - component: {fileID: 114530926620685368}
-  - component: {fileID: 114955407195537336}
   - component: {fileID: 114134250445806614}
   - component: {fileID: 195180625199377778}
+  - component: {fileID: 114658009005584272}
+  - component: {fileID: 114538232631805936}
   m_Layer: 0
   m_Name: Villager (2)
   m_TagString: Villager
@@ -66,9 +67,10 @@ GameObject:
   - component: {fileID: 114995404648671320}
   - component: {fileID: 114756362331591438}
   - component: {fileID: 114300073659104782}
-  - component: {fileID: 114987604175956348}
   - component: {fileID: 114987289421799684}
   - component: {fileID: 195465924711173838}
+  - component: {fileID: 114577947300551006}
+  - component: {fileID: 114927377938857108}
   m_Layer: 0
   m_Name: Villager (3)
   m_TagString: Villager
@@ -163,9 +165,10 @@ GameObject:
   - component: {fileID: 114585389849381406}
   - component: {fileID: 114813445576335944}
   - component: {fileID: 114995040631784384}
-  - component: {fileID: 114438973609584392}
   - component: {fileID: 114318811561063608}
   - component: {fileID: 195492848575850646}
+  - component: {fileID: 114769804881794058}
+  - component: {fileID: 114220800332539712}
   m_Layer: 0
   m_Name: Villager
   m_TagString: Villager
@@ -238,9 +241,10 @@ GameObject:
   - component: {fileID: 114368773427924416}
   - component: {fileID: 114518418499576730}
   - component: {fileID: 114205046808104820}
-  - component: {fileID: 114265727208822852}
   - component: {fileID: 114595762943030484}
   - component: {fileID: 195263245899350862}
+  - component: {fileID: 114776440817557394}
+  - component: {fileID: 114388789517994288}
   m_Layer: 0
   m_Name: Villager (1)
   m_TagString: Villager
@@ -787,19 +791,24 @@ MonoBehaviour:
   targetTag:
   - Villager
   distanceDetection: 5
---- !u!114 &114265727208822852
+--- !u!114 &114220800332539712
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1773826753409930}
+  m_GameObject: {fileID: 1403974147302918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e2d81a41321de42b184cb0bb49f696, type: 3}
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onPlatform: 0
-  inDanger: 0
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  canBeCrushed: 1
 --- !u!114 &114300073659104782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -846,6 +855,24 @@ MonoBehaviour:
   _isJoining: {fileID: 0}
   _hasJoined: 0
   _stats: {fileID: 0}
+--- !u!114 &114388789517994288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773826753409930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  canBeCrushed: 1
 --- !u!114 &114434033351936384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -873,19 +900,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114438973609584392
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1403974147302918}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e2d81a41321de42b184cb0bb49f696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onPlatform: 0
-  inDanger: 0
 --- !u!114 &114503115700500390
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -949,6 +963,40 @@ MonoBehaviour:
   targetTag:
   - Villager
   distanceDetection: 5
+--- !u!114 &114538232631805936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022735531598234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  canBeCrushed: 1
+--- !u!114 &114577947300551006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118570009140748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae20244bf024849a92a7da0bc3bf5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag:
+  - River
+  - Void
+  - Plank
+  distanceDetection: 5
 --- !u!114 &114585389849381406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -993,7 +1041,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: Message
+  canClose: 0
   debug_hide: 0
+--- !u!114 &114658009005584272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022735531598234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae20244bf024849a92a7da0bc3bf5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag:
+  - River
+  - Void
+  - Plank
+  distanceDetection: 5
 --- !u!114 &114734437220979420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1025,6 +1090,38 @@ MonoBehaviour:
   speed: 2
   strength: 0
   _deathReason: 0
+--- !u!114 &114769804881794058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403974147302918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae20244bf024849a92a7da0bc3bf5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag:
+  - River
+  - Void
+  - Plank
+  distanceDetection: 5
+--- !u!114 &114776440817557394
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773826753409930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae20244bf024849a92a7da0bc3bf5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag:
+  - River
+  - Void
+  - Plank
+  distanceDetection: 5
 --- !u!114 &114813445576335944
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1052,19 +1149,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
---- !u!114 &114955407195537336
+--- !u!114 &114927377938857108
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022735531598234}
+  m_GameObject: {fileID: 1118570009140748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e2d81a41321de42b184cb0bb49f696, type: 3}
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onPlatform: 0
-  inDanger: 0
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  canBeCrushed: 1
 --- !u!114 &114987289421799684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1079,19 +1181,6 @@ MonoBehaviour:
   turningRate: 20
   mesh: {fileID: 0}
   isAlive: 1
---- !u!114 &114987604175956348
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1118570009140748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e2d81a41321de42b184cb0bb49f696, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onPlatform: 0
-  inDanger: 0
 --- !u!114 &114989241283394078
 MonoBehaviour:
   m_ObjectHideFlags: 1

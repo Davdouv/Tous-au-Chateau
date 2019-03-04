@@ -16,26 +16,32 @@ public class SpeechManager : MonoBehaviour {
 
 		foreach (var evento in events)
 		{
-			if (!evento.IsOpen() && evento.MustOpen())
+			if (!evento.IsDone() && !evento.IsOpen() && evento.MustOpen())
 			{
+				evento.bubble.canClose = false;
 				evento.SetIsOpen(true);
-				_anim = evento._bubble.GetComponent<Animator>();
+				_anim = evento.bubble.GetComponent<Animator>();
 				_anim.SetBool(_openTransitionName, true);
-				Open(evento._bubble);
-			} else if (evento.IsOpen() && evento.MustClose())
+				Open(evento.bubble);
+			} else if (evento.bubble.canClose && evento.IsOpen() && evento.MustClose())
 			{
 				evento.SetIsOpen(false);
 				evento.SetIsDone(true);
-				Close(evento._bubble);
+				Close(evento.bubble);
 			}
+		}
+
+		if (GameManager.Instance.tuto && SpeechEvent.AreAllVillagersDead())
+		{
+			VillagersManager.Instance.SpawnGroup();
 		}
 	}
 
   void Start()
   {
-      //We cache the Hash to the "Open" Parameter, so we can feed to Animator.SetBool.
+      // We cache the Hash to the "Open" Parameter, so we can feed to Animator.SetBool.
       _openParameterId = Animator.StringToHash(_openTransitionName);
-        SpeechEvent.currentVillagersGroup = firstVillagersGroup;
+      SpeechEvent.currentVillagersGroup = firstVillagersGroup;
   }
 
 	private void Open(SpeechBubble bubble) {

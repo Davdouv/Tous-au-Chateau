@@ -16,7 +16,7 @@ public class SpeechBubble : MonoBehaviour {
 	private float letterTime = 0.06f;
 	private bool _open = false;
 	private Animator animator;
-	private bool canClose = false;
+	public bool canClose = false;
 
 	public bool debug_hide = false;
 
