@@ -20,7 +20,8 @@ public class SpeechBubble : MonoBehaviour {
 
 
 	public bool canClose = false;
-	public bool debug_hide = false;
+	public bool dots = true;
+
 
 	void Start()
 	{
@@ -32,6 +33,9 @@ public class SpeechBubble : MonoBehaviour {
 		_textComp.text = "";
 		animator = GetComponent<Animator>();
 		AdaptCanvasToText();
+		if (dots) {
+			_dots.gameObject.SetActive(true);
+		}
 	}
 
 	// public void OnEnable()
@@ -50,7 +54,7 @@ public class SpeechBubble : MonoBehaviour {
 	{
 		var panelRectTransform = _panel.GetComponent<RectTransform>();
 		var textRectTransform = _text.GetComponent<RectTransform>();
-		var size = _textComp.fontSize * _textComp.lineSpacing * message.Length / 25;
+		var size = _textComp.fontSize * _textComp.lineSpacing * message.Length;
 		panelRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size);
 		textRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size + 10);
 	}
