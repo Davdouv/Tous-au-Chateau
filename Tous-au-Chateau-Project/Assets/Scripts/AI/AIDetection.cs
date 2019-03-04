@@ -20,7 +20,6 @@ public class AIDetection : TriggerZone {
     // On Detection, send the target to the aiCharacter
     public override void TriggerEnter(GameObject target)
     {
-        Debug.Log(this.name + " : TRIGGER ENTER : " + target.name);
         // Danger, try to escape
         if (vulnerableTo.Contains(target.tag))
         {
@@ -41,7 +40,6 @@ public class AIDetection : TriggerZone {
     // On Detection Exit, 
     public override void TriggerExit(GameObject target)
     {
-        //Debug.Log(this.name + " : TRIGGER EXIT : " + target.name);
         // If it's an enemy
         if (vulnerableTo.Contains(target.tag))
         {
@@ -67,11 +65,9 @@ public class AIDetection : TriggerZone {
     // On Collision, stop moving
     public override void CollisionEnter(Collision collision)
     {
-        Debug.Log(this.name + " : COLLISION ENTER : " + collision.gameObject.name);
         // Check if it's the target we are aiming
         if (_aiCharacter.IsTheTarget(collision.gameObject))
         {
-            Debug.Log(this.name + " : COLLISION ENTER : " + collision.gameObject.name);
             _aiCharacter.ChangeOtherTarget(collision.gameObject); // Set a new target to the other members of the group
             _aiCharacter.DoActionOnTarget();
             _aiCharacter.StopMoving();
@@ -92,7 +88,6 @@ public class AIDetection : TriggerZone {
     // On Collision Exit, chase the target again
     public override void CollisionExit(Collision collision)
     {
-        //Debug.Log(gameObject.name + "Collision Exit");
         if (_aiCharacter.IsTheTarget(collision.gameObject))
         {
             /*

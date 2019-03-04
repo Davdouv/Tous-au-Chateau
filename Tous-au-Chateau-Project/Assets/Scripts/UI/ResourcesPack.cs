@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[Serializable]
 public class ResourcesPack 
 {
-
+    [Range(0, 500)]
     public int wood = 0;
+    [Range(0, 500)]
     public int stone = 0;
+    [Range(0, 500)]
     public int food = 0;
+    [Range(0, 500)]
     public int workForce = 0;
+    [Range(0, 500)]
     public int motivation = 0;
 
     public ResourcesPack(int wood = 0, int stone = 0, int food = 0, int workForce = 0, int motivation = 0)

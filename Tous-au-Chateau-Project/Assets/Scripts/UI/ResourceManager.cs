@@ -27,8 +27,11 @@ public class ResourceManager : PauseScript
     }
     #endregion
 
-    public VillagersGroup listOfVillagers;
+    //public VillagersGroup listOfVillagers;
+    [Range(0.0f, 5.0f)]
+    public float frequenceToReduceMotivation = 3.0f;
 
+    [SerializeField]
     private ResourcesPack _currentResources;
     private bool _isInPause;
 
@@ -36,14 +39,21 @@ public class ResourceManager : PauseScript
     {
         _currentResources = new ResourcesPack { motivation = 100, workForce = 10};
         _isInPause = false;
-        InvokeRepeating("InGameMotivation", 0.0f, 3.0f);
+        InvokeRepeating("InGameMotivation", 0.0f, frequenceToReduceMotivation);
     }
 
     private void Update()
     {
+        /*
         if(listOfVillagers != null)
         {
             _currentResources.workForce = listOfVillagers.GetNumberOfVillagers();
+        }
+        */
+        _currentResources.workForce = VillagersManager.Instance.GetNumberOfVillagersAlive();
+        if(_currentResources.workForce <= 0 && !GameManager.Instance.tuto)
+        {
+            GameManager.Instance.GameLost();
         }
     }
 
@@ -52,6 +62,10 @@ public class ResourceManager : PauseScript
         if (!_isInPause)
         {
             RemoveResources(new ResourcesPack { motivation = 1 });
+            if(_currentResources.motivation <= 0 && !GameManager.Instance.tuto)
+            {
+                GameManager.Instance.GameLost();
+            }
         }
     }
 
@@ -107,33 +121,45 @@ public class ResourceManager : PauseScript
     //REMOVE
     public bool RemoveResources(ResourcesPack toRemove)
     {
-        //non valid values
-        if (toRemove.wood < 0 || toRemove.stone < 0 || toRemove.food < 0 || toRemove.workForce < 0 || toRemove.motivation < 0)
+        bool hasEnoughResource = HasEnoughResources(toRemove);
+
+        if (!hasEnoughResource)
+        {
             return false;
+        }
 
-        //case where not enough wood to remove
-        if(toRemove.wood > 0 && _currentResources.wood - toRemove.wood < 0)
-            return false;
-
-        //case where not enough stone to remove
-        if (toRemove.stone > 0 && _currentResources.stone - toRemove.stone < 0)
-            return false;
-
-        //case where not enough food to remove
-        if (toRemove.food > 0 && _currentResources.food - toRemove.food < 0)
-            return false;
-
-        //case where not enough workForce to remove
-        if (toRemove.workForce > 0 && _currentResources.workForce - toRemove.workForce < 0)
-            return false; // end of game ?
-
-        //case where not enough motivation to remove
-        if (toRemove.motivation > 0 && _currentResources.motivation - toRemove.motivation < 0)
-            return false; // end of game ?
-
-        //every resource level is high enough
         //Special case for workforce => remove in villagersgroup and not here
         _currentResources -= toRemove;
+        return true;
+    }
+
+    public bool HasEnoughResources(ResourcesPack toCheck)
+    {
+        //non valid values
+        if (toCheck.wood < 0 || toCheck.stone < 0 || toCheck.food < 0 || toCheck.workForce < 0 || toCheck.motivation < 0)
+            return false;
+
+        //case where not enough wood
+        if (toCheck.wood > 0 && _currentResources.wood - toCheck.wood < 0)
+            return false;
+
+        //case where not enough stone
+        if (toCheck.stone > 0 && _currentResources.stone - toCheck.stone < 0)
+            return false;
+
+        //case where not enough food
+        if (toCheck.food > 0 && _currentResources.food - toCheck.food < 0)
+            return false;
+
+        //case where not enough workForce
+        if (toCheck.workForce > 0 && _currentResources.workForce - toCheck.workForce < 0)
+            return false;
+
+        //case where not enough motivation
+        if (toCheck.motivation > 0 && _currentResources.motivation - toCheck.motivation < 0)
+            return false;
+
+        //every resource level is high enough
         return true;
     }
 }

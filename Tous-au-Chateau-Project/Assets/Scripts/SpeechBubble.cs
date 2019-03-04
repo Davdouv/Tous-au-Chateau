@@ -16,9 +16,12 @@ public class SpeechBubble : MonoBehaviour {
 	private float letterTime = 0.06f;
 	private bool _open = false;
 	private Animator animator;
-	private bool canClose = false;
+	private bool _isCameraDefault = false;
 
-	public bool debug_hide = false;
+
+	public bool canClose = false;
+	public bool dots = true;
+
 
 	void Start()
 	{
@@ -30,6 +33,9 @@ public class SpeechBubble : MonoBehaviour {
 		_textComp.text = "";
 		animator = GetComponent<Animator>();
 		AdaptCanvasToText();
+		if (dots) {
+			_dots.gameObject.SetActive(true);
+		}
 	}
 
 	// public void OnEnable()
@@ -48,19 +54,25 @@ public class SpeechBubble : MonoBehaviour {
 	{
 		var panelRectTransform = _panel.GetComponent<RectTransform>();
 		var textRectTransform = _text.GetComponent<RectTransform>();
-		var size = _textComp.fontSize * _textComp.lineSpacing * message.Length / 25;
+		var size = _textComp.fontSize * _textComp.lineSpacing * message.Length;
 		panelRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size);
 		textRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size + 10);
 	}
 
 	private bool FindCamera() {
-		if (GameObject.Find("Neck/Camera")) {
+		if (GameObject.Find("Neck/Camera")) { // VR
+			Debug.Log("VR Camera");
+			_isCameraDefault = false;
 			cameraTransform = GameObject.Find("Neck/Camera").transform;
 			return true;
-		} else if (GameObject.Find("Camera (eye)")) {
+		} else if (GameObject.Find("[VRSimulator_CameraRig]")) { // Simulator
+			Debug.Log("Simulator Camera");
+			_isCameraDefault = false;
 			cameraTransform = GameObject.Find("Camera (eye)").transform;
 			return true;
-		} else if (GameObject.Find("Main Camera")) {
+		} else if (GameObject.Find("Main Camera")) { // Default
+			Debug.Log("Default Camera");
+			_isCameraDefault = true;
 			cameraTransform = GameObject.Find("Main Camera").transform;
 			return true;
 		}
@@ -74,6 +86,9 @@ public class SpeechBubble : MonoBehaviour {
 		} else {
 			_panel.transform.rotation = Quaternion.LookRotation(_panel.transform.position - cameraTransform.position);
 			_text.transform.rotation = Quaternion.LookRotation(_text.transform.position - cameraTransform.position);
+			if (_isCameraDefault) {
+				FindCamera();
+			}
 		}
 	}
 

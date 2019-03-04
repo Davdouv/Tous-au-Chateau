@@ -14,9 +14,18 @@ public class MainActions : MonoBehaviour {
     bool haveBuilding;
     bool handStillClose;
     Vector3 currentPos;
+    public float minHeightToCrush = 10;
 
+    public Material Transparent_Building;
+    Material Building_mat;
 
     GameObject newBuilding;
+
+    public SpeechEvent_MapTuto1_Event1 speechEvent1 = null;
+    public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
+    public SpeechEvent_MapTuto1_Event4_1 speechEvent4_1 = null;
+    public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
+
 
     // Use this for initialization
     void Start () {
@@ -25,9 +34,20 @@ public class MainActions : MonoBehaviour {
         crushMode = false;
         haveBuilding = false;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+
+        if (GameManager.Instance.tuto)
+        {
+            if (events.triggerPressed || events.touchpadPressed)
+            {
+                VerifyActionTuto(speechEvent2);
+                VerifyActionTuto(speechEvent4_1);
+                VerifyActionTuto(speechEvent7);
+            }
+        }
+
         if (events.triggerPressed)
         {
             if (!trigger)
@@ -47,15 +67,22 @@ public class MainActions : MonoBehaviour {
                 haveBuilding = false;
                 newBuilding.GetComponent<Rigidbody>().isKinematic = false;
                 newBuilding.transform.parent = null;
+                //On hand release
+                newBuilding.GetComponent<Renderer>().material = Building_mat;
+
             }
         }
 
         if (trigger)
         {
             //currentPos = gameObject.transform.position;
-            if(gameObject.transform.position.y < currentPos.y - 15)
+            if(gameObject.transform.position.y < currentPos.y - minHeightToCrush)
             {
                 crushMode = true;
+            }
+            else if (gameObject.transform.position.y > currentPos.y - minHeightToCrush)
+            {
+                crushMode = false;
             }
         }
 
@@ -69,10 +96,10 @@ public class MainActions : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
+        //Debug.Log(other.tag);
         if (crushMode && !handStillClose) //Destroy element of the nature
         {
-            if (other.tag == "Crushable")
+            if (other.gameObject.GetComponent<Crushable>())
             {
                 //other.crush()   <= for the next sprint
                 Debug.Log("CRUSH ITEM");
@@ -80,6 +107,15 @@ public class MainActions : MonoBehaviour {
                 other.gameObject.GetComponent<Crushable>().Crush();
                 handStillClose = true;
             }
+
+            if (GameManager.Instance.tuto)
+            {
+              if (other.gameObject.tag == "Ground")
+              {
+                speechEvent1.hasCrushedGround = true;
+              }
+            }
+
         }
     }
 
@@ -88,18 +124,33 @@ public class MainActions : MonoBehaviour {
         if (events.triggerPressed && !haveBuilding)
         {
             if (other.tag == "Building")
-            {   
-
+            {
                 //Get ResourcePack building
                 if (other.gameObject.GetComponent<Building>().CanBuy())
                 {
                     //Instantiate building
                     newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                    Building_mat = newBuilding.GetComponent<Renderer>().material;
+                    newBuilding.GetComponent<Renderer>().material = Transparent_Building; 
                     haveBuilding = true;
                 }
             }
-
         }
     }
 
+    public bool IsCrushModeActive()
+    {
+        return crushMode;
+    }
+
+    private void VerifyActionTuto(SpeechEvent speechEvent)
+    {
+        if (speechEvent)
+        {
+            if (speechEvent.IsOpen() && speechEvent.bubble.canClose && !speechEvent.hasDoneAction)
+            {
+                speechEvent.hasDoneAction = true;
+            }
+        }
+    }
 }
