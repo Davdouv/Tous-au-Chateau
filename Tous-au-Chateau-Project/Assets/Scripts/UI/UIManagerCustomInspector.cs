@@ -93,11 +93,8 @@ public class UIManagerCustomInspector : Editor {
         EditorGUILayout.LabelField(serializedObject.FindProperty("ConstructionPagination").displayName);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("ConstructionPagination"), GUIContent.none);
 
-        EditorGUILayout.LabelField(serializedObject.FindProperty("defaultMaterial").displayName);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("defaultMaterial"), GUIContent.none);
-
-        EditorGUILayout.LabelField(serializedObject.FindProperty("notEnoughResourceMaterial").displayName);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("notEnoughResourceMaterial"), GUIContent.none);
+        EditorGUILayout.LabelField(serializedObject.FindProperty("buildingNotPuchasable").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("buildingNotPuchasable"), GUIContent.none);
 
         EditorGUILayout.Space();
 
