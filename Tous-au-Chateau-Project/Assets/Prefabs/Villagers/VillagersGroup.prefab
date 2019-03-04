@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114134250445806614}
   - component: {fileID: 195180625199377778}
   - component: {fileID: 114658009005584272}
+  - component: {fileID: 114538232631805936}
   m_Layer: 0
   m_Name: Villager (2)
   m_TagString: Villager
@@ -69,6 +70,7 @@ GameObject:
   - component: {fileID: 114987289421799684}
   - component: {fileID: 195465924711173838}
   - component: {fileID: 114577947300551006}
+  - component: {fileID: 114927377938857108}
   m_Layer: 0
   m_Name: Villager (3)
   m_TagString: Villager
@@ -166,6 +168,7 @@ GameObject:
   - component: {fileID: 114318811561063608}
   - component: {fileID: 195492848575850646}
   - component: {fileID: 114769804881794058}
+  - component: {fileID: 114220800332539712}
   m_Layer: 0
   m_Name: Villager
   m_TagString: Villager
@@ -241,6 +244,7 @@ GameObject:
   - component: {fileID: 114595762943030484}
   - component: {fileID: 195263245899350862}
   - component: {fileID: 114776440817557394}
+  - component: {fileID: 114388789517994288}
   m_Layer: 0
   m_Name: Villager (1)
   m_TagString: Villager
@@ -787,6 +791,24 @@ MonoBehaviour:
   targetTag:
   - Villager
   distanceDetection: 5
+--- !u!114 &114220800332539712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1403974147302918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  canBeCrushed: 1
 --- !u!114 &114300073659104782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -833,6 +855,24 @@ MonoBehaviour:
   _isJoining: {fileID: 0}
   _hasJoined: 0
   _stats: {fileID: 0}
+--- !u!114 &114388789517994288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1773826753409930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  canBeCrushed: 1
 --- !u!114 &114434033351936384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -923,6 +963,24 @@ MonoBehaviour:
   targetTag:
   - Villager
   distanceDetection: 5
+--- !u!114 &114538232631805936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1022735531598234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  canBeCrushed: 1
 --- !u!114 &114577947300551006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -983,6 +1041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: Message
+  canClose: 0
   debug_hide: 0
 --- !u!114 &114658009005584272
 MonoBehaviour:
@@ -1090,6 +1149,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
+--- !u!114 &114927377938857108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1118570009140748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  canBeCrushed: 1
 --- !u!114 &114987289421799684
 MonoBehaviour:
   m_ObjectHideFlags: 1
