@@ -24,6 +24,7 @@ public class Victory : TriggerZone {
         {
             Debug.Log("VICTORY");
             GameManager.Instance.GameWon();
+            // SaveManager.Save(LevelScore(sceneName, scoreCount, levelDuration, int[] starCeil)) --> Move inside GameManager
         }
     }
 
