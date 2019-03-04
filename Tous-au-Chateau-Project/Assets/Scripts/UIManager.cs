@@ -79,24 +79,30 @@ public class UIManager : MonoBehaviour
                 if (_ResourceManager.HasEnoughResources(currentBuilding.getCost()))
                 {
                     //make it normal
-                    currentBuilding.transform.GetChild(2).GetComponent<MeshRenderer>().material = defaultMaterial;
+                    MeshRenderer tempMesh = currentBuilding.transform.GetChild(2).GetComponent<MeshRenderer>();
+                    if(tempMesh != null) { tempMesh.material = defaultMaterial; }
+
                     if(currentBuilding.transform.GetChild(2).childCount > 0)
                     {
                         for(int k=0; k< currentBuilding.transform.GetChild(2).childCount; ++k)
                         {
-                            currentBuilding.transform.GetChild(2).GetChild(k).GetComponent<MeshRenderer>().material = defaultMaterial;
+                            tempMesh = currentBuilding.transform.GetChild(2).GetChild(k).GetComponent<MeshRenderer>();
+                            if(tempMesh != null){ tempMesh.material = defaultMaterial; }
                         }
                     }
                 }
                 else
                 {
                     //make it blocked
-                    currentBuilding.transform.GetChild(2).GetComponent<MeshRenderer>().material = notEnoughResourceMaterial;
+                    MeshRenderer tempMesh = currentBuilding.transform.GetChild(2).GetComponent<MeshRenderer>();
+                    if (tempMesh != null) { tempMesh.material = notEnoughResourceMaterial; }
+
                     if (currentBuilding.transform.GetChild(2).childCount > 0)
                     {
                         for (int k = 0; k < currentBuilding.transform.GetChild(2).childCount; ++k)
                         {
-                            currentBuilding.transform.GetChild(2).GetChild(k).GetComponent<MeshRenderer>().material = notEnoughResourceMaterial;
+                            tempMesh = currentBuilding.transform.GetChild(2).GetChild(k).GetComponent<MeshRenderer>();
+                            if (tempMesh != null) { tempMesh.material = notEnoughResourceMaterial; }
                         }
                     }
                 }
