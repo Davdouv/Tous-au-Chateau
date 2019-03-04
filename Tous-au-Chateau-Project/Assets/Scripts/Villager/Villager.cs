@@ -202,8 +202,9 @@ public class Villager : MonoBehaviour
 
         // Not sure if it's good here
         _canMove = false;
-        GetComponent<BoxCollider>().enabled = false;
+        //GetComponent<BoxCollider>().enabled = false;
         GetComponent<SphereCollider>().enabled = false;
+        _rb.isKinematic = true;
     }
 
     public bool HasReachedObjectif()
