@@ -27,6 +27,10 @@ public class Crushable : MonoBehaviour {
             if (this.GetComponent<CharacterStats>())
             {
                 this.GetComponent<CharacterStats>().TakeDamage(9999, DeathReason.PLAYER);
+                if (this.GetComponent<AICharacter>())
+                {
+                    Destroy(gameObject);
+                }
             }
             // Destroy the object
             else
