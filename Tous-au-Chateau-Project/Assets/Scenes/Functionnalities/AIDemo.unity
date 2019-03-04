@@ -2019,7 +2019,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1838011743}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97d7948420f44f749ac2584f5a3eb24f, type: 3}
   m_Name: 
@@ -2031,7 +2031,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1838011743}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47bc6f0491e7e58408dcd35e0510ae8f, type: 3}
   m_Name: 
@@ -2196,6 +2196,80 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e28f78286845d24f9c8e2131a034c4c, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1970830547
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1970830550}
+  - component: {fileID: 1970830549}
+  - component: {fileID: 1970830548}
+  m_Layer: 0
+  m_Name: Golem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!195 &1970830548
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1970830547}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1970830549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1970830547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293f00c9806a43349abb3b8b25a16041, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocks:
+  - {fileID: 157690, guid: d93ec03b51f37fd4d905a60a08a4fbbc, type: 2}
+  - {fileID: 103450, guid: 4436f5b141ae4074082424c09570acb3, type: 2}
+  - {fileID: 109170, guid: 6a67aaef2f6b30443ac78ea7d762a346, type: 2}
+  - {fileID: 121022, guid: 1bbb9f65959851443977b14c98740663, type: 2}
+  - {fileID: 179510, guid: bee8d047e16101c438fb33382ab66935, type: 2}
+  - {fileID: 190226, guid: 50673ce029549f04d8a30a3886523aad, type: 2}
+  - {fileID: 101208, guid: e13d89ce323009a4a8a53d439b0a74e4, type: 2}
+  - {fileID: 154622, guid: 9991b226736b6964782c28d07cef8881, type: 2}
+  genomeString: 110011001001011010010110011000010010110011111001101101101111110101010
+  speed: 2
+  scale: 0.1
+--- !u!4 &1970830550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1970830547}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.19, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2044422312
 GameObject:
   m_ObjectHideFlags: 0
