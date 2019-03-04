@@ -30,12 +30,6 @@ public class Victory : TriggerZone {
     private void UpdateScore()
     {
         ++scoreCount;
-        /*
-        if (scoreCount % 3 == 0)
-        {
-            scoreCount /= 3;
-        }
-        */
         score.text = scoreCount.ToString();
     }
 }
