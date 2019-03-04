@@ -4,23 +4,13 @@ using UnityEngine;
 
 public class Crushable : MonoBehaviour {
 
-    public string _name;
-    [Range(0, 500)]
-    public int woodGain;
-    [Range(0, 500)]
-    public int stoneGain;
-    [Range(0, 500)]
-    public int foodGain;
-    [Range(0, 500)]
-    public int workForceGain;
-    [Range(0, 500)]
-    public int motivationGain;
+    [SerializeField]     protected ResourcesPack _gain;
 
-    protected ResourcesPack _gain;
+    // Can be set to false for some reasons in tutorial for example
+    public bool canBeCrushed = true;
 
     // Use this for initialization
     void Start () {
-        _gain = new ResourcesPack { stone = stoneGain, wood = woodGain, food = foodGain, workForce = workForceGain, motivation = motivationGain };
     }
 	
 	// Update is called once per frame
@@ -31,6 +21,18 @@ public class Crushable : MonoBehaviour {
 
 	public void Crush()
     {
-        Destroy(gameObject);
+        if (canBeCrushed)
+        {
+            // If it's a character, make him die
+            if (this.GetComponent<CharacterStats>())
+            {
+                this.GetComponent<CharacterStats>().TakeDamage(9999, DeathReason.PLAYER);
+            }
+            // Destroy the object
+            else
+            {
+                Destroy(gameObject);
+            }
+        }              
     }
 }
