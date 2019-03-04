@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainActions : MonoBehaviour {
+public class MainActions : MonoBehaviour
+{
 
     public ResourceManager resourceM;
     public GameObject spawnPoint;
@@ -20,23 +21,28 @@ public class MainActions : MonoBehaviour {
     Material Building_mat;
 
     GameObject newBuilding;
+    GameObject myprefab;
 
     public SpeechEvent_MapTuto1_Event1 speechEvent1 = null;
     public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
     public SpeechEvent_MapTuto1_Event4_1 speechEvent4_1 = null;
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
 
+    Material[] mats;
+    string[] objName;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         events = GetComponent<VRTK.VRTK_ControllerEvents>();
         trigger = false;
         crushMode = false;
         haveBuilding = false;
-	}
+    }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
 
         if (GameManager.Instance.tuto)
         {
@@ -68,15 +74,17 @@ public class MainActions : MonoBehaviour {
                 newBuilding.GetComponent<Rigidbody>().isKinematic = false;
                 newBuilding.transform.parent = null;
                 //On hand release
-                newBuilding.GetComponent<Renderer>().material = Building_mat;
-
+                Transform buildingTrans;
+                buildingTrans = newBuilding.transform;
+                Destroy(newBuilding);
+                newBuilding = Instantiate(myprefab, buildingTrans.position, buildingTrans.rotation);
             }
         }
 
         if (trigger)
         {
             //currentPos = gameObject.transform.position;
-            if(gameObject.transform.position.y < currentPos.y - minHeightToCrush)
+            if (gameObject.transform.position.y < currentPos.y - minHeightToCrush)
             {
                 crushMode = true;
             }
@@ -92,7 +100,7 @@ public class MainActions : MonoBehaviour {
             newBuilding.transform.localRotation = spawnPoint.transform.localRotation;
             newBuilding.transform.SetParent(RightHand);
         }
-	}
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -110,10 +118,10 @@ public class MainActions : MonoBehaviour {
 
             if (GameManager.Instance.tuto)
             {
-              if (other.gameObject.tag == "Ground")
-              {
-                speechEvent1.hasCrushedGround = true;
-              }
+                if (other.gameObject.tag == "Ground")
+                {
+                    speechEvent1.hasCrushedGround = true;
+                }
             }
 
         }
@@ -129,9 +137,8 @@ public class MainActions : MonoBehaviour {
                 if (other.gameObject.GetComponent<Building>().CanBuy())
                 {
                     //Instantiate building
-                    newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
-                    Building_mat = newBuilding.GetComponent<Renderer>().material;
-                    newBuilding.GetComponent<Renderer>().material = Transparent_Building; 
+                    newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefabTransparent, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                    myprefab = other.gameObject.GetComponent<Building>().prefab;
                     haveBuilding = true;
                 }
             }
@@ -153,4 +160,55 @@ public class MainActions : MonoBehaviour {
             }
         }
     }
+
+   /* void ChangeMaterial(Material newMat)
+    {
+        Renderer[] children;
+        children = newBuilding.GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in children)
+        {
+            var mats = new Material[rend.materials.Length];
+            for (int i = 0; i < rend.materials.Length; ++i)
+            {
+                mats[i] = newMat;
+            }
+            rend.materials = mats;
+        }
+    }
+    void StockMaterial()
+    {
+        Renderer[] children;
+        Transform[] newBuilding;
+    
+        children = newBuilding.GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in children)
+        {
+            mats = new Material[rend.materials.Length];
+            objName = new string[rend.materials.Length];
+            for (int i = 0; i < rend.materials.Length; ++i)
+            {
+                mats[i] = GetComponent<Renderer>().material;
+                objName[i] = transform.name;
+            }
+        }
+    }
+
+    void ApplyStockedMaterial()
+    {
+
+        Renderer[] children;
+        children = newBuilding.GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in children)
+        {
+            var othermats = new Material[rend.materials.Length];
+            for (int i = 0; i < rend.materials.Length; ++i)
+            {
+                if(transform.name == objName[i])
+                {
+                    othermats[i] = mats[i];
+                }
+            }
+            rend.materials = mats;
+        }
+    } */
 }
