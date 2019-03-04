@@ -199,6 +199,11 @@ public class Villager : MonoBehaviour
     public void SetHasReachedObjectif()
     {
         _hasReachedObjectif = true;
+
+        // Not sure if it's good here
+        _canMove = false;
+        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<SphereCollider>().enabled = false;
     }
 
     public bool HasReachedObjectif()
