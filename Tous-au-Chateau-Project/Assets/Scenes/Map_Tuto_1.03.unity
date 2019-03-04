@@ -1043,7 +1043,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 123112178}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.1, y: -0.25, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1051,7 +1051,7 @@ Transform:
   - {fileID: 98945586}
   m_Father: {fileID: 689777969}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &123112180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1100,12 +1100,10 @@ MonoBehaviour:
   GameOverPanel: {fileID: 253097581}
   gameOverTitleText: {fileID: 1355639721}
   gameOverVillagersText: {fileID: 199488035}
-  victoryTextColor: {r: 0.18687163, g: 0.7830189, b: 0.121885024, a: 1}
-  gameoverTextColor: {r: 0.9150943, g: 0.11654504, b: 0.11654504, a: 1}
+  victoryTextColor: {r: 0.27092335, g: 0.8113208, b: 0.21048418, a: 1}
+  gameoverTextColor: {r: 0.6901961, g: 0, b: 0.027450982, a: 1}
   _ResourceManager: {fileID: 439394635}
-  defaultMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  notEnoughResourceMaterial: {fileID: 2100000, guid: a929a93b229463e4ca63ae16b703c302,
-    type: 2}
+  buildingNotPuchasable: {r: 0.6901961, g: 0, b: 0.02745098, a: 1}
   _BuildingTypeGroup: {fileID: 1453698697}
   ConstructionPagination: {fileID: 1290662491}
 --- !u!4 &178656204
@@ -1309,6 +1307,7 @@ Transform:
   m_Children:
   - {fileID: 1086587723}
   - {fileID: 485641946}
+  - {fileID: 945865674}
   m_Father: {fileID: 123112179}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3101,7 +3100,6 @@ Transform:
   m_Children:
   - {fileID: 1290662492}
   - {fileID: 1217449561}
-  - {fileID: 945865674}
   m_Father: {fileID: 202262592}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5162,8 +5160,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.17429641, y: 0.5092246, z: 0.1066954, w: 0.8360187}
-  m_LocalPosition: {x: 3.3581505, y: -30.620377, z: -35.16282}
+  m_LocalRotation: {x: 0.037653614, y: 0.9565174, z: 0.2511945, w: -0.14338091}
+  m_LocalPosition: {x: 11.35651, y: -97.16115, z: 127.732086}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5877,11 +5875,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 945865673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.292, y: -0.159, z: 0}
+  m_LocalPosition: {x: 0.292, y: -0.259, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1196335575}
-  m_Father: {fileID: 485641946}
+  m_Father: {fileID: 202262592}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959844512
@@ -11787,9 +11785,25 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1310125500452364, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 114771704655003240, guid: 4fef603fc95ef0744a447569b1d0dd6b,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.6886792
+      objectReference: {fileID: 0}
+    - target: {fileID: 114771704655003240, guid: 4fef603fc95ef0744a447569b1d0dd6b,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114771704655003240, guid: 4fef603fc95ef0744a447569b1d0dd6b,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.025642494
+      objectReference: {fileID: 0}
+    - target: {fileID: 114771704655003240, guid: 4fef603fc95ef0744a447569b1d0dd6b,
+        type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
@@ -12527,8 +12541,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1787859272}
   RightHand: {fileID: 1235158201}
   minHeightToCrush: 10
-  Transparent_Building: {fileID: 2100000, guid: a929a93b229463e4ca63ae16b703c302,
-    type: 2}
+  Transparent_Building: {fileID: 0}
   speechEvent1: {fileID: 564704340}
   speechEvent2: {fileID: 104874726}
   speechEvent4_1: {fileID: 537798008}

@@ -19,8 +19,7 @@ public class UIManager : MonoBehaviour
     public Color victoryTextColor;
     public Color gameoverTextColor;
     public ResourceManager _ResourceManager;
-    public Material defaultMaterial;
-    public Material notEnoughResourceMaterial;
+    public Color buildingNotPuchasable;
 
     //For construction pagination
     public BuildingsTypeGroup _BuildingTypeGroup;
@@ -79,31 +78,25 @@ public class UIManager : MonoBehaviour
                 if (_ResourceManager.HasEnoughResources(currentBuilding.getCost()))
                 {
                     //make it normal
-                    MeshRenderer tempMesh = currentBuilding.transform.GetChild(2).GetComponent<MeshRenderer>();
-                    if(tempMesh != null) { tempMesh.material = defaultMaterial; }
+                    currentBuilding.transform.GetChild(2).gameObject.SetActive(true);
+                    currentBuilding.transform.GetChild(3).gameObject.SetActive(false);
 
-                    if(currentBuilding.transform.GetChild(2).childCount > 0)
+                    Transform cost = currentBuilding.transform.Find("Display/HelpTextCanvas/Cost");
+                    if(cost != null)
                     {
-                        for(int k=0; k< currentBuilding.transform.GetChild(2).childCount; ++k)
-                        {
-                            tempMesh = currentBuilding.transform.GetChild(2).GetChild(k).GetComponent<MeshRenderer>();
-                            if(tempMesh != null){ tempMesh.material = defaultMaterial; }
-                        }
+                        cost.GetComponent<Text>().color = Color.black;
                     }
                 }
                 else
                 {
                     //make it blocked
-                    MeshRenderer tempMesh = currentBuilding.transform.GetChild(2).GetComponent<MeshRenderer>();
-                    if (tempMesh != null) { tempMesh.material = notEnoughResourceMaterial; }
+                    currentBuilding.transform.GetChild(2).gameObject.SetActive(false);
+                    currentBuilding.transform.GetChild(3).gameObject.SetActive(true);
 
-                    if (currentBuilding.transform.GetChild(2).childCount > 0)
+                    Transform cost = currentBuilding.transform.Find("Display/HelpTextCanvas/Cost");
+                    if (cost != null)
                     {
-                        for (int k = 0; k < currentBuilding.transform.GetChild(2).childCount; ++k)
-                        {
-                            tempMesh = currentBuilding.transform.GetChild(2).GetChild(k).GetComponent<MeshRenderer>();
-                            if (tempMesh != null) { tempMesh.material = notEnoughResourceMaterial; }
-                        }
+                        cost.GetComponent<Text>().color = buildingNotPuchasable;
                     }
                 }
             }
