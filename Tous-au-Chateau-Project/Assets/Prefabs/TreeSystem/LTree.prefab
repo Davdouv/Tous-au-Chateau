@@ -73,12 +73,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
-  woodGain: 10
-  stoneGain: 0
-  foodGain: 0
-  workForceGain: 0
-  motivationGain: 0
+  _gain:
+    wood: 10
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  canBeCrushed: 1
 --- !u!208 &208032953216465002
 NavMeshObstacle:
   m_ObjectHideFlags: 1

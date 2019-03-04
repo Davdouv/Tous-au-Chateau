@@ -14,6 +14,7 @@ public class MainActions : MonoBehaviour {
     bool haveBuilding;
     bool handStillClose;
     Vector3 currentPos;
+    public float minHeightToCrush = 10;
 
     public Material Transparent_Building;
     Material Building_mat;
@@ -75,9 +76,13 @@ public class MainActions : MonoBehaviour {
         if (trigger)
         {
             //currentPos = gameObject.transform.position;
-            if(gameObject.transform.position.y < currentPos.y - 15)
+            if(gameObject.transform.position.y < currentPos.y - minHeightToCrush)
             {
                 crushMode = true;
+            }
+            else if (gameObject.transform.position.y > currentPos.y - minHeightToCrush)
+            {
+                crushMode = false;
             }
         }
 
@@ -94,7 +99,7 @@ public class MainActions : MonoBehaviour {
         //Debug.Log(other.tag);
         if (crushMode && !handStillClose) //Destroy element of the nature
         {
-            if (other.tag == "Crushable")
+            if (other.gameObject.GetComponent<Crushable>())
             {
                 //other.crush()   <= for the next sprint
                 Debug.Log("CRUSH ITEM");

@@ -1044,7 +1044,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 123112178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.1, y: -0.1, z: -0.1}
+  m_LocalPosition: {x: -0.1, y: -0.25, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 202262592}
@@ -1307,6 +1307,7 @@ Transform:
   m_Children:
   - {fileID: 1086587723}
   - {fileID: 485641946}
+  - {fileID: 945865674}
   m_Father: {fileID: 123112179}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3014,7 +3015,6 @@ Transform:
   m_Children:
   - {fileID: 1290662492}
   - {fileID: 1217449561}
-  - {fileID: 945865674}
   m_Father: {fileID: 202262592}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5160,8 +5160,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.0038476747, y: 0.9927503, z: 0.1154916, w: 0.03307237}
-  m_LocalPosition: {x: 9.475469, y: 61.87619, z: 94.18894}
+  m_LocalRotation: {x: 0.037653614, y: 0.9565174, z: 0.2511945, w: -0.14338091}
+  m_LocalPosition: {x: 11.35651, y: -97.16115, z: 127.732086}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5960,11 +5960,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 945865673}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.292, y: -0.159, z: 0}
+  m_LocalPosition: {x: 0.292, y: -0.259, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1196335575}
-  m_Father: {fileID: 485641946}
+  m_Father: {fileID: 202262592}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &959844512
@@ -7281,7 +7281,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4468565194417022, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 52.3
+      value: -46.2
       objectReference: {fileID: 0}
     - target: {fileID: 4468565194417022, guid: 7448143ad30e2a64e9534a27a5972310, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12540,6 +12540,7 @@ MonoBehaviour:
   resourceM: {fileID: 439394635}
   spawnPoint: {fileID: 1787859272}
   RightHand: {fileID: 1235158201}
+  minHeightToCrush: 10
   Transparent_Building: {fileID: 0}
   speechEvent1: {fileID: 564704340}
   speechEvent2: {fileID: 104874726}
