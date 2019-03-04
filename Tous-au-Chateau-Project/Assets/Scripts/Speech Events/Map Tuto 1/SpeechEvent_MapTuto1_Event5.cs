@@ -6,20 +6,30 @@ using UnityEngine;
 
 public class SpeechEvent_MapTuto1_Event5 : SpeechEvent {
 
+    public AICharacter wolf;
+
 	public override bool MustOpen() {
 		// Open after previous event is done
-		if (_previousEvent != null && _previousEvent.IsDone()) {
-			// TODO
-			if (/*group gets eaten by a wolf == true*/false) {
-					return true;
-			}
+		if (previousEvent != null && previousEvent.IsDone()) {
+            // Check if all group is dead
+            if (currentVillagersGroup.GetNumberOfVillagersAlive() == 0)
+            {
+                // Check if at least one has been killed by a wolf
+                if (currentVillagersGroup.IsDeathCausedBy(DeathReason.WOLF))
+                {
+                    return true;
+                }
+            }
 		}
 		return false;
 	}
 
 	public override bool MustClose() {
-		// TODO
 		// Crush the wolf
+        if (!wolf.GetStats().IsAlive())
+        {
+            return true;
+        }
 		return false;
 	}
 }

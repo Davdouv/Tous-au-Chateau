@@ -23,8 +23,9 @@ GameObject:
   - component: {fileID: 23912466317433364}
   - component: {fileID: 65047811951956894}
   - component: {fileID: 54089012199034382}
-  m_Layer: 0
-  m_Name: plank
+  - component: {fileID: 114860796979371742}
+  m_Layer: 10
+  m_Name: Wood Plank
   m_TagString: Plank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,3 +113,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114860796979371742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1145261126087502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8095997e99bef46bdb80285778c5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  buildingType: 0
+  prefab: {fileID: 0}
+  _cost:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0

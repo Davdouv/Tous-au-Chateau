@@ -6,20 +6,21 @@ using UnityEngine;
 
 public class SpeechEvent_MapTuto1_Event1 : SpeechEvent {
 	private bool _hasOpenedAlready = false;
+    public bool hasCrushedGround = false;
 
 	public override bool MustOpen() {
-		Debug.Log("mustOpen");
-		// Open automatically
-		if (!_hasOpenedAlready) {
-			_hasOpenedAlready = true;
-			return true;
-		}
-		return false;
+        currentVillagersGroup.SetVillagersCanMove(false);
+
+				// Open automatically
+				if (!_hasOpenedAlready) {
+					_hasOpenedAlready = true;
+					return true;
+				}
+				return false;
 	}
 
 	public override bool MustClose() {
-		// TODO
-		// When crushing the ground near the People.
-		return false;
+        // When crushing the ground near the People.
+        return hasCrushedGround;
 	}
 }

@@ -11,6 +11,13 @@ public class Victory : TriggerZone {
 
     public override void TriggerEnter(GameObject target)
     {
-        Debug.Log("VICTORY !");
+        target.GetComponent<Villager>().SetHasReachedObjectif();
+        target.transform.position = this.transform.position;
+
+        if (VillagersManager.Instance.HasLastVillagersReachedObjectif())
+        {
+            Debug.Log("VICTORY");
+            GameManager.Instance.GameWon();
+        }
     }
 }
