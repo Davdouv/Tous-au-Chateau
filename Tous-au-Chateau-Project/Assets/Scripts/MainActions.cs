@@ -94,7 +94,7 @@ public class MainActions : MonoBehaviour {
         //Debug.Log(other.tag);
         if (crushMode && !handStillClose) //Destroy element of the nature
         {
-            if (other.tag == "Crushable")
+            if (other.gameObject.GetComponent<Crushable>())
             {
                 //other.crush()   <= for the next sprint
                 Debug.Log("CRUSH ITEM");
