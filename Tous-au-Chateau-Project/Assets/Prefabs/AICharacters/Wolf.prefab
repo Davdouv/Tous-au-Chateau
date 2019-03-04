@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114301450595613960}
   - component: {fileID: 114014289715169834}
   - component: {fileID: 114026331390198488}
+  - component: {fileID: 114336388453811380}
   m_Layer: 8
   m_Name: Wolf
   m_TagString: Wolf
@@ -188,6 +189,23 @@ MonoBehaviour:
   attackSpeed: 1
   attackDelay: 0.6
   aiType: 5
+--- !u!114 &114336388453811380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952876099188524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 0
+  foodGain: 10
+  workForceGain: 0
+  motivationGain: 0
 --- !u!114 &114497774470111296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,6 +220,7 @@ MonoBehaviour:
   life: 100
   speed: 2
   strength: 10
+  _deathReason: 0
 --- !u!135 &135825077992891292
 SphereCollider:
   m_ObjectHideFlags: 1

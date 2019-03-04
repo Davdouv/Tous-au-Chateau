@@ -15,6 +15,8 @@ public class MainActions : MonoBehaviour {
     bool handStillClose;
     Vector3 currentPos;
 
+    public Material Transparent_Building;
+    Material Building_mat;
 
     GameObject newBuilding;
 
@@ -64,6 +66,9 @@ public class MainActions : MonoBehaviour {
                 haveBuilding = false;
                 newBuilding.GetComponent<Rigidbody>().isKinematic = false;
                 newBuilding.transform.parent = null;
+                //On hand release
+                newBuilding.GetComponent<Renderer>().material = Building_mat;
+
             }
         }
 
@@ -120,6 +125,8 @@ public class MainActions : MonoBehaviour {
                 {
                     //Instantiate building
                     newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                    Building_mat = newBuilding.GetComponent<Renderer>().material;
+                    newBuilding.GetComponent<Renderer>().material = Transparent_Building; 
                     haveBuilding = true;
                 }
             }

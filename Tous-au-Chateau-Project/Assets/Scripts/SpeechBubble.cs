@@ -16,8 +16,10 @@ public class SpeechBubble : MonoBehaviour {
 	private float letterTime = 0.06f;
 	private bool _open = false;
 	private Animator animator;
-	public bool canClose = false;
+	private bool _isCameraDefault = false;
 
+
+	public bool canClose = false;
 	public bool debug_hide = false;
 
 	void Start()
@@ -54,13 +56,19 @@ public class SpeechBubble : MonoBehaviour {
 	}
 
 	private bool FindCamera() {
-		if (GameObject.Find("Neck/Camera")) {
+		if (GameObject.Find("Neck/Camera")) { // VR
+			Debug.Log("VR Camera");
+			_isCameraDefault = false;
 			cameraTransform = GameObject.Find("Neck/Camera").transform;
 			return true;
-		} else if (GameObject.Find("Camera (eye)")) {
+		} else if (GameObject.Find("[VRSimulator_CameraRig]")) { // Simulator
+			Debug.Log("Simulator Camera");
+			_isCameraDefault = false;
 			cameraTransform = GameObject.Find("Camera (eye)").transform;
 			return true;
-		} else if (GameObject.Find("Main Camera")) {
+		} else if (GameObject.Find("Main Camera")) { // Default
+			Debug.Log("Default Camera");
+			_isCameraDefault = true;
 			cameraTransform = GameObject.Find("Main Camera").transform;
 			return true;
 		}
@@ -74,6 +82,9 @@ public class SpeechBubble : MonoBehaviour {
 		} else {
 			_panel.transform.rotation = Quaternion.LookRotation(_panel.transform.position - cameraTransform.position);
 			_text.transform.rotation = Quaternion.LookRotation(_text.transform.position - cameraTransform.position);
+			if (_isCameraDefault) {
+				FindCamera();
+			}
 		}
 	}
 

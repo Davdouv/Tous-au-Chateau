@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114677653733852194}
   - component: {fileID: 114548113654549764}
   - component: {fileID: 114262599351909218}
+  - component: {fileID: 114723691098558752}
   m_Layer: 8
   m_Name: Cow
   m_TagString: Cow
@@ -164,6 +165,7 @@ MonoBehaviour:
   life: 40
   speed: 1
   strength: 1
+  _deathReason: 0
 --- !u!114 &114548113654549764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,6 +179,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackSpeed: 1
   attackDelay: 0.6
+  aiType: 0
 --- !u!114 &114677653733852194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,6 +196,23 @@ MonoBehaviour:
   distanceDetection: 5
   vulnerableTo:
   - Wolf
+--- !u!114 &114723691098558752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1549332520744408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: 
+  woodGain: 0
+  stoneGain: 0
+  foodGain: 20
+  workForceGain: 0
+  motivationGain: 0
 --- !u!114 &114916680075449174
 MonoBehaviour:
   m_ObjectHideFlags: 1
