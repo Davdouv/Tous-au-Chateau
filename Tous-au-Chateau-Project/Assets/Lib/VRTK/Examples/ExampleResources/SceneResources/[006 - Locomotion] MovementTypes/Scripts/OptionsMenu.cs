@@ -23,7 +23,7 @@
             {
                 if (!once)
                 {
-                    leftController.transform.Rotate(transform.rotation.x, transform.rotation.y, 90f, Space.World);
+                    leftController.transform.Rotate(0, transform.rotation.y, 90f, Space.World);
                     once = true;
                 }
                 transform.SetParent(leftController.transform);
