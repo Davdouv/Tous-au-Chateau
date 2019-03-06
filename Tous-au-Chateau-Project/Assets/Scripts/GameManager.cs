@@ -40,9 +40,11 @@ public class GameManager : MonoBehaviour {
     {
         _hasStarted = true;
     }
-    public void GameWon()
+    public void GameWon(int scoreCount = 0)
     {
         _hasWin = true;
+
+        //SaveManager.Save(LevelScore("Tuto_01", scoreCount/*, levelDuration, int[] starCeil*/));
     }
     public void GameLost()
     {

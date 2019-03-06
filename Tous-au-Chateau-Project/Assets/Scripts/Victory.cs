@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Victory : TriggerZone {
 
-    private uint scoreCount = 0;
+    private int scoreCount = 0;
     public Text score;
 
 	// Use this for initialization
@@ -23,8 +23,7 @@ public class Victory : TriggerZone {
         if (VillagersManager.Instance.HasLastVillagersReachedObjectif())
         {
             Debug.Log("VICTORY");
-            GameManager.Instance.GameWon();
-            // SaveManager.Save(LevelScore(sceneName, scoreCount, levelDuration, int[] starCeil)) --> Move inside GameManager
+            GameManager.Instance.GameWon(scoreCount);
         }
     }
 
