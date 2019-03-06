@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour {
     public GameObject pauseMenu;
     public bool tuto = true;
 
+    public string levelName;
+    private float levelDuration = 0;
+
     // ***** STATES OF THE GAME *****/
     public void GameStarted()
     {
@@ -44,7 +47,8 @@ public class GameManager : MonoBehaviour {
     {
         _hasWin = true;
 
-        //SaveManager.Save(LevelScore("Tuto_01", scoreCount/*, levelDuration, int[] starCeil*/));
+        // SAVE THE PLAYER's VICTORY
+        SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));
     }
     public void GameLost()
     {
@@ -135,5 +139,13 @@ public class GameManager : MonoBehaviour {
         _hasLost = false;
         _isPaused = false;
         _isWorldPaused = false;
+    }
+
+    private void Update()
+    {
+        if (_hasStarted && !_isPaused)
+        {
+            levelDuration += Time.deltaTime;
+        }        
     }
 }

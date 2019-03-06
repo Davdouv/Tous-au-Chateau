@@ -14,7 +14,6 @@ public class Victory : TriggerZone {
 
     public override void CollisionEnter(Collision collision)
     {
-        Debug.Log("YO");
         collision.gameObject.GetComponent<Villager>().SetHasReachedObjectif();
         collision.transform.position = this.transform.position;
 
