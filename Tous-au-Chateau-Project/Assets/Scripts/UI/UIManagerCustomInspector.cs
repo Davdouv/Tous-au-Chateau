@@ -96,6 +96,23 @@ public class UIManagerCustomInspector : Editor {
         EditorGUILayout.LabelField(serializedObject.FindProperty("buildingNotPuchasable").displayName);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("buildingNotPuchasable"), GUIContent.none);
 
+        EditorGUILayout.LabelField(serializedObject.FindProperty("buttonsPosition").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("buttonsPosition"), GUIContent.none);
+
+        EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField(serializedObject.FindProperty("constructionPosition1").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("constructionPosition1"), GUIContent.none);
+
+        EditorGUILayout.LabelField(serializedObject.FindProperty("constructionPosition2").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("constructionPosition2"), GUIContent.none);
+
+        EditorGUILayout.LabelField(serializedObject.FindProperty("constructionPosition3").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("constructionPosition3"), GUIContent.none);
+
+        EditorGUILayout.LabelField(serializedObject.FindProperty("constructionPosition4").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("constructionPosition4"), GUIContent.none);
+
         EditorGUILayout.Space();
 
         EditorGUILayout.EndVertical();

@@ -19,11 +19,16 @@ public class UIManager : MonoBehaviour
     public Color victoryTextColor;
     public Color gameoverTextColor;
     public ResourceManager _ResourceManager;
-    public Color buildingNotPuchasable;
 
     //For construction pagination
     public BuildingsTypeGroup _BuildingTypeGroup;
     public GameObject ConstructionPagination; //parent of each page content in hierarchy
+    public Color buildingNotPuchasable;
+    public Transform buttonsPosition;
+    public Transform constructionPosition1;
+    public Transform constructionPosition2;
+    public Transform constructionPosition3;
+    public Transform constructionPosition4;
 
     private List<List<Building>> _sortedBuildings; //sorted by type
     private const int constructionNbByPage = 4;
@@ -32,10 +37,17 @@ public class UIManager : MonoBehaviour
     private GameObject[] _pages;
     private GameObject[] _pageButtons;
     private bool _isCostEmpty = true;
+    private Transform[] constructionsPositions;
 
     private void Start()
     {
-        if(_BuildingTypeGroup != null)
+        constructionsPositions = new Transform[4];
+        constructionsPositions[0] = constructionPosition1;
+        constructionsPositions[1] = constructionPosition2;
+        constructionsPositions[2] = constructionPosition3;
+        constructionsPositions[3] = constructionPosition4;
+
+        if (_BuildingTypeGroup != null)
         {
             CalculateNbOfPages();
         }
@@ -272,11 +284,11 @@ public class UIManager : MonoBehaviour
                     if (currentIndexInPage < _sortedBuildings[i].Count)
                     {
                         _sortedBuildings[i][currentIndexInPage].transform.parent = page.transform;
-                        _sortedBuildings[i][currentIndexInPage].transform.position = ConstructionPagination.transform.position + Vector3.right * ((k * 0.2f - 0.3f) * -1.0f) / page.transform.localScale.x;
+                        _sortedBuildings[i][currentIndexInPage].transform.position = constructionsPositions[k].position;
                     }
                 }
 
-                page.transform.position = Vector3.zero + Vector3.up * 0.07f / page.transform.localScale.y;
+                page.transform.position = Vector3.zero /*+ Vector3.up * 0.07f / page.transform.localScale.y*/;
                 _pages[i] = page;
 
                 if (i != 0)
@@ -299,13 +311,12 @@ public class UIManager : MonoBehaviour
         {
             GameObject button = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             button.name = "Construction Panel Button " + i;
-            button.transform.parent = ConstructionPagination.transform;
+            button.transform.parent = buttonsPosition;
 
             button.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-            button.transform.position = ConstructionPagination.transform.position 
-                + Vector3.forward * 0.02f / 0.01f 
-                + Vector3.right * 0.44f / 0.01f
-                + Vector3.up * (0.15f - i * 0.05f) / 0.01f;
+            button.transform.position = buttonsPosition.position 
+                + Vector3.forward * 0.02f / 0.01f
+                + Vector3.up * (- i * 0.05f) / 0.01f;
 
             _pageButtons[i] = button;
         }
