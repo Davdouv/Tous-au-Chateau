@@ -7,9 +7,19 @@ using System.IO;
 public static class SaveManager {
 
 	public static void Save(LevelScore newScore) {
-        // TODO --> TEST If file exist
-        // Else don't read
-		StreamReader reader = new StreamReader(Application.persistentDataPath + "/score.dat");
+
+        string path = Application.persistentDataPath + "/score.dat";
+
+        Debug.Log(path);
+
+        // If file doesn't exist, create it
+        if (!IsFileValid(path))
+        {
+            StreamWriter temp_writer = new StreamWriter(path);
+            temp_writer.Close();
+        }
+
+		StreamReader reader = new StreamReader(path);
 
 		string existingJSON = reader.ReadToEnd();
 		reader.Close();
@@ -43,10 +53,26 @@ public static class SaveManager {
 
 		string newData = JsonHelperList.ToJson(existingScores, true);
 
-		StreamWriter writer = new StreamWriter(Application.persistentDataPath + "/score.dat");
+		StreamWriter writer = new StreamWriter(path);
 
 		writer.WriteLine(newData); // Rewrite score
 		writer.Close();
+    }
+
+    private static bool IsFileValid(string filePath)
+    {
+        bool IsValid = true;
+
+        if (!File.Exists(filePath))
+        {
+            IsValid = false;
+        }
+        else if (Path.GetExtension(filePath).ToLower() != ".dat")
+        {
+            IsValid = false;
+        }
+
+        return IsValid;
     }
 
 }
