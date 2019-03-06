@@ -49,6 +49,11 @@ public class AICharacter : EnvironmentMaterial {
     // If target found, ask the group to share the target with all group objects
     public void TargetFound(GameObject target)
     {
+        Villager _targetVillager = target.GetComponent<Villager>();
+        if (_targetVillager && _targetVillager.HasReachedObjectif())
+        {
+            return;
+        }
         CharacterStats _targetStats = target.GetComponent<CharacterStats>();
         if (_targetStats && _targetStats.IsAlive())
         {
@@ -205,6 +210,7 @@ public class AICharacter : EnvironmentMaterial {
         }
         else
         {
+            // AI CHARACTER ESCAPING
             if (_isEscaping)
             {
                 GameObject ennemy = GetComponent<AIDetection>().GetEnemyNear();
@@ -219,6 +225,7 @@ public class AICharacter : EnvironmentMaterial {
                     StopEscaping();
                 }
             }
+            // AI CHARACTER SAFE, MOVING AROUND
             else if (_isMovingAround)
             {
                 if (IsDestinationReached(_stoppingDistance))
@@ -226,8 +233,24 @@ public class AICharacter : EnvironmentMaterial {
                     SetRandomDestination(_assignedGroup.RandomNavmeshLocation());
                 }
             }
+            // AI CHARACTER CHASING A TARGET
             if (_ownTarget != null && _ownTarget.activeSelf)
             {
+                // If it's a villager, make sur he didn't reached the castle
+                if (_ownTarget.GetComponent<Villager>())
+                {
+                    if (_ownTarget.GetComponent<Villager>().HasReachedObjectif())
+                    {
+                        // Find another target
+                        StopActionOnTarget();
+                        MoveAgain();
+                        GetNewTarget();
+
+                        // Stop algorithm here
+                        return;
+                    }
+                }
+
                 // Update the destination in case the target is moving
                 _agent.SetDestination(_ownTarget.transform.position);
 
