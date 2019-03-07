@@ -5,14 +5,15 @@ using UnityEngine;
 public class Crushable : MonoBehaviour {
 
     [SerializeField]     protected ResourcesPack _gain;
-    public AudioSource audioData;
+    private AudioSource _audioData;
+    public AudioClip crushedDownSound;
 
     // Can be set to false for some reasons in tutorial for example
     public bool canBeCrushed = true;
 
     // Use this for initialization
     void Start () {
-        audioData = GetComponent<AudioSource>();
+        _audioData = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,6 +26,10 @@ public class Crushable : MonoBehaviour {
     {
         if (canBeCrushed)
         {
+            // Play sound
+            _audioData.clip = crushedDownSound;
+            _audioData.Play(0);
+
             // If it's a character, make him die
             if (this.GetComponent<CharacterStats>())
             {
@@ -36,8 +41,7 @@ public class Crushable : MonoBehaviour {
             }
             // Destroy the object
             else
-            {
-                audioData.Play(0);
+            {                
                 Destroy(gameObject);
             }
         }              

@@ -1903,6 +1903,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &166568260
 MonoBehaviour:
@@ -2247,6 +2248,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &181258272
 MonoBehaviour:
@@ -7462,6 +7464,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1975094922}
     m_Modifications:
+    - target: {fileID: 114907817760266312, guid: a0c82e07495e4a844962a8de3020e4fd,
+        type: 2}
+      propertyPath: VolcanoSmokes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4259956415138532, guid: a0c82e07495e4a844962a8de3020e4fd, type: 2}
       propertyPath: m_LocalPosition.x
       value: 10.6
@@ -7498,6 +7505,12 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 57.16
       objectReference: {fileID: 0}
+    - target: {fileID: 114907817760266312, guid: a0c82e07495e4a844962a8de3020e4fd,
+        type: 2}
+      propertyPath: VolcanoSmokes.Array.data[0]
+      value: 
+      objectReference: {fileID: 1175790147048284, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0c82e07495e4a844962a8de3020e4fd, type: 2}
   m_IsPrefabAsset: 0
@@ -8378,6 +8391,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &832754489
 MonoBehaviour:
@@ -9823,6 +9837,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &930892431
 MonoBehaviour:
@@ -10500,6 +10515,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &992355768
 MonoBehaviour:
@@ -11010,6 +11026,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
   tuto: 0
+  victorySound: {fileID: 0}
+  defeatSound: {fileID: 0}
   levelName: Map_B
 --- !u!4 &1050290305
 Transform:
@@ -16137,6 +16155,7 @@ MonoBehaviour:
   - {fileID: 1760536710}
   - {fileID: 1738532867}
   - {fileID: 411181027}
+  notBuyable: {fileID: 0}
 --- !u!4 &1453698698
 Transform:
   m_ObjectHideFlags: 0
@@ -17202,6 +17221,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &1566360008
 MonoBehaviour:
@@ -18051,6 +18071,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &1624144761
 MonoBehaviour:
@@ -18257,6 +18278,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &1646155865
 MonoBehaviour:
@@ -18732,6 +18754,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &1653408415
 MonoBehaviour:
@@ -22946,8 +22969,8 @@ Transform:
   - {fileID: 2086611855}
   - {fileID: 261755348}
   - {fileID: 1747481128}
-  - {fileID: 735890155}
   - {fileID: 1930930143}
+  - {fileID: 735890155}
   - {fileID: 1540339641}
   - {fileID: 1252881140}
   - {fileID: 958092369}
@@ -23233,6 +23256,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &2006442382
 MonoBehaviour:
@@ -24407,6 +24431,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1787859272}
   RightHand: {fileID: 1235158201}
   minHeightToCrush: 10
+  crushFloorSound: {fileID: 0}
   Transparent_Building: {fileID: 0}
   speechEvent1: {fileID: 0}
   speechEvent2: {fileID: 0}

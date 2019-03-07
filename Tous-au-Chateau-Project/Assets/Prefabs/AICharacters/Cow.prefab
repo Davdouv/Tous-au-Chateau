@@ -166,6 +166,7 @@ MonoBehaviour:
   speed: 1
   strength: 1
   _deathReason: 0
+  deathSound: {fileID: 0}
 --- !u!114 &114548113654549764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,12 +208,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
-  woodGain: 0
-  stoneGain: 0
-  foodGain: 20
-  workForceGain: 0
-  motivationGain: 0
+  _gain:
+    wood: 0
+    stone: 0
+    food: 10
+    workForce: 0
+    motivation: 0
+  crushedDownSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
+  canBeCrushed: 1
 --- !u!114 &114916680075449174
 MonoBehaviour:
   m_ObjectHideFlags: 1
