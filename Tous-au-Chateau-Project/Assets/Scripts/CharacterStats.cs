@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public enum DeathReason { NOT_DEAD, UNKNOWN, RIVER, VOID, PLAYER, WOLF, GOLEM, DEATH_REASONS_COUNT }
 
@@ -14,7 +15,8 @@ public class CharacterStats : MonoBehaviour
     public DeathReason _deathReason = DeathReason.NOT_DEAD;
 
     private AudioSource _audioData;
-    public AudioClip deathSound;
+    public List<AudioClip> deathSound;
+    public List<AudioClip> fallingSound;
 
     private void Start()
     {
@@ -46,9 +48,16 @@ public class CharacterStats : MonoBehaviour
         _deathReason = deathReason;
 
         // Play sound
-        if (deathSound)
+        if (deathSound.Count > 0 || fallingSound.Count > 0)
         {
-            _audioData.clip = deathSound;
+            if (deathReason == DeathReason.VOID || deathReason == DeathReason.RIVER)
+            {
+                _audioData.clip = GetRandomClip(fallingSound);
+            }
+            else
+            {
+                _audioData.clip = GetRandomClip(deathSound);
+            }
             _audioData.Play();
         }
 
@@ -92,5 +101,11 @@ public class CharacterStats : MonoBehaviour
     public void SetDeathReason(DeathReason deathReason)
     {
         _deathReason = deathReason;
+    }
+
+    private AudioClip GetRandomClip(List<AudioClip> audioClipList)
+    {
+        int rand = Random.Range(0, audioClipList.Count);
+        return audioClipList[rand];
     }
 }
