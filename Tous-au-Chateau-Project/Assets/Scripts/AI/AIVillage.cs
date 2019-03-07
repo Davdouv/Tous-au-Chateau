@@ -44,16 +44,13 @@ public class AIVillage : MonoBehaviour {
     private void DisplayVillage()
     {
         GameObject currentVillage = new GameObject("Village");
-        //currentVillage.tag = "village";
-
-        GameObject villageGrid = GameObject.CreatePrimitive(PrimitiveType.Plane);
-        villageGrid.transform.localScale = new Vector3(sizeOfVillageGridUnit * 9.0f / 10.0f, 1, sizeOfVillageGridUnit * 9.0f / 10.0f); // on divise par 10 car un plane a pour scale 1 = 10 unité unity
-        villageGrid.transform.position = new Vector3(villageGrid.transform.localScale.x * 10 / 2.0f, 0, villageGrid.transform.localScale.z * 10 / 2.0f);
-        villageGrid.transform.parent = currentVillage.transform;
 
         DisplayHouses(currentVillage);
 
         currentVillage.transform.position = villagePosition.position;
+        currentVillage.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        currentVillage.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
+        currentVillage.transform.parent = villagePosition;
 
     }
 
@@ -79,7 +76,7 @@ public class AIVillage : MonoBehaviour {
 
             GameObject currentHouse = Instantiate(typesOfHouses[type]);
             currentHouse.transform.rotation = Quaternion.AngleAxis(angleRotation, Vector3.up);
-            currentHouse.transform.position = new Vector3(posX * sizeOfVillageGridUnit + sizeOfVillageGridUnit, houseHeight, posY * sizeOfVillageGridUnit + sizeOfVillageGridUnit);
+            currentHouse.transform.position = parentVillage.transform.position + new Vector3(posX * sizeOfVillageGridUnit + sizeOfVillageGridUnit, houseHeight, posY * sizeOfVillageGridUnit + sizeOfVillageGridUnit);
             currentHouse.transform.parent = parentVillage.transform;
         }
     }

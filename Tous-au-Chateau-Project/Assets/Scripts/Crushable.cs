@@ -36,12 +36,13 @@ public class Crushable : MonoBehaviour {
                 this.GetComponent<CharacterStats>().TakeDamage(9999, DeathReason.PLAYER);
                 if (this.GetComponent<AICharacter>())
                 {
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                 }
             }
             // Destroy the object
             else
-            {                
+            {
+                gameObject.SetActive(false);
                 Destroy(gameObject, _audioData.clip.length);
             }
         }              
