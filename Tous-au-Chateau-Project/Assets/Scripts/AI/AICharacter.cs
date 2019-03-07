@@ -27,17 +27,26 @@ public class AICharacter : EnvironmentMaterial {
     private bool _isAttacking = false;
     private bool _isAttacked = false;
 
+    private AudioSource _audioData;
+    public AudioClip idleSound;
+    private float countDown = 0f;
+    private float timeToWait = 10f;
+
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _stats = GetComponent<CharacterStats>();
+        _audioData = GetComponent<AudioSource>();
     }
 
     private void Start()
     {        
         _combat = GetComponent<AICharacterAttack>();
         _assignedGroup = transform.parent.GetComponent<AICharactersGroup>();
+
+        // Set a random Wait time so the group don't play sound at the same time
+        timeToWait += Random.Range(0, 20f) + idleSound.length;
     }
 
     // Get the group and add him to it
@@ -232,6 +241,15 @@ public class AICharacter : EnvironmentMaterial {
                 {
                     SetRandomDestination(_assignedGroup.RandomNavmeshLocation());
                 }
+
+                // Play a sound every timeToWait seconds
+                if (countDown > timeToWait)
+                {
+                    countDown = 0;
+                    _audioData.clip = idleSound;
+                    _audioData.Play();
+                }
+                countDown += Time.deltaTime;
             }
             // AI CHARACTER CHASING A TARGET
             if (_ownTarget != null && _ownTarget.activeSelf)

@@ -255,6 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d4a616a4e0b294f86fb4a9a2b0754d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  idleSound: {fileID: 8300000, guid: ad9295df4af70c84aa9175a2f62a8f9c, type: 3}
 --- !u!114 &114026331390198488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -285,6 +286,7 @@ MonoBehaviour:
   attackSpeed: 1
   attackDelay: 0.6
   aiType: 5
+  attackSound: {fileID: 8300000, guid: b12ab8fbf18f663499167cb6203f571a, type: 3}
 --- !u!114 &114336388453811380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -319,7 +321,8 @@ MonoBehaviour:
   speed: 2
   strength: 10
   _deathReason: 0
-  deathSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
+  deathSound: []
+  fallingSound: []
 --- !u!135 &135825077992891292
 SphereCollider:
   m_ObjectHideFlags: 1

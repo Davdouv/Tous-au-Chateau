@@ -36,11 +36,17 @@ public class GameManager : MonoBehaviour {
     public bool tuto = true;
 
     //Audio
-    public AudioSource victorySound;
-    public AudioSource defeatSound;
+    private AudioSource _audioData;
+    public AudioClip victorySound;
+    public AudioClip defeatSound;
 
     public string levelName;
     private float levelDuration = 0;
+
+    private void Start()
+    {
+        _audioData = GetComponent<AudioSource>();
+    }
 
     // ***** STATES OF THE GAME *****/
     public void GameStarted()
@@ -50,7 +56,11 @@ public class GameManager : MonoBehaviour {
     public void GameWon(int scoreCount = 0)
     {
         _hasWin = true;
-        victorySound.Play();
+        if (defeatSound)
+        {
+            _audioData.clip = victorySound;
+            _audioData.Play();
+        }
 
         // SAVE THE PLAYER's VICTORY
         SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));
@@ -58,7 +68,11 @@ public class GameManager : MonoBehaviour {
     public void GameLost()
     {
         _hasLost = true;
-        defeatSound.Play();
+        if (defeatSound)
+        {
+            _audioData.clip = defeatSound;
+            _audioData.Play();
+        }        
     }
     public bool IsGameWon()
     {

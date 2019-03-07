@@ -12,10 +12,15 @@ public class AICharacterAttack : MonoBehaviour {
     public DeathReason aiType;
 
     private CharacterStats _stats;
+    private AudioSource _audioData;
+    public AudioClip attackSound;
+
+    private bool playSound = true;
 
     private void Start()
     {
         _stats = GetComponent<CharacterStats>();
+        _audioData = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -27,6 +32,16 @@ public class AICharacterAttack : MonoBehaviour {
     {
         if (_attackCooldown <= 0f)
         {
+            if (playSound)
+            {
+                _audioData.clip = attackSound;
+                _audioData.Play();
+                playSound = false;
+            }
+            else
+            {
+                playSound = true;
+            }
             //StartCoroutine(DoDamage(targetStats, attackDelay));
             DoDamage(targetStats);
             _attackCooldown = 1f / attackSpeed;
