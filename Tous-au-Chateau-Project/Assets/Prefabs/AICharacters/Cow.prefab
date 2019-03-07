@@ -574,6 +574,7 @@ MonoBehaviour:
   speed: 1
   strength: 1
   _deathReason: 0
+  deathSound: {fileID: 0}
 --- !u!114 &114548113654549764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -618,9 +619,16 @@ MonoBehaviour:
   _gain:
     wood: 0
     stone: 0
+<<<<<<< HEAD
     food: 0
     workForce: 0
     motivation: 0
+=======
+    food: 10
+    workForce: 0
+    motivation: 0
+  crushedDownSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
+>>>>>>> 40c320a5d771ae44fe8137aebd0962aa68861407
   canBeCrushed: 1
 --- !u!114 &114916680075449174
 MonoBehaviour:

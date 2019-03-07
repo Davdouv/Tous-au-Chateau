@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 114014289715169834}
   - component: {fileID: 114026331390198488}
   - component: {fileID: 114336388453811380}
+  - component: {fileID: 82739194838500872}
   m_Layer: 8
   m_Name: Wolf
   m_TagString: Wolf
@@ -599,6 +600,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 1, z: 1.5}
   m_Center: {x: 0, y: 0.5, z: 0}
+<<<<<<< HEAD
 --- !u!95 &95986863900049598
 Animator:
   serializedVersion: 3
@@ -617,6 +619,103 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+=======
+--- !u!82 &82739194838500872
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1952876099188524}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+>>>>>>> 40c320a5d771ae44fe8137aebd0962aa68861407
 --- !u!114 &114014289715169834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -672,9 +771,16 @@ MonoBehaviour:
   _gain:
     wood: 0
     stone: 0
+<<<<<<< HEAD
     food: 0
     workForce: 0
     motivation: 0
+=======
+    food: 10
+    workForce: 0
+    motivation: 0
+  crushedDownSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
+>>>>>>> 40c320a5d771ae44fe8137aebd0962aa68861407
   canBeCrushed: 1
 --- !u!114 &114497774470111296
 MonoBehaviour:
@@ -691,6 +797,7 @@ MonoBehaviour:
   speed: 2
   strength: 10
   _deathReason: 0
+  deathSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
 --- !u!135 &135825077992891292
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -12,7 +12,15 @@ public class CharacterStats : MonoBehaviour
 
     private float _saveSpeed;
     public DeathReason _deathReason = DeathReason.NOT_DEAD;
-    
+
+    private AudioSource _audioData;
+    public AudioClip deathSound;
+
+    private void Start()
+    {
+        _audioData = GetComponent<AudioSource>();
+    }
+
     public CharacterStats():this(true, 100, 2.0f, 0) { }
 
     public CharacterStats(bool live, float vie, float vitesse, float force)
@@ -36,6 +44,14 @@ public class CharacterStats : MonoBehaviour
     {
         _isAlive = false;
         _deathReason = deathReason;
+
+        // Play sound
+        if (deathSound)
+        {
+            _audioData.clip = deathSound;
+            _audioData.Play();
+        }
+
         // AI Behaviour
         if (gameObject.GetComponent<AICharacter>())
         {
