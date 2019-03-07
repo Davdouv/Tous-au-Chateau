@@ -22,6 +22,8 @@ public class Villager : MonoBehaviour
     public CharacterStats _stats;
     private DyingVillager _deathmode;
 
+    private Animator _anim;
+
 
     // Use this for initialization
     void Start()
@@ -31,6 +33,13 @@ public class Villager : MonoBehaviour
         _villagerCollision = GetComponent<DangerDetection>();
         _stats = GetComponent<CharacterStats>();
         _deathmode = GetComponent<DyingVillager>();
+
+        _anim = transform.GetChild(0).gameObject.GetComponent<Animator>();
+
+        if (!IsPassive())
+        {
+            _anim.SetBool("walk", true);
+        }
 
         _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
         if (_group)
@@ -55,6 +64,8 @@ public class Villager : MonoBehaviour
         Vector3 objectif = 
             GameObject.Find("Objectif").transform.position;
         transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
+
+        
     }
 
     public void Crush()
@@ -131,6 +142,7 @@ public class Villager : MonoBehaviour
             _group.RemoveVillager(this);
         }  
         */
+        _anim.SetBool("death", true);
         _deathmode.isAlive = false;
         _stats.SetIsAlive(false);
         _canMove = false;
@@ -160,6 +172,7 @@ public class Villager : MonoBehaviour
             agent.updatePosition = true;
             agent.updateRotation = true;
             agent.SetDestination(_isJoining.transform.position);
+            _anim.SetBool("walk", true);
         }
     }
 
