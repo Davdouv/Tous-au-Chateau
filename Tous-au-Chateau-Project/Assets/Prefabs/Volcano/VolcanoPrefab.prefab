@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 4956523523604002}
   - component: {fileID: 33995498626346736}
   - component: {fileID: 23008443671124402}
+  - component: {fileID: 65610456352353422}
   m_Layer: 0
   m_Name: Volcano
   m_TagString: Untagged
@@ -124,7 +125,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1727945435544600}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.47838536, z: 0, w: 0.8781501}
   m_LocalPosition: {x: 10.6, y: 18.76, z: 88.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -133,7 +134,7 @@ Transform:
   - {fileID: 4106855416665002}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 57.16, z: 0}
 --- !u!4 &4956523523604002
 Transform:
   m_ObjectHideFlags: 1
@@ -247,6 +248,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65610456352353422
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1845771756065574}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.8276515, y: 6.416984, z: 4.123343}
+  m_Center: {x: 0.3122391, y: 0.011825933, z: -0.16}
 --- !u!114 &114907817760266312
 MonoBehaviour:
   m_ObjectHideFlags: 1
