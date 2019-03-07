@@ -26,24 +26,15 @@ public class Crushable : MonoBehaviour {
     {
         if (canBeCrushed)
         {
-            // Play sound
-            _audioData.clip = crushedDownSound;
-            _audioData.Play(0);
-
             // If it's a character, make him die
-            if (this.GetComponent<CharacterStats>())
+            if (this.GetComponent<CharacterStats>() && this.GetComponent<CharacterStats>().IsAlive())
             {
                 this.GetComponent<CharacterStats>().TakeDamage(9999, DeathReason.PLAYER);
-                if (this.GetComponent<AICharacter>())
-                {
-                    //Destroy(gameObject);
-                }
             }
             // Destroy the object
             else
             {
-                gameObject.SetActive(false);
-                Destroy(gameObject, _audioData.clip.length);
+                Destroy(gameObject);
             }
         }              
     }

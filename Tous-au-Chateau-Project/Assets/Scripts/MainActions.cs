@@ -117,6 +117,22 @@ public class MainActions : MonoBehaviour
                 Debug.Log("CRUSH ITEM");
                 resourceM.AddResources(other.gameObject.GetComponent<Crushable>().Gain());
                 other.gameObject.GetComponent<Crushable>().Crush();
+
+                if (other.gameObject.GetComponent<CharacterStats>())
+                {
+                    if (other.gameObject.GetComponent<CharacterStats>().IsAlive())
+                    {
+                        // Play sound of ai character dying
+                        _audioData.clip = other.gameObject.GetComponent<AudioClip>();
+                        _audioData.Play(0);
+                    }
+                }
+                else
+                {
+                    // Play sound of resource destroyed
+                    _audioData.clip = other.gameObject.GetComponent<AudioClip>();
+                    _audioData.Play();
+                }
                 handStillClose = true;
             }
             else
