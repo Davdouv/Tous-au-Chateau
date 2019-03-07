@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10533604, g: 0.28910613, b: 0.7486913, a: 1}
+  m_IndirectSpecularColor: {r: 0.105295464, g: 0.28905082, b: 0.7486986, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1903,6 +1903,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &166568260
 MonoBehaviour:
@@ -2247,6 +2248,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &181258272
 MonoBehaviour:
@@ -7462,6 +7464,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1975094922}
     m_Modifications:
+    - target: {fileID: 114907817760266312, guid: a0c82e07495e4a844962a8de3020e4fd,
+        type: 2}
+      propertyPath: VolcanoSmokes.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4259956415138532, guid: a0c82e07495e4a844962a8de3020e4fd, type: 2}
       propertyPath: m_LocalPosition.x
       value: 10.6
@@ -8378,6 +8385,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &832754489
 MonoBehaviour:
@@ -9823,6 +9831,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &930892431
 MonoBehaviour:
@@ -10500,6 +10509,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &992355768
 MonoBehaviour:
@@ -11010,6 +11020,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
   tuto: 0
+  victorySound: {fileID: 0}
+  defeatSound: {fileID: 0}
   levelName: Map_B
 --- !u!4 &1050290305
 Transform:
@@ -16137,6 +16149,7 @@ MonoBehaviour:
   - {fileID: 1760536710}
   - {fileID: 1738532867}
   - {fileID: 411181027}
+  notBuyable: {fileID: 0}
 --- !u!4 &1453698698
 Transform:
   m_ObjectHideFlags: 0
@@ -17202,6 +17215,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &1566360008
 MonoBehaviour:
@@ -18051,6 +18065,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &1624144761
 MonoBehaviour:
@@ -18257,6 +18272,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &1646155865
 MonoBehaviour:
@@ -18732,6 +18748,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &1653408415
 MonoBehaviour:
@@ -20147,6 +20164,101 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4808232661722246, guid: b19b3413f135c184ea7e44fd32e83a9f,
     type: 2}
   m_PrefabInternal: {fileID: 1941019064}
+--- !u!82 &1756107968
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1756107966}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5d28fead9693b3546aa98b14de1bfca2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1756607082
 Prefab:
   m_ObjectHideFlags: 0
@@ -22946,8 +23058,8 @@ Transform:
   - {fileID: 2086611855}
   - {fileID: 261755348}
   - {fileID: 1747481128}
-  - {fileID: 735890155}
   - {fileID: 1930930143}
+  - {fileID: 735890155}
   - {fileID: 1540339641}
   - {fileID: 1252881140}
   - {fileID: 958092369}
@@ -23233,6 +23345,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &2006442382
 MonoBehaviour:
@@ -24407,6 +24520,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1787859272}
   RightHand: {fileID: 1235158201}
   minHeightToCrush: 10
+  crushFloorSound: {fileID: 0}
   Transparent_Building: {fileID: 0}
   speechEvent1: {fileID: 0}
   speechEvent2: {fileID: 0}

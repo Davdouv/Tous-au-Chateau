@@ -32,6 +32,7 @@ public class Population : MonoBehaviour{
     // Use this for initialization
     void Start(){
         //volcanoSmokeNum = Menu.volcanoSmokeNum; //number of VolcanoSmokes is taken from other script because it enables changing this value in game by user
+        volcanoSmokeNum = 15;
         VolcanoSmokes = new GameObject[volcanoSmokeNum];
         SpawnvolcanoSmoke();
         //spawn1 = VolcanoThroat.transform.position;

@@ -38,7 +38,7 @@ public class Crushable : MonoBehaviour {
             else
             {
                 audioData.Play(0);
-                Destroy(gameObject);
+                Destroy(gameObject, audioData.clip.length);
             }
         }              
     }
