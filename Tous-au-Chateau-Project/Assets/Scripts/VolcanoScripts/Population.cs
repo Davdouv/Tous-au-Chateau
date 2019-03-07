@@ -267,7 +267,8 @@ public class Population : MonoBehaviour{
             float rand = Random.Range(0.0f, 1.0f);
             if (rand < mutationRate)
             {
-                VolcanoSmoke.GetComponent<VolcanoSmoke>().brain[i] = new Vector3(Random.Range(10, -11), 0, Random.Range(10, -11));
+                //VolcanoSmoke.GetComponent<VolcanoSmoke>().brain[i] = new Vector3(Random.Range(10, -11), 0, Random.Range(10, -11));
+                VolcanoSmoke.GetComponent<VolcanoSmoke>().brain[i] = new Vector3(0, Random.Range(-30, 33), Random.Range(30, -33));
 
             }
         }

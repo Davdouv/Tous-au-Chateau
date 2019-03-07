@@ -1688,6 +1688,62 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bee40cdaf506b4459a1b2b72e11de70, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &153482369
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1498079639}
+    m_Modifications:
+    - target: {fileID: 4477904875560902, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477904875560902, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477904875560902, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477904875560902, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477904875560902, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477904875560902, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477904875560902, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4477904875560902, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1175790147048284, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198887949212286000, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d,
+        type: 2}
+      propertyPath: startDelay.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 198022090495923340, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d,
+        type: 2}
+      propertyPath: startDelay.scalar
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 537b0df5cb3f8ef4b9c66f95ca6b251d, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!4 &153543258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4402895621097250, guid: 312027973a381ed4bb1e7656396b27f4,
@@ -16624,6 +16680,11 @@ MonoBehaviour:
   gripAxisName: LeftGrip
   touchpadHorizontalAxisName: LeftTrackpadHorizontal
   touchpadVerticalAxisName: LeftTrackpadVertical
+--- !u!4 &1498079639 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4956523523604002, guid: a0c82e07495e4a844962a8de3020e4fd,
+    type: 2}
+  m_PrefabInternal: {fileID: 745090243}
 --- !u!1 &1519403821
 GameObject:
   m_ObjectHideFlags: 0
