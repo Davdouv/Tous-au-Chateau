@@ -7,7 +7,7 @@ public class Golem : MonoBehaviour {
     public List<GameObject> rocks;
     public string genomeString = "110011001001011010010110011000010010110011111001101101101111110101010";
     public float speed = 2;
-    public float scale = 0.1f;
+    public float scale;
 
     private List<float> oscil;
     private List<GameObject> element;
@@ -45,7 +45,7 @@ public class Golem : MonoBehaviour {
 	void Update () {
 		for(int i = 0; i < element.Count; ++i)
         {
-            element[i].transform.position += new Vector3(0, oscil[i]*Mathf.Sin(speed*(Time.time+0.5f*i)), 0);
+            element[i].transform.position =  element[i].transform.position + new Vector3(0, oscil[i]*Mathf.Sin(speed*(Time.time+0.5f*i)), 0);
         }
 
 
@@ -205,45 +205,45 @@ public class Golem : MonoBehaviour {
         GameObject head = Instantiate(rocks[headForm]);
 
         //Apply elements to bones and change their positions and rotation
-        newBody.transform.localScale = new Vector3(3, bodyHeight, 3);
+        newBody.transform.localScale = new Vector3(scale + 3.0f/2.0f* scale, bodyHeight * scale, scale + 3.0f / 2.0f * scale);
         newBody.transform.localRotation = Quaternion.Euler(180, 0, 0);
-        newBody.transform.position = new Vector3(0.0f, 14.0f, 0.0f);
+        newBody.transform.position = transform.position + new Vector3(0,1,0)*bodyHeight * scale;
 
-        head.transform.localScale = new Vector3(3, headHeight, 3);
-        head.transform.position = new Vector3(0.0f, 12.0f + bodyHeight / 2.0f, 0.0f);
+        head.transform.localScale = new Vector3(scale, headHeight * scale, scale);
+        head.transform.position = transform.position + new Vector3(0.0f, bodyHeight * scale / 2.0f, 0.0f) + new Vector3(0, 1, 0) * bodyHeight * scale;
 
         //newShoulder.transform.localScale = new Vector3(0.1f, 1.5f / 2.0f, 0.1f);
         //newShoulder.transform.localRotation = Quaternion.Euler(90, 0, 0);
         Vector3 shoulderPosistion = new Vector3(0.0f, newBody.transform.position.y - 2.0f + newBody.transform.localScale.y / 2.0f - shoulderPos, 0.0f);
 
-        newLeftFrontArm.transform.localScale = new Vector3(2, frontArmHeightOne, 2);
+        newLeftFrontArm.transform.localScale = new Vector3(scale, frontArmHeightOne * scale, scale);
         newLeftFrontArm.transform.localRotation = Quaternion.Euler(40, 0, 0);
-        newLeftFrontArm.transform.position = shoulderPosistion - new Vector3(0.0f, 0.0f, sizeShoulder / 2.0f) + newLeftFrontArm.transform.localScale.y / 2.0f * -1 * newLeftFrontArm.transform.up.normalized;
+        newLeftFrontArm.transform.position = transform.position + shoulderPosistion * scale - new Vector3(0.0f, 0.0f, sizeShoulder * scale / 2.0f) + newLeftFrontArm.transform.localScale.y / 2.0f * -1 * newLeftFrontArm.transform.up.normalized;
 
-        newRightFrontArm.transform.localScale = new Vector3(2, frontArmHeightTwo, 2);
+        newRightFrontArm.transform.localScale = new Vector3(scale, frontArmHeightTwo * scale, scale);
         newRightFrontArm.transform.localRotation = Quaternion.Euler(-40, 0, 0);
-        newRightFrontArm.transform.position = shoulderPosistion + new Vector3(0.0f, 0.0f, sizeShoulder / 2.0f) + newRightFrontArm.transform.localScale.y / 2.0f * -1 * newRightFrontArm.transform.up.normalized;
+        newRightFrontArm.transform.position = transform.position + shoulderPosistion * scale + new Vector3(0.0f, 0.0f, sizeShoulder * scale / 2.0f) + newRightFrontArm.transform.localScale.y / 2.0f * -1 * newRightFrontArm.transform.up.normalized;
 
-        newLeftArm.transform.localScale = new Vector3(2, armHeightOne, 2);
+        newLeftArm.transform.localScale = new Vector3(scale, armHeightOne * scale, scale);
         newLeftArm.transform.position = newLeftFrontArm.transform.position - newLeftFrontArm.transform.localScale.y / 2.0f * newLeftFrontArm.transform.up.normalized + newLeftArm.transform.localScale.y / 2.0f * -1 * newLeftArm.transform.up.normalized;
 
-        newRightArm.transform.localScale = new Vector3(2, armHeightTwo, 2);
+        newRightArm.transform.localScale = new Vector3(scale, armHeightTwo * scale, scale);
         newRightArm.transform.position = newRightFrontArm.transform.position - newRightFrontArm.transform.localScale.y / 2.0f * newRightFrontArm.transform.up.normalized + newRightArm.transform.localScale.y / 2.0f * -1 * newRightArm.transform.up.normalized;
 
 
         Vector3 legPosition = new Vector3(0.0f, newBody.transform.position.y - 2.0f - newBody.transform.localScale.y / 2.0f, 0.0f);
 
-        newLeftLeg.transform.localScale = new Vector3(2, legHeightOne, 2);
-        newLeftLeg.transform.position = legPosition - new Vector3(0.0f, 0.0f, sizeLegDistance / 2.0f) + newLeftLeg.transform.localScale.y / 2.0f * -1 * newLeftLeg.transform.up.normalized;
+        newLeftLeg.transform.localScale = new Vector3(scale, legHeightOne * scale, scale);
+        newLeftLeg.transform.position = transform.position - legPosition * 0.07f * 2 *scale - new Vector3(0.0f, 0.0f, sizeLegDistance * scale / 2.0f) + newLeftLeg.transform.localScale.y / 2.0f * -1 * newLeftLeg.transform.up.normalized;
 
-        newRightLeg.transform.localScale = new Vector3(2, legHeightTwo, 2);
-        newRightLeg.transform.position = legPosition + new Vector3(0.0f, 0.0f, sizeLegDistance / 2.0f) + newRightLeg.transform.localScale.y / 2.0f * -1 * newRightLeg.transform.up.normalized;
+        newRightLeg.transform.localScale = new Vector3(scale, legHeightTwo * scale, scale);
+        newRightLeg.transform.position = transform.position - legPosition * 0.07f * scale + new Vector3(0.0f, 0.0f, sizeLegDistance * scale / 2.0f) + newRightLeg.transform.localScale.y / 2.0f * -1 * newRightLeg.transform.up.normalized;
 
-        newLeftFoot.transform.localScale = new Vector3(2, footHeightOne, 2);
+        newLeftFoot.transform.localScale = new Vector3(scale, footHeightOne * scale, scale);
         newLeftFoot.transform.localRotation = Quaternion.Euler(-16, 0, 0);
-        newLeftFoot.transform.position = newLeftLeg.transform.position - newLeftLeg.transform.localScale.y / 2.0f * newLeftLeg.transform.up.normalized + newLeftFoot.transform.localScale.y / 2.0f * -1 * newLeftFoot.transform.up.normalized;
+        newLeftFoot.transform.position =  newLeftLeg.transform.position - newLeftLeg.transform.localScale.y / 2.0f * newLeftLeg.transform.up.normalized + newLeftFoot.transform.localScale.y / 2.0f * -1 * newLeftFoot.transform.up.normalized;
 
-        newRightFoot.transform.localScale = new Vector3(2, footHeightTwo, 2);
+        newRightFoot.transform.localScale = new Vector3(scale, footHeightTwo * scale, scale);
         newRightFoot.transform.position = newRightLeg.transform.position - newRightLeg.transform.localScale.y / 2.0f * newRightLeg.transform.up.normalized + newRightFoot.transform.localScale.y / 2.0f * -1 * newRightFoot.transform.up.normalized;
 
         //ADD SKELETON TO GOLEM
