@@ -71,7 +71,7 @@ public class AIVillage : MonoBehaviour {
             Mesh mesh = typesOfHouses[type].GetComponentsInChildren<MeshFilter>()[0].sharedMesh;
             if (mesh != null)
             {
-                houseHeight = mesh.bounds.size.y / 2;
+                houseHeight = (mesh.bounds.size.y * typesOfHouses[type].transform.localScale.y) / 2;
             }
 
             GameObject currentHouse = Instantiate(typesOfHouses[type]);
