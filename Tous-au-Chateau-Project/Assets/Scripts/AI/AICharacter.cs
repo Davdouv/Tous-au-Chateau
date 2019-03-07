@@ -32,12 +32,16 @@ public class AICharacter : EnvironmentMaterial {
     private float countDown = 0f;
     private float timeToWait = 10f;
 
+    private Animator _anim;
+
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _stats = GetComponent<CharacterStats>();
         _audioData = GetComponent<AudioSource>();
+        _anim = transform.GetChild(0).gameObject.GetComponent<Animator>();
+        _anim.SetBool("walk", true);
     }
 
     private void Start()
@@ -181,12 +185,14 @@ public class AICharacter : EnvironmentMaterial {
     {
         _isEscaping = false;
         _agent.speed = 0;
+        _anim.SetBool("walk", false);
         // Animation get down on the ground
     }
 
     public virtual void MoveAgain()
     {
         SetFastSpeed();
+        _anim.SetBool("walk", true);
     }
 
     // Remove the item from the list and get a new target
@@ -236,7 +242,7 @@ public class AICharacter : EnvironmentMaterial {
             }
             // AI CHARACTER SAFE, MOVING AROUND
             else if (_isMovingAround)
-            {
+            {  
                 if (IsDestinationReached(_stoppingDistance))
                 {
                     SetRandomDestination(_assignedGroup.RandomNavmeshLocation());
@@ -357,13 +363,15 @@ public class AICharacter : EnvironmentMaterial {
     public void SetIsMovingAround(bool isMovingAround)
     {
         _isMovingAround = isMovingAround;
+        
     }
 
     public void Die()
     {
+        _anim.SetBool("death", true);
         _assignedGroup.RemoveItem(this.gameObject);
         // Disappear ?
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
     }
 
     public bool IsTargetRegistered(GameObject target)
