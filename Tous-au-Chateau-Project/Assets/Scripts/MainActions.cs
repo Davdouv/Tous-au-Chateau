@@ -151,6 +151,20 @@ public class MainActions : MonoBehaviour
                     haveBuilding = true;
                 }
             }
+            else if (other.tag == "prevUI")
+            {
+                {
+                    //Change to prev page on UI
+                    //Call function from @justine script
+                }
+            }
+            else if (other.tag == "nextUI")
+            {
+                {
+                    //Change to next page on UI
+                    //Call function from @justine script
+                }
+            }
         }
     }
 
