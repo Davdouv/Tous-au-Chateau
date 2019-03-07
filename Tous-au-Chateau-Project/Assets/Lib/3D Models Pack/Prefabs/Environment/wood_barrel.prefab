@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4693539823947442}
   - component: {fileID: 33622528783843652}
   - component: {fileID: 23594753659991040}
+  - component: {fileID: 65328708523079070}
   m_Layer: 0
   m_Name: wood_barrel
   m_TagString: Untagged
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1202506633284696}
   m_Mesh: {fileID: 4300000, guid: fbf8db0e7f5e0424bb03d8d8b013a92c, type: 3}
+--- !u!65 &65328708523079070
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202506633284696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.92833674, y: 1.0507812, z: 0.8829007}
+  m_Center: {x: -0.000000014901161, y: -0.00000035762787, z: -0.000000059604645}

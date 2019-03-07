@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4404434404631716}
   - component: {fileID: 33471556629647912}
   - component: {fileID: 23779265683989662}
+  - component: {fileID: 65983363018171650}
   m_Layer: 0
   m_Name: wooden_box_b
   m_TagString: Untagged
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1231951077614518}
   m_Mesh: {fileID: 4300000, guid: 9a28879c7fc771d48826df8e55deaeef, type: 3}
+--- !u!65 &65983363018171650
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1231951077614518}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.95993614, y: 1.1468952, z: 1.5187254}
+  m_Center: {x: 0, y: -0.00000035762787, z: -0.00000047683716}
