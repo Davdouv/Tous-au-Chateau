@@ -16,7 +16,8 @@ public class MainActions : MonoBehaviour
     bool handStillClose;
     Vector3 currentPos;
     public float minHeightToCrush = 10;
-    public AudioSource crushFloorSound;
+    private AudioSource _audioData;
+    public AudioClip crushFloorSound;
 
 
     public Material Transparent_Building;
@@ -40,7 +41,7 @@ public class MainActions : MonoBehaviour
         trigger = false;
         crushMode = false;
         haveBuilding = false;
-        crushFloorSound = GetComponent<AudioSource>();
+        _audioData = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -120,7 +121,8 @@ public class MainActions : MonoBehaviour
             }
             else
             {
-                crushFloorSound.Play(0);
+                _audioData.clip = crushFloorSound;
+                _audioData.Play(0);
             }
 
             if (GameManager.Instance.tuto)

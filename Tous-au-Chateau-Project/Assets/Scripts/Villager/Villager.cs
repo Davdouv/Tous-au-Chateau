@@ -137,6 +137,13 @@ public class Villager : MonoBehaviour
         _rb.isKinematic = true;
         agent.enabled = false;
         GetComponent<BoxCollider>().enabled = false;
+
+        // Test if it was the last villager
+        if (VillagersManager.Instance.HasLastVillagersReachedObjectif())
+        {
+            Debug.Log("VICTORY");
+            GameManager.Instance.GameWon(Victory.scoreCount);
+        }
     }
     public bool IsPassive()
     {

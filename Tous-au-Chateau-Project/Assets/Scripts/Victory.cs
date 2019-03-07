@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Victory : TriggerZone {
 
-    private int scoreCount = 0;
+    public static int scoreCount = 0;
     public Text score;
 
 	// Use this for initialization

@@ -32,6 +32,7 @@ public class Population : MonoBehaviour{
     // Use this for initialization
     void Start(){
         //volcanoSmokeNum = Menu.volcanoSmokeNum; //number of VolcanoSmokes is taken from other script because it enables changing this value in game by user
+        volcanoSmokeNum = 15;
         VolcanoSmokes = new GameObject[volcanoSmokeNum];
         SpawnvolcanoSmoke();
         //spawn1 = VolcanoThroat.transform.position;
@@ -266,7 +267,8 @@ public class Population : MonoBehaviour{
             float rand = Random.Range(0.0f, 1.0f);
             if (rand < mutationRate)
             {
-                VolcanoSmoke.GetComponent<VolcanoSmoke>().brain[i] = new Vector3(Random.Range(10, -11), 0, Random.Range(10, -11));
+                //VolcanoSmoke.GetComponent<VolcanoSmoke>().brain[i] = new Vector3(Random.Range(10, -11), 0, Random.Range(10, -11));
+                VolcanoSmoke.GetComponent<VolcanoSmoke>().brain[i] = new Vector3(0, Random.Range(-30, 33), Random.Range(30, -33));
 
             }
         }
