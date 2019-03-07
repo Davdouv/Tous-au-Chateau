@@ -9,12 +9,27 @@
         public GameObject controlObject;
 
         protected bool state;
+        Transform InitialParent;
+        bool once; 
 
+        void Start()
+        {
+            InitialParent = transform.parent;
+            once = false;
+        }
         private void Update()
         {
-            transform.position = leftController.transform.position;
-            //
-            transform.localRotation = Quaternion.LookRotation(-leftController.transform.forward);
+            if (state)
+            {
+                if (!once)
+                {
+                    leftController.transform.Rotate(0, transform.rotation.y, 90f, Space.World);
+                    once = true;
+                }
+                transform.SetParent(leftController.transform);
+                //transform.position = leftController.transform.position;
+                //transform.localRotation = Quaternion.LookRotation(-leftController.transform.forward);
+            }
         }
 
         protected virtual void OnEnable()
@@ -36,6 +51,8 @@
         protected virtual void ButtonTwoPressed(object sender, ControllerInteractionEventArgs e)
         {
             state = !state;
+            once = false;
+            transform.parent = InitialParent;
             //Move();
             SetObjectVisibility();
         }

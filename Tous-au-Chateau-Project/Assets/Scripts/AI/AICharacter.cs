@@ -49,6 +49,11 @@ public class AICharacter : EnvironmentMaterial {
     // If target found, ask the group to share the target with all group objects
     public void TargetFound(GameObject target)
     {
+        Villager _targetVillager = target.GetComponent<Villager>();
+        if (_targetVillager && _targetVillager.HasReachedObjectif())
+        {
+            return;
+        }
         CharacterStats _targetStats = target.GetComponent<CharacterStats>();
         if (_targetStats && _targetStats.IsAlive())
         {
@@ -56,7 +61,6 @@ public class AICharacter : EnvironmentMaterial {
             _assignedGroup.AddTarget(target);
             _assignedGroup.ShareTarget(target);
         }
-        
     }
 
     public void TargetNotFound()
@@ -125,7 +129,6 @@ public class AICharacter : EnvironmentMaterial {
     {
         _hasPriorityOnTarget = true;
         _isAttacking = true;
-        Debug.Log("ACTION");
     }
 
     // No need for this
@@ -180,7 +183,6 @@ public class AICharacter : EnvironmentMaterial {
     // Remove the item from the list and get a new target
     public void GetNewTarget()
     {
-        Debug.Log("new target");
         _assignedGroup.RemoveItem(_ownTarget);
         _assignedGroup.CancelTarget(_ownTarget);
         _assignedGroup.NewTarget();
@@ -208,6 +210,7 @@ public class AICharacter : EnvironmentMaterial {
         }
         else
         {
+            // AI CHARACTER ESCAPING
             if (_isEscaping)
             {
                 GameObject ennemy = GetComponent<AIDetection>().GetEnemyNear();
@@ -222,6 +225,7 @@ public class AICharacter : EnvironmentMaterial {
                     StopEscaping();
                 }
             }
+            // AI CHARACTER SAFE, MOVING AROUND
             else if (_isMovingAround)
             {
                 if (IsDestinationReached(_stoppingDistance))
@@ -229,8 +233,24 @@ public class AICharacter : EnvironmentMaterial {
                     SetRandomDestination(_assignedGroup.RandomNavmeshLocation());
                 }
             }
+            // AI CHARACTER CHASING A TARGET
             if (_ownTarget != null && _ownTarget.activeSelf)
             {
+                // If it's a villager, make sur he didn't reached the castle
+                if (_ownTarget.GetComponent<Villager>())
+                {
+                    if (_ownTarget.GetComponent<Villager>().HasReachedObjectif())
+                    {
+                        // Find another target
+                        StopActionOnTarget();
+                        MoveAgain();
+                        GetNewTarget();
+
+                        // Stop algorithm here
+                        return;
+                    }
+                }
+
                 // Update the destination in case the target is moving
                 _agent.SetDestination(_ownTarget.transform.position);
 
@@ -264,6 +284,7 @@ public class AICharacter : EnvironmentMaterial {
             }
             else
             {
+                // If he was attacking but has no longer a target to attack
                 if (_isAttacking)
                 {
                     StopActionOnTarget();
@@ -335,5 +356,10 @@ public class AICharacter : EnvironmentMaterial {
     public bool HasATarget()
     {
         return _ownTarget != null;
+    }
+
+    public CharacterStats GetStats()
+    {
+        return _stats;
     }
 }

@@ -33,19 +33,35 @@ public class GameManager : MonoBehaviour {
     private static bool _isWorldPaused;
 
     public GameObject pauseMenu;
+    public bool tuto = true;
+
+    public string levelName;
+    private float levelDuration = 0;
 
     // ***** STATES OF THE GAME *****/
     public void GameStarted()
     {
         _hasStarted = true;
     }
-    public void GameWon()
+    public void GameWon(int scoreCount = 0)
     {
         _hasWin = true;
+
+        // SAVE THE PLAYER's VICTORY
+        SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));
     }
     public void GameLost()
     {
         _hasLost = true;
+    }
+    public bool IsGameWon()
+    {
+        return _hasWin;
+    }
+
+    public bool IsGameLost()
+    {
+        return _hasLost;
     }
 
     // PAUSE GAME
@@ -123,5 +139,13 @@ public class GameManager : MonoBehaviour {
         _hasLost = false;
         _isPaused = false;
         _isWorldPaused = false;
+    }
+
+    private void Update()
+    {
+        if (_hasStarted && !_isPaused)
+        {
+            levelDuration += Time.deltaTime;
+        }        
     }
 }

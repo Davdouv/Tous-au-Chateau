@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : PauseScript
+public class UIManager : MonoBehaviour
 {
     //To know where to update the display
     public Text woodTxt;
@@ -14,12 +14,21 @@ public class UIManager : PauseScript
 
     //For gameplay purposes
     public GameObject GameOverPanel;
+    public Text gameOverTitleText;
     public Text gameOverVillagersText;
+    public Color victoryTextColor;
+    public Color gameoverTextColor;
     public ResourceManager _ResourceManager;
 
     //For construction pagination
     public BuildingsTypeGroup _BuildingTypeGroup;
     public GameObject ConstructionPagination; //parent of each page content in hierarchy
+    public Color buildingNotPuchasable;
+    public Transform buttonsPosition;
+    public Transform constructionPosition1;
+    public Transform constructionPosition2;
+    public Transform constructionPosition3;
+    public Transform constructionPosition4;
 
     private List<List<Building>> _sortedBuildings; //sorted by type
     private const int constructionNbByPage = 4;
@@ -28,10 +37,17 @@ public class UIManager : PauseScript
     private GameObject[] _pages;
     private GameObject[] _pageButtons;
     private bool _isCostEmpty = true;
+    private Transform[] constructionsPositions;
 
     private void Start()
     {
-        if(_BuildingTypeGroup != null)
+        constructionsPositions = new Transform[4];
+        constructionsPositions[0] = constructionPosition1;
+        constructionsPositions[1] = constructionPosition2;
+        constructionsPositions[2] = constructionPosition3;
+        constructionsPositions[3] = constructionPosition4;
+
+        if (_BuildingTypeGroup != null)
         {
             CalculateNbOfPages();
         }
@@ -53,6 +69,50 @@ public class UIManager : PauseScript
         foodTxt.text = "" + _ResourceManager.GetFood();
         villagersTxt.text = "" + _ResourceManager.GetWorkForce();
         motivation.value = _ResourceManager.GetMotivation();
+
+        /* Test for end of game */
+        if (GameManager.Instance.IsGameWon())
+        {
+            DisplayGameOverPanel(true);
+        }
+
+        if (GameManager.Instance.IsGameLost())
+        {
+            DisplayGameOverPanel(false);
+        }
+
+        /* Updates the ability to purchase or not each building */
+        for (int i=0; i<_sortedBuildings.Count; ++i)
+        {
+            for(int j=0; j<_sortedBuildings[i].Count; ++j)
+            {
+                Building currentBuilding = _sortedBuildings[i][j];
+                if (_ResourceManager.HasEnoughResources(currentBuilding.getCost()))
+                {
+                    //make it normal
+                    currentBuilding.transform.GetChild(2).gameObject.SetActive(true);
+                    currentBuilding.transform.GetChild(3).gameObject.SetActive(false);
+
+                    Transform cost = currentBuilding.transform.Find("Display/HelpTextCanvas/Cost");
+                    if(cost != null)
+                    {
+                        cost.GetComponent<Text>().color = Color.black;
+                    }
+                }
+                else
+                {
+                    //make it blocked
+                    currentBuilding.transform.GetChild(2).gameObject.SetActive(false);
+                    currentBuilding.transform.GetChild(3).gameObject.SetActive(true);
+
+                    Transform cost = currentBuilding.transform.Find("Display/HelpTextCanvas/Cost");
+                    if (cost != null)
+                    {
+                        cost.GetComponent<Text>().color = buildingNotPuchasable;
+                    }
+                }
+            }
+        }
 
         //Test for pagination functions
         if (Input.GetKeyUp("right"))
@@ -88,8 +148,19 @@ public class UIManager : PauseScript
 
     }
 
-    public void DisplayGameOverPanel()
+    public void DisplayGameOverPanel(bool isPlayerVictorious)
     {
+        if (isPlayerVictorious)
+        {
+            gameOverTitleText.text = "VICTORY";
+            gameOverTitleText.color = victoryTextColor;
+        }
+        else
+        {
+            gameOverTitleText.text = "GAME OVER";
+            gameOverTitleText.color = gameoverTextColor;
+        }
+
         GameOverPanel.SetActive(true);
         gameOverVillagersText.text = "Remaining Villagers : " + _ResourceManager.GetWorkForce();
     }
@@ -104,6 +175,7 @@ public class UIManager : PauseScript
         // constructionPanel.SetActive(false);
     }
 
+    /* Pagination */
     public void DisplayConstructionPage(int index)
     {
         if (index < 0 || index >= _nbOfPagesInUI)
@@ -212,11 +284,11 @@ public class UIManager : PauseScript
                     if (currentIndexInPage < _sortedBuildings[i].Count)
                     {
                         _sortedBuildings[i][currentIndexInPage].transform.parent = page.transform;
-                        _sortedBuildings[i][currentIndexInPage].transform.position = ConstructionPagination.transform.position + Vector3.right * ((k * 0.2f - 0.3f) * -1.0f) / page.transform.localScale.x;
+                        _sortedBuildings[i][currentIndexInPage].transform.position = constructionsPositions[k].position;
                     }
                 }
 
-                page.transform.position = Vector3.zero + Vector3.up * 0.07f / page.transform.localScale.y;
+                page.transform.position = Vector3.zero /*+ Vector3.up * 0.07f / page.transform.localScale.y*/;
                 _pages[i] = page;
 
                 if (i != 0)
@@ -239,35 +311,15 @@ public class UIManager : PauseScript
         {
             GameObject button = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             button.name = "Construction Panel Button " + i;
-            button.transform.parent = ConstructionPagination.transform;
+            button.transform.parent = buttonsPosition;
 
             button.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-            button.transform.position = ConstructionPagination.transform.position 
-                + Vector3.forward * 0.02f / 0.01f 
-                + Vector3.right * 0.44f / 0.01f
-                + Vector3.up * (0.15f - i * 0.05f) / 0.01f;
+            button.transform.position = buttonsPosition.position 
+                + Vector3.forward * 0.02f / 0.01f
+                + Vector3.up * (- i * 0.05f) / 0.01f;
 
             _pageButtons[i] = button;
         }
-    }
-
-    override public void Pause()
-    {
-        /*Button[] interactables = constructionPanel.GetComponentsInChildren<Button>();
-        for(int i = 0; i < interactables.Length; ++i)
-        {
-            interactables[i].enabled = false;
-        }*/
-    }
-
-    override public void UnPause()
-    {
-        /*Button[] interactables = constructionPanel.GetComponentsInChildren<Button>();
-
-        for (int i = 0; i < interactables.Length; ++i)
-        {
-            interactables[i].enabled = true;
-        }*/
     }
 
 }

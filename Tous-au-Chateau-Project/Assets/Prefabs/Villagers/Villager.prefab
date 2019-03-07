@@ -25,9 +25,10 @@ GameObject:
   - component: {fileID: 114079941186006326}
   - component: {fileID: 114024287728163622}
   - component: {fileID: 114241641678293014}
-  - component: {fileID: 114752624679174466}
   - component: {fileID: 114589392995402528}
   - component: {fileID: 195200504844747520}
+  - component: {fileID: 114077937849614894}
+  - component: {fileID: 114748364141084020}
   m_Layer: 0
   m_Name: Villager
   m_TagString: Villager
@@ -59,7 +60,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096130410665992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.864, y: 0, z: -8.194}
+  m_LocalPosition: {x: 1.763, y: -5.824, z: 0.119}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4974353950416650}
@@ -162,6 +163,23 @@ MonoBehaviour:
   life: 20
   speed: 2
   strength: 0
+  _deathReason: 0
+--- !u!114 &114077937849614894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1096130410665992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89ae20244bf024849a92a7da0bc3bf5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag:
+  - Void
+  - River
+  - Plank
+  distanceDetection: 5
 --- !u!114 &114079941186006326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,6 +197,7 @@ MonoBehaviour:
   _isPassive: 0
   _isJoining: {fileID: 0}
   _hasJoined: 0
+  _stats: {fileID: 0}
 --- !u!114 &114241641678293014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -206,7 +225,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turningRate: 20
   mesh: {fileID: 0}
---- !u!114 &114752624679174466
+  isAlive: 1
+--- !u!114 &114748364141084020
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,11 +234,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1096130410665992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3e2d81a41321de42b184cb0bb49f696, type: 3}
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onPlatform: 0
-  inDanger: 0
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  canBeCrushed: 1
 --- !u!135 &135940879828553240
 SphereCollider:
   m_ObjectHideFlags: 1

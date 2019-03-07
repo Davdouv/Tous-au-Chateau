@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum DeathReason { NOT_DEAD, UNKNOWN, RIVER, VOID, PLAYER, WOLF, GOLEM, DEATH_REASONS_COUNT }
+
 public class CharacterStats : MonoBehaviour
 {
     private bool _isAlive;
@@ -9,6 +11,7 @@ public class CharacterStats : MonoBehaviour
     public float strength = 0;
 
     private float _saveSpeed;
+    public DeathReason _deathReason = DeathReason.NOT_DEAD;
     
     public CharacterStats():this(true, 100, 2.0f, 0) { }
 
@@ -20,20 +23,19 @@ public class CharacterStats : MonoBehaviour
         strength = force;
     }
 
-    public void TakeDamage(float dmg)
+    public void TakeDamage(float dmg, DeathReason deathReason = DeathReason.UNKNOWN)
     {
         life -= dmg;
-        Debug.Log(gameObject.name + " life = " + life);
         if (life <= 0)
         {
-            Debug.Log(gameObject.name + " dead");
-            Die();
+            Die(deathReason);
         }
     }
 
-    private void Die()
+    private void Die(DeathReason deathReason = DeathReason.UNKNOWN)
     {
         _isAlive = false;
+        _deathReason = deathReason;
         // AI Behaviour
         if (gameObject.GetComponent<AICharacter>())
         {
@@ -64,5 +66,15 @@ public class CharacterStats : MonoBehaviour
     public void MoveAgain()
     {
         speed = _saveSpeed;
+    }
+
+    public DeathReason GetDeathReason()
+    {
+        return _deathReason;
+    }
+
+    public void SetDeathReason(DeathReason deathReason)
+    {
+        _deathReason = deathReason;
     }
 }
