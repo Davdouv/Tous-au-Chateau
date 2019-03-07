@@ -7,12 +7,12 @@ public class VolcanoSmoke : MonoBehaviour {
 
     public static Vector3 spawn;
     public static float moveSpeed = 0.001f;
-    public static float maxSpeed = 1.0f;
+    public static float maxSpeed = 0.01f;
 
-    public static int brainSize = 10;
+    public static int brainSize = 15;
     public Vector3[] brain = new Vector3[brainSize];   //brain stores vectors of movement
     public int i = 0;   //brain iterator
-    public int lifespan =  1;    //number of steps it can take before it dies (increased each 5 generations by population.cs script)
+    public int lifespan =  10;    //number of steps it can take before it dies (increased each 5 generations by population.cs script)
 
     public bool reachedTheGoal = false;
     public bool dead = false;
@@ -53,9 +53,8 @@ public class VolcanoSmoke : MonoBehaviour {
     {
         if (!dead)
         {
-            GetComponent<Rigidbody>().AddForce(brain[i] * moveSpeed * 0.01f);
+            GetComponent<Rigidbody>().AddForce(brain[i] * moveSpeed * 0.001f);
             i++;
- 
         }
     }
 
@@ -105,7 +104,7 @@ public class VolcanoSmoke : MonoBehaviour {
      private void GenerateVectors()
     {
        for (int j = 0; j < brainSize; j++)
-            brain[j] = new Vector3(Random.Range(-10, 11), 0, Random.Range(10, -11));
+            brain[j] = new Vector3(0, Random.Range(-30, 33), Random.Range(30, -33));
     }
 
 }
