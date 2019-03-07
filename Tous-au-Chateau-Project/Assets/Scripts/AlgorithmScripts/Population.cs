@@ -14,7 +14,7 @@ public class Population : MonoBehaviour{
     public GameObject VolcanoThroat;
 
     //spawn position
-    private Vector3 spawn1 = new Vector3(38f, 19f, -3f);
+    //private Vector3 spawn1 = new Vector3(38f, 19f, -3f);
     //private Vector3 spawn1; 
 
     private float fitnessSum;
@@ -25,7 +25,10 @@ public class Population : MonoBehaviour{
     private long k = 0; //update counter
 
 
-
+    void Awake()
+    {
+        VolcanoSmoke.spawn = VolcanoThroat.transform.position;
+    }
     // Use this for initialization
     void Start(){
         volcanoSmokeNum = Menu.volcanoSmokeNum; //number of VolcanoSmokes is taken from other script because it enables changing this value in game by user

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class VolcanoSmoke : MonoBehaviour {
 
-    public Vector3 spawn;
-    public static float moveSpeed = 0.01f;
+    public static Vector3 spawn;
+    public static float moveSpeed = 0.001f;
     public static float maxSpeed = 1.0f;
 
     public static int brainSize = 10;
@@ -30,7 +30,7 @@ public class VolcanoSmoke : MonoBehaviour {
     // Use this for initialization
     void Start (){
         GenerateVectors();
-        spawn = transform.position;
+        //spawn = transform.position;
         //distToGround = 117f;
         distToGround = 19f;
     }
