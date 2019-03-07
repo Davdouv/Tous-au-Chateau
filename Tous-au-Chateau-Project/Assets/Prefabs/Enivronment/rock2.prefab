@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4336453804834950}
   - component: {fileID: 33830819233227124}
   - component: {fileID: 23503656234864204}
-  - component: {fileID: 95980646297491982}
   - component: {fileID: 114005624463843918}
+  - component: {fileID: 136370405147741770}
   m_Layer: 0
   m_Name: rock2
   m_TagString: Untagged
@@ -85,24 +85,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1598936623957666}
   m_Mesh: {fileID: 4300000, guid: cf27e7a4e8476e040949c465d772b855, type: 3}
---- !u!95 &95980646297491982
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1598936623957666}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: cf27e7a4e8476e040949c465d772b855, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114005624463843918
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,4 +102,18 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
+--- !u!136 &136370405147741770
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598936623957666}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.5525565
+  m_Height: 4.7673197
+  m_Direction: 1
+  m_Center: {x: -0.037401497, y: -0.6516097, z: 0.0683275}

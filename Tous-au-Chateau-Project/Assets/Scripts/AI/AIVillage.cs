@@ -48,7 +48,8 @@ public class AIVillage : MonoBehaviour {
         DisplayHouses(currentVillage);
 
         currentVillage.transform.position = villagePosition.position;
-        currentVillage.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        currentVillage.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        currentVillage.transform.rotation = Quaternion.AngleAxis(-90, Vector3.up);
         currentVillage.transform.parent = villagePosition;
 
     }

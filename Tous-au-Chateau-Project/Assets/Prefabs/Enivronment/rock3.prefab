@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4894630949798634}
   - component: {fileID: 33740802680002304}
   - component: {fileID: 23419589333984578}
-  - component: {fileID: 95446440574278170}
   - component: {fileID: 114953685684212204}
+  - component: {fileID: 65548771900836250}
   m_Layer: 0
   m_Name: rock3
   m_TagString: Untagged
@@ -85,24 +85,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039396480272724}
   m_Mesh: {fileID: 4300000, guid: 5b40b508e5c1b264b9702b1507427515, type: 3}
---- !u!95 &95446440574278170
-Animator:
-  serializedVersion: 3
+--- !u!65 &65548771900836250
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1039396480272724}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 5b40b508e5c1b264b9702b1507427515, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 2
+  m_Size: {x: 4.500526, y: 6.0490565, z: 6.3869824}
+  m_Center: {x: -0.313545, y: -0.31378755, z: 1.9305259}
 --- !u!114 &114953685684212204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,4 +114,5 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1

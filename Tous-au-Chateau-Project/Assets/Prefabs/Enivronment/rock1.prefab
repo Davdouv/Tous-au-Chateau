@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33709052145180472}
   - component: {fileID: 23633524924779726}
   - component: {fileID: 114273559207841522}
+  - component: {fileID: 136563342988697360}
   m_Layer: 0
   m_Name: rock1
   m_TagString: Untagged
@@ -101,4 +102,18 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   canBeCrushed: 1
+--- !u!136 &136563342988697360
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1712823800327506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.7507274
+  m_Height: 4.146418
+  m_Direction: 1
+  m_Center: {x: -0.03227049, y: -0.07911452, z: 0.15098503}
