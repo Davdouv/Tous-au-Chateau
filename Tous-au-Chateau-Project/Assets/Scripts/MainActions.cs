@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainActions : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class MainActions : MonoBehaviour
     bool trigger;
     bool crushMode;
     bool haveBuilding;
+    bool haveVillager;
     bool handStillClose;
     Vector3 currentPos;
     public float minHeightToCrush = 10;
@@ -25,6 +27,9 @@ public class MainActions : MonoBehaviour
 
     GameObject newBuilding;
     GameObject myprefab;
+    GameObject newVillager;
+    public GameObject villagerPrefab;
+
 
     public SpeechEvent_MapTuto1_Event1 speechEvent1 = null;
     public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
@@ -82,6 +87,20 @@ public class MainActions : MonoBehaviour
                 buildingTrans = newBuilding.transform;
                 Destroy(newBuilding);
                 newBuilding = Instantiate(myprefab, buildingTrans.position, buildingTrans.rotation);
+            }
+            else if (SceneManager.GetActiveScene().name == "Map selector")
+            {
+                if (haveVillager)
+                {
+                    //releaseVillager
+                    haveVillager = false;
+                    newVillager.transform.parent = null;
+                    //On hand release
+                    Transform VillagerTrans;
+                    VillagerTrans = newVillager.transform;
+                    Destroy(newVillager);
+                    newVillager = Instantiate(myprefab, VillagerTrans.position, VillagerTrans.rotation);
+                }
             }
         }
 
@@ -182,6 +201,19 @@ public class MainActions : MonoBehaviour
                 }
             }
         }
+        else if (SceneManager.GetActiveScene().name == "Map selector")
+        {
+            if (events.triggerPressed && !haveVillager)
+            {
+                if (other.tag == "Villager")
+                {
+                    newVillager = Instantiate(villagerPrefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                    haveVillager = true;
+                }
+
+            }
+        }
+        
     }
 
     public bool IsCrushModeActive()
