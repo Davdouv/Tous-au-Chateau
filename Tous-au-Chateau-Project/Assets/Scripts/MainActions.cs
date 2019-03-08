@@ -26,9 +26,10 @@ public class MainActions : MonoBehaviour
     Material Building_mat;
 
     GameObject newBuilding;
-    GameObject myprefab;
     GameObject newVillager;
+    GameObject oldVillager;
     public GameObject villagerPrefab;
+    GameObject buildingPrefab;
 
 
     public SpeechEvent_MapTuto1_Event1 speechEvent1 = null;
@@ -86,7 +87,7 @@ public class MainActions : MonoBehaviour
                 Transform buildingTrans;
                 buildingTrans = newBuilding.transform;
                 Destroy(newBuilding);
-                newBuilding = Instantiate(myprefab, buildingTrans.position, buildingTrans.rotation);
+                newBuilding = Instantiate(buildingPrefab, buildingTrans.position, buildingTrans.rotation);
             }
             else if (SceneManager.GetActiveScene().name == "Map selector")
             {
@@ -94,12 +95,9 @@ public class MainActions : MonoBehaviour
                 {
                     //releaseVillager
                     haveVillager = false;
-                    newVillager.transform.parent = null;
                     //On hand release
-                    Transform VillagerTrans;
-                    VillagerTrans = newVillager.transform;
+                    oldVillager.SetActive(true);
                     Destroy(newVillager);
-                    newVillager = Instantiate(myprefab, VillagerTrans.position, VillagerTrans.rotation);
                 }
             }
         }
@@ -182,21 +180,28 @@ public class MainActions : MonoBehaviour
                 {
                     //Instantiate building
                     newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefabTransparent, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
-                    myprefab = other.gameObject.GetComponent<Building>().prefab;
+                    buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
                     haveBuilding = true;
                 }
             }
-            else if (other.tag == "prevUI")
+            else if (other.tag == "page1UI")
             {
                 {
-                    //Change to prev page on UI
+                    //Change to page 1 on UI
                     //Call function from @justine script
                 }
             }
-            else if (other.tag == "nextUI")
+            else if (other.tag == "page2UI")
             {
                 {
-                    //Change to next page on UI
+                    //Change to page 2 on UI
+                    //Call function from @justine script
+                }
+            }
+            else if (other.tag == "page3UI")
+            {
+                {
+                    //Change to page 3 on UI
                     //Call function from @justine script
                 }
             }
@@ -207,6 +212,9 @@ public class MainActions : MonoBehaviour
             {
                 if (other.tag == "Villager")
                 {
+                    //other.gameObject.transform = spawnPoint.transform;
+                    oldVillager = other.gameObject;
+                    oldVillager.SetActive(false);
                     newVillager = Instantiate(villagerPrefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
                     haveVillager = true;
                 }

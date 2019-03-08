@@ -17,6 +17,7 @@ public class DirectionalSignDetection : TriggerZone
     {
         if (_directionalSign.HasLanded())
         {
+            Debug.Log("LANDED");
             target.GetComponent<Villager>().ChangeDirection(_directionalSign.direction);
         }
     }

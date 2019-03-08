@@ -10,6 +10,7 @@ public class TerrainDetection_Tuto1 : MonoBehaviour {
     {
         if (collision.gameObject.layer == 10) // 10 : Building
         {
+            Debug.Log("TESTESTESTEST");
             collision.gameObject.GetComponent<Building>().SetHasLanded();
             if (collision.gameObject.GetComponent<WoodPlank>())
             {
