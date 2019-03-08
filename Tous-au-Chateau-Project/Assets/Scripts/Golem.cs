@@ -218,11 +218,11 @@ public class Golem : MonoBehaviour {
 
         newLeftFrontArm.transform.localScale = new Vector3(scale, frontArmHeightOne * scale, scale);
         newLeftFrontArm.transform.localRotation = Quaternion.Euler(40, 0, 0);
-        newLeftFrontArm.transform.position = transform.position + shoulderPosistion * scale - new Vector3(0.0f, 0.0f, sizeShoulder * scale / 2.0f) + newLeftFrontArm.transform.localScale.y / 2.0f * -1 * newLeftFrontArm.transform.up.normalized;
+        newLeftFrontArm.transform.position = transform.position + 11 * new Vector3(0, 1, 0) + shoulderPosistion * scale - new Vector3(0.0f, 0.0f, sizeShoulder * scale / 2.0f) + newLeftFrontArm.transform.localScale.y / 2.0f * -1 * newLeftFrontArm.transform.up.normalized;
 
         newRightFrontArm.transform.localScale = new Vector3(scale, frontArmHeightTwo * scale, scale);
         newRightFrontArm.transform.localRotation = Quaternion.Euler(-40, 0, 0);
-        newRightFrontArm.transform.position = transform.position + shoulderPosistion * scale + new Vector3(0.0f, 0.0f, sizeShoulder * scale / 2.0f) + newRightFrontArm.transform.localScale.y / 2.0f * -1 * newRightFrontArm.transform.up.normalized;
+        newRightFrontArm.transform.position = transform.position + 11 * new Vector3(0, 1, 0)  + shoulderPosistion * scale + new Vector3(0.0f, 0.0f, sizeShoulder * scale / 2.0f) + newRightFrontArm.transform.localScale.y / 2.0f * -1 * newRightFrontArm.transform.up.normalized;
 
         newLeftArm.transform.localScale = new Vector3(scale, armHeightOne * scale, scale);
         newLeftArm.transform.position = newLeftFrontArm.transform.position - newLeftFrontArm.transform.localScale.y / 2.0f * newLeftFrontArm.transform.up.normalized + newLeftArm.transform.localScale.y / 2.0f * -1 * newLeftArm.transform.up.normalized;
