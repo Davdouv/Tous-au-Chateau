@@ -15,10 +15,8 @@ public class DirectionalSignDetection : TriggerZone
 
     public override void TriggerEnter(GameObject target)
     {
-        Debug.Log("OKOKOKOK");
         if (_directionalSign.HasLanded())
         {
-            Debug.Log("LANDED");
             target.GetComponent<Villager>().ChangeDirection(_directionalSign.direction);
         }
     }

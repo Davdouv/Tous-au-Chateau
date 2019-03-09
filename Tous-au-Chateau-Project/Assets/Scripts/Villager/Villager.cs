@@ -13,6 +13,10 @@ public class Villager : MonoBehaviour
     public bool _isInfected;
     public bool _canMove;
 
+    private bool _canTurn = true;
+    private const float _timeToWaitToTurnAgain = 2f;
+    private float _timePassed = 0f;
+
     public bool _isPassive;
     public GameObject _isJoining;
     public bool _hasJoined;
@@ -22,8 +26,7 @@ public class Villager : MonoBehaviour
     public CharacterStats _stats;
     private DyingVillager _deathmode;
 
-    private Animator _anim;
-
+    private Animator _anim;    
 
     // Use this for initialization
     void Start()
@@ -68,10 +71,6 @@ public class Villager : MonoBehaviour
         
     }
 
-    public void Crush()
-    {
-
-    }
     private void Move()
     {
         /*agent.ResetPath();
@@ -99,7 +98,7 @@ public class Villager : MonoBehaviour
     }
     public void ChangeDirection(Direction dir)
     {
-        if (_stats.IsAlive())
+        if (_stats.IsAlive() && _canTurn)
         {
             switch (dir)
             {
@@ -118,6 +117,7 @@ public class Villager : MonoBehaviour
                 default:
                     break;
             }
+            _canTurn = false;
         }        
     }
 
@@ -185,6 +185,18 @@ public class Villager : MonoBehaviour
                 Move();
             }
 
+            // To avoid getting the effect of a directionnal pannel multiple times in a row
+            if (!_canTurn)
+            {
+                _timePassed += Time.deltaTime;
+                if (_timePassed >= _timeToWaitToTurnAgain)
+                {
+                    _timePassed = 0;
+                    _canTurn = true;
+                }
+            }
+
+            // For villager joining the group
             if (!_hasJoined)
             {
                 if (_isJoining)
