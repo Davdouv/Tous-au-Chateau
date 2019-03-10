@@ -11,7 +11,8 @@ public class Villager : MonoBehaviour
     public int _motivation;
 
     public bool _isInfected;
-    public bool _canMove;
+    [SerializeField]
+    private bool _canMove;
 
     private bool _canTurn = true;
     private const float _timeToWaitToTurnAgain = 2f;
@@ -39,7 +40,7 @@ public class Villager : MonoBehaviour
 
         _anim = transform.GetChild(0).gameObject.GetComponent<Animator>();
 
-        if (!IsPassive())
+        if (!IsPassive() && _canMove)
         {
             _anim.SetBool("walk", true);
         }
@@ -67,8 +68,12 @@ public class Villager : MonoBehaviour
         Vector3 objectif = 
             GameObject.Find("Objectif").transform.position;
         transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
+    }
 
-        
+    public void SetCanMove(bool canMove)
+    {
+        _canMove = canMove;
+        _anim.SetBool("walk", canMove);
     }
 
     private void Move()
@@ -79,7 +84,6 @@ public class Villager : MonoBehaviour
         */
 
         _rb.MovePosition(transform.position + transform.forward * _stats.speed * Time.deltaTime);
-
     }
     private void MoveTowardVillager(GameObject target)
     {
