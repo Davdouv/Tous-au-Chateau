@@ -31,6 +31,8 @@ public class MainActions : MonoBehaviour
     public GameObject villagerPrefab;
     GameObject buildingPrefab;
 
+    public GameObject fxPrefab;
+
 
     public SpeechEvent_MapTuto1_Event1 speechEvent1 = null;
     public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
@@ -154,8 +156,12 @@ public class MainActions : MonoBehaviour
             }
             else
             {
+                // Sound
                 _audioData.clip = crushFloorSound;
                 _audioData.Play(0);
+
+                // FX
+                Instantiate(fxPrefab, transform).SetActive(true);
             }
 
             if (GameManager.Instance.tuto)
