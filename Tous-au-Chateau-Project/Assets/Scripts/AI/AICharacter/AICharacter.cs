@@ -296,6 +296,7 @@ public class AICharacter : EnvironmentMaterial {
                         if (targetStats.IsAlive())
                         {
                             _combat.Attack(targetStats);
+                            FaceTarget();
                         }
                     }
 
@@ -395,5 +396,15 @@ public class AICharacter : EnvironmentMaterial {
     public CharacterStats GetStats()
     {
         return _stats;
+    }
+
+    // Turn the object smoothly so it faces the target
+    private void FaceTarget()
+    {
+        if (this.transform.rotation != _ownTarget.transform.rotation)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(_ownTarget.transform.position - transform.position);
+            this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, 2 * Time.deltaTime);
+        }
     }
 }

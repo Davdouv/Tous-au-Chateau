@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114831576993073006}
   - component: {fileID: 114573472189254182}
   - component: {fileID: 82267826961457186}
+  - component: {fileID: 114565158038499540}
   m_Layer: 10
   m_Name: Right Directional Panel
   m_TagString: Sign
@@ -539,6 +540,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114565158038499540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041851197267500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  crushedDownSound: {fileID: 8300000, guid: 66f16a88da5ba30429e87ce6b3a127b6, type: 3}
+  canBeCrushed: 1
 --- !u!114 &114573472189254182
 MonoBehaviour:
   m_ObjectHideFlags: 1

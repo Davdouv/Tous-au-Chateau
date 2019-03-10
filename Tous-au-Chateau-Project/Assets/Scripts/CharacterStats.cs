@@ -76,6 +76,17 @@ public class CharacterStats : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+
+        // Disable colliders
+        if (gameObject.GetComponent<BoxCollider>())
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+        if (gameObject.GetComponent<SphereCollider>())
+        {
+            gameObject.GetComponent<SphereCollider>().enabled = false;
+        }
     }
     // Setters
     public void SetIsAlive(bool live) { _isAlive = live; }

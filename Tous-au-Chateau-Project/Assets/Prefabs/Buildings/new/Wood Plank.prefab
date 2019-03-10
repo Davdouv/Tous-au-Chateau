@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 54048856931110244}
   - component: {fileID: 82452514398338516}
   - component: {fileID: 114480422534844070}
+  - component: {fileID: 114352801390628934}
   m_Layer: 10
   m_Name: Wood Plank
   m_TagString: Plank
@@ -406,6 +407,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114352801390628934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860531767917994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c106d5f9e10004cbae6033aeb62eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gain:
+    wood: 0
+    stone: 0
+    food: 0
+    workForce: 0
+    motivation: 0
+  crushedDownSound: {fileID: 8300000, guid: 66f16a88da5ba30429e87ce6b3a127b6, type: 3}
+  canBeCrushed: 1
 --- !u!114 &114480422534844070
 MonoBehaviour:
   m_ObjectHideFlags: 1
