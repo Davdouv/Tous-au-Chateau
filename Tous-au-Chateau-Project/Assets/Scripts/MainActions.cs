@@ -132,8 +132,6 @@ public class MainActions : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Crushable>())
             {
-                //other.crush()   <= for the next sprint
-                Debug.Log("CRUSH ITEM");
                 resourceM.AddResources(other.gameObject.GetComponent<Crushable>().Gain());
                 other.gameObject.GetComponent<Crushable>().Crush();
 

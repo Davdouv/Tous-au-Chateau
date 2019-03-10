@@ -8,6 +8,8 @@ public class Crushable : MonoBehaviour {
     private AudioSource _audioData;
     public AudioClip crushedDownSound;
 
+    public GameObject crushFXPrefab;
+
     // Can be set to false for some reasons in tutorial for example
     public bool canBeCrushed = true;
 
@@ -35,6 +37,10 @@ public class Crushable : MonoBehaviour {
             else
             {
                 Destroy(gameObject);
+            }
+            if (crushFXPrefab)
+            {
+                Instantiate(crushFXPrefab, transform);
             }
         }              
     }

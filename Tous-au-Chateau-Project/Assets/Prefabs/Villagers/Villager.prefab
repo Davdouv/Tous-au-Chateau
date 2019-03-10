@@ -740,6 +740,7 @@ MonoBehaviour:
   _isJoining: {fileID: 0}
   _hasJoined: 0
   _stats: {fileID: 0}
+  walkingSound: {fileID: 0}
 --- !u!114 &114241641678293014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -786,6 +787,7 @@ MonoBehaviour:
     workForce: 0
     motivation: 0
   crushedDownSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
+  crushFXPrefab: {fileID: 192374, guid: d11431e90db23c7468e19dc037beb175, type: 2}
   canBeCrushed: 1
 --- !u!135 &135940879828553240
 SphereCollider:

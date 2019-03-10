@@ -721,6 +721,7 @@ MonoBehaviour:
     workForce: 0
     motivation: 0
   crushedDownSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
+  crushFXPrefab: {fileID: 130146, guid: c1e1630e03a3c1a4989b4c15cd619ca9, type: 2}
   canBeCrushed: 1
 --- !u!114 &114916680075449174
 MonoBehaviour:
@@ -734,6 +735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleSound: {fileID: 8300000, guid: 1b4d84e1e70c23b43910dfd7e6220c86, type: 3}
+  warningSound: {fileID: 0}
 --- !u!135 &135891102786763022
 SphereCollider:
   m_ObjectHideFlags: 1
