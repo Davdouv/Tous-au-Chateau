@@ -600,24 +600,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 1, z: 1.5}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!95 &95986863900049598
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1265069733924482}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 0ff30e46d4554594c88bdf204f8c0129, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2c13c8f2a88a4ef458e44a46281e4bd1, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!82 &82739194838500872
 AudioSource:
   m_ObjectHideFlags: 1
@@ -713,6 +695,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &95986863900049598
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1265069733924482}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0ff30e46d4554594c88bdf204f8c0129, type: 3}
+  m_Controller: {fileID: 9100000, guid: 2c13c8f2a88a4ef458e44a46281e4bd1, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114014289715169834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -725,6 +725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idleSound: {fileID: 8300000, guid: ad9295df4af70c84aa9175a2f62a8f9c, type: 3}
+  warningSound: {fileID: 8300000, guid: 7c96091051730b646a5f2a73c0802859, type: 3}
 --- !u!114 &114026331390198488
 MonoBehaviour:
   m_ObjectHideFlags: 1
