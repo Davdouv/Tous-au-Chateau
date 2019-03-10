@@ -291,4 +291,9 @@ public class AICharactersGroup : MonoBehaviour {
     {
         return _targetDetected.Contains(target);
     }
+
+    public int CountTargetRegistered()
+    {
+        return _targetDetected.Count;
+    }
 }

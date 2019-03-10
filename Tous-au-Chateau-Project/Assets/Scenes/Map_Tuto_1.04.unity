@@ -1500,6 +1500,7 @@ MonoBehaviour:
   _isJoining: {fileID: 0}
   _hasJoined: 1
   _stats: {fileID: 0}
+  walkingSound: {fileID: 0}
 --- !u!65 &223287636
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2651,6 +2652,11 @@ Prefab:
       propertyPath: distanceDetection
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114014289715169834, guid: 6bda71d6907f26a4f855c28b6621553c,
+        type: 2}
+      propertyPath: warningSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c96091051730b646a5f2a73c0802859, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bda71d6907f26a4f855c28b6621553c, type: 2}
   m_IsPrefabAsset: 0
@@ -3764,7 +3770,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4047924759742978, guid: 3e28f78286845d24f9c8e2131a034c4c, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114640533114965500, guid: 3e28f78286845d24f9c8e2131a034c4c,
         type: 2}
@@ -5035,6 +5041,7 @@ MonoBehaviour:
   _isJoining: {fileID: 0}
   _hasJoined: 1
   _stats: {fileID: 0}
+  walkingSound: {fileID: 0}
 --- !u!65 &706383738
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5996,8 +6003,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.11415559, y: 0.84911436, z: 0.20584309, w: 0.47286576}
-  m_LocalPosition: {x: 30.42116, y: -63.79591, z: 12.348566}
+  m_LocalRotation: {x: -0.23790032, y: 0.5722829, z: 0.17868724, w: 0.764177}
+  m_LocalPosition: {x: 43.365364, y: -54.167618, z: 7.965939}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6040,7 +6047,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4047924759742978, guid: 3e28f78286845d24f9c8e2131a034c4c, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114640533114965500, guid: 3e28f78286845d24f9c8e2131a034c4c,
         type: 2}
@@ -7818,6 +7825,7 @@ MonoBehaviour:
   _isJoining: {fileID: 0}
   _hasJoined: 1
   _stats: {fileID: 0}
+  walkingSound: {fileID: 0}
 --- !u!65 &1087563560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8581,9 +8589,9 @@ Transform:
   - {fileID: 1150327752}
   - {fileID: 1142354556}
   - {fileID: 597788179}
-  - {fileID: 1962198259}
   - {fileID: 527001867}
   - {fileID: 834491377}
+  - {fileID: 1962198259}
   - {fileID: 1754028766}
   - {fileID: 1043190660}
   m_Father: {fileID: 0}
@@ -9845,6 +9853,7 @@ MonoBehaviour:
   _isJoining: {fileID: 0}
   _hasJoined: 1
   _stats: {fileID: 0}
+  walkingSound: {fileID: 0}
 --- !u!65 &1300656748
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13197,6 +13206,21 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224874599470225770, guid: b19b3413f135c184ea7e44fd32e83a9f,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224874599470225770, guid: b19b3413f135c184ea7e44fd32e83a9f,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224874599470225770, guid: b19b3413f135c184ea7e44fd32e83a9f,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b19b3413f135c184ea7e44fd32e83a9f, type: 2}
   m_IsPrefabAsset: 0
@@ -13639,7 +13663,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1150327749}
-  m_RootOrder: 12
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1963498530
 GameObject:

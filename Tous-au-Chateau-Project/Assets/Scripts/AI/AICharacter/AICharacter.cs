@@ -29,6 +29,7 @@ public class AICharacter : EnvironmentMaterial {
 
     private AudioSource _audioData;
     public AudioClip idleSound;
+    public AudioClip warningSound;
     private float countDown = 0f;
     private float timeToWait = 10f;
 
@@ -73,7 +74,14 @@ public class AICharacter : EnvironmentMaterial {
             _hasPriorityOnTarget = true;
             _assignedGroup.AddTarget(target);
             _assignedGroup.ShareTarget(target);
-        }
+
+            // If we have a warning sound and it's a villager, and it's the first villager detected
+            if (warningSound && _targetVillager && _assignedGroup.CountTargetRegistered() == 1)
+            {
+                _audioData.clip = warningSound;
+                _audioData.Play();
+            }
+        }        
     }
 
     public void TargetNotFound()

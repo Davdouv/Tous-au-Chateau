@@ -27,7 +27,12 @@ public class Villager : MonoBehaviour
     public CharacterStats _stats;
     private DyingVillager _deathmode;
 
-    private Animator _anim;    
+    private Animator _anim;
+
+    private AudioSource _audioData;
+    public AudioClip walkingSound;
+    private float countDown = 0f;
+    private float timeToWait = 10f;
 
     // Use this for initialization
     void Start()
@@ -68,6 +73,13 @@ public class Villager : MonoBehaviour
         Vector3 objectif = 
             GameObject.Find("Objectif").transform.position;
         transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
+
+        // SOUND
+        // Set a random Wait time so the group don't play sound at the same time
+        if (walkingSound)
+        {
+            timeToWait += Random.Range(0, 20f) + walkingSound.length;
+        }        
     }
 
     public void SetCanMove(bool canMove)
@@ -187,6 +199,15 @@ public class Villager : MonoBehaviour
             if (_canMove)
             {
                 Move();
+
+                // Play a sound every timeToWait seconds
+                if (countDown > timeToWait && walkingSound)
+                {
+                    countDown = 0;
+                    _audioData.clip = walkingSound;
+                    _audioData.Play();
+                }
+                countDown += Time.deltaTime;
             }
 
             // To avoid getting the effect of a directionnal pannel multiple times in a row
