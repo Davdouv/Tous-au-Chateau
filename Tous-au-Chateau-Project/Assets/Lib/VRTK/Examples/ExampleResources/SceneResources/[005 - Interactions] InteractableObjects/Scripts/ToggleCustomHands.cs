@@ -14,6 +14,7 @@
 
         void start()
         {
+            state = !state;
             ToggleVisibility();
         }
 
