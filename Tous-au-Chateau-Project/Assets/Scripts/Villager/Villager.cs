@@ -9,6 +9,7 @@ public class Villager : MonoBehaviour
     NavMeshAgent agent;
     private VillagersGroup _group;
     public int _motivation;
+    private Collider _hitbox;
 
     public bool _isInfected;
     [SerializeField]
@@ -42,7 +43,7 @@ public class Villager : MonoBehaviour
         _villagerCollision = GetComponent<DangerDetection>();
         _stats = GetComponent<CharacterStats>();
         _deathmode = GetComponent<DyingVillager>();
-
+        _hitbox = GetComponent<BoxCollider>();
         _anim = transform.GetChild(0).gameObject.GetComponent<Animator>();
 
         if (!IsPassive() && _canMove)
@@ -94,8 +95,75 @@ public class Villager : MonoBehaviour
         agent.updatePosition = true;
         agent.velocity = transform.forward * 1.00f;
         */
+        RaycastHit centerhit,lefthit, righthit;
+        Vector3 moveCorrection = Vector3.zero;
+        Vector3 centerRaystart = transform.position + new Vector3(0, 0.8f, 0),
+            leftRaystart = centerRaystart + new Vector3(-_hitbox.bounds.extents.x - 0.01f, 0, 0), // slightly off so collider does not get stuck in obstacles
+            rightRaystart = centerRaystart + new Vector3(_hitbox.bounds.extents.x + 0.01f, 0, 0);
 
-        _rb.MovePosition(transform.position + transform.forward * _stats.speed * Time.deltaTime);
+        Debug.DrawLine(centerRaystart, centerRaystart  + transform.forward);
+        Debug.DrawLine(leftRaystart, leftRaystart + transform.forward);
+        Debug.DrawLine(rightRaystart, rightRaystart + transform.forward);
+
+        if (Physics.Raycast(new Ray(centerRaystart, transform.forward),out centerhit, 0.7f)) 
+        {
+            float angleOfApproach = Vector3.SignedAngle(transform.forward, centerhit.normal, transform.up);
+            if ( angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
+            {
+                moveCorrection = Vector3.right;
+                print(" going right1 ");
+            }
+            else
+            {
+                if (angleOfApproach < 0 && angleOfApproach <= -170)
+                {
+                    moveCorrection = Vector3.left;
+                    print(" going left1 ");
+                }
+            }
+        }
+        else
+        {
+            if (Physics.Raycast(new Ray(leftRaystart, transform.forward), out lefthit, 0.7f))
+            {
+                float angleOfApproach = Vector3.SignedAngle(transform.forward, lefthit.normal, transform.up);
+                if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
+                {
+                    moveCorrection = Vector3.right;
+                    print(" going right2 ");
+                }
+                else
+                {
+                    if (angleOfApproach < 0 && angleOfApproach <= -170)
+                    {
+                        moveCorrection = Vector3.left;
+                        print(" going left2 ");
+                    }
+                }
+            }
+            else
+            {
+                if (Physics.Raycast(new Ray(rightRaystart, transform.forward), out righthit, 0.7f))
+                {
+                    float angleOfApproach = Vector3.SignedAngle(transform.forward, righthit.normal, transform.up);
+                    if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
+                    {
+                        moveCorrection = Vector3.right;
+                        print(" going right3 ");
+                    }
+                    else
+                    {
+                        if (angleOfApproach < 0 && angleOfApproach <= -170)
+                        {
+                            moveCorrection = Vector3.left;
+                            print(" going left3 ");
+                        }
+                            
+                    }
+                }
+            }
+        }
+        _rb.MovePosition(transform.position + (transform.forward + moveCorrection)  * _stats.speed * Time.deltaTime);
     }
     private void MoveTowardVillager(GameObject target)
     {
@@ -192,7 +260,8 @@ public class Villager : MonoBehaviour
         }
     }
 
-    void Update()
+    
+    void FixedUpdate()
     {
         if (_stats.IsAlive())
         {
@@ -236,12 +305,8 @@ public class Villager : MonoBehaviour
                         _group = _isJoining.GetComponent<Villager>()._group;
                         _group.AddVillagers(GetComponent<Villager>());
                         transform.parent = _group.gameObject.transform;
-
-                        //transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
-
-                        // print("rotation" +_isJoining.transform.rotation.y);
+                        
                         transform.rotation = _isJoining.transform.rotation;
-                        //print("rotation" + transform.rotation.y);
 
                         agent.ResetPath();
                         agent.enabled = false;
