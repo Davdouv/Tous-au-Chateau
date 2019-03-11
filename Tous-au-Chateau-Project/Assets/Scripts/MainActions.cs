@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainActions : MonoBehaviour
 {
-
     public ResourceManager resourceM;
+    public UIManager uiM;
     public GameObject spawnPoint;
     public Transform RightHand;
 
@@ -15,11 +15,14 @@ public class MainActions : MonoBehaviour
     bool crushMode;
     bool haveBuilding;
     bool haveVillager;
-    bool handStillClose;
+    bool canCrush;
     Vector3 currentPos;
     public float minHeightToCrush = 10;
     private AudioSource _audioData;
     public AudioClip crushFloorSound;
+
+    private SphereCollider sphereCollider;
+    private float distanceDetection;
 
 
     public Material Transparent_Building;
@@ -42,6 +45,8 @@ public class MainActions : MonoBehaviour
     Material[] mats;
     string[] objName;
 
+    public GameObject player;
+
     // Use this for initialization
     void Start()
     {
@@ -50,6 +55,13 @@ public class MainActions : MonoBehaviour
         crushMode = false;
         haveBuilding = false;
         _audioData = GetComponent<AudioSource>();
+        sphereCollider = GetComponent<SphereCollider>();
+        distanceDetection = sphereCollider.radius * 100; // 100 is the scale of the last parent (other parent has scale of 1)
+
+        if (player == null)
+        {
+            player = GameObject.Find("[VRTK_SDKManager]");
+        }
     }
 
     // Update is called once per frame
@@ -74,10 +86,12 @@ public class MainActions : MonoBehaviour
             if(touchPosition.y > 0.5f)
             {
                 //Move table up
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 10, player.transform.position.z);
             }
             else if(touchPosition.y < 0.5f)
             {
                 //Move table down
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 10, player.transform.position.z);
             } 
         }
 
@@ -94,7 +108,7 @@ public class MainActions : MonoBehaviour
         {
             trigger = false;
             crushMode = false;
-            handStillClose = false;
+            canCrush = true;
             if (haveBuilding)
             {
                 //releaseBuilding
@@ -130,6 +144,7 @@ public class MainActions : MonoBehaviour
             else if (gameObject.transform.position.y > currentPos.y - minHeightToCrush)
             {
                 crushMode = false;
+                canCrush = true;
             }
         }
 
@@ -141,107 +156,133 @@ public class MainActions : MonoBehaviour
         }
     }
 
+    private bool IsInRange(Vector3 position)
+    {
+        Debug.Log("Target position : " + position);
+        Debug.Log("Center position : " + sphereCollider.transform.position);
+        Debug.Log("DistanceDetection : " + distanceDetection);
+        float distance = (sphereCollider.transform.position - position).sqrMagnitude;
+        Debug.Log("Distance : " + distance);
+        return (distance < distanceDetection * distanceDetection);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.tag);
-        if (crushMode && !handStillClose) //Destroy element of the nature
+        /*
+        if (crushMode && canCrush) //Destroy element of the nature
         {
-            if (other.gameObject.GetComponent<Crushable>())
-            {
-                resourceM.AddResources(other.gameObject.GetComponent<Crushable>().Gain());
-                other.gameObject.GetComponent<Crushable>().Crush();
-
-                if (other.gameObject.GetComponent<CharacterStats>())
-                {
-                    if (other.gameObject.GetComponent<CharacterStats>().IsAlive())
-                    {
-                        // Play sound of ai character dying
-                        _audioData.clip = other.gameObject.GetComponent<AudioClip>();
-                        _audioData.Play(0);
-                    }
-                }
-                else
-                {
-                    // Play sound of resource destroyed
-                    _audioData.clip = other.gameObject.GetComponent<AudioClip>();
-                    _audioData.Play();
-                }
-                handStillClose = true;
-            }
-            else
+            if (other.gameObject.tag == "Ground")
             {
                 // Sound
                 _audioData.clip = crushFloorSound;
                 _audioData.Play(0);
 
                 // FX
-                Instantiate(fxPrefab, transform).SetActive(true);
-            }
+                //Instantiate(fxPrefab, transform).SetActive(true);
 
-            if (GameManager.Instance.tuto)
-            {
-                if (other.gameObject.tag == "Ground")
+                if (GameManager.Instance.tuto)
                 {
                     speechEvent1.hasCrushedGround = true;
                 }
             }
-
         }
+        */
+    }
+
+    // Return true if we crushed something
+    private bool CrushAction(Collider other)
+    {
+        if (crushMode && canCrush) //Destroy element of the nature
+        {
+            if (other.gameObject.GetComponent<Crushable>() && other.gameObject.GetComponent<Crushable>().canBeCrushed)
+            {
+                if (IsInRange(other.ClosestPoint(sphereCollider.transform.position)))
+                {
+                    resourceM.AddResources(other.gameObject.GetComponent<Crushable>().Gain());
+                    other.gameObject.GetComponent<Crushable>().Crush();
+
+                    if (other.gameObject.GetComponent<CharacterStats>())
+                    {
+                        if (other.gameObject.GetComponent<CharacterStats>().IsAlive())
+                        {
+                            // Play sound of ai character dying
+                            _audioData.clip = other.gameObject.GetComponent<AudioClip>();
+                            _audioData.Play(0);
+                        }
+                    }
+                    else
+                    {
+                        // Play sound of resource destroyed
+                        _audioData.clip = other.gameObject.GetComponent<AudioClip>();
+                        _audioData.Play();
+                    }
+                    canCrush = false;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (events.triggerPressed && !haveBuilding)
+        // If we didn't crush, check for other actions
+        if (!CrushAction(other))
         {
-            if (other.tag == "Building")
+            if (events.triggerPressed && !haveBuilding)
             {
-                //Get ResourcePack building
-                if (other.gameObject.GetComponent<Building>().CanBuy())
+                if (other.tag == "Building")
                 {
-                    //Instantiate building
-                    newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefabTransparent, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
-                    buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
-                    haveBuilding = true;
+                    //Get ResourcePack building
+                    if (other.gameObject.GetComponent<Building>().CanBuy())
+                    {
+                        //Instantiate building
+                        newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefabTransparent, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                        buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
+                        haveBuilding = true;
+                    }
+                }
+                else if (other.name == "Construction Panel Button 0")
+                {
+                    {
+                        //Change to page 1 on UI
+                        //Call function from @justine script
+                        uiM.DisplayConstructionPage(0);
+                    }
+                }
+                else if (other.name == "Construction Panel Button 1")
+                {
+                    {
+                        //Change to page 2 on UI
+                        //Call function from @justine script
+                        uiM.DisplayConstructionPage(1);
+                    }
+                }
+                else if (other.name == "Construction Panel Button 2")
+                {
+                    {
+                        //Change to page 3 on UI
+                        //Call function from @justine script
+                        uiM.DisplayConstructionPage(2);
+                    }
                 }
             }
-            else if (other.tag == "page1UI")
+            else if (SceneManager.GetActiveScene().name == "Map selector")
             {
+                if (events.triggerPressed && !haveVillager)
                 {
-                    //Change to page 1 on UI
-                    //Call function from @justine script
-                }
-            }
-            else if (other.tag == "page2UI")
-            {
-                {
-                    //Change to page 2 on UI
-                    //Call function from @justine script
-                }
-            }
-            else if (other.tag == "page3UI")
-            {
-                {
-                    //Change to page 3 on UI
-                    //Call function from @justine script
-                }
-            }
-        }
-        else if (SceneManager.GetActiveScene().name == "Map selector")
-        {
-            if (events.triggerPressed && !haveVillager)
-            {
-                if (other.tag == "Villager")
-                {
-                    //other.gameObject.transform = spawnPoint.transform;
-                    oldVillager = other.gameObject;
-                    oldVillager.SetActive(false);
-                    newVillager = Instantiate(villagerPrefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
-                    haveVillager = true;
-                }
+                    if (other.tag == "Villager")
+                    {
+                        //other.gameObject.transform = spawnPoint.transform;
+                        oldVillager = other.gameObject;
+                        oldVillager.SetActive(false);
+                        newVillager = Instantiate(villagerPrefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                        haveVillager = true;
+                    }
 
+                }
             }
-        }
-        
+        }        
     }
 
     public bool IsCrushModeActive()

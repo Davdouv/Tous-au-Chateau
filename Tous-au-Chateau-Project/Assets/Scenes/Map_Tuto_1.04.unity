@@ -6725,8 +6725,13 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
+<<<<<<< HEAD
   m_LocalRotation: {x: 0.060459677, y: 0.9013699, z: 0.13373885, w: -0.40741977}
   m_LocalPosition: {x: 86.79607, y: -62.156303, z: 17.262293}
+=======
+  m_LocalRotation: {x: 0.13982928, y: 0.8311914, z: 0.2406041, w: -0.48132974}
+  m_LocalPosition: {x: 290.5651, y: -158.83916, z: 131.58426}
+>>>>>>> 70a1023d8cf7b888cd38abb236e2d6f976d354a3
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13976,15 +13981,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4808232661722246, guid: b19b3413f135c184ea7e44fd32e83a9f, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4808232661722246, guid: b19b3413f135c184ea7e44fd32e83a9f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4808232661722246, guid: b19b3413f135c184ea7e44fd32e83a9f, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4808232661722246, guid: b19b3413f135c184ea7e44fd32e83a9f, type: 2}
       propertyPath: m_LocalRotation.x
@@ -14551,6 +14556,22 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1310125500452364, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1843501360830770, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219013749164340, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386897886629448, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062821660564446, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -15590,6 +15611,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceM: {fileID: 439394635}
+  uiM: {fileID: 178656203}
   spawnPoint: {fileID: 1787859272}
   RightHand: {fileID: 1235158201}
   minHeightToCrush: 10
@@ -15601,6 +15623,7 @@ MonoBehaviour:
   speechEvent2: {fileID: 104874726}
   speechEvent4_1: {fileID: 537798008}
   speechEvent7: {fileID: 1638288666}
+  player: {fileID: 0}
 --- !u!114 &2092337014
 MonoBehaviour:
   m_ObjectHideFlags: 0
