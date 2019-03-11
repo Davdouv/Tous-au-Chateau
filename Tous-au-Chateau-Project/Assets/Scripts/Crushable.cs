@@ -42,6 +42,7 @@ public class Crushable : MonoBehaviour {
             {
                 Instantiate(crushFXPrefab, transform);
             }
+            canBeCrushed = false;
         }              
     }
 }
