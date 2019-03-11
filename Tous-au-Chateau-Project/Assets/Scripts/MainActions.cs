@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainActions : MonoBehaviour
 {
-
     public ResourceManager resourceM;
+    public UIManager uiM;
     public GameObject spawnPoint;
     public Transform RightHand;
 
@@ -20,6 +20,8 @@ public class MainActions : MonoBehaviour
     public float minHeightToCrush = 10;
     private AudioSource _audioData;
     public AudioClip crushFloorSound;
+
+    private float distanceDetection;
 
 
     public Material Transparent_Building;
@@ -50,6 +52,7 @@ public class MainActions : MonoBehaviour
         crushMode = false;
         haveBuilding = false;
         _audioData = GetComponent<AudioSource>();
+        distanceDetection = GetComponent<SphereCollider>().radius * 100; // 100 is the scale of the last parent (other parent has scale of 1)
     }
 
     // Update is called once per frame
@@ -141,6 +144,13 @@ public class MainActions : MonoBehaviour
         }
     }
 
+    public bool IsInRange(Vector3 position)
+    {
+        float distanceDetection = 5f;
+        float distance = (transform.position - position).sqrMagnitude;
+        return (distance < distanceDetection * distanceDetection);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(other.tag);
@@ -204,25 +214,28 @@ public class MainActions : MonoBehaviour
                     haveBuilding = true;
                 }
             }
-            else if (other.tag == "page1UI")
+            else if (other.name == "Construction Panel Button 0")
             {
                 {
                     //Change to page 1 on UI
                     //Call function from @justine script
+                    uiM.DisplayConstructionPage(0);
                 }
             }
-            else if (other.tag == "page2UI")
+            else if (other.name == "Construction Panel Button 1")
             {
                 {
                     //Change to page 2 on UI
                     //Call function from @justine script
+                    uiM.DisplayConstructionPage(1);
                 }
             }
-            else if (other.tag == "page3UI")
+            else if (other.name == "Construction Panel Button 2")
             {
                 {
                     //Change to page 3 on UI
                     //Call function from @justine script
+                    uiM.DisplayConstructionPage(2);
                 }
             }
         }
