@@ -172,7 +172,7 @@ Transform:
   m_GameObject: {fileID: 1860531767917994}
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 63, y: -31.8, z: 0.63}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4383708513440732}
   - {fileID: 4410899443218142}
@@ -425,6 +425,7 @@ MonoBehaviour:
     workForce: 0
     motivation: 0
   crushedDownSound: {fileID: 8300000, guid: 66f16a88da5ba30429e87ce6b3a127b6, type: 3}
+  crushFXPrefab: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &114480422534844070
 MonoBehaviour:

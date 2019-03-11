@@ -78,8 +78,8 @@ public class SpeechBubble : MonoBehaviour {
 
 	public IEnumerator AnimateText()
 	{
-		yield return new WaitForSeconds(1);
 		_textComp.text = "";
+		yield return new WaitForSeconds(1);
 		foreach (char letter in message)
 		{
 			_textComp.text += letter;
