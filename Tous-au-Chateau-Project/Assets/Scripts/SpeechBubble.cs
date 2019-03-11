@@ -18,8 +18,8 @@ public class SpeechBubble : MonoBehaviour {
 	private Animator animator;
 	private bool _isCameraDefault = false;
 
-    private AudioSource _audioData;
-    public AudioClip bubbleSound;
+	private AudioSource _audioData;
+	public AudioClip bubbleSound;
 
 	public bool canClose = false;
 	public bool dots = true;
@@ -27,16 +27,15 @@ public class SpeechBubble : MonoBehaviour {
 
 	void Start()
 	{
-		FindCamera();
+		cameraTransform = CameraManager.Instance.GetCamera().transform;
 		_panel = this.transform.Find("Panel").gameObject;
 		_text = this.transform.Find("Text").gameObject;
 		_dots = this.transform.Find("Dots").gameObject;
 		_textComp = _text.GetComponent<Text>();
 		_textComp.text = "";
+		_audioData = GetComponent<AudioSource>();
 		animator = GetComponent<Animator>();
-        _audioData = GetComponent<AudioSource>();
-
-        AdaptCanvasToText();
+		AdaptCanvasToText();
 		if (dots) {
 			_dots.gameObject.SetActive(true);
 		}
@@ -86,20 +85,21 @@ public class SpeechBubble : MonoBehaviour {
 	void Update()
 	{
 		if (!cameraTransform) {
-			FindCamera();
+			cameraTransform = CameraManager.Instance.GetCamera().transform;
 		} else {
 			_panel.transform.rotation = Quaternion.LookRotation(_panel.transform.position - cameraTransform.position);
 			_text.transform.rotation = Quaternion.LookRotation(_text.transform.position - cameraTransform.position);
-			if (_isCameraDefault) {
-				FindCamera();
+			if (CameraManager.Instance.IsCameraDefault()) {
+				Debug.Log("Default");
+				cameraTransform = CameraManager.Instance.GetCamera().transform;
 			}
 		}
 	}
 
 	public void StartAnimation()
 	{
-        _audioData.clip = bubbleSound;
-        _audioData.Play();
+		_audioData.clip = bubbleSound;
+		_audioData.Play();
 		StartCoroutine(AnimateText());
 	}
 
