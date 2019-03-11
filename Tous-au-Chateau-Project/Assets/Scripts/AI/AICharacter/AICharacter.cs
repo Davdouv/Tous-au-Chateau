@@ -379,6 +379,8 @@ public class AICharacter : EnvironmentMaterial {
     {
         _anim.SetBool("death", true);
         _assignedGroup.RemoveItem(this.gameObject);
+        _agent.SetDestination(this.transform.position);
+        _ownTarget = this.gameObject;
         // Disappear ?
         //gameObject.SetActive(false);
     }
