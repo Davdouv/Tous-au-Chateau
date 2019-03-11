@@ -13,7 +13,7 @@ public class SpeechBubble : MonoBehaviour {
 	private GameObject _text;
 	private GameObject _dots;
 	private Text _textComp;
-	private float letterTime = 0.06f;
+	private float letterTime = 0.03f;
 	private bool _open = false;
 	private Animator animator;
 	private bool _isCameraDefault = false;
@@ -41,18 +41,6 @@ public class SpeechBubble : MonoBehaviour {
 		}
 	}
 
-	// public void OnEnable()
-  // {
-	// 	FindCamera();
-	// 	_panel = this.transform.Find("Panel").gameObject;
-	// 	_text = this.transform.Find("Text").gameObject;
-	// 	_dots = this.transform.Find("Dots").gameObject;
-	// 	_textComp = _text.GetComponent<Text>();
-	// 	_textComp.text = "";
-	// 	animator = GetComponent<Animator>();
-	// 	AdaptCanvasToText();
-  // }
-
 	private void AdaptCanvasToText()
 	{
 		var panelRectTransform = _panel.GetComponent<RectTransform>();
@@ -60,26 +48,6 @@ public class SpeechBubble : MonoBehaviour {
 		var size = _textComp.fontSize * _textComp.lineSpacing * message.Length;
 		panelRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size);
 		textRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size + 10);
-	}
-
-	private bool FindCamera() {
-		if (GameObject.Find("Neck/Camera")) { // VR
-			Debug.Log("VR Camera");
-			_isCameraDefault = false;
-			cameraTransform = GameObject.Find("Neck/Camera").transform;
-			return true;
-		} else if (GameObject.Find("[VRSimulator_CameraRig]")) { // Simulator
-			Debug.Log("Simulator Camera");
-			_isCameraDefault = false;
-			cameraTransform = GameObject.Find("Camera (eye)").transform;
-			return true;
-		} else if (GameObject.Find("Main Camera")) { // Default
-			Debug.Log("Default Camera");
-			_isCameraDefault = true;
-			cameraTransform = GameObject.Find("Main Camera").transform;
-			return true;
-		}
-		return false;
 	}
 
 	void Update()
@@ -121,7 +89,7 @@ public class SpeechBubble : MonoBehaviour {
 		canClose = true;
 	}
 
-	public void setMessage(string text) {
+	public void SetMessage(string text) {
 		message = text;
 	}
 }

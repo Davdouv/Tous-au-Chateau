@@ -50,6 +50,7 @@ public class MapManager : MonoBehaviour {
 
             if (once && GameManager.Instance.tuto)
             {
+                once = false;
                 firstTree = go;
             }
         }
