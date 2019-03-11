@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114860796979371742}
   m_Layer: 10
   m_Name: Wood Plank
-  m_TagString: Plank
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +127,8 @@ MonoBehaviour:
   _name: 
   buildingType: 0
   prefab: {fileID: 0}
+  prefabTransparent: {fileID: 0}
+  purchasedSound: {fileID: 0}
   _cost:
     wood: 10
     stone: 0
