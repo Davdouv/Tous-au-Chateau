@@ -112,7 +112,7 @@ public class AICharacter : EnvironmentMaterial {
 
     private void SetDestination(Vector3 destination)
     {
-        if (gameObject.activeSelf)
+        if (gameObject.activeSelf && _stats.IsAlive())
         {
             _destination = destination;
             _agent.SetDestination(destination);
@@ -127,7 +127,7 @@ public class AICharacter : EnvironmentMaterial {
         if ((_ownTarget == null && !_isEscaping) || (_ownTarget != null && !_hasPriorityOnTarget)) // No Target before OR didn't have priority on target
         {
             _ownTarget = target;
-            if (_ownTarget) // Make sure target is not null
+            if (_ownTarget && _stats.IsAlive()) // Make sure target is not null
             {
                 SetFastSpeed();
                 SetDestination(target.transform.position);
@@ -231,7 +231,7 @@ public class AICharacter : EnvironmentMaterial {
         {
             StopMoving();
         }
-        else
+        else if (_stats.IsAlive())
         {
             // AI CHARACTER ESCAPING
             if (_isEscaping)

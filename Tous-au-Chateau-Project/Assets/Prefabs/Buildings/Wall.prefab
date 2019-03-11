@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 82605072961491450}
   - component: {fileID: 114457815685435022}
   - component: {fileID: 114668736200293458}
+  - component: {fileID: 208404173500805060}
   m_Layer: 10
   m_Name: Wall
   m_TagString: wall
@@ -253,3 +254,18 @@ MonoBehaviour:
   crushedDownSound: {fileID: 8300000, guid: ae11ad137f7a73d46b584108e7a4325a, type: 3}
   crushFXPrefab: {fileID: 0}
   canBeCrushed: 1
+--- !u!208 &208404173500805060
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1608018364246078}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.38000003, y: 2.1990001, z: 1.881}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 1.764}
+  m_TimeToStationary: 0.5
