@@ -32,7 +32,7 @@ public class Villager : MonoBehaviour
     private AudioSource _audioData;
     public AudioClip walkingSound;
     private float countDown = 0f;
-    private float timeToWait = 10f;
+    private float timeToWait = 0f;
 
     // Use this for initialization
     void Start()
@@ -75,10 +75,11 @@ public class Villager : MonoBehaviour
         transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
 
         // SOUND
+        _audioData = GetComponent<AudioSource>();
         // Set a random Wait time so the group don't play sound at the same time
         if (walkingSound)
         {
-            timeToWait += Random.Range(0, 20f) + walkingSound.length;
+            timeToWait += Random.Range(0, 2* walkingSound.length) + walkingSound.length;
         }        
     }
 
