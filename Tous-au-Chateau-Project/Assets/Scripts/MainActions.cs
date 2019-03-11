@@ -66,6 +66,22 @@ public class MainActions : MonoBehaviour
             }
         }
 
+        //Control height of the map 
+        if (events.touchpadPressed)
+        {
+            Vector2 touchPosition;
+            touchPosition = events.GetTouchpadAxis();
+            if(touchPosition.y > 0.5f)
+            {
+                //Move table up
+            }
+            else if(touchPosition.y < 0.5f)
+            {
+                //Move table down
+            } 
+        }
+
+
         if (events.triggerPressed)
         {
             if (!trigger)
