@@ -44,6 +44,8 @@ public class MainActions : MonoBehaviour
     Material[] mats;
     string[] objName;
 
+    public GameObject player;
+
     // Use this for initialization
     void Start()
     {
@@ -53,6 +55,11 @@ public class MainActions : MonoBehaviour
         haveBuilding = false;
         _audioData = GetComponent<AudioSource>();
         distanceDetection = GetComponent<SphereCollider>().radius * 100; // 100 is the scale of the last parent (other parent has scale of 1)
+
+        if (player == null)
+        {
+            player = GameObject.Find("[VRTK_SDKManager]");
+        }
     }
 
     // Update is called once per frame
@@ -77,10 +84,12 @@ public class MainActions : MonoBehaviour
             if(touchPosition.y > 0.5f)
             {
                 //Move table up
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 10, player.transform.position.z);
             }
             else if(touchPosition.y < 0.5f)
             {
                 //Move table down
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 10, player.transform.position.z);
             } 
         }
 

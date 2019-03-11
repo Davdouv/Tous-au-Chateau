@@ -6356,8 +6356,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.050886717, y: 0.94861466, z: 0.21392728, w: 0.22754322}
-  m_LocalPosition: {x: 29.149082, y: -88.08007, z: 76.28105}
+  m_LocalRotation: {x: -0.0014659531, y: -0.9915442, z: -0.12915285, w: 0.012551174}
+  m_LocalPosition: {x: -4.982515, y: -85.08748, z: 197.67934}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14117,6 +14117,22 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1843501360830770, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219013749164340, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1386897886629448, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1062821660564446, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
   m_IsPrefabAsset: 0
@@ -15165,6 +15181,7 @@ MonoBehaviour:
   speechEvent2: {fileID: 104874726}
   speechEvent4_1: {fileID: 537798008}
   speechEvent7: {fileID: 1638288666}
+  player: {fileID: 0}
 --- !u!114 &2092337014
 MonoBehaviour:
   m_ObjectHideFlags: 0
