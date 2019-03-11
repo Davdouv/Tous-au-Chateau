@@ -25,7 +25,7 @@ public class SpeechBubble : MonoBehaviour {
 
 	void Start()
 	{
-		FindCamera();
+		cameraTransform = CameraManager.Instance.GetCamera().transform;
 		_panel = this.transform.Find("Panel").gameObject;
 		_text = this.transform.Find("Text").gameObject;
 		_dots = this.transform.Find("Dots").gameObject;
@@ -82,12 +82,13 @@ public class SpeechBubble : MonoBehaviour {
 	void Update()
 	{
 		if (!cameraTransform) {
-			FindCamera();
+			cameraTransform = CameraManager.Instance.GetCamera().transform;
 		} else {
 			_panel.transform.rotation = Quaternion.LookRotation(_panel.transform.position - cameraTransform.position);
 			_text.transform.rotation = Quaternion.LookRotation(_text.transform.position - cameraTransform.position);
-			if (_isCameraDefault) {
-				FindCamera();
+			if (CameraManager.Instance.IsCameraDefault()) {
+				Debug.Log("Default");
+				cameraTransform = CameraManager.Instance.GetCamera().transform;
 			}
 		}
 	}
