@@ -18,6 +18,8 @@ public class SpeechBubble : MonoBehaviour {
 	private Animator animator;
 	private bool _isCameraDefault = false;
 
+    private AudioSource _audioData;
+    public AudioClip bubbleSound;
 
 	public bool canClose = false;
 	public bool dots = true;
@@ -32,7 +34,9 @@ public class SpeechBubble : MonoBehaviour {
 		_textComp = _text.GetComponent<Text>();
 		_textComp.text = "";
 		animator = GetComponent<Animator>();
-		AdaptCanvasToText();
+        _audioData = GetComponent<AudioSource>();
+
+        AdaptCanvasToText();
 		if (dots) {
 			_dots.gameObject.SetActive(true);
 		}
@@ -94,6 +98,8 @@ public class SpeechBubble : MonoBehaviour {
 
 	public void StartAnimation()
 	{
+        _audioData.clip = bubbleSound;
+        _audioData.Play();
 		StartCoroutine(AnimateText());
 	}
 

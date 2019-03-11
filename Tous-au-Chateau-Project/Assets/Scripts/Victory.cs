@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Victory : TriggerZone {
 
-    private uint scoreCount = 0;
+    public static int scoreCount = 0;
     public Text score;
 
 	// Use this for initialization
@@ -14,7 +14,6 @@ public class Victory : TriggerZone {
 
     public override void CollisionEnter(Collision collision)
     {
-        Debug.Log("YO");
         collision.gameObject.GetComponent<Villager>().SetHasReachedObjectif();
         collision.transform.position = this.transform.position;
 
@@ -23,8 +22,7 @@ public class Victory : TriggerZone {
         if (VillagersManager.Instance.HasLastVillagersReachedObjectif())
         {
             Debug.Log("VICTORY");
-            GameManager.Instance.GameWon();
-            // SaveManager.Save(LevelScore(sceneName, scoreCount, levelDuration, int[] starCeil)) --> Move inside GameManager
+            GameManager.Instance.GameWon(scoreCount);
         }
     }
 

@@ -15,7 +15,7 @@ public class DyingVillager : MonoBehaviour {
         //ghost.Pause();
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (!isAlive)
         {
@@ -23,7 +23,7 @@ public class DyingVillager : MonoBehaviour {
             SetBlendedEulerAngles(new Vector3(90, 0, 0)); // rotation on x axis 
             transform.rotation = Quaternion.RotateTowards(transform.rotation, _targetRotation, 4);
         }
-    }
+    }*/
 
     // Turn the object smoothly
     public void SetBlendedEulerAngles(Vector3 angles)

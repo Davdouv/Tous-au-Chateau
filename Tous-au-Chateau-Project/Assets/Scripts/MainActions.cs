@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainActions : MonoBehaviour
 {
@@ -13,15 +14,25 @@ public class MainActions : MonoBehaviour
     bool trigger;
     bool crushMode;
     bool haveBuilding;
+    bool haveVillager;
     bool handStillClose;
     Vector3 currentPos;
     public float minHeightToCrush = 10;
+    private AudioSource _audioData;
+    public AudioClip crushFloorSound;
+
 
     public Material Transparent_Building;
     Material Building_mat;
 
     GameObject newBuilding;
-    GameObject myprefab;
+    GameObject newVillager;
+    GameObject oldVillager;
+    public GameObject villagerPrefab;
+    GameObject buildingPrefab;
+
+    public GameObject fxPrefab;
+
 
     public SpeechEvent_MapTuto1_Event1 speechEvent1 = null;
     public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
@@ -38,6 +49,7 @@ public class MainActions : MonoBehaviour
         trigger = false;
         crushMode = false;
         haveBuilding = false;
+        _audioData = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -77,7 +89,18 @@ public class MainActions : MonoBehaviour
                 Transform buildingTrans;
                 buildingTrans = newBuilding.transform;
                 Destroy(newBuilding);
-                newBuilding = Instantiate(myprefab, buildingTrans.position, buildingTrans.rotation);
+                newBuilding = Instantiate(buildingPrefab, buildingTrans.position, buildingTrans.rotation);
+            }
+            else if (SceneManager.GetActiveScene().name == "Map selector")
+            {
+                if (haveVillager)
+                {
+                    //releaseVillager
+                    haveVillager = false;
+                    //On hand release
+                    oldVillager.SetActive(true);
+                    Destroy(newVillager);
+                }
             }
         }
 
@@ -109,11 +132,34 @@ public class MainActions : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Crushable>())
             {
-                //other.crush()   <= for the next sprint
-                Debug.Log("CRUSH ITEM");
                 resourceM.AddResources(other.gameObject.GetComponent<Crushable>().Gain());
                 other.gameObject.GetComponent<Crushable>().Crush();
+
+                if (other.gameObject.GetComponent<CharacterStats>())
+                {
+                    if (other.gameObject.GetComponent<CharacterStats>().IsAlive())
+                    {
+                        // Play sound of ai character dying
+                        _audioData.clip = other.gameObject.GetComponent<AudioClip>();
+                        _audioData.Play(0);
+                    }
+                }
+                else
+                {
+                    // Play sound of resource destroyed
+                    _audioData.clip = other.gameObject.GetComponent<AudioClip>();
+                    _audioData.Play();
+                }
                 handStillClose = true;
+            }
+            else
+            {
+                // Sound
+                _audioData.clip = crushFloorSound;
+                _audioData.Play(0);
+
+                // FX
+                Instantiate(fxPrefab, transform).SetActive(true);
             }
 
             if (GameManager.Instance.tuto)
@@ -138,11 +184,48 @@ public class MainActions : MonoBehaviour
                 {
                     //Instantiate building
                     newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefabTransparent, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
-                    myprefab = other.gameObject.GetComponent<Building>().prefab;
+                    buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
                     haveBuilding = true;
                 }
             }
+            else if (other.tag == "page1UI")
+            {
+                {
+                    //Change to page 1 on UI
+                    //Call function from @justine script
+                }
+            }
+            else if (other.tag == "page2UI")
+            {
+                {
+                    //Change to page 2 on UI
+                    //Call function from @justine script
+                }
+            }
+            else if (other.tag == "page3UI")
+            {
+                {
+                    //Change to page 3 on UI
+                    //Call function from @justine script
+                }
+            }
         }
+        else if (SceneManager.GetActiveScene().name == "Map selector")
+        {
+            if (events.triggerPressed && !haveVillager)
+            {
+                if (other.tag == "Villager")
+                {
+                    //other.gameObject.transform = spawnPoint.transform;
+                    oldVillager = other.gameObject;
+                    oldVillager.SetActive(false);
+                    newVillager = Instantiate(villagerPrefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                    haveVillager = true;
+                }
+
+            }
+        }
+        
     }
 
     public bool IsCrushModeActive()

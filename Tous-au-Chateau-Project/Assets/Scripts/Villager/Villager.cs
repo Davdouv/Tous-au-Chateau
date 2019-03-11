@@ -11,7 +11,12 @@ public class Villager : MonoBehaviour
     public int _motivation;
 
     public bool _isInfected;
-    public bool _canMove;
+    [SerializeField]
+    private bool _canMove;
+
+    private bool _canTurn = true;
+    private const float _timeToWaitToTurnAgain = 2f;
+    private float _timePassed = 0f;
 
     public bool _isPassive;
     public GameObject _isJoining;
@@ -22,6 +27,12 @@ public class Villager : MonoBehaviour
     public CharacterStats _stats;
     private DyingVillager _deathmode;
 
+    private Animator _anim;
+
+    private AudioSource _audioData;
+    public AudioClip walkingSound;
+    private float countDown = 0f;
+    private float timeToWait = 10f;
 
     // Use this for initialization
     void Start()
@@ -31,6 +42,13 @@ public class Villager : MonoBehaviour
         _villagerCollision = GetComponent<DangerDetection>();
         _stats = GetComponent<CharacterStats>();
         _deathmode = GetComponent<DyingVillager>();
+
+        _anim = transform.GetChild(0).gameObject.GetComponent<Animator>();
+
+        if (!IsPassive() && _canMove)
+        {
+            _anim.SetBool("walk", true);
+        }
 
         _group = (IsPassive()) ? null : transform.parent.gameObject.GetComponent<VillagersGroup>();
         if (_group)
@@ -55,12 +73,21 @@ public class Villager : MonoBehaviour
         Vector3 objectif = 
             GameObject.Find("Objectif").transform.position;
         transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
+
+        // SOUND
+        // Set a random Wait time so the group don't play sound at the same time
+        if (walkingSound)
+        {
+            timeToWait += Random.Range(0, 20f) + walkingSound.length;
+        }        
     }
 
-    public void Crush()
+    public void SetCanMove(bool canMove)
     {
-
+        _canMove = canMove;
+        _anim.SetBool("walk", canMove);
     }
+
     private void Move()
     {
         /*agent.ResetPath();
@@ -69,7 +96,6 @@ public class Villager : MonoBehaviour
         */
 
         _rb.MovePosition(transform.position + transform.forward * _stats.speed * Time.deltaTime);
-
     }
     private void MoveTowardVillager(GameObject target)
     {
@@ -88,7 +114,7 @@ public class Villager : MonoBehaviour
     }
     public void ChangeDirection(Direction dir)
     {
-        if (_stats.IsAlive())
+        if (_stats.IsAlive() && _canTurn)
         {
             switch (dir)
             {
@@ -107,6 +133,7 @@ public class Villager : MonoBehaviour
                 default:
                     break;
             }
+            _canTurn = false;
         }        
     }
 
@@ -131,12 +158,20 @@ public class Villager : MonoBehaviour
             _group.RemoveVillager(this);
         }  
         */
+        _anim.SetBool("death", true);
         _deathmode.isAlive = false;
         _stats.SetIsAlive(false);
         _canMove = false;
         _rb.isKinematic = true;
         agent.enabled = false;
         GetComponent<BoxCollider>().enabled = false;
+
+        // Test if it was the last villager
+        if (VillagersManager.Instance.HasLastVillagersReachedObjectif())
+        {
+            Debug.Log("VICTORY");
+            GameManager.Instance.GameWon(Victory.scoreCount);
+        }
     }
     public bool IsPassive()
     {
@@ -153,6 +188,7 @@ public class Villager : MonoBehaviour
             agent.updatePosition = true;
             agent.updateRotation = true;
             agent.SetDestination(_isJoining.transform.position);
+            _anim.SetBool("walk", true);
         }
     }
 
@@ -163,8 +199,29 @@ public class Villager : MonoBehaviour
             if (_canMove)
             {
                 Move();
+
+                // Play a sound every timeToWait seconds
+                if (countDown > timeToWait && walkingSound)
+                {
+                    countDown = 0;
+                    _audioData.clip = walkingSound;
+                    _audioData.Play();
+                }
+                countDown += Time.deltaTime;
             }
 
+            // To avoid getting the effect of a directionnal pannel multiple times in a row
+            if (!_canTurn)
+            {
+                _timePassed += Time.deltaTime;
+                if (_timePassed >= _timeToWaitToTurnAgain)
+                {
+                    _timePassed = 0;
+                    _canTurn = true;
+                }
+            }
+
+            // For villager joining the group
             if (!_hasJoined)
             {
                 if (_isJoining)

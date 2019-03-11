@@ -8,19 +8,20 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1151173502942794}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1151173502942794
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4866550673700646}
   - component: {fileID: 33001896532821684}
   - component: {fileID: 23069753245013488}
+  - component: {fileID: 65323298650029442}
   m_Layer: 0
   m_Name: village_stone_house_g
   m_TagString: Untagged
@@ -31,7 +32,7 @@ GameObject:
 --- !u!4 &4866550673700646
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1151173502942794}
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
@@ -44,7 +45,7 @@ Transform:
 --- !u!23 &23069753245013488
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1151173502942794}
   m_Enabled: 1
@@ -80,7 +81,19 @@ MeshRenderer:
 --- !u!33 &33001896532821684
 MeshFilter:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1151173502942794}
   m_Mesh: {fileID: 4300000, guid: 9b9a5617dca8d02449ac72a7873948f2, type: 3}
+--- !u!65 &65323298650029442
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151173502942794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.165172, y: 4.583748, z: 5.733327}
+  m_Center: {x: 0.0000052452087, y: -0.00000011920929, z: 0.000011205673}

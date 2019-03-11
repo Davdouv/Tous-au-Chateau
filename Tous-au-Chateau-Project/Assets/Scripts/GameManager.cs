@@ -35,18 +35,44 @@ public class GameManager : MonoBehaviour {
     public GameObject pauseMenu;
     public bool tuto = true;
 
+    //Audio
+    private AudioSource _audioData;
+    public AudioClip victorySound;
+    public AudioClip defeatSound;
+
+    public string levelName;
+    private float levelDuration = 0;
+
+    private void Start()
+    {
+        _audioData = GetComponent<AudioSource>();
+    }
+
     // ***** STATES OF THE GAME *****/
     public void GameStarted()
     {
         _hasStarted = true;
     }
-    public void GameWon()
+    public void GameWon(int scoreCount = 0)
     {
         _hasWin = true;
+        if (defeatSound)
+        {
+            _audioData.clip = victorySound;
+            _audioData.Play();
+        }
+
+        // SAVE THE PLAYER's VICTORY
+        SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));
     }
     public void GameLost()
     {
         _hasLost = true;
+        if (defeatSound)
+        {
+            _audioData.clip = defeatSound;
+            _audioData.Play();
+        }        
     }
     public bool IsGameWon()
     {
@@ -133,5 +159,13 @@ public class GameManager : MonoBehaviour {
         _hasLost = false;
         _isPaused = false;
         _isWorldPaused = false;
+    }
+
+    private void Update()
+    {
+        if (_hasStarted && !_isPaused)
+        {
+            levelDuration += Time.deltaTime;
+        }        
     }
 }
