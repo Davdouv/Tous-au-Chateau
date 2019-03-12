@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class SpeechEvent_MapTuto2_Event1 : SpeechEvent {
 	private bool _hasOpenedAlready = false;
-    public bool hasCrushedGround = false;
 
 	public override bool MustOpen() {
         currentVillagersGroup.SetVillagersCanMove(false);
@@ -19,8 +18,14 @@ public class SpeechEvent_MapTuto2_Event1 : SpeechEvent {
 				return false;
 	}
 
-	public override bool MustClose() {
-        // When crushing the ground near the People.
-        return hasCrushedGround;
-	}
+    public override bool MustClose()
+    {
+        // When any action is done from the player (any key pressed)
+        // hasDoneAction = false;
+        if (hasDoneAction)
+        {
+            currentVillagersGroup.SetVillagersCanMove(true);
+        }
+        return hasDoneAction;
+    }
 }

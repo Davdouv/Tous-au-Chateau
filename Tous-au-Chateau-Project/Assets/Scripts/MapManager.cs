@@ -52,7 +52,8 @@ public class MapManager : MonoBehaviour {
             GameObject go = this.GetComponent<TreeManager>().BuildTree();
             go.transform.position = _TreesPosition.transform.GetChild(i).gameObject.transform.position;
 
-            if (once && GameManager.Instance.tuto)
+            // For Map Tuto 01
+            if (once && GameManager.Instance.tuto && GameManager.Instance.levelName == "Map Tuto 01")
             {
                 once = false;
                 go.AddComponent<FirstTree>();
@@ -67,6 +68,7 @@ public class MapManager : MonoBehaviour {
         }
     }
 
+    // For Map Tuto 01
     public bool IsFirstTreeDestroyed()
     {
         return isFirstTreeDestroyed;
