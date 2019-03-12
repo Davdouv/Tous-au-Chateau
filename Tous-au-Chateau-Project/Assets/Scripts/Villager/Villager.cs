@@ -34,6 +34,8 @@ public class Villager : MonoBehaviour
     public AudioClip walkingSound;
     private float countDown = 0f;
     private float timeToWait = 10f;
+    [SerializeField]
+    private bool _facingObstacle = false;
 
     // Use this for initialization
     void Start()
@@ -73,7 +75,7 @@ public class Villager : MonoBehaviour
         _isJoining = null;
         Vector3 objectif = 
             GameObject.Find("Objectif").transform.position;
-        transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
+        //transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
 
         // SOUND
         // Set a random Wait time so the group don't play sound at the same time
@@ -89,36 +91,39 @@ public class Villager : MonoBehaviour
         _anim.SetBool("walk", canMove);
     }
 
-    private void Move()
+    private void OnCollisionEnter(Collision collision)
     {
-        /*agent.ResetPath();
-        agent.updatePosition = true;
-        agent.velocity = transform.forward * 1.00f;
-        */
-        RaycastHit centerhit,lefthit, righthit;
+        if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "Villager")
+        {
+            _facingObstacle = true;
+        }        
+    }
+
+    // When facing an obstacle, move left or right
+    private void MoveLeftOrRight()
+    {
+        RaycastHit centerhit, lefthit, righthit;
         Vector3 moveCorrection = Vector3.zero;
         Vector3 centerRaystart = transform.position + new Vector3(0, 0.8f, 0),
             leftRaystart = centerRaystart + new Vector3(-_hitbox.bounds.extents.x - 0.01f, 0, 0), // slightly off so collider does not get stuck in obstacles
             rightRaystart = centerRaystart + new Vector3(_hitbox.bounds.extents.x + 0.01f, 0, 0);
 
-        Debug.DrawLine(centerRaystart, centerRaystart  + transform.forward);
+        Debug.DrawLine(centerRaystart, centerRaystart + transform.forward);
         Debug.DrawLine(leftRaystart, leftRaystart + transform.forward);
         Debug.DrawLine(rightRaystart, rightRaystart + transform.forward);
 
-        if (Physics.Raycast(new Ray(centerRaystart, transform.forward),out centerhit, 0.7f)) 
+        if (Physics.Raycast(new Ray(centerRaystart, transform.forward), out centerhit, 0.7f))
         {
             float angleOfApproach = Vector3.SignedAngle(transform.forward, centerhit.normal, transform.up);
-            if ( angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
+            if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
             {
                 moveCorrection = Vector3.right;
-                print(" going right1 ");
             }
             else
             {
                 if (angleOfApproach < 0 && angleOfApproach <= -170)
                 {
                     moveCorrection = Vector3.left;
-                    print(" going left1 ");
                 }
             }
         }
@@ -130,14 +135,12 @@ public class Villager : MonoBehaviour
                 if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
                 {
                     moveCorrection = Vector3.right;
-                    print(" going right2 ");
                 }
                 else
                 {
                     if (angleOfApproach < 0 && angleOfApproach <= -170)
                     {
                         moveCorrection = Vector3.left;
-                        print(" going left2 ");
                     }
                 }
             }
@@ -149,21 +152,39 @@ public class Villager : MonoBehaviour
                     if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
                     {
                         moveCorrection = Vector3.right;
-                        print(" going right3 ");
                     }
                     else
                     {
                         if (angleOfApproach < 0 && angleOfApproach <= -170)
                         {
                             moveCorrection = Vector3.left;
-                            print(" going left3 ");
                         }
-                            
                     }
                 }
+                else
+                {
+                    _facingObstacle = false;
+                }
             }
+        }        
+
+        _rb.MovePosition(transform.position + (transform.forward + moveCorrection) * _stats.speed * Time.deltaTime);
+    }
+
+    private void Move()
+    {
+        /*agent.ResetPath();
+        agent.updatePosition = true;
+        agent.velocity = transform.forward * 1.00f;
+        */
+        if (_facingObstacle)
+        {
+            MoveLeftOrRight();
         }
-        _rb.MovePosition(transform.position + (transform.forward + moveCorrection)  * _stats.speed * Time.deltaTime);
+        else
+        {
+            _rb.MovePosition(transform.position + (transform.forward) * _stats.speed * Time.deltaTime);
+        }  
     }
     private void MoveTowardVillager(GameObject target)
     {
