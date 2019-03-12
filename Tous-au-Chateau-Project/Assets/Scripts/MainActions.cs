@@ -174,7 +174,7 @@ public class MainActions : MonoBehaviour
                 _audioData.Play();
 
                 // FX
-                //Instantiate(fxPrefab, transform).SetActive(true);
+                Instantiate(fxPrefab, transform).SetActive(true);
 
                 if (GameManager.Instance.tuto)
                 {
