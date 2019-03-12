@@ -72,8 +72,7 @@ public class Villager : MonoBehaviour
         _canMove = !_isPassive;
         _hasJoined = !_isPassive;
         _isJoining = null;
-        Vector3 objectif = 
-            GameObject.Find("Objectif").transform.position;
+        //Vector3 objectif = GameObject.Find("Objectif").transform.position;
         //transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
 
         // SOUND
