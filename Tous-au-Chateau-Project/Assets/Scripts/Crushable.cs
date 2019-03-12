@@ -22,6 +22,8 @@ public class Crushable : MonoBehaviour {
     {
         if (canBeCrushed)
         {
+            CameraManager.Instance.ShakeCamera();
+
             if (crushFXPrefab)
             {
                 Debug.Log("FX");

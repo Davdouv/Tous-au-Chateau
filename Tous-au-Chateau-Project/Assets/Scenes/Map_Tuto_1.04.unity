@@ -2933,6 +2933,7 @@ Transform:
   - {fileID: 439394636}
   - {fileID: 871371349}
   - {fileID: 1144394926}
+  - {fileID: 1390129731}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5144,8 +5145,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: 0.34787163, y: 0.21159494, z: 0.080443926, w: -0.90980315}
-  m_LocalPosition: {x: 71.71702, y: -51.853634, z: -20.892075}
+  m_LocalRotation: {x: -0.29040003, y: 0.3822319, z: 0.12839308, w: 0.8678029}
+  m_LocalPosition: {x: 40.754524, y: -58.067455, z: -22.89159}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8526,6 +8527,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1390129730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1390129731}
+  - component: {fileID: 1390129733}
+  - component: {fileID: 1390129732}
+  m_Layer: 0
+  m_Name: _CameraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1390129731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1390129730}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 459847906}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1390129732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1390129730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718569ab98c032048a79d40fd738552d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 0.01
+  duration: 1
+  camera: {fileID: 0}
+  slowDownAmount: 5
+  shouldShake: 0
+--- !u!114 &1390129733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1390129730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ad19b4e96e73c4d9de7341050fd3fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1404598455
 GameObject:
   m_ObjectHideFlags: 0
@@ -12492,7 +12550,7 @@ MonoBehaviour:
   crushFloorSound: {fileID: 8300000, guid: 41ffd92bbc1e1ff40a96dc3545dd1b84, type: 3}
   Transparent_Building: {fileID: 0}
   villagerPrefab: {fileID: 0}
-  fxPrefab: {fileID: 153190, guid: e654196eade2ee04493d15d57c6f0dc2, type: 2}
+  fxPrefab: {fileID: 107438, guid: 1426483d47c616e4297a3a71c7ad5860, type: 2}
   speechEvent1: {fileID: 564704340}
   speechEvent2: {fileID: 104874726}
   speechEvent4_1: {fileID: 537798008}
