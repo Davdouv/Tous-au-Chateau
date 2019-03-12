@@ -54,7 +54,7 @@ public class CharacterStats : MonoBehaviour
             {
                 _audioData.clip = GetRandomClip(fallingSound);
             }
-            else
+            else if (deathReason != DeathReason.PLAYER)
             {
                 _audioData.clip = GetRandomClip(deathSound);
             }
