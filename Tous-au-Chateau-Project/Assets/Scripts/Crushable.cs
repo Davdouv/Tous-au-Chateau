@@ -25,7 +25,9 @@ public class Crushable : MonoBehaviour {
             if (crushFXPrefab)
             {
                 Debug.Log("FX");
-                Instantiate(crushFXPrefab, transform);
+                GameObject fx = Instantiate(crushFXPrefab, transform);
+                fx.SetActive(true);
+                fx.transform.SetParent(transform.parent.parent);
             }
             // If it's a character, make him die
             if (this.GetComponent<CharacterStats>() && this.GetComponent<CharacterStats>().IsAlive())
