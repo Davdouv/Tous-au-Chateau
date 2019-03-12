@@ -40,6 +40,8 @@ public class GameManager : MonoBehaviour {
     public AudioClip victorySound;
     public AudioClip defeatSound;
 
+    public GameObject victoryFX;
+
     public string levelName;
     private float levelDuration = 0;
 
@@ -56,14 +58,16 @@ public class GameManager : MonoBehaviour {
     public void GameWon(int scoreCount = 0)
     {
         _hasWin = true;
-        if (defeatSound)
+        if (victorySound)
         {
             _audioData.clip = victorySound;
             _audioData.Play();
         }
 
+        victoryFX.SetActive(true);
+
         // SAVE THE PLAYER's VICTORY
-        SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));
+        SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));        
     }
     public void GameLost()
     {
