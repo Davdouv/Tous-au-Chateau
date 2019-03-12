@@ -13,13 +13,13 @@ public class SpeechBubble : MonoBehaviour {
 	private GameObject _text;
 	private GameObject _dots;
 	private Text _textComp;
-	private float letterTime = 0.06f;
+	private float letterTime = 0.03f;
 	private bool _open = false;
 	private Animator animator;
 	private bool _isCameraDefault = false;
 
-    private AudioSource _audioData;
-    public AudioClip bubbleSound;
+	private AudioSource _audioData;
+	public AudioClip bubbleSound;
 
 	public bool canClose = false;
 	public bool dots = true;
@@ -27,32 +27,19 @@ public class SpeechBubble : MonoBehaviour {
 
 	void Start()
 	{
-		FindCamera();
+		cameraTransform = CameraManager.Instance.GetCamera().transform;
 		_panel = this.transform.Find("Panel").gameObject;
 		_text = this.transform.Find("Text").gameObject;
 		_dots = this.transform.Find("Dots").gameObject;
 		_textComp = _text.GetComponent<Text>();
 		_textComp.text = "";
+		_audioData = GetComponent<AudioSource>();
 		animator = GetComponent<Animator>();
-        _audioData = GetComponent<AudioSource>();
-
-        AdaptCanvasToText();
+		AdaptCanvasToText();
 		if (dots) {
 			_dots.gameObject.SetActive(true);
 		}
 	}
-
-	// public void OnEnable()
-  // {
-	// 	FindCamera();
-	// 	_panel = this.transform.Find("Panel").gameObject;
-	// 	_text = this.transform.Find("Text").gameObject;
-	// 	_dots = this.transform.Find("Dots").gameObject;
-	// 	_textComp = _text.GetComponent<Text>();
-	// 	_textComp.text = "";
-	// 	animator = GetComponent<Animator>();
-	// 	AdaptCanvasToText();
-  // }
 
 	private void AdaptCanvasToText()
 	{
@@ -63,43 +50,24 @@ public class SpeechBubble : MonoBehaviour {
 		textRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size + 10);
 	}
 
-	private bool FindCamera() {
-		if (GameObject.Find("Neck/Camera")) { // VR
-			Debug.Log("VR Camera");
-			_isCameraDefault = false;
-			cameraTransform = GameObject.Find("Neck/Camera").transform;
-			return true;
-		} else if (GameObject.Find("[VRSimulator_CameraRig]")) { // Simulator
-			Debug.Log("Simulator Camera");
-			_isCameraDefault = false;
-			cameraTransform = GameObject.Find("Camera (eye)").transform;
-			return true;
-		} else if (GameObject.Find("Main Camera")) { // Default
-			Debug.Log("Default Camera");
-			_isCameraDefault = true;
-			cameraTransform = GameObject.Find("Main Camera").transform;
-			return true;
-		}
-		return false;
-	}
-
 	void Update()
 	{
 		if (!cameraTransform) {
-			FindCamera();
+			cameraTransform = CameraManager.Instance.GetCamera().transform;
 		} else {
 			_panel.transform.rotation = Quaternion.LookRotation(_panel.transform.position - cameraTransform.position);
 			_text.transform.rotation = Quaternion.LookRotation(_text.transform.position - cameraTransform.position);
-			if (_isCameraDefault) {
-				FindCamera();
+			if (CameraManager.Instance.IsCameraDefault()) {
+				Debug.Log("Default");
+				cameraTransform = CameraManager.Instance.GetCamera().transform;
 			}
 		}
 	}
 
 	public void StartAnimation()
 	{
-        _audioData.clip = bubbleSound;
-        _audioData.Play();
+		_audioData.clip = bubbleSound;
+		_audioData.Play();
 		StartCoroutine(AnimateText());
 	}
 
@@ -121,7 +89,7 @@ public class SpeechBubble : MonoBehaviour {
 		canClose = true;
 	}
 
-	public void setMessage(string text) {
+	public void SetMessage(string text) {
 		message = text;
 	}
 }

@@ -16,6 +16,7 @@ public class SpeechManager : MonoBehaviour {
 
 		foreach (var evento in events)
 		{
+			// Open
 			if (!evento.IsDone() && !evento.IsOpen() && evento.MustOpen())
 			{
 				evento.bubble.canClose = false;
@@ -23,6 +24,8 @@ public class SpeechManager : MonoBehaviour {
 				_anim = evento.bubble.GetComponent<Animator>();
 				_anim.SetBool(_openTransitionName, true);
 				Open(evento.bubble);
+
+			// Close
 			} else if (evento.bubble.canClose && evento.IsOpen() && evento.MustClose())
 			{
 				evento.SetIsOpen(false);
@@ -55,6 +58,7 @@ public class SpeechManager : MonoBehaviour {
 		{
 			_anim.SetBool(_openTransitionName, false);
 			StartCoroutine(DisablePanel(bubble));
+			bubble.SetMessage("");
 		} else {
 			Debug.Log("Animation is still playing.");
 		}

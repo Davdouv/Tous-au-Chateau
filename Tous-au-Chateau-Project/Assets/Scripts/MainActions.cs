@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainActions : MonoBehaviour
 {
-
     public ResourceManager resourceM;
+    public UIManager uiM;
     public GameObject spawnPoint;
     public Transform RightHand;
 
@@ -15,11 +15,14 @@ public class MainActions : MonoBehaviour
     bool crushMode;
     bool haveBuilding;
     bool haveVillager;
-    bool handStillClose;
+    bool canCrush;
     Vector3 currentPos;
     public float minHeightToCrush = 10;
     private AudioSource _audioData;
     public AudioClip crushFloorSound;
+
+    private SphereCollider sphereCollider;
+    private float distanceDetection;
 
 
     public Material Transparent_Building;
@@ -42,6 +45,8 @@ public class MainActions : MonoBehaviour
     Material[] mats;
     string[] objName;
 
+    public GameObject player;
+
     // Use this for initialization
     void Start()
     {
@@ -50,6 +55,13 @@ public class MainActions : MonoBehaviour
         crushMode = false;
         haveBuilding = false;
         _audioData = GetComponent<AudioSource>();
+        sphereCollider = GetComponent<SphereCollider>();
+        distanceDetection = sphereCollider.radius * 100; // 100 is the scale of the last parent (other parent has scale of 1)
+
+        if (player == null)
+        {
+            player = GameObject.Find("[VRTK_SDKManager]");
+        }
     }
 
     // Update is called once per frame
@@ -66,6 +78,24 @@ public class MainActions : MonoBehaviour
             }
         }
 
+        //Control height of the map 
+        if (events.touchpadPressed)
+        {
+            Vector2 touchPosition;
+            touchPosition = events.GetTouchpadAxis();
+            if(touchPosition.y > 0.5f)
+            {
+                //Move table up
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 10, player.transform.position.z);
+            }
+            else if(touchPosition.y < 0.5f)
+            {
+                //Move table down
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 10, player.transform.position.z);
+            } 
+        }
+
+
         if (events.triggerPressed)
         {
             if (!trigger)
@@ -78,7 +108,7 @@ public class MainActions : MonoBehaviour
         {
             trigger = false;
             crushMode = false;
-            handStillClose = false;
+            canCrush = true;
             if (haveBuilding)
             {
                 //releaseBuilding
@@ -114,6 +144,7 @@ public class MainActions : MonoBehaviour
             else if (gameObject.transform.position.y > currentPos.y - minHeightToCrush)
             {
                 crushMode = false;
+                canCrush = true;
             }
         }
 
@@ -125,12 +156,22 @@ public class MainActions : MonoBehaviour
         }
     }
 
+    private bool IsInRange(Vector3 position)
+    {
+        Debug.Log("Target position : " + position);
+        Debug.Log("Center position : " + sphereCollider.center);
+        Debug.Log("DistanceDetection : " + distanceDetection);
+        float distance = (sphereCollider.center - position).sqrMagnitude;
+        Debug.Log("Distance : " + distance);
+        return (distance < distanceDetection * distanceDetection);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log(other.tag);
-        if (crushMode && !handStillClose) //Destroy element of the nature
+        if (crushMode && canCrush) //Destroy element of the nature
         {
-            if (other.gameObject.GetComponent<Crushable>())
+            if (other.gameObject.GetComponent<Crushable>() && IsInRange(other.ClosestPoint(sphereCollider.center)))
             {
                 resourceM.AddResources(other.gameObject.GetComponent<Crushable>().Gain());
                 other.gameObject.GetComponent<Crushable>().Crush();
@@ -150,7 +191,7 @@ public class MainActions : MonoBehaviour
                     _audioData.clip = other.gameObject.GetComponent<AudioClip>();
                     _audioData.Play();
                 }
-                handStillClose = true;
+                canCrush = false;
             }
             else
             {
@@ -188,25 +229,28 @@ public class MainActions : MonoBehaviour
                     haveBuilding = true;
                 }
             }
-            else if (other.tag == "page1UI")
+            else if (other.name == "Construction Panel Button 0")
             {
                 {
                     //Change to page 1 on UI
                     //Call function from @justine script
+                    uiM.DisplayConstructionPage(0);
                 }
             }
-            else if (other.tag == "page2UI")
+            else if (other.name == "Construction Panel Button 1")
             {
                 {
                     //Change to page 2 on UI
                     //Call function from @justine script
+                    uiM.DisplayConstructionPage(1);
                 }
             }
-            else if (other.tag == "page3UI")
+            else if (other.name == "Construction Panel Button 2")
             {
                 {
                     //Change to page 3 on UI
                     //Call function from @justine script
+                    uiM.DisplayConstructionPage(2);
                 }
             }
         }
