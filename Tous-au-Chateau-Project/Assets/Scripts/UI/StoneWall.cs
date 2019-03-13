@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class StoneWall : Building
 {
-
-    public override void Crush()
+    public override void SetHasLanded()
     {
-        //if (this.gameObject.CompareTag("StoneWall"))
+        base.SetHasLanded();
+
+        Rigidbody rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 }
