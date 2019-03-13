@@ -78,7 +78,7 @@ public class MainActions : MonoBehaviour
             }
         }
 
-        //Control height of the map 
+        //Control height of the map
         if (events.touchpadPressed)
         {
             Vector2 touchPosition;
@@ -92,7 +92,7 @@ public class MainActions : MonoBehaviour
             {
                 //Move table down
                 player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 10, player.transform.position.z);
-            } 
+            }
         }
 
 
@@ -266,7 +266,7 @@ public class MainActions : MonoBehaviour
 
                 }
             }
-        }        
+        }
     }
 
     public bool IsCrushModeActive()
@@ -303,7 +303,7 @@ public class MainActions : MonoBehaviour
     {
         Renderer[] children;
         Transform[] newBuilding;
-    
+
         children = newBuilding.GetComponentsInChildren<Renderer>();
         foreach (Renderer rend in children)
         {
