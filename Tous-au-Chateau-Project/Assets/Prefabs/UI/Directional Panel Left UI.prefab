@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 65751936518788032}
   - component: {fileID: 114046573780057168}
   - component: {fileID: 114685885166733660}
+  - component: {fileID: 82113578241162552}
   m_Layer: 0
   m_Name: Directional Panel Left UI
   m_TagString: Building
@@ -648,6 +649,101 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.48, y: 6.05, z: 0.98}
   m_Center: {x: 0, y: -1.12, z: 1.74}
+--- !u!82 &82113578241162552
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774256326975916}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 2
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114044429667792052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -682,7 +778,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Directional Panel Left
   buildingType: 1
-  prefab: {fileID: 1750304352602756, guid: 5cea4a98f45c0184cb37455da1d632e2, type: 2}
+  prefab: {fileID: 1369170372466890, guid: 32954aebfd0b3734fab1c472b78ee4a1, type: 2}
+  prefabTransparent: {fileID: 1704118711876476, guid: 1be06c3eb1e87cb41922361b3f29baa6,
+    type: 2}
+  purchasedSound: {fileID: 82113578241162552}
   _cost:
     wood: 20
     stone: 0

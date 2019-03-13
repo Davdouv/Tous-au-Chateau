@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class MainActions : MonoBehaviour {
-
+public class MainActions : MonoBehaviour
+{
     public ResourceManager resourceM;
+    public UIManager uiM;
     public GameObject spawnPoint;
     public Transform RightHand;
 
@@ -12,31 +14,59 @@ public class MainActions : MonoBehaviour {
     bool trigger;
     bool crushMode;
     bool haveBuilding;
-    bool handStillClose;
+    bool haveVillager;
+    bool canCrush;
     Vector3 currentPos;
     public float minHeightToCrush = 10;
+    private AudioSource _audioData;
+    public AudioClip crushFloorSound;
+
+    private SphereCollider sphereCollider;
+    private float distanceDetection;
+
 
     public Material Transparent_Building;
     Material Building_mat;
 
     GameObject newBuilding;
+    GameObject newVillager;
+    GameObject oldVillager;
+    public GameObject villagerPrefab;
+    GameObject buildingPrefab;
+
+    public GameObject fxPrefab;
+
 
     public SpeechEvent_MapTuto1_Event1 speechEvent1 = null;
     public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
     public SpeechEvent_MapTuto1_Event4_1 speechEvent4_1 = null;
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
 
+    Material[] mats;
+    string[] objName;
+
+    public GameObject player;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         events = GetComponent<VRTK.VRTK_ControllerEvents>();
         trigger = false;
         crushMode = false;
         haveBuilding = false;
-	}
+        _audioData = GetComponent<AudioSource>();
+        sphereCollider = GetComponent<SphereCollider>();
+        distanceDetection = sphereCollider.radius * 100; // 100 is the scale of the last parent (other parent has scale of 1)
 
-	// Update is called once per frame
-	void Update () {
+        if (player == null)
+        {
+            player = GameObject.Find("[VRTK_SDKManager]");
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
 
         if (GameManager.Instance.tuto)
         {
@@ -47,6 +77,24 @@ public class MainActions : MonoBehaviour {
                 VerifyActionTuto(speechEvent7);
             }
         }
+
+        //Control height of the map 
+        if (events.touchpadPressed)
+        {
+            Vector2 touchPosition;
+            touchPosition = events.GetTouchpadAxis();
+            if(touchPosition.y > 0.5f)
+            {
+                //Move table up
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 10, player.transform.position.z);
+            }
+            else if(touchPosition.y < 0.5f)
+            {
+                //Move table down
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 10, player.transform.position.z);
+            } 
+        }
+
 
         if (events.triggerPressed)
         {
@@ -60,7 +108,7 @@ public class MainActions : MonoBehaviour {
         {
             trigger = false;
             crushMode = false;
-            handStillClose = false;
+            canCrush = true;
             if (haveBuilding)
             {
                 //releaseBuilding
@@ -68,21 +116,35 @@ public class MainActions : MonoBehaviour {
                 newBuilding.GetComponent<Rigidbody>().isKinematic = false;
                 newBuilding.transform.parent = null;
                 //On hand release
-                newBuilding.GetComponent<Renderer>().material = Building_mat;
-
+                Transform buildingTrans;
+                buildingTrans = newBuilding.transform;
+                Destroy(newBuilding);
+                newBuilding = Instantiate(buildingPrefab, buildingTrans.position, buildingTrans.rotation);
+            }
+            else if (SceneManager.GetActiveScene().name == "Map selector")
+            {
+                if (haveVillager)
+                {
+                    //releaseVillager
+                    haveVillager = false;
+                    //On hand release
+                    oldVillager.SetActive(true);
+                    Destroy(newVillager);
+                }
             }
         }
 
         if (trigger)
         {
             //currentPos = gameObject.transform.position;
-            if(gameObject.transform.position.y < currentPos.y - minHeightToCrush)
+            if (gameObject.transform.position.y < currentPos.y - minHeightToCrush)
             {
                 crushMode = true;
             }
             else if (gameObject.transform.position.y > currentPos.y - minHeightToCrush)
             {
                 crushMode = false;
+                canCrush = true;
             }
         }
 
@@ -92,50 +154,119 @@ public class MainActions : MonoBehaviour {
             newBuilding.transform.localRotation = spawnPoint.transform.localRotation;
             newBuilding.transform.SetParent(RightHand);
         }
-	}
+    }
+
+    private bool IsInRange(Vector3 position)
+    {
+        float distance = (sphereCollider.transform.position - position).sqrMagnitude;
+        //return (distance < distanceDetection * distanceDetection); // Detect if the given position is inside the sphere collider
+        return (distance < 3 * 3);  // 3 is the radius of the base of the hand
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(other.tag);
-        if (crushMode && !handStillClose) //Destroy element of the nature
+        if (crushMode && canCrush)
         {
-            if (other.gameObject.GetComponent<Crushable>())
+            if (other.gameObject.tag == "Ground")
             {
-                //other.crush()   <= for the next sprint
-                Debug.Log("CRUSH ITEM");
-                resourceM.AddResources(other.gameObject.GetComponent<Crushable>().Gain());
-                other.gameObject.GetComponent<Crushable>().Crush();
-                handStillClose = true;
-            }
+                // Sound
+                _audioData.clip = crushFloorSound;
+                _audioData.Play();
 
-            if (GameManager.Instance.tuto)
-            {
-              if (other.gameObject.tag == "Ground")
-              {
-                speechEvent1.hasCrushedGround = true;
-              }
-            }
+                // FX
+                Instantiate(fxPrefab, transform).SetActive(true);
 
+                if (GameManager.Instance.tuto)
+                {
+                    speechEvent1.hasCrushedGround = true;
+                }
+            }
         }
+    }
+
+    // Return true if we crushed something
+    private bool CrushAction(Collider other)
+    {
+        if (crushMode && canCrush) //Destroy element of the nature
+        {
+            if (other.gameObject.GetComponent<Crushable>() && other.gameObject.GetComponent<Crushable>().canBeCrushed)
+            {
+                if (IsInRange(other.transform.position))
+                {
+                    // Play the sound of the object we are going to destroy
+                    _audioData.clip = other.gameObject.GetComponent<Crushable>().GetClip();
+                    _audioData.Play();
+
+                    resourceM.AddResources(other.gameObject.GetComponent<Crushable>().Gain());
+                    other.gameObject.GetComponent<Crushable>().Crush();
+
+                    canCrush = false;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (events.triggerPressed && !haveBuilding)
+        // If we didn't crush, check for other actions
+        if (!CrushAction(other))
         {
-            if (other.tag == "Building")
+            if (events.triggerPressed && !haveBuilding)
             {
-                //Get ResourcePack building
-                if (other.gameObject.GetComponent<Building>().CanBuy())
+                if (other.tag == "Building")
                 {
-                    //Instantiate building
-                    newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
-                    Building_mat = newBuilding.GetComponent<Renderer>().material;
-                    newBuilding.GetComponent<Renderer>().material = Transparent_Building; 
-                    haveBuilding = true;
+                    //Get ResourcePack building
+                    if (other.gameObject.GetComponent<Building>().CanBuy())
+                    {
+                        //Instantiate building
+                        newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefabTransparent, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                        buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
+                        haveBuilding = true;
+                    }
+                }
+                else if (other.name == "Construction Panel Button 0")
+                {
+                    {
+                        //Change to page 1 on UI
+                        //Call function from @justine script
+                        uiM.DisplayConstructionPage(0);
+                    }
+                }
+                else if (other.name == "Construction Panel Button 1")
+                {
+                    {
+                        //Change to page 2 on UI
+                        //Call function from @justine script
+                        uiM.DisplayConstructionPage(1);
+                    }
+                }
+                else if (other.name == "Construction Panel Button 2")
+                {
+                    {
+                        //Change to page 3 on UI
+                        //Call function from @justine script
+                        uiM.DisplayConstructionPage(2);
+                    }
                 }
             }
-        }
+            else if (SceneManager.GetActiveScene().name == "Map selector")
+            {
+                if (events.triggerPressed && !haveVillager)
+                {
+                    if (other.tag == "Villager")
+                    {
+                        //other.gameObject.transform = spawnPoint.transform;
+                        oldVillager = other.gameObject;
+                        oldVillager.SetActive(false);
+                        newVillager = Instantiate(villagerPrefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                        haveVillager = true;
+                    }
+
+                }
+            }
+        }        
     }
 
     public bool IsCrushModeActive()
@@ -153,4 +284,55 @@ public class MainActions : MonoBehaviour {
             }
         }
     }
+
+   /* void ChangeMaterial(Material newMat)
+    {
+        Renderer[] children;
+        children = newBuilding.GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in children)
+        {
+            var mats = new Material[rend.materials.Length];
+            for (int i = 0; i < rend.materials.Length; ++i)
+            {
+                mats[i] = newMat;
+            }
+            rend.materials = mats;
+        }
+    }
+    void StockMaterial()
+    {
+        Renderer[] children;
+        Transform[] newBuilding;
+    
+        children = newBuilding.GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in children)
+        {
+            mats = new Material[rend.materials.Length];
+            objName = new string[rend.materials.Length];
+            for (int i = 0; i < rend.materials.Length; ++i)
+            {
+                mats[i] = GetComponent<Renderer>().material;
+                objName[i] = transform.name;
+            }
+        }
+    }
+
+    void ApplyStockedMaterial()
+    {
+
+        Renderer[] children;
+        children = newBuilding.GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in children)
+        {
+            var othermats = new Material[rend.materials.Length];
+            for (int i = 0; i < rend.materials.Length; ++i)
+            {
+                if(transform.name == objName[i])
+                {
+                    othermats[i] = mats[i];
+                }
+            }
+            rend.materials = mats;
+        }
+    } */
 }

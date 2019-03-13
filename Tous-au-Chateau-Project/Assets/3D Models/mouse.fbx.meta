@@ -1,14 +1,36 @@
 fileFormatVersion: 2
-guid: 4244684acf8eb814b9faafa25bea1073
+guid: d57218784cce3d84da68ffa303b1a13b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
+    100000: Armature
+    100002: Bone
+    100004: Bone.001
+    100006: Bone.001_end
+    100008: Bone_end
+    100010: Camera
+    100012: Cube
+    100014: Lamp
+    100016: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone.001
+    400006: Bone.001_end
+    400008: Bone_end
+    400010: Camera
+    400012: Cube
+    400014: Lamp
+    400016: //RootNode
+    2000000: Camera
     2100000: Material
-    2300000: //RootNode
-    3300000: //RootNode
+    2100002: Material.002
+    2100004: Material.001
     4300000: Cube
+    7400000: Armature|die
+    7400002: Armature|idle
+    9500000: //RootNode
+    10800000: Lamp
+    13700000: Cube
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -60,8 +82,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -85,7 +107,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

@@ -5,14 +5,30 @@ using System;
 
 public class BuildingsTypeGroup : MonoBehaviour {
 
-    private BuildingsTypeGroup _instance;
+    #region Singleton
+    private static BuildingsTypeGroup _instance;
+
+    public static BuildingsTypeGroup Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject go = new GameObject("_BuildingsTypeGroup");
+                go.AddComponent<BuildingsTypeGroup>();
+            }
+            return _instance;
+        }
+    }
+    void Awake()
+    {
+        _instance = this;
+    }
+
+    #endregion
 
     public List<Building> _buildings = new List<Building>();
-
-    public void  instance(BuildingsTypeGroup _group)
-    {
-        _instance = _group;
-    }
+    public AudioSource notBuyable;
 
     public List<List<Building>> getBuildingsSortedByType()
     {

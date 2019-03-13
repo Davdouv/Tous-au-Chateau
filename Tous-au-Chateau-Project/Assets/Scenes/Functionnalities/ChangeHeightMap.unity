@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.105307266, g: 0.28906882, b: 0.74869776, a: 1}
+  m_IndirectSpecularColor: {r: 0.10533604, g: 0.28910613, b: 0.7486913, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2642,9 +2642,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e3f7246a99ad442a632e96f52f81a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 1
   turningRate: 20
   mesh: {fileID: 1329505647}
+  isAlive: 1
 --- !u!1 &196330015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3492,8 +3492,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 271799130}
-  m_LocalRotation: {x: -0.03868974, y: 0.03808721, z: 0.0014779695, w: 0.99852407}
-  m_LocalPosition: {x: 33266.258, y: -28633.541, z: -36872.36}
+  m_LocalRotation: {x: 0.060684763, y: 0.92592394, z: 0.16749746, w: -0.33305696}
+  m_LocalPosition: {x: 11807.18, y: -2074.9165, z: 8695.345}
   m_LocalScale: {x: 0.8381444, y: 0.916419, z: 0.9121032}
   m_Children: []
   m_Father: {fileID: 197541977}
@@ -3923,9 +3923,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e3f7246a99ad442a632e96f52f81a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 1
   turningRate: 20
   mesh: {fileID: 1092034618}
+  isAlive: 1
 --- !u!1 &304890668
 GameObject:
   m_ObjectHideFlags: 0
@@ -9567,9 +9567,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e3f7246a99ad442a632e96f52f81a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 1
   turningRate: 20
   mesh: {fileID: 893880874}
+  isAlive: 1
 --- !u!1 &647836836
 GameObject:
   m_ObjectHideFlags: 0
@@ -12305,7 +12305,6 @@ GameObject:
   m_Component:
   - component: {fileID: 853650081}
   - component: {fileID: 853650080}
-  - component: {fileID: 853650083}
   - component: {fileID: 853650082}
   m_Layer: 0
   m_Name: _UIManager
@@ -12331,9 +12330,20 @@ MonoBehaviour:
   foodTxt: {fileID: 1984886757}
   villagersTxt: {fileID: 1944278528}
   motivation: {fileID: 690380265}
-  gameOverPanel: {fileID: 677640092}
+  GameOverPanel: {fileID: 0}
+  gameOverTitleText: {fileID: 0}
   gameOverVillagersText: {fileID: 1249994209}
-  resourceManager: {fileID: 1883661142}
+  victoryTextColor: {r: 0, g: 0, b: 0, a: 0}
+  gameoverTextColor: {r: 0, g: 0, b: 0, a: 0}
+  _ResourceManager: {fileID: 0}
+  _BuildingTypeGroup: {fileID: 0}
+  ConstructionPagination: {fileID: 0}
+  buildingNotPuchasable: {r: 0, g: 0, b: 0, a: 0}
+  buttonsPosition: {fileID: 0}
+  constructionPosition1: {fileID: 0}
+  constructionPosition2: {fileID: 0}
+  constructionPosition3: {fileID: 0}
+  constructionPosition4: {fileID: 0}
 --- !u!4 &853650081
 Transform:
   m_ObjectHideFlags: 0
@@ -12360,18 +12370,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1342220782}
---- !u!114 &853650083
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 853650079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9b02eb4aa27cf14f90db5b857a01fa8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1 &857362631
 GameObject:
   m_ObjectHideFlags: 0
@@ -14996,9 +14994,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e3f7246a99ad442a632e96f52f81a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 1
   turningRate: 20
   mesh: {fileID: 118086117}
+  isAlive: 1
 --- !u!1 &1006109132
 GameObject:
   m_ObjectHideFlags: 0
@@ -18417,7 +18415,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 853650083}
+      - m_Target: {fileID: 0}
         m_MethodName: IncreaseY
         m_Mode: 1
         m_Arguments:
@@ -20375,7 +20373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea5335256d44a94bab9d156994a3f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftController: {fileID: 938925703}
   rightController: {fileID: 1034535795}
   leftHandAvatar: {fileID: 311165973}
   rightHandAvatar: {fileID: 688035555}
@@ -20655,7 +20652,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 853650083}
+      - m_Target: {fileID: 0}
         m_MethodName: DecreaseY
         m_Mode: 1
         m_Arguments:
@@ -25942,10 +25939,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b5332fad0472e14db26eacac8f39f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiManager: {fileID: 853650080}
+  _UiManager: {fileID: 0}
   pauseObjects:
-  - {fileID: 853650080}
-  - {fileID: 1883661142}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1807039499
 Transform:
   m_ObjectHideFlags: 0
@@ -28906,6 +28903,7 @@ MonoBehaviour:
   _widthMax: 0.007
   _widthMin: 0.005
   _sizeLeaf: 2
+  axeY: -3
 --- !u!114 &2028552933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28918,6 +28916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _TreesPosition: {fileID: 1089973178}
+  firstTree: {fileID: 0}
 --- !u!224 &2028552934
 RectTransform:
   m_ObjectHideFlags: 0

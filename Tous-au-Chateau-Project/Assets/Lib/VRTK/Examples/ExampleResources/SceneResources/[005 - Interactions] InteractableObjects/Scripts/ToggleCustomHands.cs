@@ -12,6 +12,12 @@
 
         protected bool state;
 
+        void Start()
+        {
+            state = !state;
+            ToggleVisibility();
+        }
+
         protected virtual void OnEnable()
         {
             state = false;

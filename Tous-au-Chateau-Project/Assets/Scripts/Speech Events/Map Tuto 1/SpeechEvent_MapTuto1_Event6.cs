@@ -13,15 +13,16 @@ public class SpeechEvent_MapTuto1_Event6 : SpeechEvent {
 	public override bool MustOpen() {
 		// Open after previous event is done
 		if (previousEvent != null && previousEvent.IsDone()) {
-            if (currentVillagersGroup.GetNumberOfVillagersAlive() == 0)
-            {
-                // Check if at least one has fallen in the void
-                if (currentVillagersGroup.IsDeathCausedBy(DeathReason.VOID))
-                {
-                    woodBeforeCrushingTree = _ResourceManager.GetWood();
-                    return true;
-                }
-            }
+      return true;
+            // if (currentVillagersGroup.GetNumberOfVillagersAlive() == 0)
+            // {
+            //     // Check if at least one has fallen in the void
+            //     if (currentVillagersGroup.IsDeathCausedBy(DeathReason.VOID))
+            //     {
+            //         woodBeforeCrushingTree = _ResourceManager.GetWood();
+            //
+            //     }
+            // }
 		}
 		return false;
 	}

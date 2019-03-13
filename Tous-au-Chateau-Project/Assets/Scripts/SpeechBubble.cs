@@ -11,16 +11,21 @@ public class SpeechBubble : MonoBehaviour {
 	public string message;
 	private GameObject _panel;
 	private GameObject _text;
+	private GameObject _textWithControllers;
 	private GameObject _dots;
 	private Text _textComp;
-	private float letterTime = 0.06f;
+	private Text _textWithControllersComp;
+	private float letterTime = 0.03f;
 	private bool _open = false;
 	private Animator animator;
 	private bool _isCameraDefault = false;
 
+	private AudioSource _audioData;
+	public AudioClip bubbleSound;
 
 	public bool canClose = false;
 	public bool dots = true;
+	public bool controller = false;
 
 
 	void Start()
@@ -28,55 +33,38 @@ public class SpeechBubble : MonoBehaviour {
 		cameraTransform = CameraManager.Instance.GetCamera().transform;
 		_panel = this.transform.Find("Panel").gameObject;
 		_text = this.transform.Find("Text").gameObject;
+		_textWithControllers = this.transform.Find("TextWithControllers").gameObject;
 		_dots = this.transform.Find("Dots").gameObject;
 		_textComp = _text.GetComponent<Text>();
+		_textWithControllersComp = _textWithControllers.GetComponent<Text>();
 		_textComp.text = "";
+		_textWithControllersComp.text = "";
+		_audioData = GetComponent<AudioSource>();
 		animator = GetComponent<Animator>();
 		AdaptCanvasToText();
 		if (dots) {
 			_dots.gameObject.SetActive(true);
 		}
+		if (controller) {
+			_text.gameObject.SetActive(false);
+			_textWithControllers.gameObject.SetActive(true);
+		}
 	}
-
-	// public void OnEnable()
-  // {
-	// 	FindCamera();
-	// 	_panel = this.transform.Find("Panel").gameObject;
-	// 	_text = this.transform.Find("Text").gameObject;
-	// 	_dots = this.transform.Find("Dots").gameObject;
-	// 	_textComp = _text.GetComponent<Text>();
-	// 	_textComp.text = "";
-	// 	animator = GetComponent<Animator>();
-	// 	AdaptCanvasToText();
-  // }
 
 	private void AdaptCanvasToText()
 	{
 		var panelRectTransform = _panel.GetComponent<RectTransform>();
 		var textRectTransform = _text.GetComponent<RectTransform>();
 		var size = _textComp.fontSize * _textComp.lineSpacing * message.Length;
+
+		if (controller) {
+			Debug.Log("Controller");
+			textRectTransform = _textWithControllers.GetComponent<RectTransform>();
+			size = _textWithControllersComp.fontSize * _textWithControllersComp.lineSpacing * message.Length * 1.4f;
+		}
+
 		panelRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size);
 		textRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size + 10);
-	}
-
-	private bool FindCamera() {
-		if (GameObject.Find("Neck/Camera")) { // VR
-			Debug.Log("VR Camera");
-			_isCameraDefault = false;
-			cameraTransform = GameObject.Find("Neck/Camera").transform;
-			return true;
-		} else if (GameObject.Find("[VRSimulator_CameraRig]")) { // Simulator
-			Debug.Log("Simulator Camera");
-			_isCameraDefault = false;
-			cameraTransform = GameObject.Find("Camera (eye)").transform;
-			return true;
-		} else if (GameObject.Find("Main Camera")) { // Default
-			Debug.Log("Default Camera");
-			_isCameraDefault = true;
-			cameraTransform = GameObject.Find("Main Camera").transform;
-			return true;
-		}
-		return false;
 	}
 
 	void Update()
@@ -86,8 +74,8 @@ public class SpeechBubble : MonoBehaviour {
 		} else {
 			_panel.transform.rotation = Quaternion.LookRotation(_panel.transform.position - cameraTransform.position);
 			_text.transform.rotation = Quaternion.LookRotation(_text.transform.position - cameraTransform.position);
+			_textWithControllers.transform.rotation = Quaternion.LookRotation(_textWithControllersComp.transform.position - cameraTransform.position);
 			if (CameraManager.Instance.IsCameraDefault()) {
-				Debug.Log("Default");
 				cameraTransform = CameraManager.Instance.GetCamera().transform;
 			}
 		}
@@ -95,6 +83,8 @@ public class SpeechBubble : MonoBehaviour {
 
 	public void StartAnimation()
 	{
+		_audioData.clip = bubbleSound;
+		_audioData.Play();
 		StartCoroutine(AnimateText());
 	}
 
@@ -105,18 +95,31 @@ public class SpeechBubble : MonoBehaviour {
 
 	public IEnumerator AnimateText()
 	{
-		yield return new WaitForSeconds(1);
-		_textComp.text = "";
-		foreach (char letter in message)
-		{
-			_textComp.text += letter;
-			yield return 0;
-			yield return new WaitForSeconds(letterTime);
+		if (controller) {
+			_textWithControllersComp.text = "";
+			yield return new WaitForSeconds(1);
+			foreach (char letter in message)
+			{
+				_textWithControllersComp.text += letter;
+				yield return 0;
+				yield return new WaitForSeconds(letterTime);
+			}
+			canClose = true;
 		}
-		canClose = true;
+		else {
+			_textComp.text = "";
+			yield return new WaitForSeconds(1);
+			foreach (char letter in message)
+			{
+				_textComp.text += letter;
+				yield return 0;
+				yield return new WaitForSeconds(letterTime);
+			}
+			canClose = true;
+		}
 	}
 
-	public void setMessage(string text) {
+	public void SetMessage(string text) {
 		message = text;
 	}
 }

@@ -17,7 +17,7 @@ public class SpeechEvent : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		// bubble.setMessage(message);
+		// bubble.SetMessage(message);
 	}
 
 	public virtual bool MustOpen() { return false; }
@@ -28,7 +28,7 @@ public class SpeechEvent : MonoBehaviour {
 	public bool IsDone() { return _isDone; }
 	public void SetIsOpen(bool bo) {
 		if (bo) {
-			bubble.setMessage(message);
+			bubble.SetMessage(message);
 		}
 		_isOpen = bo;
 	}

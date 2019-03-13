@@ -21,7 +21,7 @@ public class SpeechEvent_MapTuto1_Event3 : SpeechEvent {
 
 	public override bool MustClose() {
 		// When crushing the flickering tree. // Destroying the firstTree will set it to null
-    if (MapManager.Instance.firstTree == null && ResourceManager.Instance.GetWood() > 0)
+    if (MapManager.Instance.IsFirstTreeDestroyed() && ResourceManager.Instance.GetWood() > 0)
     {
       return true;
     }
