@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// 4 - Building a wall
+// 4 - BUILDING A WALL
 
 public class SpeechEvent_MapTuto2_Event4 : SpeechEvent {
 

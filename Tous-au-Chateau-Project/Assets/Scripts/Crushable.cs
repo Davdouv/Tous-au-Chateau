@@ -26,7 +26,6 @@ public class Crushable : MonoBehaviour {
 
             if (crushFXPrefab)
             {
-                Debug.Log("FX");
                 GameObject fx = Instantiate(crushFXPrefab, transform);
                 fx.SetActive(true);
                 fx.transform.SetParent(transform.parent.parent);

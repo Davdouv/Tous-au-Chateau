@@ -92,7 +92,7 @@ public class Villager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "Villager" && collision.gameObject.tag != "Wolf")
+        if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "Wolf" /*&& collision.gameObject.tag != "Villager"*/)
         {
             _facingObstacle = true;
         }

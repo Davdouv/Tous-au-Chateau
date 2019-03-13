@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// 2 - Eaten again
+// 2 - EATEN AGAIN
 
 public class SpeechEvent_MapTuto2_Event2 : SpeechEvent {
 

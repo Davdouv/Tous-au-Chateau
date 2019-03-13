@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// 3 - Crushing a rock
+// 3 - CRUSHING A ROCK
 
 public class SpeechEvent_MapTuto2_Event3 : SpeechEvent {
 

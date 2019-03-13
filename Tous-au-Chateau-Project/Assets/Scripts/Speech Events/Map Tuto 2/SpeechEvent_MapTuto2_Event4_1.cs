@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class SpeechEvent_MapTuto2_Event4_1 : SpeechEvent {
 
-    public bool hasStoneWallLanded = false;
+    public bool isStoneWallPlacedWell = false;
 
     public override bool MustOpen()
     {
@@ -22,6 +22,6 @@ public class SpeechEvent_MapTuto2_Event4_1 : SpeechEvent {
     {
         // Opening the Construction Panel and placing the wood board
         // (not necessary at the right place, could be anywhere)
-        return hasStoneWallLanded;
+        return isStoneWallPlacedWell;
     }
 }

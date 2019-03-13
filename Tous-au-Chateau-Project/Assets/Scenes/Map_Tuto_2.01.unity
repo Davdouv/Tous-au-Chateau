@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10533604, g: 0.28910613, b: 0.7486913, a: 1}
+  m_IndirectSpecularColor: {r: 0.28930417, g: 0.46862257, b: 0.9005637, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -264,7 +264,7 @@ Transform:
   - {fileID: 1145887552}
   - {fileID: 975893205}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8106217
 GameObject:
@@ -10052,55 +10052,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 432519854}
   m_Mesh: {fileID: 4300000, guid: c1860dda2a1b5b24e928b79edc92c6b3, type: 3}
---- !u!1 &436246459
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1254952411502222, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 436246461}
-  - component: {fileID: 436246460}
-  m_Layer: 0
-  m_Name: Event 6
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &436246460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114370620852725176, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 436246459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cee50c3b010a6c459383dfd6466ea01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: We cannot reach the house, those trees are blocking the way. Get rid of
-    one of those to let us pass.
-  bubble: {fileID: 1077681572}
-  previousEvent: {fileID: 508803583}
-  hasDoneAction: 0
-  _ResourceManager: {fileID: 439394635}
---- !u!4 &436246461
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4169358747276996, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 436246459}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1043190660}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &437298890
 GameObject:
   m_ObjectHideFlags: 0
@@ -10514,7 +10465,7 @@ Transform:
   - {fileID: 1144394926}
   - {fileID: 1390129731}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &475900942
 GameObject:
@@ -11006,21 +10957,20 @@ GameObject:
 --- !u!114 &508803583
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114027482464099222, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 508803582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f25712c75e130e24b8fbb87ff7d4e59a, type: 3}
+  m_Script: {fileID: 11500000, guid: 409b295f7689b1d44bca035eb59cd150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "There are enemies on our way, such as this wild wolf. Maybe you could,
-    you know\u2026 Crush it?"
+  message: "Hourra! You\u2019ve led us to the house safely again (except some poor
+    sisters and brothers...). Our ranks are getting wider and wider. But that\u2019s
+    still not over, there\u2019s another house we have to visit."
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 0}
   hasDoneAction: 0
-  wolf: {fileID: 1643772101}
 --- !u!4 &508803584
 Transform:
   m_ObjectHideFlags: 0
@@ -15908,19 +15858,19 @@ Transform:
 --- !u!114 &537798008
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114003023750620282, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 537798006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf8f3da9ebe2aed43a7256cb5ce940ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 6dc38c9e0eeeb6b4da12b35dcd2e333f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: You need to place the board at the right place!
+  message: We need you to place the wall at the right location.
   bubble: {fileID: 1077681572}
-  previousEvent: {fileID: 0}
+  previousEvent: {fileID: 2050851015}
   hasDoneAction: 0
+  isStoneWallPlacedWell: 0
 --- !u!1 &542602801
 GameObject:
   m_ObjectHideFlags: 0
@@ -16442,54 +16392,6 @@ Transform:
   m_Father: {fileID: 302049274}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &596767923
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1967837726812922, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 596767924}
-  - component: {fileID: 596767925}
-  m_Layer: 0
-  m_Name: Event 6.1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &596767924
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4911232431402398, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 596767923}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1043190660}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &596767925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114915970406058366, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 596767923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3258f67faf8b12f4eb88944ebb08accf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: You have to crush the right tree if we want to reach the house.
-  bubble: {fileID: 1077681572}
-  previousEvent: {fileID: 436246460}
-  hasDoneAction: 0
-  _ResourceManager: {fileID: 439394635}
 --- !u!1 &597359013
 GameObject:
   m_ObjectHideFlags: 0
@@ -27650,9 +27552,6 @@ Transform:
   - {fileID: 2050851016}
   - {fileID: 537798007}
   - {fileID: 508803584}
-  - {fileID: 436246461}
-  - {fileID: 596767924}
-  - {fileID: 1638288665}
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -35681,7 +35580,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1312778240
 GameObject:
@@ -35816,7 +35715,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1326817200
 GameObject:
@@ -36716,7 +36615,7 @@ RectTransform:
   - {fileID: 1300721977}
   - {fileID: 1104365395}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -39750,55 +39649,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1635863188}
   m_Mesh: {fileID: 4300000, guid: c1860dda2a1b5b24e928b79edc92c6b3, type: 3}
---- !u!1 &1638288664
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1892398378922180, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1638288665}
-  - component: {fileID: 1638288666}
-  m_Layer: 0
-  m_Name: Event 7
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1638288665
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4689329335123812, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1638288664}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1043190660}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1638288666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114381072758951916, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1638288664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e23ee40addeb743908551597b7d8dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: "Hourra! You\u2019ve led us to the house safely (for most of us at least...).
-    Our ranks are now widening. Our journey is not over yet, there\u2019s another
-    house we have to visit."
-  bubble: {fileID: 1077681572}
-  previousEvent: {fileID: 436246460}
-  hasDoneAction: 0
 --- !u!114 &1643772101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40879,7 +40729,7 @@ Transform:
   - {fileID: 756081873}
   - {fileID: 1164079693}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1747281935
 MonoBehaviour:
@@ -41044,9 +40894,6 @@ MonoBehaviour:
   - {fileID: 2050851015}
   - {fileID: 537798008}
   - {fileID: 508803583}
-  - {fileID: 436246460}
-  - {fileID: 596767925}
-  - {fileID: 1638288666}
   firstVillagersGroup: {fileID: 901544308}
 --- !u!1 &1756107966 stripped
 GameObject:
@@ -46747,6 +46594,8 @@ GameObject:
   - component: {fileID: 1844954222}
   - component: {fileID: 1844954224}
   - component: {fileID: 1844954223}
+  - component: {fileID: 1844954226}
+  - component: {fileID: 1844954225}
   m_Layer: 10
   m_Name: Maison
   m_TagString: Untagged
@@ -46762,7 +46611,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1844954221}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 41, y: 16.31, z: 65}
+  m_LocalPosition: {x: 39.42, y: 16.31, z: 65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 530949742}
@@ -46815,6 +46664,33 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1844954221}
   m_Mesh: {fileID: 4300000, guid: 24081fd8f9f450443853f039c256be8a, type: 3}
+--- !u!114 &1844954225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1844954221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 675f909ffcbf0c643a4d7755213dcb13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag:
+  - Villager
+  distanceDetection: 0
+  score: {fileID: 2123991300}
+--- !u!65 &1844954226
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1844954221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 5.5, z: 8.5}
+  m_Center: {x: -0.00000047683716, y: 0.00000059604645, z: -0.0000023841858}
 --- !u!1 &1847428835
 GameObject:
   m_ObjectHideFlags: 0
@@ -54046,6 +53922,104 @@ Transform:
   m_Father: {fileID: 1208389503}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2087669394
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2087669399}
+  - component: {fileID: 2087669398}
+  - component: {fileID: 2087669397}
+  - component: {fileID: 2087669396}
+  - component: {fileID: 2087669395}
+  m_Layer: 0
+  m_Name: WallDetection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2087669395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087669394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a361e9cbe957d6642851f1f506dafdaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechEvent: {fileID: 537798008}
+--- !u!65 &2087669396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087669394}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2087669397
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087669394}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &2087669398
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087669394}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2087669399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2087669394}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 66.46, y: -31.19, z: 0.81}
+  m_LocalScale: {x: 10, y: 1, z: 20}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2092337010
 GameObject:
   m_ObjectHideFlags: 0
@@ -54119,8 +54093,8 @@ MonoBehaviour:
   fxPrefab: {fileID: 107438, guid: 1426483d47c616e4297a3a71c7ad5860, type: 2}
   speechEvent1: {fileID: 0}
   speechEvent2: {fileID: 0}
-  speechEvent4_1: {fileID: 537798008}
-  speechEvent7: {fileID: 1638288666}
+  speechEvent4_1: {fileID: 0}
+  speechEvent7: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &2092337014
 MonoBehaviour:
