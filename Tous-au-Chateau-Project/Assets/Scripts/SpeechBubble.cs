@@ -141,3 +141,4 @@ public class SpeechBubble : MonoBehaviour {
 		_controllerAnimation.SetActive(false);
 		_controllerAnimation = null;
 	}
+}
