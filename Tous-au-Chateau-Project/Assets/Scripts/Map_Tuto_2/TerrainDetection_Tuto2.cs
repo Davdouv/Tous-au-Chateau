@@ -31,7 +31,7 @@ public class TerrainDetection_Tuto2 : MonoBehaviour {
     {
         yield return new WaitForSeconds(2);
         wall.GetComponent<Crushable>().Crush();
-        ResourceManager.Instance.AddResources(new ResourcesPack(0, 10, 0, 0, 0)
+        ResourceManager.Instance.AddResources(new ResourcesPack(0, 10, 0, 0, 0));
     }
 }
 
