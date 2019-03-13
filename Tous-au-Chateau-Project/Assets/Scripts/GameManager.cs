@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour {
 
     public string levelName;
     private float levelDuration = 0;
+    public string nextSceneName;
 
     private void Start()
     {
@@ -67,7 +69,9 @@ public class GameManager : MonoBehaviour {
         victoryFX.SetActive(true);
 
         // SAVE THE PLAYER's VICTORY
-        SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));        
+        SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));
+
+        StartCoroutine(ChangeScene());
     }
     public void GameLost()
     {
@@ -172,4 +176,12 @@ public class GameManager : MonoBehaviour {
             levelDuration += Time.deltaTime;
         }        
     }
+
+    // Change the scene after 5 sec
+    private IEnumerator ChangeScene()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(nextSceneName);
+    }
+    
 }
