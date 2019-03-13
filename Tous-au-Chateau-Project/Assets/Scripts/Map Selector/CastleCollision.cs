@@ -10,6 +10,7 @@ public class CastleCollision : MonoBehaviour {
 	void Start() {
 		var mapStation = this.transform.parent.gameObject.GetComponent<MapStation>();
 		_levelName = mapStation.name;
+		Debug.Log("Name is " + _levelName);
 	}
 
 	private void OnCollisionEnter(Collision collision)
