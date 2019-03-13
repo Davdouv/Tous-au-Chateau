@@ -21149,26 +21149,6 @@ Transform:
   m_Father: {fileID: 1975094922}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1843064307 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1039396480272724, guid: ff2ddeeb4e7efe348a3d11cbfb7f83fb,
-    type: 2}
-  m_PrefabInternal: {fileID: 1701305941}
---- !u!208 &1843064308
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1843064307}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 2.25, y: 3.025, z: 3.193}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.314, y: -0.314, z: 1.9310001}
-  m_TimeToStationary: 0.5
 --- !u!1 &1876595501
 GameObject:
   m_ObjectHideFlags: 0
@@ -24217,7 +24197,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 41ffd92bbc1e1ff40a96dc3545dd1b84, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

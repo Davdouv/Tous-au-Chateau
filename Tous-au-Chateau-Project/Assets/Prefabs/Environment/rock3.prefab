@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 23419589333984578}
   - component: {fileID: 114953685684212204}
   - component: {fileID: 65548771900836250}
-  - component: {fileID: 208240277859036634}
   m_Layer: 0
   m_Name: rock3
   m_TagString: Untagged
@@ -115,21 +114,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   crushedDownSound: {fileID: 8300000, guid: ae11ad137f7a73d46b584108e7a4325a, type: 3}
   crushFXPrefab: {fileID: 112862, guid: 6e54aa00306e21743b1d31bb8c8ce5bc, type: 2}
   canBeCrushed: 1
---- !u!208 &208240277859036634
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1039396480272724}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 2.25, y: 3.025, z: 3.193}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.314, y: -0.314, z: 1.9310001}
-  m_TimeToStationary: 0.5

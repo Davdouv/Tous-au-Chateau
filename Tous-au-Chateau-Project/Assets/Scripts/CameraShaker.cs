@@ -15,13 +15,14 @@ public class CameraShaker : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        camera = Camera.main.transform;
+        startPosition = camera.localPosition;
         initialDuration = duration;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-        if (shouldShake)
+		if(shouldShake)
         {
             if(duration > 0)
             {
@@ -37,11 +38,8 @@ public class CameraShaker : MonoBehaviour {
         }
 	}
 
-    public void ShakeCamera(Transform cameraToShake)
+    private void GetTrueCamera()
     {
-        shouldShake = true;
 
-        camera = cameraToShake;
-        startPosition = camera.localPosition;
     }
 }

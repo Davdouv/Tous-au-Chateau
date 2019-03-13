@@ -26,7 +26,6 @@ GameObject:
   - component: {fileID: 82605072961491450}
   - component: {fileID: 114457815685435022}
   - component: {fileID: 114668736200293458}
-  - component: {fileID: 208404173500805060}
   m_Layer: 10
   m_Name: Wall
   m_TagString: wall
@@ -135,10 +134,10 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 2
+  MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -171,7 +170,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

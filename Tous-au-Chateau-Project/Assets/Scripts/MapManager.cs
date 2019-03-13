@@ -31,18 +31,14 @@ public class MapManager : MonoBehaviour {
 
     public GameObject _TreesPosition;
 
-    #region Tuto1
+    #region Tuto
     bool once = true;
-    private GameObject firstTree = null;
-    private List<Crushable> otherTrees;
-    private bool isFirstTreeDestroyed = false;
+    public GameObject firstTree = null;
     #endregion
 
     private void Start()
     {
-        otherTrees = new List<Crushable>();
-
-        Generate();        
+        Generate();
     }
 
     public void Generate()
@@ -56,14 +52,7 @@ public class MapManager : MonoBehaviour {
             if (once && GameManager.Instance.tuto && GameManager.Instance.levelName == "Map Tuto 01")
             {
                 once = false;
-                go.AddComponent<FirstTree>();
                 firstTree = go;
-            }
-            else if (!once)
-            {
-                Crushable tree = go.GetComponent<Crushable>();
-                tree.canBeCrushed = false;
-                otherTrees.Add(tree);
             }
         }
     }

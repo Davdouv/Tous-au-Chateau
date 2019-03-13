@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 23633524924779726}
   - component: {fileID: 114273559207841522}
   - component: {fileID: 136563342988697360}
-  - component: {fileID: 208667752824976238}
   m_Layer: 0
   m_Name: rock1
   m_TagString: Untagged
@@ -103,6 +102,7 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+  audioData: {fileID: 0}
   crushedDownSound: {fileID: 8300000, guid: ae11ad137f7a73d46b584108e7a4325a, type: 3}
   crushFXPrefab: {fileID: 112862, guid: 6e54aa00306e21743b1d31bb8c8ce5bc, type: 2}
   canBeCrushed: 1
@@ -119,18 +119,3 @@ CapsuleCollider:
   m_Height: 4.146418
   m_Direction: 1
   m_Center: {x: -0.03227049, y: -0.07911452, z: 0.15098503}
---- !u!208 &208667752824976238
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1712823800327506}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1.751, y: 2.0730002, z: 1.2720001}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.032, y: -0.079, z: 0.15100001}
-  m_TimeToStationary: 0.5

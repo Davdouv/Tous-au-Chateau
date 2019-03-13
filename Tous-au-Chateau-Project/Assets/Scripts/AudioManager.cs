@@ -28,13 +28,14 @@ public class AudioManager : MonoBehaviour {
     #endregion
 
     private static bool _mute;
-    private AudioSource _audioData;
+    private AudioSource source;
     public AudioClip mainMusic;
 
     private void Start()
     {
-        _audioData = this.gameObject.GetComponent<AudioSource>();
-        _audioData.clip = mainMusic;
+        source = this.gameObject.AddComponent<AudioSource>();
+        source.clip = mainMusic;
+        source.Play();
     }
 
     private void Update()

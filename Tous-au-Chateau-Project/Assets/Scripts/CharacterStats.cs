@@ -8,7 +8,7 @@ public class CharacterStats : MonoBehaviour
 {
     private bool _isAlive;
     public float life = 100;
-    public float speed = 1.0f;
+    public float speed = 1.50f;
     public float strength = 0;
 
     private float _saveSpeed;
@@ -23,7 +23,7 @@ public class CharacterStats : MonoBehaviour
         _audioData = GetComponent<AudioSource>();
     }
 
-    public CharacterStats():this(true, 100, 1.0f, 0) { }
+    public CharacterStats():this(true, 100, 2.0f, 0) { }
 
     public CharacterStats(bool live, float vie, float vitesse, float force)
     {
@@ -54,7 +54,7 @@ public class CharacterStats : MonoBehaviour
             {
                 _audioData.clip = GetRandomClip(fallingSound);
             }
-            else if (deathReason != DeathReason.PLAYER)
+            else
             {
                 _audioData.clip = GetRandomClip(deathSound);
             }

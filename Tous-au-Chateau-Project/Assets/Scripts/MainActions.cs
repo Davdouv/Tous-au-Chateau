@@ -158,23 +158,27 @@ public class MainActions : MonoBehaviour
 
     private bool IsInRange(Vector3 position)
     {
+        Debug.Log("Target position : " + position);
+        Debug.Log("Center position : " + sphereCollider.transform.position);
+        Debug.Log("DistanceDetection : " + distanceDetection);
         float distance = (sphereCollider.transform.position - position).sqrMagnitude;
-        //return (distance < distanceDetection * distanceDetection); // Detect if the given position is inside the sphere collider
-        return (distance < 3 * 3);  // 3 is the radius of the base of the hand
+        Debug.Log("Distance : " + distance);
+        return (distance < distanceDetection * distanceDetection);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (crushMode && canCrush)
+        /*
+        if (crushMode && canCrush) //Destroy element of the nature
         {
             if (other.gameObject.tag == "Ground")
             {
                 // Sound
                 _audioData.clip = crushFloorSound;
-                _audioData.Play();
+                _audioData.Play(0);
 
                 // FX
-                Instantiate(fxPrefab, transform).SetActive(true);
+                //Instantiate(fxPrefab, transform).SetActive(true);
 
                 if (GameManager.Instance.tuto)
                 {
@@ -182,6 +186,7 @@ public class MainActions : MonoBehaviour
                 }
             }
         }
+        */
     }
 
     // Return true if we crushed something
@@ -191,15 +196,26 @@ public class MainActions : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Crushable>() && other.gameObject.GetComponent<Crushable>().canBeCrushed)
             {
-                if (IsInRange(other.transform.position))
+                if (IsInRange(other.ClosestPoint(sphereCollider.transform.position)))
                 {
-                    // Play the sound of the object we are going to destroy
-                    _audioData.clip = other.gameObject.GetComponent<Crushable>().GetClip();
-                    _audioData.Play();
-
                     resourceM.AddResources(other.gameObject.GetComponent<Crushable>().Gain());
                     other.gameObject.GetComponent<Crushable>().Crush();
 
+                    if (other.gameObject.GetComponent<CharacterStats>())
+                    {
+                        if (other.gameObject.GetComponent<CharacterStats>().IsAlive())
+                        {
+                            // Play sound of ai character dying
+                            _audioData.clip = other.gameObject.GetComponent<AudioClip>();
+                            _audioData.Play(0);
+                        }
+                    }
+                    else
+                    {
+                        // Play sound of resource destroyed
+                        _audioData.clip = other.gameObject.GetComponent<AudioClip>();
+                        _audioData.Play();
+                    }
                     canCrush = false;
                     return true;
                 }

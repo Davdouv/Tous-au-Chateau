@@ -12,9 +12,8 @@
 
         protected bool state;
 
-        void Start()
+        void start()
         {
-            state = !state;
             ToggleVisibility();
         }
 
