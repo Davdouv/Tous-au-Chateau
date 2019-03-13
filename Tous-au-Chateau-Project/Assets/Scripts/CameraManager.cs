@@ -30,6 +30,13 @@ public class CameraManager : MonoBehaviour {
     private Camera _camera;
     private bool _isCameraDefault = false;
 
+    private CameraShaker cameraShaker;
+
+    private void Start()
+    {
+        cameraShaker = GetComponent<CameraShaker>();
+    }
+
     public bool FindCamera() {
       if (GameObject.Find("Camera (eye)")) { // VR
   			Debug.Log("VR Camera");
@@ -62,5 +69,13 @@ public class CameraManager : MonoBehaviour {
 
     public bool IsCameraDefault() {
       return _isCameraDefault;
+    }
+
+    public void ShakeCamera()
+    {
+        if (cameraShaker)
+        {
+            cameraShaker.ShakeCamera(GetCamera().transform);
+        }
     }
 }

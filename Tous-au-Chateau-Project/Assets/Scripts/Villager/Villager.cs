@@ -70,9 +70,8 @@ public class Villager : MonoBehaviour
         _canMove = !_isPassive;
         _hasJoined = !_isPassive;
         _isJoining = null;
-        Vector3 objectif = 
-            GameObject.Find("Objectif").transform.position;
-        transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
+        //Vector3 objectif = GameObject.Find("Objectif").transform.position;
+        //transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
 
         // SOUND
         // Set a random Wait time so the group don't play sound at the same time
@@ -86,6 +85,90 @@ public class Villager : MonoBehaviour
     {
         _canMove = canMove;
         _anim.SetBool("walk", canMove);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "Wolf" /*&& collision.gameObject.tag != "Villager"*/)
+        {
+            _facingObstacle = true;
+        }
+        else
+        {
+            _facingObstacle = false;
+        }
+    }
+
+    // When facing an obstacle, move left or right
+    private void MoveLeftOrRight()
+    {
+        RaycastHit centerhit, lefthit, righthit;
+        Vector3 moveCorrection = Vector3.zero;
+        Vector3 centerRaystart = transform.position + new Vector3(0, 0.8f, 0),
+            leftRaystart = centerRaystart + new Vector3(-_hitbox.bounds.extents.x - 0.01f, 0, 0), // slightly off so collider does not get stuck in obstacles
+            rightRaystart = centerRaystart + new Vector3(_hitbox.bounds.extents.x + 0.01f, 0, 0);
+
+        Debug.DrawLine(centerRaystart, centerRaystart + transform.forward);
+        Debug.DrawLine(leftRaystart, leftRaystart + transform.forward);
+        Debug.DrawLine(rightRaystart, rightRaystart + transform.forward);
+
+        if (Physics.Raycast(new Ray(centerRaystart, transform.forward), out centerhit, 0.7f))
+        {
+            float angleOfApproach = Vector3.SignedAngle(transform.forward, centerhit.normal, transform.up);
+            if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
+            {
+                moveCorrection = Vector3.right;
+            }
+            else
+            {
+                if (angleOfApproach < 0 && angleOfApproach <= -170)
+                {
+                    moveCorrection = Vector3.left;
+                }
+            }
+        }
+        else
+        {
+            if (Physics.Raycast(new Ray(leftRaystart, transform.forward), out lefthit, 0.7f))
+            {
+                float angleOfApproach = Vector3.SignedAngle(transform.forward, lefthit.normal, transform.up);
+                if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
+                {
+                    moveCorrection = Vector3.right;
+                }
+                else
+                {
+                    if (angleOfApproach < 0 && angleOfApproach <= -170)
+                    {
+                        moveCorrection = Vector3.left;
+                    }
+                }
+            }
+            else
+            {
+                if (Physics.Raycast(new Ray(rightRaystart, transform.forward), out righthit, 0.7f))
+                {
+                    float angleOfApproach = Vector3.SignedAngle(transform.forward, righthit.normal, transform.up);
+                    if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
+                    {
+                        moveCorrection = Vector3.right;
+                    }
+                    else
+                    {
+                        if (angleOfApproach < 0 && angleOfApproach <= -170)
+                        {
+                            moveCorrection = Vector3.left;
+                        }
+                    }
+                }
+                else
+                {
+                    _facingObstacle = false;
+                }
+            }
+        }        
+
+        _rb.MovePosition(transform.position + (transform.forward + moveCorrection) * _stats.speed * Time.deltaTime);
     }
 
     private void Move()

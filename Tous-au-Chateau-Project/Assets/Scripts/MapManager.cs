@@ -48,11 +48,25 @@ public class MapManager : MonoBehaviour {
             GameObject go = this.GetComponent<TreeManager>().BuildTree();
             go.transform.position = _TreesPosition.transform.GetChild(i).gameObject.transform.position;
 
-            if (once && GameManager.Instance.tuto)
+            // For Map Tuto 01
+            if (once && GameManager.Instance.tuto && GameManager.Instance.levelName == "Map Tuto 01")
             {
                 once = false;
                 firstTree = go;
             }
         }
+    }
+
+    // For Map Tuto 01
+    public bool IsFirstTreeDestroyed()
+    {
+        return isFirstTreeDestroyed;
+    }
+
+    // Called when FirstTree is destroyed
+    public void SetFirstTreeDestroyed()
+    {
+        isFirstTreeDestroyed = true;
+        otherTrees.ForEach(tree => tree.canBeCrushed = true);
     }
 }
