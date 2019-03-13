@@ -95,7 +95,11 @@ public class Villager : MonoBehaviour
         if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "Villager" && collision.gameObject.tag != "Wolf")
         {
             _facingObstacle = true;
-        }        
+        }
+        else
+        {
+            _facingObstacle = false;
+        }
     }
 
     // When facing an obstacle, move left or right

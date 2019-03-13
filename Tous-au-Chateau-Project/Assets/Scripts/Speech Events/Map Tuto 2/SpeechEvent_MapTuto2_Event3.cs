@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// 2 - Crushing a rock
+// 3 - Crushing a rock
 
 public class SpeechEvent_MapTuto2_Event3 : SpeechEvent {
 
@@ -14,8 +14,8 @@ public class SpeechEvent_MapTuto2_Event3 : SpeechEvent {
             // Check if all group is dead
             if (currentVillagersGroup.GetNumberOfVillagersAlive() == 0)
             {
-                // Check if at least one has been killed by a wolf
-                if (currentVillagersGroup.IsDeathCausedBy(DeathReason.WOLF))
+                // Check if at least one has been killed by the void
+                if (currentVillagersGroup.IsDeathCausedBy(DeathReason.VOID))
                 {
                     return true;
                 }

@@ -617,36 +617,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 26837442}
   m_Mesh: {fileID: 4300000, guid: 9b73437bf65c22b42a0a6c43d48d9ed2, type: 3}
---- !u!1 &38710132
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1987648620902364, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 38710133}
-  m_Layer: 0
-  m_Name: tree (1)
-  m_TagString: Wood
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &38710133
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4067944840407886, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 38710132}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 16.6, z: 58}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1571207933}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &42896114
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,7 +942,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571207933}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &87457135
 GameObject:
@@ -2355,36 +2325,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 196072415}
   m_Mesh: {fileID: 4300000, guid: 8f3b2dd2a1dcd1140b3631c1cbd94d9a, type: 3}
---- !u!1 &196082466
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1860724127532500, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 196082467}
-  m_Layer: 0
-  m_Name: tree (2)
-  m_TagString: Wood
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &196082467
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4027237188330694, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 196082466}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 16.6, z: 53}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1571207933}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &196660141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4990,6 +4930,7 @@ GameObject:
   - component: {fileID: 402282298}
   - component: {fileID: 402282300}
   - component: {fileID: 402282299}
+  - component: {fileID: 402282301}
   m_Layer: 11
   m_Name: Terrain
   m_TagString: Untagged
@@ -5057,6 +4998,18 @@ Terrain:
   m_PreserveTreePrototypeLayers: 0
   m_ScaleInLightmap: 0.45612583
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
+--- !u!114 &402282301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 402282297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ac7176667652245a8fee159bb97a13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechEvent4: {fileID: 2050851015}
 --- !u!1 &406786980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5085,7 +5038,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571207933}
-  m_RootOrder: 9
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &411181026
 Prefab:
@@ -11065,7 +11018,7 @@ MonoBehaviour:
   message: "There are enemies on our way, such as this wild wolf. Maybe you could,
     you know\u2026 Crush it?"
   bubble: {fileID: 1077681572}
-  previousEvent: {fileID: 2050851015}
+  previousEvent: {fileID: 0}
   hasDoneAction: 0
   wolf: {fileID: 1643772101}
 --- !u!4 &508803584
@@ -15966,7 +15919,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message: You need to place the board at the right place!
   bubble: {fileID: 1077681572}
-  previousEvent: {fileID: 2050851015}
+  previousEvent: {fileID: 0}
   hasDoneAction: 0
 --- !u!1 &542602801
 GameObject:
@@ -23373,36 +23326,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!1 &774175114
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 1146431784030120, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 774175115}
-  m_Layer: 0
-  m_Name: tree (5)
-  m_TagString: Wood
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &774175115
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 4799530252286818, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 774175114}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 13, y: 16.6, z: 48}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1571207933}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &776592966
 GameObject:
   m_ObjectHideFlags: 0
@@ -24181,7 +24104,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571207933}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &823724343
 GameObject:
@@ -25378,7 +25301,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571207933}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &901090393
 GameObject:
@@ -36627,7 +36550,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571207933}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1364650964
 GameObject:
@@ -39304,11 +39227,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 38710133}
-  - {fileID: 196082467}
   - {fileID: 1942443594}
   - {fileID: 2143555192}
-  - {fileID: 774175115}
   - {fileID: 822686497}
   - {fileID: 1363912863}
   - {fileID: 86676347}
@@ -47060,7 +46980,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571207933}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1879503242
 GameObject:
@@ -51701,7 +51621,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571207933}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1931056191
 GameObject:
@@ -52126,7 +52046,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571207933}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1946554370
 GameObject:
@@ -53394,22 +53314,19 @@ GameObject:
 --- !u!114 &2050851015
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 114136071880161686, guid: d52ed13a9d4092c4f99af29c8cfc25de,
-    type: 2}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2050851014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81e3cf3b697a4cd49a8283461a6aa201, type: 3}
+  m_Script: {fileID: 11500000, guid: 71da03f5d7b12964195626bc1fd476e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: "Thanks to this new collected resource, you\u2019re now able to create
-    a bridge for us to cross the river. Select the wood board in your construction
-    panel and put it on the river."
+  message: There must be something you can do with that new collected resource...
   bubble: {fileID: 1077681572}
-  previousEvent: {fileID: 0}
+  previousEvent: {fileID: 698406504}
   hasDoneAction: 0
-  hasWookPlankLanded: 0
+  hasStoneWallLanded: 0
 --- !u!4 &2050851016
 Transform:
   m_ObjectHideFlags: 0
@@ -54981,7 +54898,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1571207933}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2145523475
 GameObject:
