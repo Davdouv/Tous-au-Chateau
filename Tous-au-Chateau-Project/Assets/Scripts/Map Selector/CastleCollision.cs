@@ -14,6 +14,7 @@ public class CastleCollision : MonoBehaviour {
 
 	private void OnCollisionEnter(Collision collision)
 	{
+		Debug.Log("Collision");
 			if (collision.gameObject.tag == _tag)
 			{
 					Debug.Log(_levelName);
