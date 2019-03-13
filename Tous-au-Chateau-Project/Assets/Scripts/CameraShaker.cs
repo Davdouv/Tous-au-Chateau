@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraShaker : MonoBehaviour {
+public class CameraShaker : MonoBehaviour
+{
 
     public float power = 0.5f;
     public float duration = 1.0f;
@@ -13,18 +14,19 @@ public class CameraShaker : MonoBehaviour {
     Vector3 startPosition;
     float initialDuration;
 
-	// Use this for initialization
-	void Start () {
-        camera = Camera.main.transform;
-        startPosition = camera.localPosition;
+    // Use this for initialization
+    void Start()
+    {
         initialDuration = duration;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if(shouldShake)
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+        if (shouldShake)
         {
-            if(duration > 0)
+            if (duration > 0)
             {
                 camera.localPosition = startPosition + Random.insideUnitSphere * power;
                 duration -= Time.deltaTime * slowDownAmount;
@@ -36,10 +38,13 @@ public class CameraShaker : MonoBehaviour {
                 camera.localPosition = startPosition;
             }
         }
-	}
+    }
 
-    private void GetTrueCamera()
+    public void ShakeCamera(Transform cameraToShake)
     {
+        shouldShake = true;
 
+        camera = cameraToShake;
+        startPosition = camera.localPosition;
     }
 }

@@ -5,6 +5,28 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+
+    #region Singleton
+    private static UIManager _instance;
+
+    public static UIManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject go = new GameObject("_UIManager");
+                go.AddComponent<UIManager>();
+            }
+            return _instance;
+        }
+    }
+    void Awake()
+    {
+        _instance = this;
+    }
+    #endregion
+
     //To know where to update the display
     public Text woodTxt;
     public Text stoneTxt;
@@ -240,6 +262,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //only used at beginning of program
+    //The buildings needed to be hidden because they are not inside the UI from the start
+    //and the UI Manager script is only called when the UI palette is displayed
+    //thus, we need to set the buildings active back when the construction pagination is done
+    private void ShowBuildings()
+    {
+        for (int i = 0; i < _BuildingTypeGroup._buildings.Count; ++i)
+        {
+            _BuildingTypeGroup._buildings[i].gameObject.SetActive(true);
+        }
+    }
+
     //only for beginning of program
     private void CalculateNbOfPages()
     {
@@ -258,6 +292,7 @@ public class UIManager : MonoBehaviour
 
         UpdateBuildingInfo();
         CreatePagesList();
+        ShowBuildings();
         CreateButtonsList();
     }
 

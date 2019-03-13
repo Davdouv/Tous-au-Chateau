@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10536869, g: 0.28913683, b: 0.7486905, a: 1}
+  m_IndirectSpecularColor: {r: 0.10531386, g: 0.2890744, b: 0.7486943, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -920,7 +920,6 @@ MonoBehaviour:
     our cause!"
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 564704340}
-  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
 --- !u!4 &104874727
 Transform:
@@ -2557,6 +2556,75 @@ Transform:
   m_Father: {fileID: 1213146686}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &371770105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 371770107}
+  - component: {fileID: 371770106}
+  m_Layer: 0
+  m_Name: WaterReflectionSceneCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!20 &371770106
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 371770105}
+  m_Enabled: 0
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_projectionMatrixMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967279
+  m_RenderingPath: 1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &371770107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 371770105}
+  m_LocalRotation: {x: -0.117698714, y: 0.8755685, z: 0.26827565, w: 0.38412887}
+  m_LocalPosition: {x: -35.495453, y: -100.316795, z: 73.74942}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &374707014
 GameObject:
   m_ObjectHideFlags: 0
@@ -2899,6 +2967,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1872499996735970, guid: 0c79652dfbb2a0947be521e7b349090b,
         type: 2}
+    - target: {fileID: 1774256326975916, guid: 5e167632a6630dc4b9993756d15bda4e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e167632a6630dc4b9993756d15bda4e, type: 2}
   m_IsPrefabAsset: 0
@@ -3157,7 +3229,6 @@ MonoBehaviour:
     one of those to let us pass.
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 508803583}
-  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
   _ResourceManager: {fileID: 439394635}
 --- !u!4 &436246461
@@ -3295,7 +3366,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _TreesPosition: {fileID: 1491627772}
-  firstTree: {fileID: 0}
 --- !u!1 &458065869
 GameObject:
   m_ObjectHideFlags: 0
@@ -3787,7 +3857,6 @@ MonoBehaviour:
     you know\u2026 Crush it?"
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 2050851015}
-  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
   wolf: {fileID: 1643772101}
 --- !u!4 &508803584
@@ -4002,7 +4071,6 @@ MonoBehaviour:
   message: You need to place the board at the right place!
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 2050851015}
-  controllerAnimation: {fileID: 753479756}
   hasDoneAction: 0
 --- !u!1 &547885401
 GameObject:
@@ -4088,7 +4156,6 @@ MonoBehaviour:
     us, please crush the ground near us with your fist."
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 0}
-  controllerAnimation: {fileID: 735240212}
   hasDoneAction: 0
   hasCrushedGround: 0
 --- !u!4 &564704341
@@ -4347,7 +4414,6 @@ MonoBehaviour:
   message: You have to crush the right tree if we want to reach the house.
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 436246460}
-  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
   _ResourceManager: {fileID: 439394635}
 --- !u!1 &596785766
@@ -4989,7 +5055,6 @@ MonoBehaviour:
     more active help from your side, Popularios. Please, crush this tree over there.
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 104874726}
-  controllerAnimation: {fileID: 735240212}
   hasDoneAction: 0
 --- !u!4 &698406505
 Transform:
@@ -7764,7 +7829,9 @@ MonoBehaviour:
   tuto: 1
   victorySound: {fileID: 8300000, guid: 5cd9dcbdeef9b8c46a1913953bb218ba, type: 3}
   defeatSound: {fileID: 8300000, guid: 788d006a0be6ba440a2ec27c10fe9b39, type: 3}
+  victoryFX: {fileID: 0}
   levelName: Tuto_01
+  nextSceneName: 
 --- !u!4 &1050290305
 Transform:
   m_ObjectHideFlags: 0
@@ -7974,6 +8041,7 @@ MonoBehaviour:
   bubbleSound: {fileID: 8300000, guid: 78e42cfe7f0af5f4594e2cecd9e32113, type: 3}
   canClose: 0
   dots: 1
+  controller: 0
 --- !u!1 &1084304927
 GameObject:
   m_ObjectHideFlags: 0
@@ -8368,6 +8436,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1490190447488744, guid: 4c65b6ff25b5bf940b25ee29e70f3569,
         type: 2}
+    - target: {fileID: 1851684891941176, guid: 403f63e3e9f0ab14e8161f52406f7b9c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 403f63e3e9f0ab14e8161f52406f7b9c, type: 2}
   m_IsPrefabAsset: 0
@@ -9507,6 +9579,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1704118711876476, guid: 1be06c3eb1e87cb41922361b3f29baa6,
         type: 2}
+    - target: {fileID: 1774256326975916, guid: 45c7ff8691e959749a47f1d455c12c96, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c7ff8691e959749a47f1d455c12c96, type: 2}
   m_IsPrefabAsset: 0
@@ -12032,7 +12108,6 @@ MonoBehaviour:
     house we have to visit."
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 436246460}
-  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
 --- !u!114 &1643772101 stripped
 MonoBehaviour:
@@ -14412,7 +14487,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1310125500452364, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1843501360830770, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
       propertyPath: m_IsActive
@@ -14951,7 +15026,6 @@ MonoBehaviour:
     panel and put it on the river."
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 698406504}
-  controllerAnimation: {fileID: 753479756}
   hasDoneAction: 0
   hasWookPlankLanded: 0
 --- !u!4 &2050851016
