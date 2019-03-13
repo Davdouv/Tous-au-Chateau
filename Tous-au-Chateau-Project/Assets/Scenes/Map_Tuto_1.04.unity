@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10533604, g: 0.28910613, b: 0.7486913, a: 1}
+  m_IndirectSpecularColor: {r: 0.10531386, g: 0.2890744, b: 0.7486943, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2437,6 +2437,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1872499996735970, guid: 0c79652dfbb2a0947be521e7b349090b,
         type: 2}
+    - target: {fileID: 1774256326975916, guid: 5e167632a6630dc4b9993756d15bda4e, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e167632a6630dc4b9993756d15bda4e, type: 2}
   m_IsPrefabAsset: 0
@@ -5145,8 +5149,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.29040003, y: 0.3822319, z: 0.12839308, w: 0.8678029}
-  m_LocalPosition: {x: 40.754524, y: -58.067455, z: -22.89159}
+  m_LocalRotation: {x: -0.117698714, y: 0.8755685, z: 0.26827565, w: 0.38412887}
+  m_LocalPosition: {x: -37.463146, y: -109.81604, z: 57.26541}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6016,6 +6020,7 @@ MonoBehaviour:
   defeatSound: {fileID: 8300000, guid: 788d006a0be6ba440a2ec27c10fe9b39, type: 3}
   victoryFX: {fileID: 530949743}
   levelName: Tuto_01
+  nextSceneName: 
 --- !u!4 &1050290305
 Transform:
   m_ObjectHideFlags: 0
@@ -6277,6 +6282,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1490190447488744, guid: 4c65b6ff25b5bf940b25ee29e70f3569,
         type: 2}
+    - target: {fileID: 1851684891941176, guid: 403f63e3e9f0ab14e8161f52406f7b9c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 403f63e3e9f0ab14e8161f52406f7b9c, type: 2}
   m_IsPrefabAsset: 0
@@ -7444,6 +7453,10 @@ Prefab:
       value: 
       objectReference: {fileID: 1704118711876476, guid: 1be06c3eb1e87cb41922361b3f29baa6,
         type: 2}
+    - target: {fileID: 1774256326975916, guid: 45c7ff8691e959749a47f1d455c12c96, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c7ff8691e959749a47f1d455c12c96, type: 2}
   m_IsPrefabAsset: 0
@@ -11708,7 +11721,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1310125500452364, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1843501360830770, guid: 4fef603fc95ef0744a447569b1d0dd6b, type: 2}
       propertyPath: m_IsActive
