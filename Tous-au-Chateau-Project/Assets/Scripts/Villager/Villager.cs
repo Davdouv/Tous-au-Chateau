@@ -9,6 +9,7 @@ public class Villager : MonoBehaviour
     NavMeshAgent agent;
     private VillagersGroup _group;
     public int _motivation;
+    private Collider _hitbox;
 
     public bool _isInfected;
     [SerializeField]
@@ -32,7 +33,8 @@ public class Villager : MonoBehaviour
     private AudioSource _audioData;
     public AudioClip walkingSound;
     private float countDown = 0f;
-    private float timeToWait = 10f;
+    private float timeToWait = 0f;
+    private bool _facingObstacle = false;
 
     // Use this for initialization
     void Start()
@@ -42,7 +44,7 @@ public class Villager : MonoBehaviour
         _villagerCollision = GetComponent<DangerDetection>();
         _stats = GetComponent<CharacterStats>();
         _deathmode = GetComponent<DyingVillager>();
-
+        _hitbox = GetComponent<BoxCollider>();
         _anim = transform.GetChild(0).gameObject.GetComponent<Animator>();
 
         if (!IsPassive() && _canMove)
@@ -74,11 +76,12 @@ public class Villager : MonoBehaviour
         //transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
 
         // SOUND
+        _audioData = GetComponent<AudioSource>();
         // Set a random Wait time so the group don't play sound at the same time
         if (walkingSound)
         {
-            timeToWait += Random.Range(0, 20f) + walkingSound.length;
-        }        
+            timeToWait += Random.Range(0, 2 * walkingSound.length) + walkingSound.length;
+        }
     }
 
     public void SetCanMove(bool canMove)
@@ -166,7 +169,7 @@ public class Villager : MonoBehaviour
                     _facingObstacle = false;
                 }
             }
-        }        
+        }
 
         _rb.MovePosition(transform.position + (transform.forward + moveCorrection) * _stats.speed * Time.deltaTime);
     }
@@ -177,8 +180,14 @@ public class Villager : MonoBehaviour
         agent.updatePosition = true;
         agent.velocity = transform.forward * 1.00f;
         */
-
-        _rb.MovePosition(transform.position + transform.forward * _stats.speed * Time.deltaTime);
+        if (_facingObstacle)
+        {
+            MoveLeftOrRight();
+        }
+        else
+        {
+            _rb.MovePosition(transform.position + (transform.forward) * _stats.speed * Time.deltaTime);
+        }
     }
     private void MoveTowardVillager(GameObject target)
     {
@@ -217,7 +226,7 @@ public class Villager : MonoBehaviour
                     break;
             }
             _canTurn = false;
-        }        
+        }
     }
 
     public void GetInfected()
@@ -275,7 +284,8 @@ public class Villager : MonoBehaviour
         }
     }
 
-    void Update()
+
+    void FixedUpdate()
     {
         if (_stats.IsAlive())
         {
@@ -320,11 +330,7 @@ public class Villager : MonoBehaviour
                         _group.AddVillagers(GetComponent<Villager>());
                         transform.parent = _group.gameObject.transform;
 
-                        //transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
-
-                        // print("rotation" +_isJoining.transform.rotation.y);
                         transform.rotation = _isJoining.transform.rotation;
-                        //print("rotation" + transform.rotation.y);
 
                         agent.ResetPath();
                         agent.enabled = false;

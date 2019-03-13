@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crushable : MonoBehaviour {
+public class Crushable : MonoBehaviour
+{
 
     [SerializeField]     protected ResourcesPack _gain;
     private AudioSource _audioData;
@@ -14,7 +15,8 @@ public class Crushable : MonoBehaviour {
     public bool canBeCrushed = true;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         _audioData = GetComponent<AudioSource>();
     }
 
@@ -24,7 +26,7 @@ public class Crushable : MonoBehaviour {
         return _gain;
     }
 
-	public void Crush()
+    public void Crush()
     {
         if (canBeCrushed)
         {
@@ -51,6 +53,11 @@ public class Crushable : MonoBehaviour {
                 Instantiate(crushFXPrefab, transform);
             }
             canBeCrushed = false;
-        }              
+        }
+    }
+
+    public AudioClip GetClip()
+    {
+        return crushedDownSound;
     }
 }

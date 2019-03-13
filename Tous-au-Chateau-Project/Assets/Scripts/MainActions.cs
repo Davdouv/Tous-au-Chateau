@@ -83,16 +83,16 @@ public class MainActions : MonoBehaviour
         {
             Vector2 touchPosition;
             touchPosition = events.GetTouchpadAxis();
-            if(touchPosition.y > 0.5f)
+            if (touchPosition.y > 0.5f)
             {
                 //Move table up
                 player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 10, player.transform.position.z);
             }
-            else if(touchPosition.y < 0.5f)
+            else if (touchPosition.y < 0.5f)
             {
                 //Move table down
                 player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 10, player.transform.position.z);
-            } 
+            }
         }
 
 
@@ -158,27 +158,23 @@ public class MainActions : MonoBehaviour
 
     private bool IsInRange(Vector3 position)
     {
-        Debug.Log("Target position : " + position);
-        Debug.Log("Center position : " + sphereCollider.transform.position);
-        Debug.Log("DistanceDetection : " + distanceDetection);
         float distance = (sphereCollider.transform.position - position).sqrMagnitude;
-        Debug.Log("Distance : " + distance);
-        return (distance < distanceDetection * distanceDetection);
+        //return (distance < distanceDetection * distanceDetection); // Detect if the given position is inside the sphere collider
+        return (distance < 3 * 3);  // 3 is the radius of the base of the hand
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        /*
-        if (crushMode && canCrush) //Destroy element of the nature
+        if (crushMode && canCrush)
         {
             if (other.gameObject.tag == "Ground")
             {
                 // Sound
                 _audioData.clip = crushFloorSound;
-                _audioData.Play(0);
+                _audioData.Play();
 
                 // FX
-                //Instantiate(fxPrefab, transform).SetActive(true);
+                Instantiate(fxPrefab, transform).SetActive(true);
 
                 if (GameManager.Instance.tuto)
                 {
@@ -186,7 +182,6 @@ public class MainActions : MonoBehaviour
                 }
             }
         }
-        */
     }
 
     // Return true if we crushed something
@@ -196,26 +191,15 @@ public class MainActions : MonoBehaviour
         {
             if (other.gameObject.GetComponent<Crushable>() && other.gameObject.GetComponent<Crushable>().canBeCrushed)
             {
-                if (IsInRange(other.ClosestPoint(sphereCollider.transform.position)))
+                if (IsInRange(other.transform.position))
                 {
+                    // Play the sound of the object we are going to destroy
+                    _audioData.clip = other.gameObject.GetComponent<Crushable>().GetClip();
+                    _audioData.Play();
+
                     resourceM.AddResources(other.gameObject.GetComponent<Crushable>().Gain());
                     other.gameObject.GetComponent<Crushable>().Crush();
 
-                    if (other.gameObject.GetComponent<CharacterStats>())
-                    {
-                        if (other.gameObject.GetComponent<CharacterStats>().IsAlive())
-                        {
-                            // Play sound of ai character dying
-                            _audioData.clip = other.gameObject.GetComponent<AudioClip>();
-                            _audioData.Play(0);
-                        }
-                    }
-                    else
-                    {
-                        // Play sound of resource destroyed
-                        _audioData.clip = other.gameObject.GetComponent<AudioClip>();
-                        _audioData.Play();
-                    }
                     canCrush = false;
                     return true;
                 }
@@ -282,7 +266,7 @@ public class MainActions : MonoBehaviour
 
                 }
             }
-        }        
+        }
     }
 
     public bool IsCrushModeActive()
@@ -301,54 +285,54 @@ public class MainActions : MonoBehaviour
         }
     }
 
-   /* void ChangeMaterial(Material newMat)
-    {
-        Renderer[] children;
-        children = newBuilding.GetComponentsInChildren<Renderer>();
-        foreach (Renderer rend in children)
-        {
-            var mats = new Material[rend.materials.Length];
-            for (int i = 0; i < rend.materials.Length; ++i)
-            {
-                mats[i] = newMat;
-            }
-            rend.materials = mats;
-        }
-    }
-    void StockMaterial()
-    {
-        Renderer[] children;
-        Transform[] newBuilding;
-    
-        children = newBuilding.GetComponentsInChildren<Renderer>();
-        foreach (Renderer rend in children)
-        {
-            mats = new Material[rend.materials.Length];
-            objName = new string[rend.materials.Length];
-            for (int i = 0; i < rend.materials.Length; ++i)
-            {
-                mats[i] = GetComponent<Renderer>().material;
-                objName[i] = transform.name;
-            }
-        }
-    }
+    /* void ChangeMaterial(Material newMat)
+     {
+         Renderer[] children;
+         children = newBuilding.GetComponentsInChildren<Renderer>();
+         foreach (Renderer rend in children)
+         {
+             var mats = new Material[rend.materials.Length];
+             for (int i = 0; i < rend.materials.Length; ++i)
+             {
+                 mats[i] = newMat;
+             }
+             rend.materials = mats;
+         }
+     }
+     void StockMaterial()
+     {
+         Renderer[] children;
+         Transform[] newBuilding;
 
-    void ApplyStockedMaterial()
-    {
+         children = newBuilding.GetComponentsInChildren<Renderer>();
+         foreach (Renderer rend in children)
+         {
+             mats = new Material[rend.materials.Length];
+             objName = new string[rend.materials.Length];
+             for (int i = 0; i < rend.materials.Length; ++i)
+             {
+                 mats[i] = GetComponent<Renderer>().material;
+                 objName[i] = transform.name;
+             }
+         }
+     }
 
-        Renderer[] children;
-        children = newBuilding.GetComponentsInChildren<Renderer>();
-        foreach (Renderer rend in children)
-        {
-            var othermats = new Material[rend.materials.Length];
-            for (int i = 0; i < rend.materials.Length; ++i)
-            {
-                if(transform.name == objName[i])
-                {
-                    othermats[i] = mats[i];
-                }
-            }
-            rend.materials = mats;
-        }
-    } */
+     void ApplyStockedMaterial()
+     {
+
+         Renderer[] children;
+         children = newBuilding.GetComponentsInChildren<Renderer>();
+         foreach (Renderer rend in children)
+         {
+             var othermats = new Material[rend.materials.Length];
+             for (int i = 0; i < rend.materials.Length; ++i)
+             {
+                 if(transform.name == objName[i])
+                 {
+                     othermats[i] = mats[i];
+                 }
+             }
+             rend.materials = mats;
+         }
+     } */
 }

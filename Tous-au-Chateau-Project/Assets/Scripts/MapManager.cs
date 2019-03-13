@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MapManager : MonoBehaviour {
+public class MapManager : MonoBehaviour
+{
 
     #region Singleton
     private static MapManager _instance;
@@ -31,13 +32,17 @@ public class MapManager : MonoBehaviour {
 
     public GameObject _TreesPosition;
 
-    #region Tuto
+    #region Tuto1
     bool once = true;
-    public GameObject firstTree = null;
+    private GameObject firstTree = null;
+    private List<Crushable> otherTrees;
+    private bool isFirstTreeDestroyed = false;
     #endregion
 
     private void Start()
     {
+        otherTrees = new List<Crushable>();
+
         Generate();
     }
 
@@ -52,7 +57,14 @@ public class MapManager : MonoBehaviour {
             if (once && GameManager.Instance.tuto && GameManager.Instance.levelName == "Map Tuto 01")
             {
                 once = false;
+                go.AddComponent<FirstTree>();
                 firstTree = go;
+            }
+            else if (!once)
+            {
+                Crushable tree = go.GetComponent<Crushable>();
+                tree.canBeCrushed = false;
+                otherTrees.Add(tree);
             }
         }
     }

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraManager : MonoBehaviour {
+//[RequireComponent(typeof(CameraShaker))]
+public class CameraManager : MonoBehaviour
+{
 
     #region Singleton
     private static CameraManager _instance;
@@ -37,38 +39,48 @@ public class CameraManager : MonoBehaviour {
         cameraShaker = GetComponent<CameraShaker>();
     }
 
-    public bool FindCamera() {
-      if (GameObject.Find("Camera (eye)")) { // VR
-  			Debug.Log("VR Camera");
-        _isCameraDefault = false;
-  			_camera = GameObject.Find("Camera (eye)").GetComponent<Camera>();
-        return true;
-      } else if (GameObject.Find("Neck/Camera")) { // VR
-  			Debug.Log("VR Camera");
-        _isCameraDefault = false;
-  			_camera = GameObject.Find("Neck/Camera").GetComponent<Camera>();
-        return true;
-  		} else if (GameObject.Find("[VRSimulator_CameraRig]")) { // Simulator
-  			Debug.Log("Simulator Camera");
-        _isCameraDefault = false;
-  			_camera = GameObject.Find("Camera (eye)").GetComponent<Camera>();
-        return true;
-  		} else if (GameObject.Find("Main Camera")) { // Default
-  			Debug.Log("Default Camera");
-        _isCameraDefault = true;
-  			_camera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        return true;
-  		}
-      return false;
-  	}
-
-    public Camera GetCamera() {
-      FindCamera();
-      return _camera;
+    public bool FindCamera()
+    {
+        if (GameObject.Find("Camera (eye)"))
+        { // VR
+          //Debug.Log("VR Camera");
+            _isCameraDefault = false;
+            _camera = GameObject.Find("Camera (eye)").GetComponent<Camera>();
+            return true;
+        }
+        else if (GameObject.Find("Neck/Camera"))
+        { // VR
+          //Debug.Log("VR Camera");
+            _isCameraDefault = false;
+            _camera = GameObject.Find("Neck/Camera").GetComponent<Camera>();
+            return true;
+        }
+        else if (GameObject.Find("[VRSimulator_CameraRig]"))
+        { // Simulator
+          //Debug.Log("Simulator Camera");
+            _isCameraDefault = false;
+            _camera = GameObject.Find("Camera (eye)").GetComponent<Camera>();
+            return true;
+        }
+        else if (GameObject.Find("Main Camera"))
+        { // Default
+          //Debug.Log("Default Camera");
+            _isCameraDefault = true;
+            _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            return true;
+        }
+        return false;
     }
 
-    public bool IsCameraDefault() {
-      return _isCameraDefault;
+    public Camera GetCamera()
+    {
+        FindCamera();
+        return _camera;
+    }
+
+    public bool IsCameraDefault()
+    {
+        return _isCameraDefault;
     }
 
     public void ShakeCamera()
