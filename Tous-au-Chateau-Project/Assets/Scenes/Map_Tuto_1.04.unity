@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10531386, g: 0.2890744, b: 0.7486943, a: 1}
+  m_IndirectSpecularColor: {r: 0.10536869, g: 0.28913683, b: 0.7486905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -920,6 +920,7 @@ MonoBehaviour:
     our cause!"
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 564704340}
+  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
 --- !u!4 &104874727
 Transform:
@@ -2618,8 +2619,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 371770105}
-  m_LocalRotation: {x: -0.117698714, y: 0.8755685, z: 0.26827565, w: 0.38412887}
-  m_LocalPosition: {x: -35.495453, y: -100.316795, z: 73.74942}
+  m_LocalRotation: {x: -0.047223188, y: 0.9527135, z: 0.20695439, w: 0.21743253}
+  m_LocalPosition: {x: 35.285313, y: -80.03392, z: 41.430115}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3229,6 +3230,7 @@ MonoBehaviour:
     one of those to let us pass.
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 508803583}
+  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
   _ResourceManager: {fileID: 439394635}
 --- !u!4 &436246461
@@ -3857,6 +3859,7 @@ MonoBehaviour:
     you know\u2026 Crush it?"
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 2050851015}
+  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
   wolf: {fileID: 1643772101}
 --- !u!4 &508803584
@@ -4071,6 +4074,7 @@ MonoBehaviour:
   message: You need to place the board at the right place!
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 2050851015}
+  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
 --- !u!1 &547885401
 GameObject:
@@ -4156,6 +4160,7 @@ MonoBehaviour:
     us, please crush the ground near us with your fist."
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 0}
+  controllerAnimation: {fileID: 735240212}
   hasDoneAction: 0
   hasCrushedGround: 0
 --- !u!4 &564704341
@@ -4414,6 +4419,7 @@ MonoBehaviour:
   message: You have to crush the right tree if we want to reach the house.
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 436246460}
+  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
   _ResourceManager: {fileID: 439394635}
 --- !u!1 &596785766
@@ -5055,6 +5061,7 @@ MonoBehaviour:
     more active help from your side, Popularios. Please, crush this tree over there.
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 104874726}
+  controllerAnimation: {fileID: 735240212}
   hasDoneAction: 0
 --- !u!4 &698406505
 Transform:
@@ -8041,7 +8048,6 @@ MonoBehaviour:
   bubbleSound: {fileID: 8300000, guid: 78e42cfe7f0af5f4594e2cecd9e32113, type: 3}
   canClose: 0
   dots: 1
-  controller: 0
 --- !u!1 &1084304927
 GameObject:
   m_ObjectHideFlags: 0
@@ -12108,6 +12114,7 @@ MonoBehaviour:
     house we have to visit."
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 436246460}
+  controllerAnimation: {fileID: 0}
   hasDoneAction: 0
 --- !u!114 &1643772101 stripped
 MonoBehaviour:
@@ -15003,6 +15010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2050851016}
   - component: {fileID: 2050851015}
+  - component: {fileID: 2050851017}
   m_Layer: 0
   m_Name: Event 4
   m_TagString: Untagged
@@ -15026,6 +15034,7 @@ MonoBehaviour:
     panel and put it on the river."
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 698406504}
+  controllerAnimation: {fileID: 753479756}
   hasDoneAction: 0
   hasWookPlankLanded: 0
 --- !u!4 &2050851016
@@ -15041,6 +15050,29 @@ Transform:
   m_Father: {fileID: 1043190660}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2050851017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2050851014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84930d01e26e09142adcad505b6f5bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  operateAxis: 1
+  ignoreCollisionsWith: []
+  excludeColliderCheckOn: []
+  equalityFidelity: 0.001
+  pressedDistance: 0.1
+  stayPressed: 0
+  minMaxLimitThreshold: 0.01
+  restingPosition: 0
+  restingPositionThreshold: 0.01
+  positionTarget: 0
+  pressSpeed: 10
+  returnSpeed: 10
 --- !u!1 &2060526346
 GameObject:
   m_ObjectHideFlags: 0
