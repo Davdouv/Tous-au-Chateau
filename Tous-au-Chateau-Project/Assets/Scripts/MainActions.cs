@@ -86,12 +86,12 @@ public class MainActions : MonoBehaviour
             if (touchPosition.y > 0.5f)
             {
                 //Move table up
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 10, player.transform.position.z);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 5, player.transform.position.z);
             }
             else if (touchPosition.y < 0.5f)
             {
                 //Move table down
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 10, player.transform.position.z);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 5, player.transform.position.z);
             }
         }
 
