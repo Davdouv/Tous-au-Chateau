@@ -14,6 +14,8 @@
 
         void start()
         {
+            rightController.ButtonTwoPressed += ToggleHands;
+            state = !state;
             ToggleVisibility();
         }
 
