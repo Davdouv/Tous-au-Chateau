@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10536869, g: 0.28913683, b: 0.7486905, a: 1}
+  m_IndirectSpecularColor: {r: 0.28930417, g: 0.46862257, b: 0.9005637, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3663,6 +3663,7 @@ MonoBehaviour:
   uiM: {fileID: 0}
   spawnPoint: {fileID: 1562990271}
   RightHand: {fileID: 564339773}
+  events: {fileID: 0}
   minHeightToCrush: 10
   crushFloorSound: {fileID: 8300000, guid: 41ffd92bbc1e1ff40a96dc3545dd1b84, type: 3}
   Transparent_Building: {fileID: 0}
@@ -3672,6 +3673,7 @@ MonoBehaviour:
   speechEvent2: {fileID: 0}
   speechEvent4_1: {fileID: 0}
   speechEvent7: {fileID: 0}
+  speechEvent2_1: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &386342748
 MonoBehaviour:
@@ -10066,7 +10068,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a63f835b68ed6b44492903303214065e, type: 3}
+  m_audioClip: {fileID: 8300000, guid: cd3971af040938b4698aa5833702dd62, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.05
   m_Pitch: 1
@@ -10163,7 +10165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2167dd19c420442996ce4bcdd076e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMusic: {fileID: 8300000, guid: a63f835b68ed6b44492903303214065e, type: 3}
+  mainMusic: {fileID: 8300000, guid: cd3971af040938b4698aa5833702dd62, type: 3}
 --- !u!1 &1209123526
 GameObject:
   m_ObjectHideFlags: 0
