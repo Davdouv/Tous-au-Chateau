@@ -1077,7 +1077,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
       propertyPath: m_Name
@@ -9251,7 +9251,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
       propertyPath: m_Name
@@ -16628,7 +16628,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
       propertyPath: m_Name
@@ -17835,7 +17835,9 @@ MonoBehaviour:
   - {fileID: 1790259088}
   - {fileID: 2128368848}
   - {fileID: 1547201792}
-  debugLoadScene: 0
+  villager: {fileID: 1631550310}
+  originalMat: {fileID: 2100000, guid: bcb6c7a06e9c56742b859c08f5913e02, type: 2}
+  highlightMat: {fileID: 2100000, guid: 9908043f8bc79b544913d33c76622f95, type: 2}
 --- !u!4 &2128369107
 Transform:
   m_ObjectHideFlags: 0
@@ -17861,6 +17863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ready: 0
+  log: 0
 --- !u!1 &2137592413
 GameObject:
   m_ObjectHideFlags: 0
