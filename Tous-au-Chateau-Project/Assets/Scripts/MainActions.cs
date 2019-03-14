@@ -53,7 +53,7 @@ public class MainActions : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        events = GetComponent<VRTK.VRTK_ControllerEvents>();
+        //events = GetComponent<VRTK.VRTK_ControllerEvents>();
         trigger = false;
         crushMode = false;
         haveBuilding = false;

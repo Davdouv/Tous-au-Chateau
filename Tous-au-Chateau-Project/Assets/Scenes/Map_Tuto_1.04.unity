@@ -2622,7 +2622,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 371770105}
   m_LocalRotation: {x: -0.29035017, y: 0.07279472, z: 0.022607796, w: 0.9538798}
-  m_LocalPosition: {x: 48.97384, y: -120.055954, z: -33.155334}
+  m_LocalPosition: {x: 42.286884, y: -149.6873, z: -76.803665}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3122,9 +3122,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ea5335256d44a94bab9d156994a3f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightController: {fileID: 0}
+  rightController: {fileID: 555709867}
   leftHandAvatar: {fileID: 1126867796}
-  rightHandAvatar: {fileID: 0}
+  rightHandAvatar: {fileID: 1524966538}
 --- !u!1 &428893701
 GameObject:
   m_ObjectHideFlags: 0
@@ -10267,6 +10267,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 159396, guid: 4d293c8e162f3874b982baadd71153d2,
     type: 2}
   m_PrefabInternal: {fileID: 1235158200}
+--- !u!4 &1235158214 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 402434, guid: 4d293c8e162f3874b982baadd71153d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1235158200}
 --- !u!1 &1242263454
 GameObject:
   m_ObjectHideFlags: 0
@@ -12092,20 +12097,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd049a9bff3897c4d97ce3c77bc85ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceM: {fileID: 0}
-  uiM: {fileID: 0}
+  resourceM: {fileID: 439394635}
+  uiM: {fileID: 178656203}
   spawnPoint: {fileID: 1083411679}
-  RightHand: {fileID: 0}
+  RightHand: {fileID: 1235158214}
   events: {fileID: 555709867}
   minHeightToCrush: 10
   crushFloorSound: {fileID: 8300000, guid: 41ffd92bbc1e1ff40a96dc3545dd1b84, type: 3}
   Transparent_Building: {fileID: 0}
   villagerPrefab: {fileID: 0}
-  fxPrefab: {fileID: 0}
-  speechEvent1: {fileID: 0}
-  speechEvent2: {fileID: 0}
-  speechEvent4_1: {fileID: 0}
-  speechEvent7: {fileID: 0}
+  fxPrefab: {fileID: 107438, guid: 1426483d47c616e4297a3a71c7ad5860, type: 2}
+  speechEvent1: {fileID: 564704340}
+  speechEvent2: {fileID: 104874726}
+  speechEvent4_1: {fileID: 537798008}
+  speechEvent7: {fileID: 1638288666}
   speechEvent2_1: {fileID: 0}
   player: {fileID: 0}
 --- !u!82 &1524966540
