@@ -12,12 +12,12 @@
 
         protected bool state;
 
-        void start()
+        /*void start()
         {
             rightController.ButtonTwoPressed += ToggleHands;
             state = !state;
             ToggleVisibility();
-        }
+        }*/
 
         protected virtual void OnEnable()
         {
