@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28930417, g: 0.46862257, b: 0.9005637, a: 1}
+  m_IndirectSpecularColor: {r: 0.10536869, g: 0.28913683, b: 0.7486905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1366,7 +1366,7 @@ MonoBehaviour:
     how to get rid of them now, right?"
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 564704342}
-  controllerAnimation: {fileID: 0}
+  controllerAnimation: {fileID: 735240212}
   hasDoneAction: 0
   wolf: {fileID: 1643772101}
 --- !u!4 &104874727
@@ -2091,6 +2091,7 @@ MonoBehaviour:
   _BuildingTypeGroup: {fileID: 1453698697}
   ConstructionPagination: {fileID: 1107526685}
   buildingNotPuchasable: {r: 0.6901961, g: 0, b: 0.02745098, a: 1}
+  paginationButtonsPrefab: {fileID: 0}
   buttonsPosition: {fileID: 623682146}
   constructionPosition1: {fileID: 1327219228}
   constructionPosition2: {fileID: 527055989}
@@ -19846,7 +19847,7 @@ MonoBehaviour:
     sisters and brothers...). Our ranks are getting wider and wider. But that\u2019s
     still not over, there\u2019s another house we have to visit."
   bubble: {fileID: 1077681572}
-  previousEvent: {fileID: 0}
+  previousEvent: {fileID: 2050851015}
   controllerAnimation: {fileID: 0}
   hasDoneAction: 0
 --- !u!4 &508803584
@@ -24638,7 +24639,7 @@ MonoBehaviour:
   message: We need you to place the wall at the right location.
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 2050851015}
-  controllerAnimation: {fileID: 0}
+  controllerAnimation: {fileID: 1739848967}
   hasDoneAction: 0
   isStoneWallPlacedWell: 0
 --- !u!1 &540515049
@@ -26440,7 +26441,7 @@ MonoBehaviour:
     rock, just to see what it does?"
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 104874726}
-  controllerAnimation: {fileID: 0}
+  controllerAnimation: {fileID: 735240212}
   hasDoneAction: 0
 --- !u!4 &698406505
 Transform:
@@ -27438,7 +27439,7 @@ RectTransform:
   - {fileID: 826555490}
   - {fileID: 665255603}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -29927,10 +29928,10 @@ Transform:
   m_Children:
   - {fileID: 1349777800}
   - {fileID: 1116862442}
-  - {fileID: 487617248}
   - {fileID: 1221946913}
-  - {fileID: 205135123}
   - {fileID: 1874491352}
+  - {fileID: 205135123}
+  - {fileID: 487617248}
   - {fileID: 867444160}
   m_Father: {fileID: 1892550346}
   m_RootOrder: 2
@@ -49000,7 +49001,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1754028767
 MonoBehaviour:
@@ -53240,7 +53241,7 @@ MonoBehaviour:
   message: There must be something you can do with that new collected resource...
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 698406504}
-  controllerAnimation: {fileID: 0}
+  controllerAnimation: {fileID: 1739848967}
   hasDoneAction: 0
   hasStoneWallLanded: 0
 --- !u!4 &2050851016

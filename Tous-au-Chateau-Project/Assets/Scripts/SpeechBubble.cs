@@ -131,14 +131,18 @@ public class SpeechBubble : MonoBehaviour {
 	public void SetControllerAnimation(GameObject controllerAnimation) {
 		_text.gameObject.SetActive(false);
 		_textWithControllers.gameObject.SetActive(true);
-		_controllerAnimation = controllerAnimation;
-		_controllerAnimation.SetActive(true);
+		if (controllerAnimation != null) {
+			_controllerAnimation = controllerAnimation;
+			_controllerAnimation.SetActive(true);
+		}
 	}
 
 	public void UnsetControllerAnimation() {
 		_text.gameObject.SetActive(true);
 		_textWithControllers.gameObject.SetActive(false);
-		_controllerAnimation.SetActive(false);
-		_controllerAnimation = null;
+		if (_controllerAnimation != null) {
+			_controllerAnimation.SetActive(false);
+			_controllerAnimation = null;
+		}
 	}
 }
