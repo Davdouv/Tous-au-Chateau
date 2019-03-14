@@ -10,7 +10,7 @@ public class MainActions : MonoBehaviour
     public GameObject spawnPoint;
     public Transform RightHand;
 
-    VRTK.VRTK_ControllerEvents events;
+    public VRTK.VRTK_ControllerEvents events;
     bool trigger;
     bool crushMode;
     bool haveBuilding;
@@ -50,13 +50,13 @@ public class MainActions : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        events = GetComponent<VRTK.VRTK_ControllerEvents>();
+        //events = GetComponent<VRTK.VRTK_ControllerEvents>();
         trigger = false;
         crushMode = false;
         haveBuilding = false;
         _audioData = GetComponent<AudioSource>();
         sphereCollider = GetComponent<SphereCollider>();
-        distanceDetection = sphereCollider.radius * 100; // 100 is the scale of the last parent (other parent has scale of 1)
+        distanceDetection = sphereCollider.radius * 100 * 100; // 100 is the scale of the last parent (other parent has scale of 1) and 100 of the game object
 
         if (player == null)
         {
