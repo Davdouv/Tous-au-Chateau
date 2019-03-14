@@ -10,7 +10,7 @@ public class MainActions : MonoBehaviour
     public GameObject spawnPoint;
     public Transform RightHand;
 
-    VRTK.VRTK_ControllerEvents events;
+    public VRTK.VRTK_ControllerEvents events;
     bool trigger;
     bool crushMode;
     bool haveBuilding;
@@ -41,6 +41,7 @@ public class MainActions : MonoBehaviour
     public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
     public SpeechEvent_MapTuto1_Event4_1 speechEvent4_1 = null;
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
+    public SpeechEvent_MapTuto2_Event1 speechEvent2_1 = null;
 
     Material[] mats;
     string[] objName;
@@ -50,13 +51,13 @@ public class MainActions : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        events = GetComponent<VRTK.VRTK_ControllerEvents>();
+        //events = GetComponent<VRTK.VRTK_ControllerEvents>();
         trigger = false;
         crushMode = false;
         haveBuilding = false;
         _audioData = GetComponent<AudioSource>();
         sphereCollider = GetComponent<SphereCollider>();
-        distanceDetection = sphereCollider.radius * 100; // 100 is the scale of the last parent (other parent has scale of 1)
+        distanceDetection = sphereCollider.radius * 100 * 100; // 100 is the scale of the last parent (other parent has scale of 1) and 100 of the game object
 
         if (player == null)
         {
@@ -75,6 +76,7 @@ public class MainActions : MonoBehaviour
                 VerifyActionTuto(speechEvent2);
                 VerifyActionTuto(speechEvent4_1);
                 VerifyActionTuto(speechEvent7);
+                VerifyActionTuto(speechEvent2_1);
             }
         }
 
@@ -158,9 +160,10 @@ public class MainActions : MonoBehaviour
 
     private bool IsInRange(Vector3 position)
     {
-        float distance = (sphereCollider.transform.position - position).sqrMagnitude;
-        //return (distance < distanceDetection * distanceDetection); // Detect if the given position is inside the sphere collider
-        return (distance < 3 * 3);  // 3 is the radius of the base of the hand
+        Vector3 handCenter = transform.TransformPoint(sphereCollider.center);
+        float distance = (handCenter - position).sqrMagnitude;
+        return (distance < distanceDetection * distanceDetection); // Detect if the given position is inside the sphere collider
+        //return (distance < 3 * 3);  // 3 is the radius of the base of the hand
     }
 
     private void OnTriggerEnter(Collider other)
