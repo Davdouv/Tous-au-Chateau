@@ -315,7 +315,6 @@ GameObject:
   - component: {fileID: 4726844815573086}
   - component: {fileID: 95718739528495300}
   - component: {fileID: 114963189862696322}
-  - component: {fileID: 114041947537959788}
   m_Layer: 0
   m_Name: VRTK_BasicHand
   m_TagString: Untagged
@@ -589,9 +588,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4047283293557658}
   - component: {fileID: 137710368452278466}
-  - component: {fileID: 135943278152409744}
-  - component: {fileID: 82940820648108166}
-  - component: {fileID: 114478043845343364}
   m_Layer: 0
   m_Name: VRTK_BasicHand
   m_TagString: Untagged
@@ -1155,7 +1151,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1469220889570388}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1320,101 +1316,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!82 &82940820648108166
-AudioSource:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1812289512735356}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 41ffd92bbc1e1ff40a96dc3545dd1b84, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!95 &95718739528495300
 Animator:
   serializedVersion: 3
@@ -1433,50 +1334,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114041947537959788
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1469220889570388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393a6cb30fae3e841bd85dca765098f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  resetOnDisable: 1
-  sdkOverrides:
-  - loadedSDKSetup: {fileID: 0}
-    controllerType: 3
-    position: {x: 0, y: 0, z: -0.175}
-    rotation: {x: 40, y: 0, z: -72}
-    scale: {x: 1, y: 1, z: 1}
-  - loadedSDKSetup: {fileID: 0}
-    controllerType: 8
-    position: {x: 0.0135, y: 0.0475, z: -0.165}
-    rotation: {x: 60, y: 0, z: -81}
-    scale: {x: 1, y: 1, z: 1}
-  - loadedSDKSetup: {fileID: 0}
-    controllerType: 5
-    position: {x: 0.032, y: -0.022, z: -0.11}
-    rotation: {x: 10, y: 0, z: -90}
-    scale: {x: 1, y: 1, z: 1}
-  - loadedSDKSetup: {fileID: 0}
-    controllerType: 4
-    position: {x: 0.015, y: 0.025, z: -0.175}
-    rotation: {x: 45, y: 0, z: -70}
-    scale: {x: 1, y: 1, z: 1}
-  - loadedSDKSetup: {fileID: 0}
-    controllerType: 14
-    position: {x: 0.009, y: 0.0375, z: -0.175}
-    rotation: {x: 45, y: 0, z: -70}
-    scale: {x: 1, y: 1, z: 1}
-  - loadedSDKSetup: {fileID: 0}
-    controllerType: 13
-    position: {x: 0.0116, y: 0.0523, z: -0.0723}
-    rotation: {x: 45, y: 0, z: -70}
-    scale: {x: 1, y: 1, z: 1}
 --- !u!114 &114092341136231322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1546,33 +1403,6 @@ MonoBehaviour:
   smoothsScale: 0
   maxAllowedPerFrameSizeDifference: 0.003
   _moment: 2
---- !u!114 &114478043845343364
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1812289512735356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd049a9bff3897c4d97ce3c77bc85ecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourceM: {fileID: 0}
-  uiM: {fileID: 0}
-  spawnPoint: {fileID: 0}
-  RightHand: {fileID: 0}
-  events: {fileID: 0}
-  minHeightToCrush: 10
-  crushFloorSound: {fileID: 8300000, guid: 41ffd92bbc1e1ff40a96dc3545dd1b84, type: 3}
-  Transparent_Building: {fileID: 0}
-  villagerPrefab: {fileID: 0}
-  fxPrefab: {fileID: 0}
-  speechEvent1: {fileID: 0}
-  speechEvent2: {fileID: 0}
-  speechEvent4_1: {fileID: 0}
-  speechEvent7: {fileID: 0}
-  speechEvent2_1: {fileID: 0}
-  player: {fileID: 0}
 --- !u!114 &114586987141607270
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1634,18 +1464,18 @@ MonoBehaviour:
   setFingersForControllerType: 1
   mirrorModel: 0
   animationSnapSpeed: 0.1
-  thumbButton: 3
+  thumbButton: 9
   indexButton: 3
-  middleButton: 3
-  ringButton: 3
-  pinkyButton: 3
-  threeFingerButton: 3
-  thumbAxisButton: 5
+  middleButton: 0
+  ringButton: 0
+  pinkyButton: 0
+  threeFingerButton: 7
+  thumbAxisButton: 7
   indexAxisButton: 5
-  middleAxisButton: 5
-  ringAxisButton: 5
-  pinkyAxisButton: 5
-  threeFingerAxisButton: 5
+  middleAxisButton: 9
+  ringAxisButton: 10
+  pinkyAxisButton: 11
+  threeFingerAxisButton: 2
   thumbState: 0
   indexState: 0
   middleState: 0
@@ -1666,44 +1496,44 @@ MonoBehaviour:
     applyPinkyOverride: 1
     pinkyOverride: 0
   touchOverrides:
-    ignoreAllOverrides: 0
-    stateValue: -1
-    applyThumbOverride: 1
-    thumbOverride: 0.2
-    applyIndexOverride: 0
-    indexOverride: 0
-    applyMiddleOverride: 1
-    middleOverride: 0.2
-    applyRingOverride: 1
-    ringOverride: 0.2
-    applyPinkyOverride: 1
-    pinkyOverride: 0.2
-  grabOverrides:
-    ignoreAllOverrides: 0
+    ignoreAllOverrides: 1
     stateValue: -1
     applyThumbOverride: 1
     thumbOverride: 0
-    applyIndexOverride: 0
+    applyIndexOverride: 1
     indexOverride: 0
     applyMiddleOverride: 1
-    middleOverride: 1
+    middleOverride: 0
     applyRingOverride: 1
-    ringOverride: 1
+    ringOverride: 0
     applyPinkyOverride: 1
-    pinkyOverride: 0.5
-  useOverrides:
-    ignoreAllOverrides: 0
+    pinkyOverride: 0
+  grabOverrides:
+    ignoreAllOverrides: 1
     stateValue: -1
     applyThumbOverride: 1
-    thumbOverride: 0.3
-    applyIndexOverride: 0
+    thumbOverride: 0
+    applyIndexOverride: 1
     indexOverride: 0
     applyMiddleOverride: 1
-    middleOverride: 1
+    middleOverride: 0
     applyRingOverride: 1
-    ringOverride: 1
+    ringOverride: 0
     applyPinkyOverride: 1
-    pinkyOverride: 1
+    pinkyOverride: 0
+  useOverrides:
+    ignoreAllOverrides: 1
+    stateValue: -1
+    applyThumbOverride: 1
+    thumbOverride: 0
+    applyIndexOverride: 1
+    indexOverride: 0
+    applyMiddleOverride: 1
+    middleOverride: 0
+    applyRingOverride: 1
+    ringOverride: 0
+    applyPinkyOverride: 1
+    pinkyOverride: 0
   handModel: {fileID: 0}
   controllerEvents: {fileID: 0}
   interactNearTouch: {fileID: 0}
@@ -1770,18 +1600,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.015
   m_Center: {x: 0, y: -0.015, z: 0}
---- !u!135 &135943278152409744
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1812289512735356}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.00065
-  m_Center: {x: -0.0001, y: -0.0008, z: -0.0001087562}
 --- !u!136 &136032359288340650
 CapsuleCollider:
   m_ObjectHideFlags: 1

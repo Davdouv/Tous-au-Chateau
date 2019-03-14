@@ -140,6 +140,13 @@ public class MapStation : MapPhysicObject {
 		platformRend.material.SetColor("_SpecColor", Color.green);
 	}
 
+	public void SetMaterial(Material mat) {
+		var rend = castleUnlocked.GetComponent<Renderer>();
+		if (mat != rend.material) {
+			rend.material = mat;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		// DEBUG

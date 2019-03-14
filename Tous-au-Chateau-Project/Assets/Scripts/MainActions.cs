@@ -48,6 +48,8 @@ public class MainActions : MonoBehaviour
 
     public GameObject player;
 
+    private bool mapManager = false;
+
     // Use this for initialization
     void Start()
     {
@@ -63,6 +65,9 @@ public class MainActions : MonoBehaviour
         {
             player = GameObject.Find("[VRTK_SDKManager]");
         }
+
+        mapManager = (SceneManager.GetActiveScene().name == "Map Selector");
+
     }
 
     // Update is called once per frame
@@ -80,7 +85,7 @@ public class MainActions : MonoBehaviour
             }
         }
 
-        //Control height of the map 
+        //Control height of the map
         if (events.touchpadPressed)
         {
             Vector2 touchPosition;
@@ -123,7 +128,7 @@ public class MainActions : MonoBehaviour
                 Destroy(newBuilding);
                 newBuilding = Instantiate(buildingPrefab, buildingTrans.position, buildingTrans.rotation);
             }
-            else if (SceneManager.GetActiveScene().name == "Map selector")
+            else if (SceneManager.GetActiveScene().name == "Map Selector")
             {
                 if (haveVillager)
                 {
@@ -213,8 +218,24 @@ public class MainActions : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        if (mapManager)
+        {
+            if (events.triggerPressed && !haveVillager)
+            {
+                if (other.tag == "Villager")
+                {
+                    Debug.Log("Villager");
+                    //other.gameObject.transform = spawnPoint.transform;
+                    oldVillager = other.gameObject;
+                    oldVillager.SetActive(false);
+                    newVillager = Instantiate(villagerPrefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                    haveVillager = true;
+                }
+
+            }
+        }
         // If we didn't crush, check for other actions
-        if (!CrushAction(other))
+        else if (!CrushAction(other))
         {
             if (events.triggerPressed && !haveBuilding)
             {
@@ -252,21 +273,6 @@ public class MainActions : MonoBehaviour
                         //Call function from @justine script
                         uiM.DisplayConstructionPage(2);
                     }
-                }
-            }
-            else if (SceneManager.GetActiveScene().name == "Map selector")
-            {
-                if (events.triggerPressed && !haveVillager)
-                {
-                    if (other.tag == "Villager")
-                    {
-                        //other.gameObject.transform = spawnPoint.transform;
-                        oldVillager = other.gameObject;
-                        oldVillager.SetActive(false);
-                        newVillager = Instantiate(villagerPrefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
-                        haveVillager = true;
-                    }
-
                 }
             }
         }

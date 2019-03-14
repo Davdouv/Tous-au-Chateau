@@ -23,7 +23,7 @@ public static class SaveManager {
 
 		string existingJSON = reader.ReadToEnd();
 		reader.Close();
-        
+
 		var existingScores = JsonHelperList.FromJson<LevelScore>(existingJSON);
 
         if (existingScores != null)
@@ -43,7 +43,7 @@ public static class SaveManager {
                     }
                 }
             }
-        }	
+        }
         else
         {
             existingScores = new List<LevelScore>();
