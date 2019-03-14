@@ -16,7 +16,7 @@ public class CastleCollision : MonoBehaviour {
 	{
 			if (collision.gameObject.tag == _tag)
 			{
-					Debug.Log(_levelName);
+					Debug.Log("Collision with " + _levelName);
 			}
 	}
 }

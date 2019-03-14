@@ -7,8 +7,9 @@ public class MapSelector : MonoBehaviour {
 
 	private GlobalScore _globalScore;
 	public List<MapStation> mapStations;
-
-	public bool debugLoadScene = false;
+	public GameObject villager;
+	public Material originalMat;
+	public Material highlightMat;
 
 	// Use this for initialization
 	void Start () {
@@ -18,17 +19,20 @@ public class MapSelector : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		// DEBUG
-		if (debugLoadScene) {
-			SceneManager.LoadScene("TestScene");
+		int layerMask = 1 << 12;
+
+		RaycastHit hit;
+
+		if (Physics.Raycast(villager.transform.position, villager.transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layerMask)) {
+				var station = GetStation(hit.transform);
+				if (station != null) {
+					station.SetMaterial(highlightMat);
+				}
+		} else {
+			foreach (var station in mapStations) {
+				station.SetMaterial(originalMat);
+			}
 		}
-
-		// foreach (var station in mapStations) {
-		// 	if (station.isCrushed && station.GetScore() >= 0) {
-		// 		SwitchScene(station.levelName);
-		// 	}
-		// }
-
 	}
 
 	private void UpdateStationsState() {
@@ -38,8 +42,17 @@ public class MapSelector : MonoBehaviour {
 		}
 	}
 
-	private void SwitchScene(string name) {
+	public static void SwitchScene(string name) {
 		SceneManager.LoadScene(name);
+	}
+
+	private MapStation GetStation(Transform transform) {
+		foreach (var station in mapStations) {
+			if (station.castleUnlocked.transform == transform) {
+					return station;
+			}
+		}
+		return null;
 	}
 
 	private IEnumerator Setup() {
