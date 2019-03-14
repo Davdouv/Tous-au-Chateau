@@ -41,6 +41,7 @@ public class MainActions : MonoBehaviour
     public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
     public SpeechEvent_MapTuto1_Event4_1 speechEvent4_1 = null;
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
+    public SpeechEvent_MapTuto2_Event1 speechEvent2_1 = null;
 
     Material[] mats;
     string[] objName;
@@ -75,6 +76,7 @@ public class MainActions : MonoBehaviour
                 VerifyActionTuto(speechEvent2);
                 VerifyActionTuto(speechEvent4_1);
                 VerifyActionTuto(speechEvent7);
+                VerifyActionTuto(speechEvent2_1);
             }
         }
 
@@ -158,9 +160,10 @@ public class MainActions : MonoBehaviour
 
     private bool IsInRange(Vector3 position)
     {
-        float distance = (sphereCollider.transform.position - position).sqrMagnitude;
-        //return (distance < distanceDetection * distanceDetection); // Detect if the given position is inside the sphere collider
-        return (distance < 3 * 3);  // 3 is the radius of the base of the hand
+        Vector3 handCenter = transform.TransformPoint(sphereCollider.center);
+        float distance = (handCenter - position).sqrMagnitude;
+        return (distance < distanceDetection * distanceDetection); // Detect if the given position is inside the sphere collider
+        //return (distance < 3 * 3);  // 3 is the radius of the base of the hand
     }
 
     private void OnTriggerEnter(Collider other)
