@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour
     public BuildingsTypeGroup _BuildingTypeGroup;
     public GameObject ConstructionPagination; //parent of each page content in hierarchy
     public Color buildingNotPuchasable;
+    public GameObject paginationButtonsPrefab;
     public Transform buttonsPosition;
     public Transform constructionPosition1;
     public Transform constructionPosition2;
@@ -344,14 +345,22 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < _nbOfPagesInUI; ++i)
         {
-            GameObject button = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject button = Instantiate(paginationButtonsPrefab);
             button.name = "Construction Panel Button " + i;
             button.transform.parent = buttonsPosition;
+
+            //Change umber in 3D text child
+            Transform textNb = button.transform.Find("Page number");
+
+            if (textNb != null)
+            {
+                textNb.GetComponent<TextMesh>().text = "" + (i+1);
+            }
 
             button.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
             button.transform.position = buttonsPosition.position 
                 + Vector3.forward * 0.02f / 0.01f
-                + Vector3.up * (- i * 0.05f) / 0.01f;
+                + Vector3.up * (- i * 0.08f) / 0.01f;
 
             _pageButtons[i] = button;
         }
