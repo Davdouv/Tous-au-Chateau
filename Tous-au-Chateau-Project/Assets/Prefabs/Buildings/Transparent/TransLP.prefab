@@ -49,8 +49,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4084161999483626}
-  - component: {fileID: 65023024030518584}
-  - component: {fileID: 135981775896631050}
   - component: {fileID: 54539046492175544}
   m_Layer: 0
   m_Name: TransLP
@@ -261,27 +259,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65023024030518584
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1704118711876476}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.87, z: 0}
-  m_Center: {x: 0, y: 0, z: -0.03}
---- !u!135 &135981775896631050
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1704118711876476}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

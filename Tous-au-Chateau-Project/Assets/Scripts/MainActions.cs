@@ -134,7 +134,7 @@ public class MainActions : MonoBehaviour
                 {
                     //releaseVillager
                     haveVillager = false;
-                    //On hand release
+                    //On hand
                     oldVillager.SetActive(true);
                     var table = GameObject.Find("Table");
                     newVillager.transform.SetParent(table.transform);
