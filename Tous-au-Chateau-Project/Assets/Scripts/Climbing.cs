@@ -21,38 +21,40 @@ public class Climbing : MonoBehaviour {
         print("Ray down " + (transform.localScale.y - stepHeight + 0.1f) + " from " + (transform.position + new Vector3(0, transform.localScale.y / 2.0f, transform.lossyScale.z / 2.0f + 0.1f) ));
     }
 
-    // Update is called once per frame
-    void Update () {
-        //Raycasting
+    private void OnCollisionEnter(Collision collision)
+    {
         
-        if (Physics.Raycast(transform.position, transform.forward, out hit, transform.lossyScale.z/2.0f + 0.1f))
+        int layerid = LayerMask.NameToLayer("Building");
+        if (collision.gameObject.layer != layerid) return;
+        if (Physics.Raycast(new Ray(transform.position + new Vector3(0, 0.01f, 0), transform.forward), out hit, 2f))
         {
+            Debug.DrawRay(transform.position + new Vector3(0,0.01f,0) , transform.forward,Color.black,10f);
             print("First contact at : " + hit.point);
-            if (!Physics.Raycast(transform.position + new Vector3(0,stepHeight +0.1f,0), transform.forward, out hit, transform.lossyScale.z / 2.0f + 0.1f))
+            if (!Physics.Raycast(transform.position + new Vector3(0, stepHeight + 0.1f, 0), transform.forward, out hit, transform.lossyScale.z / 2.0f + 0.1f))
             {
-                
-                if (Physics.Raycast(transform.position + new Vector3(0, stepHeight + 0.1f, transform.lossyScale.z / 2.0f + 0.1f), -transform.up, out hit, stepHeight+0.1f))
+                // 1<<int est une opération qui convertit int en bits pour l'équivalent en bits du layer
+                if (Physics.Raycast(new Ray(transform.position + new Vector3(0, stepHeight + 0.1f, transform.lossyScale.z / 2.0f + 0.1f), -transform.up), out hit, stepHeight + 0.1f,1<<layerid)) 
                 {
-                    print("Hauteur hit-pos : "+ (hit.point.y - transform.position.y));
-                    if (hit.transform.tag == "Ground" || hit.transform.tag == "Obstacle") return;
-                    if(hit.point.y -  transform.position.y <  stepHeight)
-                    {
-                        Warp(hit.point);
-                    }
-
+                    Debug.DrawRay(transform.position + new Vector3(0, stepHeight + 0.1f, transform.lossyScale.z / 2.0f + 0.1f), -transform.up, Color.black, 10f);
+                    print(hit.collider.name);
+                    Warp(hit.point);
                 }
-
             }
-            else
-            {
-                print("hit") ;
-            }
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, transform.forward, Color.black, 10f);
 
+            print("nothing in front of me "+ layerid + " " + collision.gameObject.name);
         }
     }
 
     private void Warp(Vector3 point)
     {
         transform.position = point;
+    }
+    private void Update()
+    {
+        Debug.DrawLine(transform.position + new Vector3(0,0.5f,0), transform.position+ transform.forward + new Vector3(0, 0.5f, 0), Color.black);
     }
 }
