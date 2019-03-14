@@ -136,7 +136,9 @@ public class MainActions : MonoBehaviour
                     haveVillager = false;
                     //On hand release
                     oldVillager.SetActive(true);
-                    Destroy(newVillager);
+                    var table = GameObject.Find("Table");
+                    newVillager.transform.SetParent(table.transform);
+                    // Destroy(newVillager);
                 }
             }
         }
@@ -228,7 +230,10 @@ public class MainActions : MonoBehaviour
                     //other.gameObject.transform = spawnPoint.transform;
                     oldVillager = other.gameObject;
                     oldVillager.SetActive(false);
-                    newVillager = Instantiate(villagerPrefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                    newVillager = Instantiate(villagerPrefab, spawnPoint.transform);
+                    newVillager.transform.position = new Vector3(0,0,0);
+                    // newVillager.GetComponent<Rigidbody>().enabled = false;
+                    newVillager.SetActive(true);
                     haveVillager = true;
                 }
 
