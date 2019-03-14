@@ -28,7 +28,13 @@ public class BuildingsTypeGroup : MonoBehaviour {
     #endregion
 
     public List<Building> _buildings = new List<Building>();
-    public AudioSource notBuyable;
+    private AudioSource _audioData;
+    public AudioClip notBuyable;
+
+    private void Start()
+    {
+        _audioData = GetComponent<AudioSource>();
+    }
 
     public List<List<Building>> getBuildingsSortedByType()
     {
@@ -50,5 +56,11 @@ public class BuildingsTypeGroup : MonoBehaviour {
         }
 
         return sortedList;
+    }
+
+    public void PlaySound()
+    {
+        _audioData.clip = notBuyable;
+        _audioData.Play();
     }
 }

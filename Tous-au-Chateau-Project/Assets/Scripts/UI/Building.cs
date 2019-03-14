@@ -5,7 +5,7 @@
         _audioData.clip = purchasedSound;
     }      public virtual void Crush()     {         // if(this.gameObject.CompareTag("crushable"))         //apply function VR      }      public bool CanBuy()     {         bool hasEnoughResources = ResourceManager.Instance.RemoveResources(_cost);          if (!hasEnoughResources)
         {
-            BuildingsTypeGroup.Instance.notBuyable.Play();
+            BuildingsTypeGroup.Instance.PlaySound();
         }
         else
         {
