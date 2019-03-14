@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     #region Singleton
     private static GameManager _instance;
-    
+
     public static GameManager Instance
     {
         get
@@ -80,7 +81,7 @@ public class GameManager : MonoBehaviour {
         {
             _audioData.clip = defeatSound;
             _audioData.Play();
-        }        
+        }
     }
     public bool IsGameWon()
     {
@@ -174,7 +175,7 @@ public class GameManager : MonoBehaviour {
         if (_hasStarted && !_isPaused)
         {
             levelDuration += Time.deltaTime;
-        }        
+        }
     }
 
     // Change the scene after 5 sec
@@ -183,5 +184,5 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene(nextSceneName);
     }
-    
+
 }

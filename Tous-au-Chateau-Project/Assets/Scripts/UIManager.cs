@@ -5,6 +5,28 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+
+    #region Singleton
+    private static UIManager _instance;
+
+    public static UIManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject go = new GameObject("_UIManager");
+                go.AddComponent<UIManager>();
+            }
+            return _instance;
+        }
+    }
+    void Awake()
+    {
+        _instance = this;
+    }
+    #endregion
+
     //To know where to update the display
     public Text woodTxt;
     public Text stoneTxt;
@@ -24,6 +46,7 @@ public class UIManager : MonoBehaviour
     public BuildingsTypeGroup _BuildingTypeGroup;
     public GameObject ConstructionPagination; //parent of each page content in hierarchy
     public Color buildingNotPuchasable;
+    public GameObject paginationButtonsPrefab;
     public Transform buttonsPosition;
     public Transform constructionPosition1;
     public Transform constructionPosition2;
@@ -240,6 +263,18 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    //only used at beginning of program
+    //The buildings needed to be hidden because they are not inside the UI from the start
+    //and the UI Manager script is only called when the UI palette is displayed
+    //thus, we need to set the buildings active back when the construction pagination is done
+    private void ShowBuildings()
+    {
+        for (int i = 0; i < _BuildingTypeGroup._buildings.Count; ++i)
+        {
+            _BuildingTypeGroup._buildings[i].gameObject.SetActive(true);
+        }
+    }
+
     //only for beginning of program
     private void CalculateNbOfPages()
     {
@@ -258,6 +293,7 @@ public class UIManager : MonoBehaviour
 
         UpdateBuildingInfo();
         CreatePagesList();
+        ShowBuildings();
         CreateButtonsList();
     }
 
@@ -309,14 +345,22 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < _nbOfPagesInUI; ++i)
         {
-            GameObject button = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject button = Instantiate(paginationButtonsPrefab);
             button.name = "Construction Panel Button " + i;
             button.transform.parent = buttonsPosition;
+
+            //Change umber in 3D text child
+            Transform textNb = button.transform.Find("Page number");
+
+            if (textNb != null)
+            {
+                textNb.GetComponent<TextMesh>().text = "" + (i+1);
+            }
 
             button.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
             button.transform.position = buttonsPosition.position 
                 + Vector3.forward * 0.02f / 0.01f
-                + Vector3.up * (- i * 0.05f) / 0.01f;
+                + Vector3.up * (- i * 0.08f) / 0.01f;
 
             _pageButtons[i] = button;
         }

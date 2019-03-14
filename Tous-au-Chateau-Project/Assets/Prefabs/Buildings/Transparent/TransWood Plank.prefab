@@ -36,6 +36,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4627239509930598}
+  - component: {fileID: 65856469377538414}
   - component: {fileID: 54052232657574614}
   m_Layer: 0
   m_Name: TransWood Plank
@@ -128,3 +129,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65856469377538414
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490190447488744}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5248406, y: 5.5, z: 0.1}
+  m_Center: {x: 0.037419893, y: 0, z: 0.1}

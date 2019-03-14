@@ -80,8 +80,8 @@ public class Villager : MonoBehaviour
         // Set a random Wait time so the group don't play sound at the same time
         if (walkingSound)
         {
-            timeToWait += Random.Range(0, 2* walkingSound.length) + walkingSound.length;
-        }        
+            timeToWait += Random.Range(0, 2 * walkingSound.length) + walkingSound.length;
+        }
     }
 
     public void SetCanMove(bool canMove)
@@ -169,7 +169,7 @@ public class Villager : MonoBehaviour
                     _facingObstacle = false;
                 }
             }
-        }        
+        }
 
         _rb.MovePosition(transform.position + (transform.forward + moveCorrection) * _stats.speed * Time.deltaTime);
     }
@@ -187,7 +187,7 @@ public class Villager : MonoBehaviour
         else
         {
             _rb.MovePosition(transform.position + (transform.forward) * _stats.speed * Time.deltaTime);
-        }  
+        }
     }
     private void MoveTowardVillager(GameObject target)
     {
@@ -226,7 +226,7 @@ public class Villager : MonoBehaviour
                     break;
             }
             _canTurn = false;
-        }        
+        }
     }
 
     public void GetInfected()
@@ -284,7 +284,7 @@ public class Villager : MonoBehaviour
         }
     }
 
-    
+
     void FixedUpdate()
     {
         if (_stats.IsAlive())
@@ -329,7 +329,7 @@ public class Villager : MonoBehaviour
                         _group = _isJoining.GetComponent<Villager>()._group;
                         _group.AddVillagers(GetComponent<Villager>());
                         transform.parent = _group.gameObject.transform;
-                        
+
                         transform.rotation = _isJoining.transform.rotation;
 
                         agent.ResetPath();

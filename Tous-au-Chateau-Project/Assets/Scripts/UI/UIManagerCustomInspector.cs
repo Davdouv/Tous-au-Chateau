@@ -96,6 +96,9 @@ public class UIManagerCustomInspector : Editor {
         EditorGUILayout.LabelField(serializedObject.FindProperty("buildingNotPuchasable").displayName);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("buildingNotPuchasable"), GUIContent.none);
 
+        EditorGUILayout.LabelField(serializedObject.FindProperty("paginationButtonsPrefab").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("paginationButtonsPrefab"), GUIContent.none);
+
         EditorGUILayout.LabelField(serializedObject.FindProperty("buttonsPosition").displayName);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("buttonsPosition"), GUIContent.none);
 

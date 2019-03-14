@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstTree : MonoBehaviour {
-
+public class FirstTree : MonoBehaviour
+{
     // Callback
     private void OnDestroy()
     {

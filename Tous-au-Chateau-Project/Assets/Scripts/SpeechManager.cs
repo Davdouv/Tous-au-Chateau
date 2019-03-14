@@ -59,6 +59,7 @@ public class SpeechManager : MonoBehaviour {
 			_anim.SetBool(_openTransitionName, false);
 			StartCoroutine(DisablePanel(bubble));
 			bubble.SetMessage("");
+			bubble.UnsetControllerAnimation();
 		} else {
 			Debug.Log("Animation is still playing.");
 		}

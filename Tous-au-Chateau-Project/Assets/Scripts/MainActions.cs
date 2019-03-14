@@ -10,7 +10,7 @@ public class MainActions : MonoBehaviour
     public GameObject spawnPoint;
     public Transform RightHand;
 
-    VRTK.VRTK_ControllerEvents events;
+    public VRTK.VRTK_ControllerEvents events;
     bool trigger;
     bool crushMode;
     bool haveBuilding;
@@ -41,6 +41,7 @@ public class MainActions : MonoBehaviour
     public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
     public SpeechEvent_MapTuto1_Event4_1 speechEvent4_1 = null;
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
+    public SpeechEvent_MapTuto2_Event1 speechEvent2_1 = null;
 
     Material[] mats;
     string[] objName;
@@ -52,13 +53,13 @@ public class MainActions : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        events = GetComponent<VRTK.VRTK_ControllerEvents>();
+        //events = GetComponent<VRTK.VRTK_ControllerEvents>();
         trigger = false;
         crushMode = false;
         haveBuilding = false;
         _audioData = GetComponent<AudioSource>();
         sphereCollider = GetComponent<SphereCollider>();
-        distanceDetection = sphereCollider.radius * 100; // 100 is the scale of the last parent (other parent has scale of 1)
+        distanceDetection = sphereCollider.radius * 100 * 100; // 100 is the scale of the last parent (other parent has scale of 1) and 100 of the game object
 
         if (player == null)
         {
@@ -80,6 +81,7 @@ public class MainActions : MonoBehaviour
                 VerifyActionTuto(speechEvent2);
                 VerifyActionTuto(speechEvent4_1);
                 VerifyActionTuto(speechEvent7);
+                VerifyActionTuto(speechEvent2_1);
             }
         }
 
@@ -88,15 +90,15 @@ public class MainActions : MonoBehaviour
         {
             Vector2 touchPosition;
             touchPosition = events.GetTouchpadAxis();
-            if(touchPosition.y > 0.5f)
+            if (touchPosition.y > 0.5f)
             {
                 //Move table up
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 10, player.transform.position.z);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 5, player.transform.position.z);
             }
-            else if(touchPosition.y < 0.5f)
+            else if (touchPosition.y < 0.5f)
             {
                 //Move table down
-                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 10, player.transform.position.z);
+                player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 5, player.transform.position.z);
             }
         }
 
@@ -163,9 +165,10 @@ public class MainActions : MonoBehaviour
 
     private bool IsInRange(Vector3 position)
     {
-        float distance = (sphereCollider.transform.position - position).sqrMagnitude;
-        //return (distance < distanceDetection * distanceDetection); // Detect if the given position is inside the sphere collider
-        return (distance < 3 * 3);  // 3 is the radius of the base of the hand
+        Vector3 handCenter = transform.TransformPoint(sphereCollider.center);
+        float distance = (handCenter - position).sqrMagnitude;
+        return (distance < distanceDetection * distanceDetection); // Detect if the given position is inside the sphere collider
+        //return (distance < 3 * 3);  // 3 is the radius of the base of the hand
     }
 
     private void OnTriggerEnter(Collider other)
@@ -291,54 +294,54 @@ public class MainActions : MonoBehaviour
         }
     }
 
-   /* void ChangeMaterial(Material newMat)
-    {
-        Renderer[] children;
-        children = newBuilding.GetComponentsInChildren<Renderer>();
-        foreach (Renderer rend in children)
-        {
-            var mats = new Material[rend.materials.Length];
-            for (int i = 0; i < rend.materials.Length; ++i)
-            {
-                mats[i] = newMat;
-            }
-            rend.materials = mats;
-        }
-    }
-    void StockMaterial()
-    {
-        Renderer[] children;
-        Transform[] newBuilding;
+    /* void ChangeMaterial(Material newMat)
+     {
+         Renderer[] children;
+         children = newBuilding.GetComponentsInChildren<Renderer>();
+         foreach (Renderer rend in children)
+         {
+             var mats = new Material[rend.materials.Length];
+             for (int i = 0; i < rend.materials.Length; ++i)
+             {
+                 mats[i] = newMat;
+             }
+             rend.materials = mats;
+         }
+     }
+     void StockMaterial()
+     {
+         Renderer[] children;
+         Transform[] newBuilding;
 
-        children = newBuilding.GetComponentsInChildren<Renderer>();
-        foreach (Renderer rend in children)
-        {
-            mats = new Material[rend.materials.Length];
-            objName = new string[rend.materials.Length];
-            for (int i = 0; i < rend.materials.Length; ++i)
-            {
-                mats[i] = GetComponent<Renderer>().material;
-                objName[i] = transform.name;
-            }
-        }
-    }
+         children = newBuilding.GetComponentsInChildren<Renderer>();
+         foreach (Renderer rend in children)
+         {
+             mats = new Material[rend.materials.Length];
+             objName = new string[rend.materials.Length];
+             for (int i = 0; i < rend.materials.Length; ++i)
+             {
+                 mats[i] = GetComponent<Renderer>().material;
+                 objName[i] = transform.name;
+             }
+         }
+     }
 
-    void ApplyStockedMaterial()
-    {
+     void ApplyStockedMaterial()
+     {
 
-        Renderer[] children;
-        children = newBuilding.GetComponentsInChildren<Renderer>();
-        foreach (Renderer rend in children)
-        {
-            var othermats = new Material[rend.materials.Length];
-            for (int i = 0; i < rend.materials.Length; ++i)
-            {
-                if(transform.name == objName[i])
-                {
-                    othermats[i] = mats[i];
-                }
-            }
-            rend.materials = mats;
-        }
-    } */
+         Renderer[] children;
+         children = newBuilding.GetComponentsInChildren<Renderer>();
+         foreach (Renderer rend in children)
+         {
+             var othermats = new Material[rend.materials.Length];
+             for (int i = 0; i < rend.materials.Length; ++i)
+             {
+                 if(transform.name == objName[i])
+                 {
+                     othermats[i] = mats[i];
+                 }
+             }
+             rend.materials = mats;
+         }
+     } */
 }

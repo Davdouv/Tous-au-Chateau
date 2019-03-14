@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MapManager : MonoBehaviour {
+public class MapManager : MonoBehaviour
+{
 
     #region Singleton
     private static MapManager _instance;
@@ -42,7 +43,7 @@ public class MapManager : MonoBehaviour {
     {
         otherTrees = new List<Crushable>();
 
-        Generate();        
+        Generate();
     }
 
     public void Generate()

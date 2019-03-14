@@ -19,13 +19,14 @@ public class SpeechBubble : MonoBehaviour {
 	private bool _open = false;
 	private Animator animator;
 	private bool _isCameraDefault = false;
+	private GameObject _controllerAnimation = null;
+	private float minimalPanelSize = 500;
 
 	private AudioSource _audioData;
 	public AudioClip bubbleSound;
 
 	public bool canClose = false;
 	public bool dots = true;
-	public bool controller = false;
 
 
 	void Start()
@@ -45,9 +46,12 @@ public class SpeechBubble : MonoBehaviour {
 		if (dots) {
 			_dots.gameObject.SetActive(true);
 		}
-		if (controller) {
+		if (_controllerAnimation != null) {
 			_text.gameObject.SetActive(false);
 			_textWithControllers.gameObject.SetActive(true);
+		} else {
+			_text.gameObject.SetActive(true);
+			_textWithControllers.gameObject.SetActive(false);
 		}
 	}
 
@@ -55,16 +59,18 @@ public class SpeechBubble : MonoBehaviour {
 	{
 		var panelRectTransform = _panel.GetComponent<RectTransform>();
 		var textRectTransform = _text.GetComponent<RectTransform>();
-		var size = _textComp.fontSize * _textComp.lineSpacing * message.Length;
+		var size = _textComp.fontSize * _textComp.lineSpacing * message.Length / 32f;
 
-		if (controller) {
-			Debug.Log("Controller");
+		if (_controllerAnimation != null) {
 			textRectTransform = _textWithControllers.GetComponent<RectTransform>();
-			size = _textWithControllersComp.fontSize * _textWithControllersComp.lineSpacing * message.Length * 1.4f;
+			size = _textWithControllersComp.fontSize * _textWithControllersComp.lineSpacing * message.Length * 1.4f / 32f;
+			if (size < minimalPanelSize) {
+				size = minimalPanelSize;
+			}
 		}
 
-		panelRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size);
-		textRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size + 10);
+		panelRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size + 10);
+		textRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size);
 	}
 
 	void Update()
@@ -83,6 +89,7 @@ public class SpeechBubble : MonoBehaviour {
 
 	public void StartAnimation()
 	{
+		AdaptCanvasToText();
 		_audioData.clip = bubbleSound;
 		_audioData.Play();
 		StartCoroutine(AnimateText());
@@ -95,7 +102,7 @@ public class SpeechBubble : MonoBehaviour {
 
 	public IEnumerator AnimateText()
 	{
-		if (controller) {
+		if (_controllerAnimation != null) {
 			_textWithControllersComp.text = "";
 			yield return new WaitForSeconds(1);
 			foreach (char letter in message)
@@ -121,5 +128,24 @@ public class SpeechBubble : MonoBehaviour {
 
 	public void SetMessage(string text) {
 		message = text;
+		// AdaptCanvasToText();
+	}
+
+	public void SetControllerAnimation(GameObject controllerAnimation) {
+		_text.gameObject.SetActive(false);
+		_textWithControllers.gameObject.SetActive(true);
+		if (controllerAnimation != null) {
+			_controllerAnimation = controllerAnimation;
+			_controllerAnimation.SetActive(true);
+		}
+	}
+
+	public void UnsetControllerAnimation() {
+		_text.gameObject.SetActive(true);
+		_textWithControllers.gameObject.SetActive(false);
+		if (_controllerAnimation != null) {
+			_controllerAnimation.SetActive(false);
+			_controllerAnimation = null;
+		}
 	}
 }
