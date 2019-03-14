@@ -20,6 +20,7 @@ public class SpeechBubble : MonoBehaviour {
 	private Animator animator;
 	private bool _isCameraDefault = false;
 	private GameObject _controllerAnimation = null;
+	private float minimalPanelSize = 500;
 
 	private AudioSource _audioData;
 	public AudioClip bubbleSound;
@@ -63,7 +64,9 @@ public class SpeechBubble : MonoBehaviour {
 		if (_controllerAnimation != null) {
 			textRectTransform = _textWithControllers.GetComponent<RectTransform>();
 			size = _textWithControllersComp.fontSize * _textWithControllersComp.lineSpacing * message.Length * 1.4f / 32f;
-			// Debug.Log("Size = " + size + ", font = " + _textWithControllersComp.fontSize + ", line = " +  _textWithControllersComp.lineSpacing + ", message = " + message.Length * 1.4f / 34f);
+			if (size < minimalPanelSize) {
+				size = minimalPanelSize;
+			}
 		}
 
 		panelRectTransform.SetSizeWithCurrentAnchors(UnityEngine.RectTransform.Axis.Vertical, size + 10);
