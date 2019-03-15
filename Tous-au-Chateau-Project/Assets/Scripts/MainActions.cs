@@ -183,7 +183,9 @@ public class MainActions : MonoBehaviour
                 _audioData.Play();
 
                 // FX
-                Instantiate(fxPrefab, transform).SetActive(true);
+                Vector3 handCenter = transform.TransformPoint(sphereCollider.center);
+                handCenter.y -= distanceDetection / 2;
+                Instantiate(fxPrefab, handCenter, transform.rotation).SetActive(true);
 
                 if (GameManager.Instance.tuto)
                 {
