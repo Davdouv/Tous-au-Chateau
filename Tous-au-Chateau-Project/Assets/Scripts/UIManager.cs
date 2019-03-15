@@ -244,20 +244,20 @@ public class UIManager : MonoBehaviour
     //only used at beginning of program
     private void UpdateBuildingInfo()
     {
-        for(int i = 0; i < _BuildingTypeGroup._buildings.Count; ++i)
+        for(int i = 0; i < _BuildingTypeGroup.buildings.Count; ++i)
         {
-            Transform title = _BuildingTypeGroup._buildings[i].transform.Find("Title/TitleCanvas/TitleText");
+            Transform title = _BuildingTypeGroup.buildings[i].transform.Find("Title/TitleCanvas/TitleText");
 
             if(title != null)
             {
-                title.GetComponent<Text>().text = _BuildingTypeGroup._buildings[i]._name;
+                title.GetComponent<Text>().text = _BuildingTypeGroup.buildings[i]._name;
             }
 
-            Transform cost = _BuildingTypeGroup._buildings[i].transform.Find("Display/HelpTextCanvas/Cost");
+            Transform cost = _BuildingTypeGroup.buildings[i].transform.Find("Display/HelpTextCanvas/Cost");
 
-            if (cost != null && _BuildingTypeGroup._buildings[i].GetCostString() != "")
+            if (cost != null && _BuildingTypeGroup.buildings[i].GetCostString() != "")
             {
-                cost.GetComponent<Text>().text = _BuildingTypeGroup._buildings[i].GetCostString();
+                cost.GetComponent<Text>().text = _BuildingTypeGroup.buildings[i].GetCostString();
                 _isCostEmpty = _isCostEmpty || false;
             }
         }
@@ -269,9 +269,9 @@ public class UIManager : MonoBehaviour
     //thus, we need to set the buildings active back when the construction pagination is done
     private void ShowBuildings()
     {
-        for (int i = 0; i < _BuildingTypeGroup._buildings.Count; ++i)
+        for (int i = 0; i < _BuildingTypeGroup.buildings.Count; ++i)
         {
-            _BuildingTypeGroup._buildings[i].gameObject.SetActive(true);
+            _BuildingTypeGroup.buildings[i].gameObject.SetActive(true);
         }
     }
 
