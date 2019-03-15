@@ -51,7 +51,7 @@ public class AICharacter : EnvironmentMaterial {
         _assignedGroup = transform.parent.GetComponent<AICharactersGroup>();
 
         // Set a random Wait time so the group don't play sound at the same time
-        timeToWait += Random.Range(0, 20f) + idleSound.length;
+        timeToWait += Random.Range(5, 30) + idleSound.length;
     }
 
     // Get the group and add him to it
