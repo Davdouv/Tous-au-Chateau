@@ -124,13 +124,16 @@ public class AICharacter : EnvironmentMaterial {
     public void SetTarget(GameObject target)
     {
         SetIsMovingAround(false);
-        if ((_ownTarget == null && !_isEscaping) || (_ownTarget != null && !_hasPriorityOnTarget)) // No Target before OR didn't have priority on target
-        {
-            _ownTarget = target;
-            if (_ownTarget) // Make sure target is not null
+        if (_stats.IsAlive())
+        {            
+            if ((_ownTarget == null && !_isEscaping) || (_ownTarget != null && !_hasPriorityOnTarget)) // No Target before OR didn't have priority on target
             {
-                SetFastSpeed();
-                SetDestination(target.transform.position);
+                _ownTarget = target;
+                if (_ownTarget) // Make sure target is not null
+                {
+                    SetFastSpeed();
+                    SetDestination(target.transform.position);
+                }
             }
         }
     }
@@ -381,6 +384,10 @@ public class AICharacter : EnvironmentMaterial {
         _assignedGroup.RemoveItem(this.gameObject);
         _agent.SetDestination(this.transform.position);
         _ownTarget = this.gameObject;
+        _isMovingAround = false;
+        _isEscaping = false;
+        _isAttacking = false;
+        GetComponent<Rigidbody>().freezeRotation = true;
         // Disappear ?
         //gameObject.SetActive(false);
     }
