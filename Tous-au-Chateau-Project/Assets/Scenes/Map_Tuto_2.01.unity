@@ -2829,7 +2829,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c3edd366e904b4fab3a76edd92dde9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildings: []
+  buildings:
+  - {fileID: 1382368943}
+  - {fileID: 1049635143}
+  - {fileID: 1838013209}
+  - {fileID: 1521534771}
   notBuyable: {fileID: 8300000, guid: b889f70af0967eb4ea7158a5f74e502d, type: 3}
 --- !u!1 &248044630
 GameObject:
@@ -31376,6 +31380,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4188777913029896, guid: 4fef603fc95ef0744a447569b1d0dd6b,
     type: 2}
   m_PrefabInternal: {fileID: 1049635141}
+--- !u!114 &1049635143 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114117450727915320, guid: 4fef603fc95ef0744a447569b1d0dd6b,
+    type: 2}
+  m_PrefabInternal: {fileID: 1049635141}
+  m_Script: {fileID: 11500000, guid: c083dc5f125b8444694c77bab11d061d, type: 3}
 --- !u!1 &1050290303
 GameObject:
   m_ObjectHideFlags: 0
@@ -40236,6 +40246,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4456586308171016, guid: 403f63e3e9f0ab14e8161f52406f7b9c,
     type: 2}
   m_PrefabInternal: {fileID: 1382368941}
+--- !u!114 &1382368943 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114383071381247166, guid: 403f63e3e9f0ab14e8161f52406f7b9c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1382368941}
+  m_Script: {fileID: 11500000, guid: 8e8095997e99bef46bdb80285778c5b1, type: 3}
 --- !u!1 &1390129730
 GameObject:
   m_ObjectHideFlags: 0
@@ -41807,6 +41823,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4254714503749770, guid: 5e167632a6630dc4b9993756d15bda4e,
     type: 2}
   m_PrefabInternal: {fileID: 1521534769}
+--- !u!114 &1521534771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114046573780057168, guid: 5e167632a6630dc4b9993756d15bda4e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1521534769}
+  m_Script: {fileID: 11500000, guid: af561be8694ef0240b78fdae8b0765d8, type: 3}
 --- !u!1 &1529435759
 GameObject:
   m_ObjectHideFlags: 0
@@ -50266,6 +50288,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4254714503749770, guid: 45c7ff8691e959749a47f1d455c12c96,
     type: 2}
   m_PrefabInternal: {fileID: 1838013207}
+--- !u!114 &1838013209 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114046573780057168, guid: 45c7ff8691e959749a47f1d455c12c96,
+    type: 2}
+  m_PrefabInternal: {fileID: 1838013207}
+  m_Script: {fileID: 11500000, guid: af561be8694ef0240b78fdae8b0765d8, type: 3}
 --- !u!1 &1838268614
 GameObject:
   m_ObjectHideFlags: 0
