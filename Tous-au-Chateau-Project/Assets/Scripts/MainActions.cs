@@ -174,6 +174,11 @@ public class MainActions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        CrushGround(other);
+    }
+
+    private void CrushGround(Collider other)
+    {
         if (crushMode && canCrush)
         {
             if (other.gameObject.tag == "Ground")
@@ -186,6 +191,9 @@ public class MainActions : MonoBehaviour
                 Vector3 handCenter = transform.TransformPoint(sphereCollider.center);
                 handCenter.y -= distanceDetection / 2;
                 Instantiate(fxPrefab, handCenter, transform.rotation).SetActive(true);
+
+                // Shake
+                CameraManager.Instance.ShakeCamera();
 
                 if (GameManager.Instance.tuto)
                 {
