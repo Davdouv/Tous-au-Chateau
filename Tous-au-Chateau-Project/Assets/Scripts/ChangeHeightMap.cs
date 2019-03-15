@@ -6,7 +6,6 @@ using VRTK;
 public class ChangeHeightMap : MonoBehaviour {
 
     public GameObject player;
-    private Vector3 _playerPosition;
 
     void Start()
     {

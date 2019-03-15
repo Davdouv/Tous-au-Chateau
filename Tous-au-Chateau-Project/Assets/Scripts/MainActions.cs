@@ -102,10 +102,9 @@ public class MainActions : MonoBehaviour
             }
         }
 
-
         if (events.triggerPressed)
         {
-            if (!trigger)
+            if (!trigger || gameObject.transform.position.y > currentPos.y)
             {
                 currentPos = gameObject.transform.position;
             }
