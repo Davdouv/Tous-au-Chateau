@@ -16,12 +16,17 @@ public class TerrainDetection_Tuto2 : MonoBehaviour {
             {
                 // Tell the event the stone wall has landed
                 speechEvent4.hasStoneWallLanded = true;
+                Debug.Log("Has Landed");
 
-                // If the wall isn't placed at the right position
-                if (!speechEvent4_1.isStoneWallPlacedWell)
+                if (speechEvent4_1)
                 {
-                    // Destroy it and give back the resources
-                    StartCoroutine(DestroyWall(collision.gameObject));
+                    // If the wall isn't placed at the right position
+                    if (!speechEvent4_1.isStoneWallPlacedWell)
+                    {
+                        Debug.Log("Not Well placed");
+                        // Destroy it and give back the resources
+                        StartCoroutine(DestroyWall(collision.gameObject));
+                    }
                 }
             }
         }
@@ -30,8 +35,11 @@ public class TerrainDetection_Tuto2 : MonoBehaviour {
     private IEnumerator DestroyWall(GameObject wall)
     {
         yield return new WaitForSeconds(2);
-        wall.GetComponent<Crushable>().Crush();
-        ResourceManager.Instance.AddResources(new ResourcesPack(0, 10, 0, 0, 0));
+        if (wall)
+        {
+            wall.GetComponent<Crushable>().Crush();
+            ResourceManager.Instance.AddResources(new ResourcesPack(0, 10, 0, 0, 0));
+        }
     }
 }
 
