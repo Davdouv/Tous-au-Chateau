@@ -102,10 +102,9 @@ public class MainActions : MonoBehaviour
             }
         }
 
-
         if (events.triggerPressed)
         {
-            if (!trigger)
+            if (!trigger || gameObject.transform.position.y > currentPos.y)
             {
                 currentPos = gameObject.transform.position;
             }
@@ -175,6 +174,11 @@ public class MainActions : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        CrushGround(other);
+    }
+
+    private void CrushGround(Collider other)
+    {
         if (crushMode && canCrush)
         {
             if (other.gameObject.tag == "Ground")
@@ -184,7 +188,12 @@ public class MainActions : MonoBehaviour
                 _audioData.Play();
 
                 // FX
-                Instantiate(fxPrefab, transform).SetActive(true);
+                Vector3 handCenter = transform.TransformPoint(sphereCollider.center);
+                handCenter.y -= distanceDetection / 2;
+                Instantiate(fxPrefab, handCenter, transform.rotation).SetActive(true);
+
+                // Shake
+                CameraManager.Instance.ShakeCamera();
 
                 if (GameManager.Instance.tuto)
                 {

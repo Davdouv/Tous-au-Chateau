@@ -54,7 +54,7 @@ public class MapManager : MonoBehaviour
             go.transform.position = _TreesPosition.transform.GetChild(i).gameObject.transform.position;
 
             // For Map Tuto 01
-            if (once && GameManager.Instance.tuto && GameManager.Instance.levelName == "Map Tuto 01")
+            if (once && GameManager.Instance.tuto && GameManager.Instance.levelName == "Tuto_01")
             {
                 once = false;
                 go.AddComponent<FirstTree>();
