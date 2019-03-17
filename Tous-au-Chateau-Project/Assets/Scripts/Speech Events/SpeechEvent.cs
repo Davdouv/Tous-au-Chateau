@@ -39,6 +39,9 @@ public class SpeechEvent : MonoBehaviour {
 	public void SetIsDone(bool bo) { _isDone = bo; }
 
 	public static bool AreAllVillagersDead() {
-		return currentVillagersGroup.GetNumberOfVillagersAlive() == 0;
+		if (currentVillagersGroup != null) {
+			return currentVillagersGroup.GetNumberOfVillagersAlive() == 0;
+		}
+		return false;
 	}
 }
