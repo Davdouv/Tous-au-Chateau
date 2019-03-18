@@ -150,6 +150,7 @@ public class MainActions : MonoBehaviour
                     oldVillager.SetActive(true);
                     var table = GameObject.Find("Table");
                     newVillager.transform.SetParent(table.transform);
+                    newVillager.GetComponent<Rigidbody>().isKinematic = false;
                     // Destroy(newVillager);
                 }
             }
@@ -248,12 +249,19 @@ public class MainActions : MonoBehaviour
             {
                 if (other.tag == "Villager")
                 {
-                    Debug.Log("Villager");
+                    if (other.name == "villager")
+                    {
+                        oldVillager = other.gameObject;
+                        oldVillager.SetActive(false);
+                        newVillager = Instantiate(villagerPrefab, spawnPoint.transform);
+                    } else
+                    {
+                        newVillager.transform.SetParent(spawnPoint.transform);
+                        newVillager.GetComponent<Rigidbody>().isKinematic = true;
+                    }
                     //other.gameObject.transform = spawnPoint.transform;
-                    oldVillager = other.gameObject;
-                    oldVillager.SetActive(false);
-                    newVillager = Instantiate(villagerPrefab, spawnPoint.transform);
-                    newVillager.transform.position = new Vector3(0,0,0);
+                    newVillager.transform.localPosition = new Vector3(0.0516f, 0.0184f, -0.0194f);
+                    newVillager.transform.rotation = Quaternion.Euler(new Vector3(0, 90f, 0));
                     // newVillager.GetComponent<Rigidbody>().enabled = false;
                     newVillager.SetActive(true);
                     haveVillager = true;
@@ -347,7 +355,7 @@ public class MainActions : MonoBehaviour
 
         RaycastHit hit;
 
-        Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
+        //Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
 
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
@@ -355,7 +363,6 @@ public class MainActions : MonoBehaviour
             buildingPreview = Instantiate(buildingPreviewPrefab, previewPosition, newBuilding.transform.rotation);
         }
     }
-
 
 
     /* void ChangeMaterial(Material newMat)

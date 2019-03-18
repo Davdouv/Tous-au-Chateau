@@ -19,6 +19,7 @@ public class MapSelector : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        /*
 		int layerMask = 1 << 12;
 
 		RaycastHit hit;
@@ -33,7 +34,25 @@ public class MapSelector : MonoBehaviour {
 				station.SetMaterial(originalMat);
 			}
 		}
+        */
 	}
+
+    public void Highlight(Transform hitTransform)
+    {
+        var station = GetStation(hitTransform);
+        if (station != null)
+        {
+            station.SetMaterial(highlightMat);
+        }
+    }
+
+    public void DontHighlight()
+    {
+        foreach (var station in mapStations)
+        {
+            station.SetMaterial(originalMat);
+        }
+    }
 
 	private void UpdateStationsState() {
 		foreach (var station in mapStations) {
