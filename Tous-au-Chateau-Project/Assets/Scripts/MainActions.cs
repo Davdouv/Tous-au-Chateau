@@ -344,6 +344,10 @@ public class MainActions : MonoBehaviour
     {
         return transform.TransformPoint(sphereCollider.center);
     }
+    private Vector3 BorderOfHand()
+    {
+        return transform.TransformPoint(sphereCollider.center) + new Vector3 (sphereCollider.radius,0,0);
+    }
 
     // Return true if the raycast hit
     private bool ShowCrushPreview()
@@ -351,14 +355,24 @@ public class MainActions : MonoBehaviour
         // Bit shift the index of the layer (10) (terrain) to get a bit mask
         int layerMask = 1 << 11;
 
-        RaycastHit hit;
+        RaycastHit hit, hitRight, hitLeft;
 
         Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
 
+        //raycast from center down vector
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
-            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.3f, 0));
-            return true;
+            //raycast from border and diagonal
+            if(Physics.Raycast(BorderOfHand(), new Vector3(1, 0, 1), out hitRight, Mathf.Infinity, layerMask))
+            {
+                //raycast from other border and diagonal
+                if (Physics.Raycast(-BorderOfHand(), new Vector3(-1, 0, 1), out hitLeft, Mathf.Infinity, layerMask))
+                {
+                    float HighestHit = Mathf.Max(hit.distance, hitRight.distance, hitLeft.distance);
+                    impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -HighestHit + 0.3f, 0));
+                    return true;
+                }
+            }
         }
         return false;
     }
