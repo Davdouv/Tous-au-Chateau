@@ -10,10 +10,11 @@ public class SpeechEvent : MonoBehaviour {
 	private bool _isOpen = false;
 	private bool _isDone = false;
 	public SpeechEvent previousEvent;
+	public GameObject controllerAnimation = null;
 
-    public bool hasDoneAction;  // For events that need to detect if player has done an action
+  public bool hasDoneAction;  // For events that need to detect if player has done an action
 
-    public static VillagersGroup currentVillagersGroup;
+	public static VillagersGroup currentVillagersGroup;
 
 	// Use this for initialization
 	void Start () {
@@ -29,12 +30,18 @@ public class SpeechEvent : MonoBehaviour {
 	public void SetIsOpen(bool bo) {
 		if (bo) {
 			bubble.SetMessage(message);
+			if (controllerAnimation != null) {
+				bubble.SetControllerAnimation(controllerAnimation);
+			}
 		}
 		_isOpen = bo;
 	}
 	public void SetIsDone(bool bo) { _isDone = bo; }
 
 	public static bool AreAllVillagersDead() {
-		return currentVillagersGroup.GetNumberOfVillagersAlive() == 0;
+		if (currentVillagersGroup != null) {
+			return currentVillagersGroup.GetNumberOfVillagersAlive() == 0;
+		}
+		return false;
 	}
 }

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class SpeechEvent_MapTuto1_Event3 : SpeechEvent {
 
+    public GameObject ArrowToDisplay;
+
 	public override bool MustOpen() {
 		// Open after previous event is done
 		if (previousEvent != null && previousEvent.IsDone())
@@ -13,7 +15,8 @@ public class SpeechEvent_MapTuto1_Event3 : SpeechEvent {
 		    if (AreAllVillagersDead() &&
                 currentVillagersGroup.IsDeathCausedBy(DeathReason.RIVER))
 			{
-				return true;
+                ArrowToDisplay.SetActive(true);
+                return true;
 			}
         }
 		return false;
@@ -21,9 +24,10 @@ public class SpeechEvent_MapTuto1_Event3 : SpeechEvent {
 
 	public override bool MustClose() {
 		// When crushing the flickering tree. // Destroying the firstTree will set it to null
-    if (MapManager.Instance.firstTree == null && ResourceManager.Instance.GetWood() > 0)
+    if (ResourceManager.Instance.GetWood() > 0)
     {
-      return true;
+        ArrowToDisplay.SetActive(false);
+        return true;
     }
 		return false;
 	}

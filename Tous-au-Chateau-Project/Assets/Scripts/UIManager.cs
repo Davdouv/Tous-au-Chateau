@@ -2,10 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    //To know where to update the display
+
+    #region Singleton
+    private static UIManager _instance;
+
+    public static UIManager Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                GameObject go = new GameObject("_UIManager");
+                go.AddComponent<UIManager>();
+            }
+            return _instance;
+        }
+    }
+    void Awake()
+    {
+        _instance = this;
+    }
+    #endregion
+
+    //Reference to resources display
     public Text woodTxt;
     public Text stoneTxt;
     public Text foodTxt;
@@ -16,14 +39,17 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverPanel;
     public Text gameOverTitleText;
     public Text gameOverVillagersText;
+    public Button gameOverButton;
     public Color victoryTextColor;
     public Color gameoverTextColor;
     public ResourceManager _ResourceManager;
+    public GameObject controlPanel;
 
     //For construction pagination
     public BuildingsTypeGroup _BuildingTypeGroup;
     public GameObject ConstructionPagination; //parent of each page content in hierarchy
     public Color buildingNotPuchasable;
+    public GameObject paginationButtonsPrefab;
     public Transform buttonsPosition;
     public Transform constructionPosition1;
     public Transform constructionPosition2;
@@ -64,12 +90,6 @@ public class UIManager : MonoBehaviour
             UpdateBuildingInfo();
         }
 
-        woodTxt.text = "" + _ResourceManager.GetWood();
-        stoneTxt.text = "" + _ResourceManager.GetStone();
-        foodTxt.text = "" + _ResourceManager.GetFood();
-        villagersTxt.text = "" + _ResourceManager.GetWorkForce();
-        motivation.value = _ResourceManager.GetMotivation();
-
         /* Test for end of game */
         if (GameManager.Instance.IsGameWon())
         {
@@ -81,10 +101,84 @@ public class UIManager : MonoBehaviour
             DisplayGameOverPanel(false);
         }
 
-        /* Updates the ability to purchase or not each building */
-        for (int i=0; i<_sortedBuildings.Count; ++i)
+        //prevent calculation if panel is closed
+        if (!controlPanel.activeSelf)
         {
-            for(int j=0; j<_sortedBuildings[i].Count; ++j)
+            return;
+        }
+
+        UpdateResourcesInformation();
+        CheckBuildingsdAvailability();
+
+        CheckComputerPaginationInputs();
+    }
+
+    public void DisplayGameOverPanel(bool isPlayerVictorious)
+    {
+        if (isPlayerVictorious)
+        {
+            gameOverTitleText.text = "VICTORY";
+            gameOverTitleText.color = victoryTextColor;
+
+            //button
+            //Changes the button's Normal color to the right color.
+            ColorBlock cb = gameOverButton.colors;
+            cb.normalColor = victoryTextColor;
+            gameOverButton.colors = cb;
+
+            //change the button's text
+            Transform buttonText = gameOverButton.transform.GetChild(0);
+            if(buttonText != null)
+            {
+                buttonText.GetComponent<Text>().text = "Continue";
+            }
+
+            //loads next tuto or mapselector after victory
+            gameOverButton.onClick.AddListener(() => { SceneManager.LoadScene(GameManager.Instance.nextSceneName); });
+            
+        }
+        else
+        {
+            gameOverTitleText.text = "GAME OVER";
+            gameOverTitleText.color = gameoverTextColor;
+
+            //button
+            //Changes the button's Normal color to the right color.
+            ColorBlock cb = gameOverButton.colors;
+            cb.normalColor = gameoverTextColor;
+            gameOverButton.colors = cb;
+
+            //change the button's text
+            Transform buttonText = gameOverButton.transform.GetChild(0);
+            if (buttonText != null)
+            {
+                buttonText.GetComponent<Text>().text = "Restart";
+            }
+
+            //change the button onclick function
+            //reloads the current scene
+            gameOverButton.onClick.AddListener(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); });
+        }
+
+        GameOverPanel.SetActive(true);
+        gameOverVillagersText.text = "Remaining Villagers : " + _ResourceManager.GetWorkForce();
+    }
+
+    private void UpdateResourcesInformation()
+    {
+        woodTxt.text = "" + _ResourceManager.GetWood();
+        stoneTxt.text = "" + _ResourceManager.GetStone();
+        foodTxt.text = "" + _ResourceManager.GetFood();
+        villagersTxt.text = "" + _ResourceManager.GetWorkForce();
+        motivation.value = _ResourceManager.GetMotivation();
+    }
+
+    /* Updates the ability to purchase or not each building */
+    private void CheckBuildingsdAvailability()
+    {
+        for (int i = 0; i < _sortedBuildings.Count; ++i)
+        {
+            for (int j = 0; j < _sortedBuildings[i].Count; ++j)
             {
                 Building currentBuilding = _sortedBuildings[i][j];
                 if (_ResourceManager.HasEnoughResources(currentBuilding.getCost()))
@@ -94,7 +188,7 @@ public class UIManager : MonoBehaviour
                     currentBuilding.transform.GetChild(3).gameObject.SetActive(false);
 
                     Transform cost = currentBuilding.transform.Find("Display/HelpTextCanvas/Cost");
-                    if(cost != null)
+                    if (cost != null)
                     {
                         cost.GetComponent<Text>().color = Color.black;
                     }
@@ -113,8 +207,11 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+    }
 
-        //Test for pagination functions
+    /* For testing purposes */
+    private void CheckComputerPaginationInputs()
+    {
         if (Input.GetKeyUp("right"))
         {
             NextConstructionPage();
@@ -144,25 +241,6 @@ public class UIManager : MonoBehaviour
         {
             DisplayConstructionPage(3);
         }
-        //End of test for pagination
-
-    }
-
-    public void DisplayGameOverPanel(bool isPlayerVictorious)
-    {
-        if (isPlayerVictorious)
-        {
-            gameOverTitleText.text = "VICTORY";
-            gameOverTitleText.color = victoryTextColor;
-        }
-        else
-        {
-            gameOverTitleText.text = "GAME OVER";
-            gameOverTitleText.color = gameoverTextColor;
-        }
-
-        GameOverPanel.SetActive(true);
-        gameOverVillagersText.text = "Remaining Villagers : " + _ResourceManager.GetWorkForce();
     }
 
     public void ShowConstructionPanel()
@@ -221,22 +299,34 @@ public class UIManager : MonoBehaviour
     //only used at beginning of program
     private void UpdateBuildingInfo()
     {
-        for(int i = 0; i < _BuildingTypeGroup._buildings.Count; ++i)
+        for(int i = 0; i < _BuildingTypeGroup.buildings.Count; ++i)
         {
-            Transform title = _BuildingTypeGroup._buildings[i].transform.Find("Title/TitleCanvas/TitleText");
+            Transform title = _BuildingTypeGroup.buildings[i].transform.Find("Title/TitleCanvas/TitleText");
 
             if(title != null)
             {
-                title.GetComponent<Text>().text = _BuildingTypeGroup._buildings[i]._name;
+                title.GetComponent<Text>().text = _BuildingTypeGroup.buildings[i]._name;
             }
 
-            Transform cost = _BuildingTypeGroup._buildings[i].transform.Find("Display/HelpTextCanvas/Cost");
+            Transform cost = _BuildingTypeGroup.buildings[i].transform.Find("Display/HelpTextCanvas/Cost");
 
-            if (cost != null && _BuildingTypeGroup._buildings[i].GetCostString() != "")
+            if (cost != null && _BuildingTypeGroup.buildings[i].GetCostString() != "")
             {
-                cost.GetComponent<Text>().text = _BuildingTypeGroup._buildings[i].GetCostString();
+                cost.GetComponent<Text>().text = _BuildingTypeGroup.buildings[i].GetCostString();
                 _isCostEmpty = _isCostEmpty || false;
             }
+        }
+    }
+
+    //only used at beginning of program
+    //The buildings needed to be hidden because they are not inside the UI from the start
+    //and the UI Manager script is only called when the UI palette is displayed
+    //thus, we need to set the buildings active back when the construction pagination is done
+    private void ShowBuildings()
+    {
+        for (int i = 0; i < _BuildingTypeGroup.buildings.Count; ++i)
+        {
+            _BuildingTypeGroup.buildings[i].gameObject.SetActive(true);
         }
     }
 
@@ -258,6 +348,7 @@ public class UIManager : MonoBehaviour
 
         UpdateBuildingInfo();
         CreatePagesList();
+        ShowBuildings();
         CreateButtonsList();
     }
 
@@ -309,14 +400,22 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < _nbOfPagesInUI; ++i)
         {
-            GameObject button = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            GameObject button = Instantiate(paginationButtonsPrefab);
             button.name = "Construction Panel Button " + i;
             button.transform.parent = buttonsPosition;
+
+            //Change umber in 3D text child
+            Transform textNb = button.transform.Find("Page number");
+
+            if (textNb != null)
+            {
+                textNb.GetComponent<TextMesh>().text = "" + (i+1);
+            }
 
             button.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
             button.transform.position = buttonsPosition.position 
                 + Vector3.forward * 0.02f / 0.01f
-                + Vector3.up * (- i * 0.05f) / 0.01f;
+                + Vector3.up * (- i * 0.08f) / 0.01f;
 
             _pageButtons[i] = button;
         }

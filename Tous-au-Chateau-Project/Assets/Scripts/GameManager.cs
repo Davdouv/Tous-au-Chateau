@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
 
     #region Singleton
     private static GameManager _instance;
-    
+
     public static GameManager Instance
     {
         get
@@ -40,8 +42,11 @@ public class GameManager : MonoBehaviour {
     public AudioClip victorySound;
     public AudioClip defeatSound;
 
+    public GameObject victoryFX;
+
     public string levelName;
     private float levelDuration = 0;
+    public string nextSceneName;
 
     private void Start()
     {
@@ -56,14 +61,18 @@ public class GameManager : MonoBehaviour {
     public void GameWon(int scoreCount = 0)
     {
         _hasWin = true;
-        if (defeatSound)
+        if (victorySound)
         {
             _audioData.clip = victorySound;
             _audioData.Play();
         }
 
+        victoryFX.SetActive(true);
+
         // SAVE THE PLAYER's VICTORY
         SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));
+
+        StartCoroutine(ChangeScene());
     }
     public void GameLost()
     {
@@ -72,7 +81,9 @@ public class GameManager : MonoBehaviour {
         {
             _audioData.clip = defeatSound;
             _audioData.Play();
-        }        
+        }
+
+        StartCoroutine(ChangeScene());
     }
     public bool IsGameWon()
     {
@@ -166,6 +177,23 @@ public class GameManager : MonoBehaviour {
         if (_hasStarted && !_isPaused)
         {
             levelDuration += Time.deltaTime;
-        }        
+        }
     }
+
+    // Change the scene after 5 sec
+    private IEnumerator ChangeScene()
+    {
+        yield return new WaitForSeconds(5);
+
+        if (_hasWin && nextSceneName != "")
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
+
+        if (_hasLost)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
 }

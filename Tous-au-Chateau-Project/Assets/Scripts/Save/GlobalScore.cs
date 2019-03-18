@@ -8,6 +8,7 @@ public class GlobalScore : MonoBehaviour {
 
 	private List<LevelScore> _scores;
 	public bool ready;
+	public bool log = false;
 
 	// Use this for initialization
 	void Start () {
@@ -17,10 +18,10 @@ public class GlobalScore : MonoBehaviour {
 
 		ready = FetchData();
 
-		// DEBUG
-		Debug.Log(Application.persistentDataPath);
-		foreach (var score in _scores) {
-			Debug.Log(score.levelName + " : " + score.stars);
+		if (log) {
+			foreach (var score in _scores) {
+				Debug.Log(score.levelName + " : " + score.stars);
+			}
 		}
 	}
 
