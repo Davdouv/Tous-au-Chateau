@@ -87,7 +87,7 @@ public class CameraManager : MonoBehaviour
     {
         if (cameraShaker)
         {
-            cameraShaker.ShakeCamera(GetCamera().transform);
+            cameraShaker.ShakeCamera(GetCamera().transform.parent.transform);
         }
     }
 }
