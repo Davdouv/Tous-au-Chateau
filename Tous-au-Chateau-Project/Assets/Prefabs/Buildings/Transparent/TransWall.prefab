@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23946428400693614}
   - component: {fileID: 54404606236407836}
   - component: {fileID: 65600705549782142}
+  - component: {fileID: 114469887585962946}
   m_Layer: 0
   m_Name: TransWall
   m_TagString: wall
@@ -112,3 +113,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 4.4657497, z: 3.6476307}
   m_Center: {x: 0, y: 0.04713154, z: 1.7604418}
+--- !u!114 &114469887585962946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1924257871848448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d627535ab77d004aa9da3c87bdab797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparent_mat: {fileID: 2100000, guid: a929a93b229463e4ca63ae16b703c302, type: 2}
+  transparentRed_mat: {fileID: 2100000, guid: 61cfb1eaae0244d49b04d6468dc7427c, type: 2}
+  InCollision: 0

@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 4084161999483626}
   - component: {fileID: 54539046492175544}
   - component: {fileID: 65826970039434542}
+  - component: {fileID: 114647163710644788}
   m_Layer: 0
   m_Name: TransLP
   m_TagString: Sign
@@ -272,3 +273,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.5, y: 3.5, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0.05}
+--- !u!114 &114647163710644788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704118711876476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d627535ab77d004aa9da3c87bdab797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparent_mat: {fileID: 2100000, guid: a929a93b229463e4ca63ae16b703c302, type: 2}
+  transparentRed_mat: {fileID: 2100000, guid: 61cfb1eaae0244d49b04d6468dc7427c, type: 2}
+  InCollision: 0

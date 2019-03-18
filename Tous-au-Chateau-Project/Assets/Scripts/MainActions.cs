@@ -25,8 +25,7 @@ public class MainActions : MonoBehaviour
     private float distanceDetection;
 
 
-    public Material Transparent_Building;
-    Material Building_mat;
+    
 
     GameObject newBuilding;
     GameObject buildingPreview;
