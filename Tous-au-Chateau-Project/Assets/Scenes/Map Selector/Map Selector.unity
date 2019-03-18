@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.105268255, g: 0.28903043, b: 0.7487039, a: 1}
+  m_IndirectSpecularColor: {r: 0.28930417, g: 0.46862257, b: 0.9005637, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3737,6 +3737,7 @@ MonoBehaviour:
   previousEvent: {fileID: 0}
   controllerAnimation: {fileID: 0}
   hasDoneAction: 0
+  hasPressed: 0
 --- !u!1 &382823973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -4329,6 +4330,12 @@ Prefab:
     - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &443881786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114200219305065478, guid: 4b0ab4522de7e044ab4d3657e5dd1745,
+    type: 2}
+  m_PrefabInternal: {fileID: 1418903096}
+  m_Script: {fileID: 11500000, guid: 3708abcd8ef604c45ae5d6e2b164b8cd, type: 3}
 --- !u!1 &451728817
 GameObject:
   m_ObjectHideFlags: 0
@@ -8104,6 +8111,8 @@ MonoBehaviour:
   speechEvent7: {fileID: 0}
   speechEvent2_1: {fileID: 0}
   player: {fileID: 0}
+  creditButton: {fileID: 2031560073}
+  exitButton: {fileID: 443881786}
 --- !u!82 &917597976
 AudioSource:
   m_ObjectHideFlags: 0
@@ -16620,6 +16629,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2031560073 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114547507179255700, guid: c21c0a70e8c5ad6428b40f880cf75e17,
+    type: 2}
+  m_PrefabInternal: {fileID: 1471547938}
+  m_Script: {fileID: 11500000, guid: 0c3b5d9e50324714ba4c7edff99300b1, type: 3}
 --- !u!4 &2034808408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,

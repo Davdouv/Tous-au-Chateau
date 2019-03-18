@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExitButtonScript : MonoBehaviour {
 
-    public void OnCollisionEnter(Collision collision)
+    public void ExitGame()
     {
         GetComponent<Animator>().enabled = true;
         StartCoroutine(End());
@@ -12,7 +12,7 @@ public class ExitButtonScript : MonoBehaviour {
     }
     public IEnumerator End()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         Application.Quit();
     }
 }

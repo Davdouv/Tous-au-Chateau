@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpeechEvent_MapSelector_Event1 : SpeechEvent {
 	private bool _hasOpenedAlready = false;
+    public bool canClose = false;
 
 	public override bool MustOpen() {
 				// Open automatically
@@ -15,6 +16,6 @@ public class SpeechEvent_MapSelector_Event1 : SpeechEvent {
 	}
 
 	public override bool MustClose() {
-        return false;
+        return canClose;
 	}
 }

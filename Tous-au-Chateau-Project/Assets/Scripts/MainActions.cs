@@ -52,6 +52,9 @@ public class MainActions : MonoBehaviour
 
     private bool mapManager = false;
 
+    public CreditButtonScript creditButton;
+    public ExitButtonScript exitButton;
+
     // Use this for initialization
     void Start()
     {
@@ -242,6 +245,22 @@ public class MainActions : MonoBehaviour
         return false;
     }
 
+    private void PushButtons()
+    {
+        if (crushMode && canCrush && !haveVillager)
+        {
+            if (creditButton && IsInRange(creditButton.gameObject.transform.position))
+            {
+                creditButton.OpenCreditEven();
+                return;
+            }
+            if (exitButton && IsInRange(exitButton.gameObject.transform.position))
+            {
+                exitButton.ExitGame();
+            }
+        }            
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (mapManager)
@@ -267,8 +286,8 @@ public class MainActions : MonoBehaviour
                     newVillager.SetActive(true);
                     haveVillager = true;
                 }
-
             }
+            PushButtons();
         }
         // If we didn't crush, check for other actions
         else if (!CrushAction(other))

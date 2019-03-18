@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class CreditButtonScript : MonoBehaviour
 {
-    public SpeechEvent creditevent; // credits objects
+    public SpeechEvent_MapSelector_CreditEvent creditevent; // credits objects
     
-    public void OnCollisionEnter(Collision collision)
+    public void OpenCreditEven()
     {
-        creditevent.MustOpen();
+        Launch();
+        creditevent.hasPressed = true;
+        ((SpeechEvent_MapSelector_Event1)(creditevent.previousEvent)).canClose = true;
     }
-    public void Launch()
+    private void Launch()
     {
         GetComponent<Animator>().enabled = true;
     }
