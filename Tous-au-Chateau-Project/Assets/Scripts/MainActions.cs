@@ -29,10 +29,12 @@ public class MainActions : MonoBehaviour
     Material Building_mat;
 
     GameObject newBuilding;
+    GameObject buildingPreview;
     GameObject newVillager;
     GameObject oldVillager;
     public GameObject villagerPrefab;
     GameObject buildingPrefab;
+    GameObject buildingPreviewPrefab;
 
     public GameObject fxPrefab;
     public GameObject impactPreview;
@@ -117,7 +119,7 @@ public class MainActions : MonoBehaviour
             }
             else
             {
-                // Building Preview
+                ShowConstructionPreview();
             }
         }
         else
@@ -133,9 +135,10 @@ public class MainActions : MonoBehaviour
                 newBuilding.transform.parent = null;
                 //On hand release
                 Transform buildingTrans;
-                buildingTrans = newBuilding.transform;
+                buildingTrans = buildingPreview.transform;
+                Destroy(buildingPreview);
                 Destroy(newBuilding);
-                newBuilding = Instantiate(buildingPrefab, buildingTrans.position, buildingTrans.rotation);
+                newBuilding = Instantiate(buildingPrefab, buildingTrans);
             }
             else if (SceneManager.GetActiveScene().name == "Map Selector")
             {
@@ -269,8 +272,9 @@ public class MainActions : MonoBehaviour
                     if (other.gameObject.GetComponent<Building>().CanBuy())
                     {
                         //Instantiate building
-                        newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefabTransparent, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
                         buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
+                        newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                        buildingPreviewPrefab = other.gameObject.GetComponent<Building>().prefabTransparent; 
                         haveBuilding = true;
                     }
                 }
@@ -278,7 +282,6 @@ public class MainActions : MonoBehaviour
                 {
                     {
                         //Change to page 1 on UI
-                        //Call function from @justine script
                         uiM.DisplayConstructionPage(0);
                     }
                 }
@@ -286,7 +289,6 @@ public class MainActions : MonoBehaviour
                 {
                     {
                         //Change to page 2 on UI
-                        //Call function from @justine script
                         uiM.DisplayConstructionPage(1);
                     }
                 }
@@ -294,7 +296,6 @@ public class MainActions : MonoBehaviour
                 {
                     {
                         //Change to page 3 on UI
-                        //Call function from @justine script
                         uiM.DisplayConstructionPage(2);
                     }
                 }
@@ -340,6 +341,22 @@ public class MainActions : MonoBehaviour
         }
         return false;
     }
+    private void ShowConstructionPreview()
+    {
+        int layerMask = 1 << 11;
+
+        RaycastHit hit;
+
+        Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
+
+        if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
+        {
+            Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
+            newBuilding = Instantiate(buildingPreviewPrefab, previewPosition, new Quaternion(0, 0, 0, 0));
+        }
+    }
+
+
 
     /* void ChangeMaterial(Material newMat)
      {
