@@ -114,7 +114,7 @@ public class SpeechBubble : MonoBehaviour {
 						bold = !bold;
 				} else {
 					if (bold) {
-					displayLetter = "<b>" + letter + "</b>";
+					displayLetter = "<b><color=orange>" + letter + "</color></b>";
 					}
 					_textWithControllersComp.text += displayLetter;
 				}
