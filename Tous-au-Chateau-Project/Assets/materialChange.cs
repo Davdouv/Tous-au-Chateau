@@ -20,11 +20,13 @@ public class materialChange : MonoBehaviour
     {
         if (inCollision)
         {
-            rend.material = transparentRed_mat;
+            //rend.material = transparentRed_mat;
+            ChangeMaterial(transparentRed_mat);
         }
         else
         {
-            rend.material = transparent_mat;
+            //rend.material = transparent_mat;
+            ChangeMaterial(transparent_mat);
         }
     }
 
@@ -47,5 +49,20 @@ public class materialChange : MonoBehaviour
         {
             InCollision = false;
         }*/
+    }
+
+    void ChangeMaterial(Material newMat)
+    {
+        Renderer[] children;
+        children = GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in children)
+        {
+            var mats = new Material[rend.materials.Length];
+            for (int i = 0; i < rend.materials.Length; ++i)
+            {
+                mats[i] = newMat;
+            }
+            rend.materials = mats;
+        }
     }
 }

@@ -113,7 +113,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1872499996735970}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 57.05573, y: -62.368454, z: -59.51665}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4361671610694010}
@@ -257,7 +257,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -271,8 +271,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.5, y: 3.5, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.05}
+  m_Size: {x: 1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114849135131229824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,4 +286,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transparent_mat: {fileID: 2100000, guid: a929a93b229463e4ca63ae16b703c302, type: 2}
   transparentRed_mat: {fileID: 2100000, guid: 61cfb1eaae0244d49b04d6468dc7427c, type: 2}
-  InCollision: 0
+  inCollision: 0
