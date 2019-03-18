@@ -17,7 +17,7 @@ public class MainActions : MonoBehaviour
     bool haveVillager;
     bool canCrush;
     Vector3 currentPos;
-    public float minHeightToCrush = 10;
+    public float minHeightToCrush = 7;
     private AudioSource _audioData;
     public AudioClip crushFloorSound;
 
