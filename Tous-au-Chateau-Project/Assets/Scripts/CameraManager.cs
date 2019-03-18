@@ -33,16 +33,12 @@ public class CameraManager : MonoBehaviour
     private bool _isCameraDefault = false;
     private CinematicTest1 cinematic;
 
-    private void Start()
-    {
-        cinematic = GetComponent<CinematicTest1>();
-    }
-
     private CameraShaker cameraShaker;
 
     private void Start()
     {
         cameraShaker = GetComponent<CameraShaker>();
+        cinematic = GetComponent<CinematicTest1>();
     }
 
     public bool FindCamera()
