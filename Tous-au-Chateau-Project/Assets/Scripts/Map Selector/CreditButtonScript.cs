@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class CreditButtonScript : MonoBehaviour
 {
-    public Transform credits; // credits objects
+    public SpeechEvent creditevent; // credits objects
     
     public void OnCollisionEnter(Collision collision)
     {
-        Launch();
-        credits.gameObject.SetActive(true);
-        credits.GetComponent<CreditAnimation>().Launch();
+        creditevent.MustOpen();
     }
     public void Launch()
     {
