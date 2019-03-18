@@ -55,17 +55,25 @@ public class MapStation : MapPhysicObject {
 		}
 	}
 
+    private void EnableObj(GameObject gameObject, bool enable = true)
+    {
+        if (gameObject != null)
+            gameObject.SetActive(enable);
+    }
+
 	private void LockedDisplay() {
 		castleLocked.SetActive(true);
 		castleUnlocked.SetActive(false);
-		darkFlag1.SetActive(false);
-		darkFlag2.SetActive(false);
-		darkFlag3.SetActive(false);
-		flag1.SetActive(false);
-		flag2.SetActive(false);
-		flag3.SetActive(false);
 
-		Renderer platformRend = platform.GetComponent<Renderer>();
+        EnableObj(darkFlag1, false);
+        EnableObj(darkFlag2, false);
+        EnableObj(darkFlag3, false);
+        EnableObj(flag1, false);
+        EnableObj(flag2, false);
+        EnableObj(flag3, false);
+
+
+        Renderer platformRend = platform.GetComponent<Renderer>();
 		platformRend.material.shader = Shader.Find("_Color");
 		platformRend.material.SetColor("_Color", Color.grey);
 		platformRend.material.shader = Shader.Find("Specular");
@@ -75,14 +83,14 @@ public class MapStation : MapPhysicObject {
 	private void UnlockedDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
-		darkFlag1.SetActive(true);
-		darkFlag2.SetActive(true);
-		darkFlag3.SetActive(true);
-		flag1.SetActive(false);
-		flag2.SetActive(false);
-		flag3.SetActive(false);
+        EnableObj(darkFlag1, true);
+        EnableObj(darkFlag2, true);
+        EnableObj(darkFlag3, true);
+        EnableObj(flag1, false);
+        EnableObj(flag2, false);
+        EnableObj(flag3, false);
 
-		Renderer platformRend = platform.GetComponent<Renderer>();
+        Renderer platformRend = platform.GetComponent<Renderer>();
 		platformRend.material.shader = Shader.Find("_Color");
 		platformRend.material.SetColor("_Color", Color.yellow);
 		platformRend.material.shader = Shader.Find("Specular");
@@ -92,14 +100,14 @@ public class MapStation : MapPhysicObject {
 	private void OneStarDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
-		darkFlag1.SetActive(false);
-		darkFlag2.SetActive(true);
-		darkFlag3.SetActive(true);
-		flag1.SetActive(true);
-		flag2.SetActive(false);
-		flag3.SetActive(false);
+        EnableObj(darkFlag1, false);
+        EnableObj(darkFlag2, true);
+        EnableObj(darkFlag3, true);
+        EnableObj(flag1, true);
+        EnableObj(flag2, false);
+        EnableObj(flag3, false);
 
-		Renderer platformRend = platform.GetComponent<Renderer>();
+        Renderer platformRend = platform.GetComponent<Renderer>();
 		platformRend.material.shader = Shader.Find("_Color");
 		platformRend.material.SetColor("_Color", Color.green);
 		platformRend.material.shader = Shader.Find("Specular");
@@ -109,14 +117,15 @@ public class MapStation : MapPhysicObject {
 	private void TwoStarsDisplay() {
 		castleUnlocked.SetActive(true);
 		castleLocked.SetActive(false);
-		darkFlag1.SetActive(false);
-		darkFlag2.SetActive(false);
-		darkFlag3.SetActive(true);
-		flag1.SetActive(true);
-		flag2.SetActive(true);
-		flag3.SetActive(false);
 
-		Renderer platformRend = platform.GetComponent<Renderer>();
+        EnableObj(darkFlag1, false);
+        EnableObj(darkFlag2, false);
+        EnableObj(darkFlag3, true);
+        EnableObj(flag1, true);
+        EnableObj(flag2, true);
+        EnableObj(flag3, false);
+
+        Renderer platformRend = platform.GetComponent<Renderer>();
 		platformRend.material.shader = Shader.Find("_Color");
 		platformRend.material.SetColor("_Color", Color.green);
 		platformRend.material.shader = Shader.Find("Specular");
@@ -125,15 +134,16 @@ public class MapStation : MapPhysicObject {
 
 	private void ThreeStarsDisplay() {
 		castleUnlocked.SetActive(true);
-		castleLocked.SetActive(false);
-		darkFlag1.SetActive(false);
-		darkFlag2.SetActive(false);
-		darkFlag3.SetActive(false);
-		flag1.SetActive(true);
-		flag2.SetActive(true);
-		flag3.SetActive(true);
+        castleLocked.SetActive(false);
 
-		Renderer platformRend = platform.GetComponent<Renderer>();
+        EnableObj(darkFlag1, false);
+        EnableObj(darkFlag2, false);
+        EnableObj(darkFlag3, false);
+        EnableObj(flag1, true);
+        EnableObj(flag2, true);
+        EnableObj(flag3, true);
+
+        Renderer platformRend = platform.GetComponent<Renderer>();
 		platformRend.material.shader = Shader.Find("_Color");
 		platformRend.material.SetColor("_Color", Color.green);
 		platformRend.material.shader = Shader.Find("Specular");

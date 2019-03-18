@@ -248,6 +248,7 @@ GameObject:
   - component: {fileID: 95752613659703734}
   - component: {fileID: 54694868683190704}
   - component: {fileID: 65595482422405500}
+  - component: {fileID: 114876281178671224}
   m_Layer: 0
   m_Name: villager
   m_TagString: Villager
@@ -514,7 +515,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1957928561027844}
   serializedVersion: 2
-  m_Mass: 5
+  m_Mass: 50
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -532,7 +533,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.43, y: 1.91, z: 1}
+  m_Size: {x: 0.43, y: 1.91, z: 0.7}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &95752613659703734
 Animator:
@@ -552,6 +553,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114876281178671224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1957928561027844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2450c05edce936e42b784c184c39b57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!137 &137653681393638470
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
