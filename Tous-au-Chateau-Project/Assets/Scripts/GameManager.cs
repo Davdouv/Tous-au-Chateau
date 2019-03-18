@@ -82,6 +82,8 @@ public class GameManager : MonoBehaviour
             _audioData.clip = defeatSound;
             _audioData.Play();
         }
+
+        StartCoroutine(ChangeScene());
     }
     public bool IsGameWon()
     {
@@ -182,7 +184,16 @@ public class GameManager : MonoBehaviour
     private IEnumerator ChangeScene()
     {
         yield return new WaitForSeconds(5);
-        SceneManager.LoadScene(nextSceneName);
+
+        if (_hasWin && nextSceneName != "")
+        {
+            SceneManager.LoadScene(nextSceneName);
+        }
+
+        if (_hasLost)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
 }
