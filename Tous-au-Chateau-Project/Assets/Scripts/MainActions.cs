@@ -131,7 +131,7 @@ public class MainActions : MonoBehaviour
             {
                 //releaseBuilding
                 haveBuilding = false;
-                EnableBoxColliders(newBuilding, true);
+                //EnableBoxColliders(newBuilding, true);
                 newBuilding.GetComponent<Rigidbody>().isKinematic = false;
                 newBuilding.transform.parent = null;
                 //On hand release
@@ -364,7 +364,11 @@ public class MainActions : MonoBehaviour
         {
             Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
             buildingPreview.transform.position = previewPosition;
-            //buildingPreview.transform.SetPositionAndRotation(previewPosition, Quaternion.EulerAngles()
+            buildingPreview.transform.rotation = Quaternion.Euler(-90, newBuilding.transform.rotation.y, newBuilding.transform.rotation.z);
+            //buildingPreview.transform.SetPositionAndRotation(previewPosition, newBuilding.transform.rotation);
+
+            Debug.Log("Building Rotation : " + newBuilding.transform.rotation);
+            Debug.Log("Preview Rotation : " + buildingPreview.transform.rotation);
         }
     }
 
