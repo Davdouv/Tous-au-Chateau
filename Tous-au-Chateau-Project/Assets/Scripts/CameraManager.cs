@@ -29,6 +29,12 @@ public class CameraManager : MonoBehaviour {
 
     private Camera _camera;
     private bool _isCameraDefault = false;
+    private CinematicTest1 cinematic;
+
+    private void Start()
+    {
+        cinematic = GetComponent<CinematicTest1>();
+    }
 
     public bool FindCamera() {
       if (GameObject.Find("Camera (eye)")) { // VR
