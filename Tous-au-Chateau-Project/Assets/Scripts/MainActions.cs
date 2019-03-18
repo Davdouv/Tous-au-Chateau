@@ -17,7 +17,7 @@ public class MainActions : MonoBehaviour
     bool haveVillager;
     bool canCrush;
     Vector3 currentPos;
-    public float minHeightToCrush = 10;
+    public float minHeightToCrush = 7;
     private AudioSource _audioData;
     public AudioClip crushFloorSound;
 
@@ -29,13 +29,15 @@ public class MainActions : MonoBehaviour
     Material Building_mat;
 
     GameObject newBuilding;
+    GameObject buildingPreview;
     GameObject newVillager;
     GameObject oldVillager;
     public GameObject villagerPrefab;
     GameObject buildingPrefab;
+    GameObject buildingPreviewPrefab;
 
     public GameObject fxPrefab;
-
+    public GameObject impactPreview;
 
     public SpeechEvent_MapTuto1_Event1 speechEvent1 = null;
     public SpeechEvent_MapTuto1_Event2 speechEvent2 = null;
@@ -67,7 +69,7 @@ public class MainActions : MonoBehaviour
         }
 
         mapManager = (SceneManager.GetActiveScene().name == "Map Selector");
-
+        impactPreview.SetActive(false);
     }
 
     // Update is called once per frame
@@ -109,6 +111,16 @@ public class MainActions : MonoBehaviour
                 currentPos = gameObject.transform.position;
             }
             trigger = true;
+
+            if (!haveBuilding)
+            {
+                // Preview the crush position into the ground
+                impactPreview.SetActive(ShowCrushPreview());
+            }
+            else
+            {
+                ShowConstructionPreview();
+            }
         }
         else
         {
@@ -123,9 +135,10 @@ public class MainActions : MonoBehaviour
                 newBuilding.transform.parent = null;
                 //On hand release
                 Transform buildingTrans;
-                buildingTrans = newBuilding.transform;
+                buildingTrans = buildingPreview.transform;
+                Destroy(buildingPreview);
                 Destroy(newBuilding);
-                newBuilding = Instantiate(buildingPrefab, buildingTrans.position, buildingTrans.rotation);
+                newBuilding = Instantiate(buildingPrefab, buildingTrans);
             }
             else if (SceneManager.GetActiveScene().name == "Map Selector")
             {
@@ -140,6 +153,7 @@ public class MainActions : MonoBehaviour
                     // Destroy(newVillager);
                 }
             }
+            impactPreview.SetActive(false);
         }
 
         if (trigger)
@@ -166,10 +180,9 @@ public class MainActions : MonoBehaviour
 
     private bool IsInRange(Vector3 position)
     {
-        Vector3 handCenter = transform.TransformPoint(sphereCollider.center);
+        Vector3 handCenter = MiddleOfHand();
         float distance = (handCenter - position).sqrMagnitude;
         return (distance < distanceDetection * distanceDetection); // Detect if the given position is inside the sphere collider
-        //return (distance < 3 * 3);  // 3 is the radius of the base of the hand
     }
 
     private void OnTriggerEnter(Collider other)
@@ -188,7 +201,7 @@ public class MainActions : MonoBehaviour
                 _audioData.Play();
 
                 // FX
-                Vector3 handCenter = transform.TransformPoint(sphereCollider.center);
+                Vector3 handCenter = MiddleOfHand();
                 handCenter.y -= distanceDetection / 2;
                 Instantiate(fxPrefab, handCenter, transform.rotation).SetActive(true);
 
@@ -259,8 +272,9 @@ public class MainActions : MonoBehaviour
                     if (other.gameObject.GetComponent<Building>().CanBuy())
                     {
                         //Instantiate building
-                        newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefabTransparent, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
                         buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
+                        newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
+                        buildingPreviewPrefab = other.gameObject.GetComponent<Building>().prefabTransparent; 
                         haveBuilding = true;
                     }
                 }
@@ -268,7 +282,6 @@ public class MainActions : MonoBehaviour
                 {
                     {
                         //Change to page 1 on UI
-                        //Call function from @justine script
                         uiM.DisplayConstructionPage(0);
                     }
                 }
@@ -276,7 +289,6 @@ public class MainActions : MonoBehaviour
                 {
                     {
                         //Change to page 2 on UI
-                        //Call function from @justine script
                         uiM.DisplayConstructionPage(1);
                     }
                 }
@@ -284,7 +296,6 @@ public class MainActions : MonoBehaviour
                 {
                     {
                         //Change to page 3 on UI
-                        //Call function from @justine script
                         uiM.DisplayConstructionPage(2);
                     }
                 }
@@ -307,6 +318,45 @@ public class MainActions : MonoBehaviour
             }
         }
     }
+
+    private Vector3 MiddleOfHand()
+    {
+        return transform.TransformPoint(sphereCollider.center);
+    }
+
+    // Return true if the raycast hit
+    private bool ShowCrushPreview()
+    {
+        // Bit shift the index of the layer (10) (terrain) to get a bit mask
+        int layerMask = 1 << 11;
+
+        RaycastHit hit;
+
+        Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
+
+        if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
+        {
+            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
+            return true;
+        }
+        return false;
+    }
+    private void ShowConstructionPreview()
+    {
+        int layerMask = 1 << 11;
+
+        RaycastHit hit;
+
+        Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
+
+        if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
+        {
+            Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
+            buildingPreview = Instantiate(buildingPreviewPrefab, previewPosition, newBuilding.transform.rotation);
+        }
+    }
+
+
 
     /* void ChangeMaterial(Material newMat)
      {

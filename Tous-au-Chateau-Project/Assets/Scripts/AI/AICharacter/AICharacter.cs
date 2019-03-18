@@ -380,6 +380,7 @@ public class AICharacter : EnvironmentMaterial {
 
     public void Die()
     {
+        _audioData.Stop();
         _anim.SetBool("death", true);
         _assignedGroup.RemoveItem(this.gameObject);
         _agent.SetDestination(this.transform.position);
