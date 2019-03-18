@@ -352,7 +352,7 @@ public class MainActions : MonoBehaviour
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
             Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
-            newBuilding = Instantiate(buildingPreviewPrefab, previewPosition, new Quaternion(0, 0, 0, 0));
+            buildingPreview = Instantiate(buildingPreviewPrefab, previewPosition, new Quaternion(0, 0, 0, 0));
         }
     }
 
