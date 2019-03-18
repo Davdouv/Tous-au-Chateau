@@ -25,7 +25,7 @@ public class SpeechBubble : MonoBehaviour {
 	private AudioSource _audioData;
 	public AudioClip bubbleSound;
 
-	public float letterTime = 0.03f;
+	public float letterTime = 0.025f;
 
 	public bool canClose = false;
 	public bool dots = true;
