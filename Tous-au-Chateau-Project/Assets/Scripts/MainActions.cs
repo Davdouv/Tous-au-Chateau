@@ -138,6 +138,7 @@ public class MainActions : MonoBehaviour
                     Destroy(buildingPreview);
                     Destroy(newBuilding);
                     newBuilding = Instantiate(buildingPrefab, buildingTrans);
+                    EnableBoxColliders(newBuilding, true);
                 }
                 else
                 {
