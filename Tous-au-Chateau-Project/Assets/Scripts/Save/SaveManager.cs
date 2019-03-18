@@ -4,6 +4,8 @@ using UnityEngine;
 using System;
 using System.IO;
 
+// Data saved in [user]/AppData/LocalLow/DefaultCompany/Tous-au-Chateau-Project
+
 public static class SaveManager {
 
 	public static void Save(LevelScore newScore) {

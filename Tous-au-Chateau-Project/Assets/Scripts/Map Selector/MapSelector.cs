@@ -17,42 +17,38 @@ public class MapSelector : MonoBehaviour {
 		StartCoroutine(Setup());
 	}
 
-	// Update is called once per frame
-	void Update () {
-        /*
-		int layerMask = 1 << 12;
-
-		RaycastHit hit;
-
-		if (Physics.Raycast(villager.transform.position, villager.transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layerMask)) {
-				var station = GetStation(hit.transform);
-				if (station != null) {
-					station.SetMaterial(highlightMat);
-				}
-		} else {
-			foreach (var station in mapStations) {
-				station.SetMaterial(originalMat);
-			}
+	private void CheckIfTutorialMustStart() {
+		var tuto1 = mapStations[0].name;
+		var tuto2 = mapStations[1].name;
+		var tuto3 = mapStations[2].name;
+		if (_globalScore.GetScore(tuto1) <= 0 ||
+				_globalScore.GetScore(tuto2) <= 0 ||
+				_globalScore.GetScore(tuto3) <= 0 ) {
+			SwitchScene(firstSceneName);
 		}
-        */
 	}
 
-    public void Highlight(Transform hitTransform)
-    {
-        var station = GetStation(hitTransform);
-        if (station != null)
-        {
-            station.SetMaterial(highlightMat);
-        }
-    }
+	// Update is called once per frame
+	void Update () {
 
-    public void DontHighlight()
-    {
-        foreach (var station in mapStations)
-        {
-            station.SetMaterial(originalMat);
-        }
-    }
+	}
+
+  public void Highlight(Transform hitTransform)
+  {
+      var station = GetStation(hitTransform);
+      if (station != null)
+      {
+          station.SetMaterial(highlightMat);
+      }
+  }
+
+  public void DontHighlight()
+  {
+      foreach (var station in mapStations)
+      {
+          station.SetMaterial(originalMat);
+      }
+  }
 
 	private void UpdateStationsState() {
 		foreach (var station in mapStations) {
@@ -77,6 +73,7 @@ public class MapSelector : MonoBehaviour {
 	private IEnumerator Setup() {
 		// Wait for _globalScore to be ready (data are fetched)
 		yield return new WaitUntil(() => _globalScore.ready);
+		CheckIfTutorialMustStart();
 		UpdateStationsState();
 	}
 }
