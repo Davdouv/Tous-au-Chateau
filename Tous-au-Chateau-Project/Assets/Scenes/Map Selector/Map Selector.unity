@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28930417, g: 0.46862257, b: 0.9005637, a: 1}
+  m_IndirectSpecularColor: {r: 0.10536869, g: 0.28913683, b: 0.7486905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1435,7 +1435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: 'Hello, Popularios ! #Pick me up# from there and release me above one of
-    those #castles# to start the revolution !'
+    those #castles# to start the revolution!'
   bubble: {fileID: 1794407886}
   previousEvent: {fileID: 0}
   controllerAnimation: {fileID: 1844677414}
@@ -17586,6 +17586,16 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_RichText
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114785242123679532, guid: 6ddc8c6c8d394ee4787fc93b1e50d845,
+        type: 2}
+      propertyPath: letterTime
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 114785242123679532, guid: 6ddc8c6c8d394ee4787fc93b1e50d845,
+        type: 2}
+      propertyPath: dots
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ddc8c6c8d394ee4787fc93b1e50d845, type: 2}
