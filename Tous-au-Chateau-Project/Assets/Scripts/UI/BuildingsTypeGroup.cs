@@ -27,8 +27,14 @@ public class BuildingsTypeGroup : MonoBehaviour {
 
     #endregion
 
-    public List<Building> _buildings = new List<Building>();
-    public AudioSource notBuyable;
+    public List<Building> buildings = new List<Building>();
+    private AudioSource _audioData;
+    public AudioClip notBuyable;
+
+    private void Start()
+    {
+        _audioData = GetComponent<AudioSource>();
+    }
 
     public List<List<Building>> getBuildingsSortedByType()
     {
@@ -36,7 +42,7 @@ public class BuildingsTypeGroup : MonoBehaviour {
 
         foreach(BuildingType bt in (BuildingType[]) Enum.GetValues(typeof(BuildingType)))
         {
-            List<Building> btTypeResult = _buildings.FindAll(
+            List<Building> btTypeResult = buildings.FindAll(
                 delegate (Building b)
                 {
                     return b.buildingType == bt;
@@ -50,5 +56,11 @@ public class BuildingsTypeGroup : MonoBehaviour {
         }
 
         return sortedList;
+    }
+
+    public void PlaySound()
+    {
+        _audioData.clip = notBuyable;
+        _audioData.Play();
     }
 }

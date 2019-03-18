@@ -23,6 +23,7 @@
             {
                 if (!once)
                 {
+                    transform.position = leftController.transform.position;
                     leftController.transform.Rotate(0, transform.rotation.y, 90f, Space.World);
                     once = true;
                 }
@@ -76,6 +77,7 @@
         protected virtual void SetObjectVisibility()
         {
             controlObject.SetActive(state);
+            UIManager.Instance.GetComponent<UIManager>().enabled = state;
         }
     }
 }

@@ -9,6 +9,7 @@ public class Villager : MonoBehaviour
     NavMeshAgent agent;
     private VillagersGroup _group;
     public int _motivation;
+    private Collider _hitbox;
 
     public bool _isInfected;
     [SerializeField]
@@ -32,7 +33,8 @@ public class Villager : MonoBehaviour
     private AudioSource _audioData;
     public AudioClip walkingSound;
     private float countDown = 0f;
-    private float timeToWait = 10f;
+    private float timeToWait = 0f;
+    private bool _facingObstacle = false;
 
     // Use this for initialization
     void Start()
@@ -42,7 +44,7 @@ public class Villager : MonoBehaviour
         _villagerCollision = GetComponent<DangerDetection>();
         _stats = GetComponent<CharacterStats>();
         _deathmode = GetComponent<DyingVillager>();
-
+        _hitbox = GetComponent<BoxCollider>();
         _anim = transform.GetChild(0).gameObject.GetComponent<Animator>();
 
         if (!IsPassive() && _canMove)
@@ -70,16 +72,16 @@ public class Villager : MonoBehaviour
         _canMove = !_isPassive;
         _hasJoined = !_isPassive;
         _isJoining = null;
-        Vector3 objectif = 
-            GameObject.Find("Objectif").transform.position;
-        transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
+        //Vector3 objectif = GameObject.Find("Objectif").transform.position;
+        //transform.LookAt(new Vector3(objectif.x, transform.position.y , objectif.z  ));
 
         // SOUND
+        _audioData = GetComponent<AudioSource>();
         // Set a random Wait time so the group don't play sound at the same time
         if (walkingSound)
         {
-            timeToWait += Random.Range(0, 20f) + walkingSound.length;
-        }        
+            timeToWait += Random.Range(0, 2 * walkingSound.length) + walkingSound.length;
+        }
     }
 
     public void SetCanMove(bool canMove)
@@ -88,14 +90,104 @@ public class Villager : MonoBehaviour
         _anim.SetBool("walk", canMove);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag != "Ground" && collision.gameObject.tag != "Wolf" /*&& collision.gameObject.tag != "Villager"*/)
+        {
+            _facingObstacle = true;
+        }
+        else
+        {
+            _facingObstacle = false;
+        }
+    }
+
+    // When facing an obstacle, move left or right
+    private void MoveLeftOrRight()
+    {
+        RaycastHit centerhit, lefthit, righthit;
+        Vector3 moveCorrection = Vector3.zero;
+        Vector3 centerRaystart = transform.position + new Vector3(0, 0.8f, 0),
+            leftRaystart = centerRaystart + new Vector3(-_hitbox.bounds.extents.x - 0.01f, 0, 0), // slightly off so collider does not get stuck in obstacles
+            rightRaystart = centerRaystart + new Vector3(_hitbox.bounds.extents.x + 0.01f, 0, 0);
+
+        Debug.DrawLine(centerRaystart, centerRaystart + transform.forward);
+        Debug.DrawLine(leftRaystart, leftRaystart + transform.forward);
+        Debug.DrawLine(rightRaystart, rightRaystart + transform.forward);
+
+        if (Physics.Raycast(new Ray(centerRaystart, transform.forward), out centerhit, 0.7f))
+        {
+            float angleOfApproach = Vector3.SignedAngle(transform.forward, centerhit.normal, transform.up);
+            if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
+            {
+                moveCorrection = Vector3.right;
+            }
+            else
+            {
+                if (angleOfApproach < 0 && angleOfApproach <= -170)
+                {
+                    moveCorrection = Vector3.left;
+                }
+            }
+        }
+        else
+        {
+            if (Physics.Raycast(new Ray(leftRaystart, transform.forward), out lefthit, 0.7f))
+            {
+                float angleOfApproach = Vector3.SignedAngle(transform.forward, lefthit.normal, transform.up);
+                if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
+                {
+                    moveCorrection = Vector3.right;
+                }
+                else
+                {
+                    if (angleOfApproach < 0 && angleOfApproach <= -170)
+                    {
+                        moveCorrection = Vector3.left;
+                    }
+                }
+            }
+            else
+            {
+                if (Physics.Raycast(new Ray(rightRaystart, transform.forward), out righthit, 0.7f))
+                {
+                    float angleOfApproach = Vector3.SignedAngle(transform.forward, righthit.normal, transform.up);
+                    if (angleOfApproach >= 0 && angleOfApproach >= 170) // la surface de contact est légèrement penchée sur la gauche
+                    {
+                        moveCorrection = Vector3.right;
+                    }
+                    else
+                    {
+                        if (angleOfApproach < 0 && angleOfApproach <= -170)
+                        {
+                            moveCorrection = Vector3.left;
+                        }
+                    }
+                }
+                else
+                {
+                    _facingObstacle = false;
+                }
+            }
+        }
+
+        _rb.MovePosition(transform.position + (transform.forward + moveCorrection) * _stats.speed * Time.deltaTime);
+    }
+
     private void Move()
     {
         /*agent.ResetPath();
         agent.updatePosition = true;
         agent.velocity = transform.forward * 1.00f;
         */
-
-        _rb.MovePosition(transform.position + transform.forward * _stats.speed * Time.deltaTime);
+        if (_facingObstacle)
+        {
+            MoveLeftOrRight();
+        }
+        else
+        {
+            _rb.MovePosition(transform.position + (transform.forward) * _stats.speed * Time.deltaTime);
+        }
     }
     private void MoveTowardVillager(GameObject target)
     {
@@ -134,7 +226,7 @@ public class Villager : MonoBehaviour
                     break;
             }
             _canTurn = false;
-        }        
+        }
     }
 
     public void GetInfected()
@@ -192,7 +284,8 @@ public class Villager : MonoBehaviour
         }
     }
 
-    void Update()
+
+    void FixedUpdate()
     {
         if (_stats.IsAlive())
         {
@@ -237,11 +330,7 @@ public class Villager : MonoBehaviour
                         _group.AddVillagers(GetComponent<Villager>());
                         transform.parent = _group.gameObject.transform;
 
-                        //transform.LookAt(transform.position + _isJoining.transform.forward - _isJoining.transform.position);
-
-                        // print("rotation" +_isJoining.transform.rotation.y);
                         transform.rotation = _isJoining.transform.rotation;
-                        //print("rotation" + transform.rotation.y);
 
                         agent.ResetPath();
                         agent.enabled = false;

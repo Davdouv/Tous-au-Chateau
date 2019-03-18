@@ -33,7 +33,7 @@ public class AudioManager : MonoBehaviour {
 
     private void Start()
     {
-        source = this.gameObject.AddComponent<AudioSource>();
+        source = this.gameObject.GetComponent<AudioSource>();
         source.clip = mainMusic;
         source.Play();
     }

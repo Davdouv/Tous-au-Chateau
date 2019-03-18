@@ -104,7 +104,6 @@ public abstract class TriggerZone : MonoBehaviour {
 
     public bool IsInRange(Vector3 position)
     {
-        //float distance = Vector3.Distance(transform.position, position);
         float distance = (transform.position - position).sqrMagnitude;
         return (distance < distanceDetection*distanceDetection);
     }
@@ -125,25 +124,29 @@ public abstract class TriggerZone : MonoBehaviour {
     {
         for (int i = 0; i < _targetList.Count; ++i)
         {
-            // If not triggered yet, check if it's a the good distance
-            if (!_targetList[i].IsTriggered() && IsInRange(_targetList[i].GetObject().transform.position))
+            if (_targetList[i] != null)
             {
-                _targetList[i].SetTrigger(true);
-                TriggerEnter(_targetList[i].GetObject());
+                // If not triggered yet, check if it's a the good distance
+                if (!_targetList[i].IsTriggered() && IsInRange(_targetList[i].GetObject().transform.position))
+                {
+                    _targetList[i].SetTrigger(true);
+                    TriggerEnter(_targetList[i].GetObject());
+                }
+                // If it has been triggered, check if it get away
+                else if (_targetList[i].IsTriggered() && !IsInRange(_targetList[i].GetObject().transform.position))
+                {
+                    _targetList[i].SetTrigger(false);
+                    TriggerExit(_targetList[i].GetObject());
+                }
+                // If the object is no longer active
+                else if (!_targetList[i].GetObject().activeSelf)
+                {
+                    TriggerExit(_targetList[i].GetObject());
+                    RemoveTarget(_targetList[i].GetObject());
+                    --i;
+                }
             }
-            // If it has been triggered, check if it get away
-            else if (_targetList[i].IsTriggered() && !IsInRange(_targetList[i].GetObject().transform.position))
-            {
-                _targetList[i].SetTrigger(false);
-                TriggerExit(_targetList[i].GetObject());
-            }
-            // If the object is no longer active
-            else if (!_targetList[i].GetObject().activeSelf)
-            {                
-                TriggerExit(_targetList[i].GetObject());
-                RemoveTarget(_targetList[i].GetObject());
-                --i;
-            }
+            
         }
     }
 }
