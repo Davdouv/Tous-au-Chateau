@@ -24,10 +24,6 @@ public class MainActions : MonoBehaviour
     private SphereCollider sphereCollider;
     private float distanceDetection;
 
-
-    public Material Transparent_Building;
-    Material Building_mat;
-
     GameObject newBuilding;
     GameObject buildingPreview;
     GameObject newVillager;
@@ -129,17 +125,28 @@ public class MainActions : MonoBehaviour
             canCrush = true;
             if (haveBuilding)
             {
-                //releaseBuilding
-                haveBuilding = false;
-                //EnableBoxColliders(newBuilding, true);
-                newBuilding.GetComponent<Rigidbody>().isKinematic = false;
-                newBuilding.transform.parent = null;
-                //On hand release
-                Transform buildingTrans;
-                buildingTrans = buildingPreview.transform;
-                Destroy(buildingPreview);
-                Destroy(newBuilding);
-                newBuilding = Instantiate(buildingPrefab, buildingTrans);
+                if (buildingPreview.GetComponent<materialChange>().inCollision)
+                {
+                    //releaseBuilding
+                    haveBuilding = false;
+                    //EnableBoxColliders(newBuilding, true);
+                    newBuilding.GetComponent<Rigidbody>().isKinematic = false;
+                    newBuilding.transform.parent = null;
+                    //On hand release
+                    Transform buildingTrans;
+                    buildingTrans = buildingPreview.transform;
+                    Destroy(buildingPreview);
+                    Destroy(newBuilding);
+                    newBuilding = Instantiate(buildingPrefab, buildingTrans);
+                    EnableBoxColliders(newBuilding, true);
+                }
+                else
+                {
+                    haveBuilding = false;
+                    Destroy(buildingPreview);
+                    Destroy(newBuilding);
+                    //We need to check ressources to be able to retrieve a pack when not used
+                }
             }
             else if (SceneManager.GetActiveScene().name == "Map Selector")
             {
