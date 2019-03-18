@@ -42,7 +42,6 @@ public class materialChange : MonoBehaviour
     {
         // Store the targets
         _targetList.Add(other.gameObject);
-        Debug.Log("Add : " + other.gameObject.name);
     }
     private void OnTriggerExit(Collider other)
     {
@@ -55,7 +54,6 @@ public class materialChange : MonoBehaviour
         {
             if (tar == target)
             {
-                Debug.Log("Remove : " + target.name);
                 _targetList.Remove(tar);
                 return;
             }
@@ -103,6 +101,7 @@ public class materialChange : MonoBehaviour
                 }
             }
         }
+        // Check if the state has changed
         inCollision = inContact;
         if (wasInCollision != inCollision)
         {
@@ -114,28 +113,8 @@ public class materialChange : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log("TOTOTO");
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        
-        if (IsInRange(other.transform.position))
-        {
-            inCollision = true;
-        }
-        /*}
-        else
-        {
-            InCollision = false;
-        }*/
-    }
-
     void ChangeMaterial(Material newMat)
     {
-        Debug.Log("Change Material");
         Renderer[] children;
         children = GetComponentsInChildren<Renderer>();
         foreach (Renderer rend in children)
