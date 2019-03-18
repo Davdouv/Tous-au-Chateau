@@ -8,17 +8,17 @@ public class materialChange : MonoBehaviour
     public Material transparent_mat;
     public Material transparentRed_mat;
     Renderer rend;
-    public bool InCollision;
+    public bool inCollision;
 
     void Start()
     {
         rend = GetComponent<Renderer>();
-        InCollision = false;
+        inCollision = false;
     }
 
     void Update()
     {
-        if (InCollision)
+        if (inCollision)
         {
             rend.material = transparentRed_mat;
         }
@@ -31,7 +31,7 @@ public class materialChange : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //if () {  add distance check
-            InCollision = true;
+            inCollision = true;
         /*}
         else
         {
@@ -41,7 +41,7 @@ public class materialChange : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         //if () {  add distance check
-        InCollision = false;
+        inCollision = false;
         /*}
         else
         {
