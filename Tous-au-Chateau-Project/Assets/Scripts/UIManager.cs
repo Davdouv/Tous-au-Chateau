@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class UIManager : MonoBehaviour
     }
     #endregion
 
-    //To know where to update the display
+    //Reference to resources display
     public Text woodTxt;
     public Text stoneTxt;
     public Text foodTxt;
@@ -38,9 +39,11 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverPanel;
     public Text gameOverTitleText;
     public Text gameOverVillagersText;
+    public Button gameOverButton;
     public Color victoryTextColor;
     public Color gameoverTextColor;
     public ResourceManager _ResourceManager;
+    public GameObject controlPanel;
 
     //For construction pagination
     public BuildingsTypeGroup _BuildingTypeGroup;
@@ -87,12 +90,6 @@ public class UIManager : MonoBehaviour
             UpdateBuildingInfo();
         }
 
-        woodTxt.text = "" + _ResourceManager.GetWood();
-        stoneTxt.text = "" + _ResourceManager.GetStone();
-        foodTxt.text = "" + _ResourceManager.GetFood();
-        villagersTxt.text = "" + _ResourceManager.GetWorkForce();
-        motivation.value = _ResourceManager.GetMotivation();
-
         /* Test for end of game */
         if (GameManager.Instance.IsGameWon())
         {
@@ -104,10 +101,84 @@ public class UIManager : MonoBehaviour
             DisplayGameOverPanel(false);
         }
 
-        /* Updates the ability to purchase or not each building */
-        for (int i=0; i<_sortedBuildings.Count; ++i)
+        //prevent calculation if panel is closed
+        if (!controlPanel.activeSelf)
         {
-            for(int j=0; j<_sortedBuildings[i].Count; ++j)
+            return;
+        }
+
+        UpdateResourcesInformation();
+        CheckBuildingsdAvailability();
+
+        CheckComputerPaginationInputs();
+    }
+
+    public void DisplayGameOverPanel(bool isPlayerVictorious)
+    {
+        if (isPlayerVictorious)
+        {
+            gameOverTitleText.text = "VICTORY";
+            gameOverTitleText.color = victoryTextColor;
+
+            //button
+            //Changes the button's Normal color to the right color.
+            ColorBlock cb = gameOverButton.colors;
+            cb.normalColor = victoryTextColor;
+            gameOverButton.colors = cb;
+
+            //change the button's text
+            Transform buttonText = gameOverButton.transform.GetChild(0);
+            if(buttonText != null)
+            {
+                buttonText.GetComponent<Text>().text = "Continue";
+            }
+
+            //loads next tuto or mapselector after victory
+            gameOverButton.onClick.AddListener(() => { SceneManager.LoadScene(GameManager.Instance.nextSceneName); });
+            
+        }
+        else
+        {
+            gameOverTitleText.text = "GAME OVER";
+            gameOverTitleText.color = gameoverTextColor;
+
+            //button
+            //Changes the button's Normal color to the right color.
+            ColorBlock cb = gameOverButton.colors;
+            cb.normalColor = gameoverTextColor;
+            gameOverButton.colors = cb;
+
+            //change the button's text
+            Transform buttonText = gameOverButton.transform.GetChild(0);
+            if (buttonText != null)
+            {
+                buttonText.GetComponent<Text>().text = "Restart";
+            }
+
+            //change the button onclick function
+            //reloads the current scene
+            gameOverButton.onClick.AddListener(() => { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); });
+        }
+
+        GameOverPanel.SetActive(true);
+        gameOverVillagersText.text = "Remaining Villagers : " + _ResourceManager.GetWorkForce();
+    }
+
+    private void UpdateResourcesInformation()
+    {
+        woodTxt.text = "" + _ResourceManager.GetWood();
+        stoneTxt.text = "" + _ResourceManager.GetStone();
+        foodTxt.text = "" + _ResourceManager.GetFood();
+        villagersTxt.text = "" + _ResourceManager.GetWorkForce();
+        motivation.value = _ResourceManager.GetMotivation();
+    }
+
+    /* Updates the ability to purchase or not each building */
+    private void CheckBuildingsdAvailability()
+    {
+        for (int i = 0; i < _sortedBuildings.Count; ++i)
+        {
+            for (int j = 0; j < _sortedBuildings[i].Count; ++j)
             {
                 Building currentBuilding = _sortedBuildings[i][j];
                 if (_ResourceManager.HasEnoughResources(currentBuilding.getCost()))
@@ -117,7 +188,7 @@ public class UIManager : MonoBehaviour
                     currentBuilding.transform.GetChild(3).gameObject.SetActive(false);
 
                     Transform cost = currentBuilding.transform.Find("Display/HelpTextCanvas/Cost");
-                    if(cost != null)
+                    if (cost != null)
                     {
                         cost.GetComponent<Text>().color = Color.black;
                     }
@@ -136,8 +207,11 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+    }
 
-        //Test for pagination functions
+    /* For testing purposes */
+    private void CheckComputerPaginationInputs()
+    {
         if (Input.GetKeyUp("right"))
         {
             NextConstructionPage();
@@ -167,25 +241,6 @@ public class UIManager : MonoBehaviour
         {
             DisplayConstructionPage(3);
         }
-        //End of test for pagination
-
-    }
-
-    public void DisplayGameOverPanel(bool isPlayerVictorious)
-    {
-        if (isPlayerVictorious)
-        {
-            gameOverTitleText.text = "VICTORY";
-            gameOverTitleText.color = victoryTextColor;
-        }
-        else
-        {
-            gameOverTitleText.text = "GAME OVER";
-            gameOverTitleText.color = gameoverTextColor;
-        }
-
-        GameOverPanel.SetActive(true);
-        gameOverVillagersText.text = "Remaining Villagers : " + _ResourceManager.GetWorkForce();
     }
 
     public void ShowConstructionPanel()

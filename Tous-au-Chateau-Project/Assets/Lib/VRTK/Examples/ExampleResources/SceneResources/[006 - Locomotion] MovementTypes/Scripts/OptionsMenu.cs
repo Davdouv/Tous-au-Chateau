@@ -77,7 +77,6 @@
         protected virtual void SetObjectVisibility()
         {
             controlObject.SetActive(state);
-            UIManager.Instance.GetComponent<UIManager>().enabled = state;
         }
     }
 }
