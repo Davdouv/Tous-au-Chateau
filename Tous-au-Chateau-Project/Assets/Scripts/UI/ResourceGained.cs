@@ -10,15 +10,22 @@ public class ResourceGained : MonoBehaviour {
     private Text _gainText;
     private float _startTime;
 
+    bool init = false;
+
     private Vector3 _startPos;
 
 	// Use this for initialization
 	void Start () {
-        _gainText = transform.GetChild(0).GetComponent<Text>();
-        _startTime = Time.time;
-        _startPos = _gainText.rectTransform.position;
+        if (!init)
+        {
+            init = true;
+            Debug.Log(transform.childCount);
+            _gainText = transform.GetChild(0).GetComponent<Text>();
+            _startTime = Time.time;
+            _startPos = _gainText.rectTransform.position;
 
-        Invoke("SelfDestroy", animationTime + 1.0f);
+            Invoke("SelfDestroy", animationTime + 1.0f);
+        }
     }
 	
 	// Update is called once per frame
@@ -35,6 +42,9 @@ public class ResourceGained : MonoBehaviour {
         Color c = _gainText.color;
         c.a = Mathf.Lerp(0, 1, fracJourney);
         _gainText.color = c;
+
+        //Look at player
+        transform.LookAt(CameraManager.Instance.GetCamera().transform);
     }
 
     private void SelfDestroy()
@@ -44,6 +54,10 @@ public class ResourceGained : MonoBehaviour {
 
     public void UpdateGain(ResourcesPack gained)
     {
+        if (!init)
+        {
+            Start();
+        }
         //An object can't give several resources at the same time
         //Thus, the result of the addition only returns the right resource number
         int gainedNb = gained.food + gained.wood + gained.stone + gained.workForce + gained.motivation;

@@ -2132,6 +2132,8 @@ MonoBehaviour:
   gameoverTextColor: {r: 0.6901961, g: 0, b: 0.027450982, a: 1}
   _ResourceManager: {fileID: 439394635}
   controlPanel: {fileID: 1756107966}
+  ResourceGainPrefab: {fileID: 1137109586676948, guid: ddc922da42399eb459da854438708633,
+    type: 2}
   _BuildingTypeGroup: {fileID: 246454946}
   ConstructionPagination: {fileID: 1107526685}
   buildingNotPuchasable: {r: 0.6901961, g: 0, b: 0.02745098, a: 1}
@@ -19564,6 +19566,7 @@ MonoBehaviour:
     motivation: 0
   crushedDownSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
   crushFXPrefab: {fileID: 192374, guid: d11431e90db23c7468e19dc037beb175, type: 2}
+  resourceGainPrefab: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &493399961
 MonoBehaviour:
@@ -25464,6 +25467,7 @@ MonoBehaviour:
     motivation: 0
   crushedDownSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
   crushFXPrefab: {fileID: 192374, guid: d11431e90db23c7468e19dc037beb175, type: 2}
+  resourceGainPrefab: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &609486835
 MonoBehaviour:
@@ -29863,6 +29867,11 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
+--- !u!1 &961267443 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1788422496301518, guid: e29b69bbe0dbec949b4b247843638c95,
+    type: 2}
+  m_PrefabInternal: {fileID: 1916447384}
 --- !u!1 &963685848
 GameObject:
   m_ObjectHideFlags: 0
@@ -30021,6 +30030,7 @@ MonoBehaviour:
     motivation: 0
   crushedDownSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
   crushFXPrefab: {fileID: 192374, guid: d11431e90db23c7468e19dc037beb175, type: 2}
+  resourceGainPrefab: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &963685852
 MonoBehaviour:
@@ -47251,6 +47261,7 @@ MonoBehaviour:
     motivation: 0
   crushedDownSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
   crushFXPrefab: {fileID: 192374, guid: d11431e90db23c7468e19dc037beb175, type: 2}
+  resourceGainPrefab: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &1656119105
 MonoBehaviour:
@@ -52936,6 +52947,7 @@ MonoBehaviour:
     motivation: 0
   crushedDownSound: {fileID: 8300000, guid: eca55a52aa79d9e46a04d8132e606f44, type: 3}
   crushFXPrefab: {fileID: 130146, guid: c1e1630e03a3c1a4989b4c15cd619ca9, type: 2}
+  resourceGainPrefab: {fileID: 0}
   canBeCrushed: 1
 --- !u!114 &2011898644
 MonoBehaviour:
@@ -53616,8 +53628,7 @@ MonoBehaviour:
   Transparent_Building: {fileID: 0}
   villagerPrefab: {fileID: 0}
   fxPrefab: {fileID: 107438, guid: 1426483d47c616e4297a3a71c7ad5860, type: 2}
-  impactPreview: {fileID: 1788422496301518, guid: e29b69bbe0dbec949b4b247843638c95,
-    type: 2}
+  impactPreview: {fileID: 961267443}
   speechEvent1: {fileID: 0}
   speechEvent2: {fileID: 0}
   speechEvent4_1: {fileID: 0}
