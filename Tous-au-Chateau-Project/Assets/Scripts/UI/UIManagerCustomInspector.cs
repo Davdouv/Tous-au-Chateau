@@ -15,6 +15,7 @@ public class UIManagerCustomInspector : Editor {
         EditorGUILayout.Space();
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_ResourceManager"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("controlPanel"));
 
         DisplayResources();
 
@@ -65,6 +66,9 @@ public class UIManagerCustomInspector : Editor {
 
         EditorGUILayout.LabelField(serializedObject.FindProperty("gameOverVillagersText").displayName);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("gameOverVillagersText"), GUIContent.none);
+
+        EditorGUILayout.LabelField(serializedObject.FindProperty("gameOverButton").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("gameOverButton"), GUIContent.none);
 
         EditorGUILayout.LabelField(serializedObject.FindProperty("victoryTextColor").displayName);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("victoryTextColor"), GUIContent.none);
