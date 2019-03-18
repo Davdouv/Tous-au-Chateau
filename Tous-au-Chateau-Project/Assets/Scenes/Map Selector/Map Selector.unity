@@ -1429,8 +1429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832df0a1aec0b874489c703d40c0f227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Hello, Popularios ! Pick me up from there and release me above one of those
-    castles to start the revolution !
+  message: 'Hello, Popularios ! #Pick me up# from there and release me above one of
+    those #castles# to start the revolution !'
   bubble: {fileID: 1794407886}
   previousEvent: {fileID: 0}
   controllerAnimation: {fileID: 1844677414}
@@ -1783,7 +1783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52d0ccd621417664ca1f1123b9488a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showControlHints: 1
+  showControlHints: 0
   hideHandsAtSwitch: 0
   resetHandsAtSwitch: 1
   showHandAxisHelpers: 1
@@ -13755,7 +13755,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1642983412}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -14055,9 +14055,9 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10.6
-  m_Range: 69.1
-  m_SpotAngle: 21
+  m_Intensity: 13.8
+  m_Range: 44.8
+  m_SpotAngle: 17.6
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -14142,7 +14142,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1685138266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4, y: -68.97816, z: 37.3}
+  m_LocalPosition: {x: -3.4, y: -68.97816, z: 100}
   m_LocalScale: {x: 0.104043394, y: 0.104043394, z: 0.104043394}
   m_Children:
   - {fileID: 1631550311}
@@ -17487,7 +17487,7 @@ Prefab:
     - target: {fileID: 224652358960371070, guid: 6ddc8c6c8d394ee4787fc93b1e50d845,
         type: 2}
       propertyPath: m_LocalPosition.z
-      value: -67.321266
+      value: 73
       objectReference: {fileID: 0}
     - target: {fileID: 224652358960371070, guid: 6ddc8c6c8d394ee4787fc93b1e50d845,
         type: 2}
@@ -17517,12 +17517,12 @@ Prefab:
     - target: {fileID: 224652358960371070, guid: 6ddc8c6c8d394ee4787fc93b1e50d845,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -44.402927
+      value: -39
       objectReference: {fileID: 0}
     - target: {fileID: 224652358960371070, guid: 6ddc8c6c8d394ee4787fc93b1e50d845,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -28.063076
+      value: -24.59
       objectReference: {fileID: 0}
     - target: {fileID: 224652358960371070, guid: 6ddc8c6c8d394ee4787fc93b1e50d845,
         type: 2}
@@ -17578,6 +17578,16 @@ Prefab:
         type: 2}
       propertyPath: m_LocalScale.z
       value: 0.041894
+      objectReference: {fileID: 0}
+    - target: {fileID: 114125556814756054, guid: 6ddc8c6c8d394ee4787fc93b1e50d845,
+        type: 2}
+      propertyPath: m_FontData.m_RichText
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114125556814756054, guid: 6ddc8c6c8d394ee4787fc93b1e50d845,
+        type: 2}
+      propertyPath: m_Text
+      value: Your message...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ddc8c6c8d394ee4787fc93b1e50d845, type: 2}

@@ -21,6 +21,7 @@ public class SpeechBubble : MonoBehaviour {
 	private bool _isCameraDefault = false;
 	private GameObject _controllerAnimation = null;
 	private float minimalPanelSize = 500;
+	private bool bold = false;
 
 	private AudioSource _audioData;
 	public AudioClip bubbleSound;
@@ -107,7 +108,15 @@ public class SpeechBubble : MonoBehaviour {
 			yield return new WaitForSeconds(1);
 			foreach (char letter in message)
 			{
-				_textWithControllersComp.text += letter;
+				string displayLetter = letter.ToString();
+				if (letter == '#') {
+						bold = !bold;
+				} else {
+					if (bold) {
+					displayLetter = "<b>" + letter + "</b>";
+					}
+					_textWithControllersComp.text += displayLetter;
+				}
 				yield return 0;
 				yield return new WaitForSeconds(letterTime);
 			}
