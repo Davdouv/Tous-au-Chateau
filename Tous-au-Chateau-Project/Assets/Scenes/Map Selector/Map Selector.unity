@@ -181,7 +181,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &29455745
@@ -333,7 +335,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &42734081
@@ -428,7 +432,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &58065804
@@ -940,7 +946,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &75537726
@@ -1208,11 +1216,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 82651405}
   m_CullTransparentMesh: 0
---- !u!4 &83641063 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1297889466}
 --- !u!1 &91235446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,18 +1254,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1841119837}
---- !u!65 &108685945
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 108685943}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &117630205 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1633346440321792, guid: 574f275d33335d043bc82105cfb861ad,
@@ -1324,72 +1315,6 @@ Transform:
   m_Father: {fileID: 186794580}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &124681685
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2052762974}
-    m_Modifications:
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -616.0116
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 345.05588
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 90.9392
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_Name
-      value: Flag 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 4.1373625
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 4.1373606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 4.1373625
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_TagString
-      value: Castle
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!4 &131888602 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -1459,7 +1384,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &137520739 stripped
@@ -2009,7 +1936,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &178181328
@@ -2232,50 +2161,6 @@ Transform:
   m_Father: {fileID: 1502882011}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &196669861
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 196669862}
-  - component: {fileID: 196669863}
-  m_Layer: 0
-  m_Name: dark flags
-  m_TagString: Castle
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &196669862
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 196669861}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1351910286}
-  - {fileID: 83641063}
-  - {fileID: 812458220}
-  m_Father: {fileID: 2052762974}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &196669863
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 196669861}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &208661074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2356,7 +2241,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 209511572}
-  - component: {fileID: 209511573}
   m_Layer: 0
   m_Name: dark flags
   m_TagString: Castle
@@ -2380,18 +2264,6 @@ Transform:
   m_Father: {fileID: 1334228860}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &209511573
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 209511571}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &209981329
 GameObject:
   m_ObjectHideFlags: 0
@@ -2529,7 +2401,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &219599056 stripped
@@ -2542,18 +2416,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 597040761}
---- !u!65 &219599058
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 219599056}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!4 &221330551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -2602,18 +2464,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 256427633}
---- !u!65 &253325636
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 253325634}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &254429738 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1633346440321792, guid: 574f275d33335d043bc82105cfb861ad,
@@ -2710,7 +2560,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &258935199
@@ -2874,7 +2726,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &284532830
@@ -3026,74 +2880,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-  m_IsPrefabAsset: 0
---- !u!1001 &290030641
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 196669862}
-    m_Modifications:
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -555.6475
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 345.05588
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 90.93922
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_Name
-      value: Flag 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 4.1373625
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 4.1373606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 4.1373625
-      objectReference: {fileID: 0}
-    - target: {fileID: 23240110859377328, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fa756b232992781448908e45ad28eece, type: 2}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_TagString
-      value: Castle
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &292064799
@@ -3263,18 +3052,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 304010271}
---- !u!65 &302498359
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 302498358}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!65 &302498360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3351,7 +3128,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &307584869 stripped
@@ -3364,18 +3143,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 987815837}
---- !u!65 &307584871
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 307584869}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!4 &326017740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -3864,7 +3631,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &367828212
@@ -3959,7 +3728,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &380306638 stripped
@@ -3972,35 +3743,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 16740139}
---- !u!65 &380306640
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 380306638}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &382823973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1636578898}
---- !u!65 &382823974
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 382823973}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!65 &382823975
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4192,7 +3939,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &394443828
@@ -4258,7 +4007,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &407427531
@@ -4346,28 +4097,6 @@ Transform:
   m_Father: {fileID: 1643307117}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 124.40101, z: 0}
---- !u!1 &408279589 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 2035352522}
---- !u!4 &408279590 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 2035352522}
---- !u!65 &408279591
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 408279589}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &413764018
 GameObject:
   m_ObjectHideFlags: 0
@@ -4539,7 +4268,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &451728817
@@ -4664,7 +4395,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &455182721
@@ -4801,7 +4534,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &465492618
@@ -5006,7 +4741,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &470881334
@@ -5100,7 +4837,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &485563118
@@ -5256,18 +4995,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 391169897}
---- !u!65 &509918607
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 509918606}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!4 &514718004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -5356,7 +5083,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 544990005}
-  - component: {fileID: 544990006}
   m_Layer: 0
   m_Name: dark flags
   m_TagString: Castle
@@ -5380,18 +5106,6 @@ Transform:
   m_Father: {fileID: 2128368847}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &544990006
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 544990004}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &555577128
 GameObject:
   m_ObjectHideFlags: 0
@@ -5575,7 +5289,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &564339769
@@ -5749,7 +5465,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &600254125
@@ -5861,18 +5579,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 33561801}
---- !u!65 &605178880
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 605178878}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &607491858
 GameObject:
   m_ObjectHideFlags: 0
@@ -5969,18 +5675,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1100546660}
---- !u!65 &609451585
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 609451583}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &610645788
 GameObject:
   m_ObjectHideFlags: 0
@@ -6048,7 +5742,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 611102676}
-  - component: {fileID: 611102677}
   m_Layer: 0
   m_Name: dark flags
   m_TagString: Castle
@@ -6072,18 +5765,6 @@ Transform:
   m_Father: {fileID: 610645789}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &611102677
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 611102675}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &611579186
 Prefab:
   m_ObjectHideFlags: 0
@@ -6148,7 +5829,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &621540467
@@ -6423,7 +6106,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &655254584
@@ -6645,7 +6330,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &660248435
@@ -6711,7 +6398,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &676105472
@@ -6778,7 +6467,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!4 &679580282 stripped
@@ -6916,7 +6607,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &709129729
@@ -6947,23 +6640,6 @@ Transform:
   m_Father: {fileID: 186794580}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &717722148 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 2008459474}
---- !u!65 &717722149
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 717722148}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &724941802
 GameObject:
   m_ObjectHideFlags: 0
@@ -7106,18 +6782,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 210928446}
---- !u!65 &743721952
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 743721950}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &748932541
 GameObject:
   m_ObjectHideFlags: 0
@@ -7316,18 +6980,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 375866647}
---- !u!65 &776813667
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 776813666}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &786673251
 Prefab:
   m_ObjectHideFlags: 0
@@ -7391,7 +7043,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &787439338
@@ -7621,18 +7275,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 285576146}
---- !u!65 &807756261
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 807756259}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &807761282
 GameObject:
   m_ObjectHideFlags: 0
@@ -7667,23 +7309,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1936208879}
---- !u!65 &807865827
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 807865826}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
---- !u!4 &812458220 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 290030641}
 --- !u!4 &814104421 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -7694,18 +7319,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 135627761}
---- !u!65 &822335150
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 822335149}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &833685601
 GameObject:
   m_ObjectHideFlags: 0
@@ -7941,7 +7554,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 858058230}
-  - component: {fileID: 858058231}
   m_Layer: 0
   m_Name: dark flags
   m_TagString: Castle
@@ -7965,35 +7577,11 @@ Transform:
   m_Father: {fileID: 69905649}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &858058231
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 858058229}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &866373211 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 367523726}
---- !u!65 &866373212
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 866373211}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &872628100
 GameObject:
   m_ObjectHideFlags: 0
@@ -8070,18 +7658,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1048798316}
---- !u!65 &886534140
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 886534139}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &905856384
 GameObject:
   m_ObjectHideFlags: 0
@@ -8673,7 +8249,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 937107128}
-  - component: {fileID: 937107129}
   m_Layer: 0
   m_Name: dark flags
   m_TagString: Castle
@@ -8697,18 +8272,6 @@ Transform:
   m_Father: {fileID: 451728818}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &937107129
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 937107127}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &937551626
 Prefab:
   m_ObjectHideFlags: 0
@@ -8881,18 +8444,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 282002404}
---- !u!65 &958114555
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 958114553}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &963129767
 GameObject:
   m_ObjectHideFlags: 0
@@ -9097,18 +8648,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 172977996}
---- !u!65 &979363432
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 979363431}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &981543889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1633346440321792, guid: 574f275d33335d043bc82105cfb861ad,
@@ -9299,7 +8838,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &991876895
@@ -9745,7 +9286,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1055504757
@@ -9867,7 +9410,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1077076624 stripped
@@ -9875,35 +9420,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 423223236}
---- !u!65 &1077076625
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1077076624}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1093652715 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 676105472}
---- !u!65 &1093652716
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1093652715}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &1100546660
 Prefab:
   m_ObjectHideFlags: 0
@@ -9967,7 +9488,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1100706783
@@ -10112,18 +9635,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1155961240}
---- !u!65 &1109140536
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1109140534}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1110414865
 GameObject:
   m_ObjectHideFlags: 0
@@ -10155,89 +9666,11 @@ Transform:
   m_Father: {fileID: 1437672946}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1121134266
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2052762974}
-    m_Modifications:
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -587.29834
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 359.12292
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 138.84982
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_Name
-      value: Flag 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 4.1373606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 4.1373606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 4.1373606
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_TagString
-      value: Castle
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1127123493 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 468052157}
---- !u!65 &1127123494
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1127123493}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1135992237
 GameObject:
   m_ObjectHideFlags: 0
@@ -10375,18 +9808,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1652878741}
---- !u!65 &1140311008
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1140311007}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!65 &1140311009
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10582,40 +10003,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 660248435}
---- !u!65 &1149124884
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1149124882}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!4 &1154672910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 647451517}
---- !u!1 &1155241394 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 290030641}
---- !u!65 &1155241395
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1155241394}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &1155961240
 Prefab:
   m_ObjectHideFlags: 0
@@ -10679,7 +10071,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1160184787 stripped
@@ -10692,18 +10086,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 394443828}
---- !u!65 &1160184789
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1160184787}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &1165890158
 Prefab:
   m_ObjectHideFlags: 0
@@ -10767,7 +10149,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1166198541
@@ -10990,18 +10374,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1317956939}
---- !u!65 &1198670589
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1198670588}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &1201766129
 Prefab:
   m_ObjectHideFlags: 0
@@ -11065,7 +10437,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1202832602
@@ -11812,7 +11186,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1251794573
@@ -11980,18 +11356,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 700959004}
---- !u!65 &1289298035
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1289298034}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1291238970 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1633346440321792, guid: 574f275d33335d043bc82105cfb861ad,
@@ -12011,15 +11375,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -585.0614
+      value: -587.2
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 308.8
+      value: 306.2
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 114.80199
+      value: 114.8
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalRotation.x
@@ -12047,15 +11411,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalScale.x
-      value: 3.8993382
+      value: 8.512636
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalScale.y
-      value: 3.899338
+      value: 8.512633
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalScale.z
-      value: 3.8993382
+      value: 8.512636
       objectReference: {fileID: 0}
     - target: {fileID: 1633346440321792, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_Name
@@ -12070,6 +11434,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 33242280033416232, guid: 574f275d33335d043bc82105cfb861ad,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: ac2aab5bfcda55b44a3b198fc070547d, type: 3}
+    - target: {fileID: 23503793476457636, guid: 574f275d33335d043bc82105cfb861ad,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 07bcd4e0597eb0648b7a45624f2e0594, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
   m_IsPrefabAsset: 0
@@ -12078,73 +11452,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad,
     type: 2}
   m_PrefabInternal: {fileID: 1297114622}
---- !u!1001 &1297889466
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 196669862}
-    m_Modifications:
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -587.2984
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 359.12305
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 138.84982
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_Name
-      value: Flag 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 4.1373625
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 4.1373606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 4.1373625
-      objectReference: {fileID: 0}
-    - target: {fileID: 23240110859377328, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fa756b232992781448908e45ad28eece, type: 2}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_TagString
-      value: Castle
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1301882017
 GameObject:
   m_ObjectHideFlags: 0
@@ -12185,18 +11492,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 786673251}
---- !u!65 &1302137752
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1302137750}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1307418212
 GameObject:
   m_ObjectHideFlags: 0
@@ -12205,7 +11500,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1307418213}
-  - component: {fileID: 1307418214}
   m_Layer: 0
   m_Name: dark flags
   m_TagString: Castle
@@ -12229,18 +11523,6 @@ Transform:
   m_Father: {fileID: 70533129}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1307418214
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1307418212}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1309661984
 GameObject:
   m_ObjectHideFlags: 0
@@ -12337,18 +11619,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 458793863}
---- !u!65 &1315697895
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1315697894}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &1317956939
 Prefab:
   m_ObjectHideFlags: 0
@@ -12413,7 +11683,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1327823812
@@ -12551,18 +11823,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1348771476}
---- !u!65 &1334566620
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1334566618}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1334589097
 GameObject:
   m_ObjectHideFlags: 0
@@ -12654,7 +11914,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1349562218
@@ -12722,11 +11984,6 @@ Prefab:
     - {fileID: 114876281178671224, guid: 7dc3da79700a76d4ba304fd715baeaf1, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 7dc3da79700a76d4ba304fd715baeaf1, type: 2}
   m_IsPrefabAsset: 0
---- !u!4 &1351910286 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 2008459474}
 --- !u!1 &1353084241
 GameObject:
   m_ObjectHideFlags: 0
@@ -12778,8 +12035,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 21.450005, y: 18.749502, z: 24.075361}
-  m_Center: {x: 0.000015258789, y: 0, z: 0.000021934511}
+  m_Size: {x: 10.9, y: 8.9, z: 9.89}
+  m_Center: {x: 0, y: -1.6, z: -0.7}
 --- !u!114 &1353364443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12801,18 +12058,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 2118583123}
---- !u!65 &1364966242
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1364966240}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1385502559 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1788422496301518, guid: e29b69bbe0dbec949b4b247843638c95,
@@ -13177,7 +12422,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1424540413
@@ -13270,18 +12517,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 2007394474}
---- !u!65 &1425490481
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1425490480}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1437672945
 GameObject:
   m_ObjectHideFlags: 0
@@ -13358,18 +12593,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1061608680}
---- !u!65 &1437921013
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1437921011}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!4 &1445946301 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -13490,35 +12713,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1201766129}
---- !u!65 &1480674192
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1480674190}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1486240696 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 611579186}
---- !u!65 &1486240697
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1486240696}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1489638167
 GameObject:
   m_ObjectHideFlags: 0
@@ -13802,35 +13001,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1165890158}
---- !u!65 &1545047566
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1545047564}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1545407603 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 2008110723}
---- !u!65 &1545407604
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1545407603}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1546154642
 GameObject:
   m_ObjectHideFlags: 0
@@ -14275,18 +13450,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 647451517}
---- !u!65 &1605887811
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1605887810}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &1610147078
 Prefab:
   m_ObjectHideFlags: 0
@@ -14652,7 +13815,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1642983412
@@ -14783,35 +13948,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 558834031}
---- !u!65 &1643950898
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1643950897}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1647029468 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 74109714}
---- !u!65 &1647029469
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1647029468}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1651205995
 GameObject:
   m_ObjectHideFlags: 0
@@ -14979,7 +14120,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1656481845
@@ -15559,18 +14702,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 54707816}
---- !u!65 &1732572648
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1732572647}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1742732107 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1633346440321792, guid: 574f275d33335d043bc82105cfb861ad,
@@ -15619,18 +14750,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1409033210}
---- !u!65 &1762009735
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1762009734}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1778733917
 GameObject:
   m_ObjectHideFlags: 0
@@ -15777,18 +14896,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 656474190}
---- !u!65 &1789679580
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1789679578}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1790259086
 GameObject:
   m_ObjectHideFlags: 0
@@ -16120,28 +15227,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 135627761}
---- !u!1 &1833494268 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1121134266}
---- !u!4 &1833494269 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1121134266}
---- !u!65 &1833494270
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1833494268}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1836147587
 GameObject:
   m_ObjectHideFlags: 0
@@ -16245,7 +15330,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1844677414 stripped
@@ -16564,7 +15651,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1883391505}
-  - component: {fileID: 1883391506}
   m_Layer: 0
   m_Name: dark flags
   m_TagString: Castle
@@ -16588,18 +15674,6 @@ Transform:
   m_Father: {fileID: 1547201791}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1883391506
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1883391504}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1897322666
 GameObject:
   m_ObjectHideFlags: 0
@@ -16754,23 +15828,6 @@ Transform:
   m_Father: {fileID: 1353084242}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1918780628 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 1297889466}
---- !u!65 &1918780629
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1918780628}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &1934105182
 Prefab:
   m_ObjectHideFlags: 0
@@ -16834,7 +15891,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &1936208879
@@ -16901,7 +15960,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &1939793435 stripped
@@ -16914,18 +15975,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1248160328}
---- !u!65 &1939793437
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1939793435}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &1943538826
 GameObject:
   m_ObjectHideFlags: 0
@@ -17472,7 +16521,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1001 &2008110723
@@ -17539,98 +16590,11 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
---- !u!1001 &2008459474
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 196669862}
-    m_Modifications:
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -616.0116
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 345.05588
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 90.93922
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_Name
-      value: Flag 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 4.1373625
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 4.1373606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 4.1373625
-      objectReference: {fileID: 0}
-    - target: {fileID: 23240110859377328, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: fa756b232992781448908e45ad28eece, type: 2}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_TagString
-      value: Castle
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-  m_IsPrefabAsset: 0
---- !u!1 &2015631808 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 124681685}
---- !u!4 &2015631809 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 124681685}
---- !u!65 &2015631810
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2015631808}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &2027360573 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1633346440321792, guid: 574f275d33335d043bc82105cfb861ad,
@@ -17754,72 +16718,6 @@ Transform:
   m_Father: {fileID: 1643307117}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 24.645, z: 0}
---- !u!1001 &2035352522
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2052762974}
-    m_Modifications:
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -555.6475
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 345.05588
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 90.939186
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_Name
-      value: Flag 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 4.1373606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 4.1373606
-      objectReference: {fileID: 0}
-    - target: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 4.1373606
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-      propertyPath: m_TagString
-      value: Castle
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &2035360821
 GameObject:
   m_ObjectHideFlags: 0
@@ -17907,18 +16805,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 1934105182}
---- !u!65 &2037883835
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2037883833}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &2043851860
 GameObject:
   m_ObjectHideFlags: 0
@@ -18372,10 +17258,6 @@ Transform:
   - {fileID: 146928239}
   - {fileID: 2090671207}
   - {fileID: 1297114623}
-  - {fileID: 196669862}
-  - {fileID: 2015631809}
-  - {fileID: 1833494269}
-  - {fileID: 408279590}
   m_Father: {fileID: 1685138267}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18395,12 +17277,12 @@ MonoBehaviour:
   castleUnlocked: {fileID: 1353364440}
   castleLocked: {fileID: 1822246881}
   platform: {fileID: 146928235}
-  flag1: {fileID: 2015631808}
-  flag2: {fileID: 1833494268}
-  flag3: {fileID: 408279589}
-  darkFlag1: {fileID: 717722148}
-  darkFlag2: {fileID: 1918780628}
-  darkFlag3: {fileID: 1155241394}
+  flag1: {fileID: 0}
+  flag2: {fileID: 0}
+  flag3: {fileID: 0}
+  darkFlag1: {fileID: 0}
+  darkFlag2: {fileID: 0}
+  darkFlag3: {fileID: 0}
   isCrushed: 0
 --- !u!1 &2060866016
 GameObject:
@@ -18792,7 +17674,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2088774477}
-  - component: {fileID: 2088774478}
   m_Layer: 0
   m_Name: dark flags
   m_TagString: Castle
@@ -18816,18 +17697,6 @@ Transform:
   m_Father: {fileID: 1790259087}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2088774478
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2088774476}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1 &2089789145 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -18838,18 +17707,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 480429397}
---- !u!65 &2089789147
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2089789145}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
 --- !u!1001 &2090671206
 Prefab:
   m_ObjectHideFlags: 0
@@ -18859,15 +17716,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -585.0614
+      value: -587.2
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 308.8
+      value: 306.2
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 114.80199
+      value: 114.8
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalRotation.x
@@ -18895,15 +17752,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalScale.x
-      value: 3.899334
+      value: 8.512636
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalScale.y
-      value: 3.8993328
+      value: 8.512633
       objectReference: {fileID: 0}
     - target: {fileID: 4676518377993392, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_LocalScale.z
-      value: 3.899334
+      value: 8.512636
       objectReference: {fileID: 0}
     - target: {fileID: 1633346440321792, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
       propertyPath: m_Name
@@ -18921,6 +17778,11 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
+    - target: {fileID: 33242280033416232, guid: 574f275d33335d043bc82105cfb861ad,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: ac2aab5bfcda55b44a3b198fc070547d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 574f275d33335d043bc82105cfb861ad, type: 2}
   m_IsPrefabAsset: 0
@@ -19110,7 +17972,9 @@ Prefab:
       propertyPath: m_TagString
       value: Castle
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 136904635640619862, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
+    - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
 --- !u!1 &2128368846
@@ -19514,15 +18378,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 454389620}
---- !u!65 &2147113229
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2147113227}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5.15, y: 16.4, z: 0.59}
-  m_Center: {x: 2.15, y: 0, z: 0}
