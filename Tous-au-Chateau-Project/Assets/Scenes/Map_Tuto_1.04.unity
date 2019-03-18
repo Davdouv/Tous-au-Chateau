@@ -7010,8 +7010,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cee50c3b010a6c459383dfd6466ea01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: We cannot reach the house, those trees are blocking the way. Get rid of
-    one of those to let us pass.
+  message: 'We cannot reach the house, those trees are blocking the way. #Get rid
+    of one of those# to let us pass.'
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 508803583}
   controllerAnimation: {fileID: 0}
@@ -7612,7 +7612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "There are enemies on our way, such as this wild wolf. Maybe you could,
-    you know\u2026 Crush it?"
+    you know\u2026 #Crush it#?"
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 2050851015}
   controllerAnimation: {fileID: 0}
@@ -7827,7 +7827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8f3da9ebe2aed43a7256cb5ce940ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: You need to place the board at the right place!
+  message: 'You need to place the board at the #right place#!'
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 2050851015}
   controllerAnimation: {fileID: 0}
@@ -8184,7 +8184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   message: "Popularios! Dear God, can you hear us from up there? We are going to organize\r
     our revolution against the Wicked Lord and we need your help! If you can hear\r
-    us, please crush the ground near us with your fist."
+    us, please #crush the ground near us with your fist#."
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 0}
   controllerAnimation: {fileID: 735240212}
@@ -8382,7 +8382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3258f67faf8b12f4eb88944ebb08accf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: You have to crush the right tree if we want to reach the house.
+  message: 'You have to crush the #right tree# if you want us to reach the house.'
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 436246460}
   controllerAnimation: {fileID: 0}
@@ -8629,7 +8629,7 @@ MonoBehaviour:
     m_MaxSize: 99
     m_Alignment: 3
     m_AlignByGeometry: 0
-    m_RichText: 0
+    m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
@@ -8809,8 +8809,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42a8e0028cf91c47a7107745df22f0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Well, this world seems more dangerous that we thought. We will need some
-    more active help from your side, Popularios. Please, crush this tree over there.
+  message: 'Well, this world seems more dangerous that we thought. We will need some
+    more active help from your side, Popularios. Please, #crush this tree# over there.'
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 104874726}
   controllerAnimation: {fileID: 735240212}
@@ -23070,7 +23070,7 @@ MonoBehaviour:
     m_MaxSize: 99
     m_Alignment: 3
     m_AlignByGeometry: 0
-    m_RichText: 0
+    m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
@@ -23897,8 +23897,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "Hourra! You\u2019ve led us to the house safely (for most of us at least...).
-    Our ranks are now widening. Our journey is not over yet, there\u2019s another
-    house we have to visit."
+    Our ranks are now widening. Our journey is not over yet, there\u2019s #another
+    house# we have to visit."
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 436246460}
   controllerAnimation: {fileID: 0}
@@ -39832,8 +39832,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   message: "Thanks to this new collected resource, you\u2019re now able to create
-    a bridge for us to cross the river. Select the wood plank in your construction
-    panel and put it on the river."
+    a bridge for us to cross the river. Select the #wood plank# in your #construction
+    panel# and put it on the river."
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 698406504}
   controllerAnimation: {fileID: 753479756}
