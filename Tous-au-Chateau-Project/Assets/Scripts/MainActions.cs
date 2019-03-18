@@ -139,6 +139,13 @@ public class MainActions : MonoBehaviour
                     Destroy(newBuilding);
                     newBuilding = Instantiate(buildingPrefab, buildingTrans);
                 }
+                else
+                {
+                    haveBuilding = false;
+                    Destroy(buildingPreview);
+                    Destroy(newBuilding);
+                    //We need to check ressources to be able to retrieve a pack when not used
+                }
             }
             else if (SceneManager.GetActiveScene().name == "Map Selector")
             {
