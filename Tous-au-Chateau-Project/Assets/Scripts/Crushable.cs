@@ -10,6 +10,7 @@ public class Crushable : MonoBehaviour
     public AudioClip crushedDownSound;
 
     public GameObject crushFXPrefab;
+    public GameObject resourceGainPrefab;
 
     // Can be set to false for some reasons in tutorial for example
     public bool canBeCrushed = true;
@@ -51,6 +52,8 @@ public class Crushable : MonoBehaviour
             if (crushFXPrefab)
             {
                 Instantiate(crushFXPrefab, transform);
+                GameObject resourceGain = Instantiate(resourceGainPrefab, transform);
+                resourceGain.GetComponent<ResourceGained>().UpdateGain(_gain);
             }
             canBeCrushed = false;
         }
