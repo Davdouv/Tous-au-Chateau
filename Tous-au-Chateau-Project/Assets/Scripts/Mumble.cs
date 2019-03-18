@@ -36,7 +36,8 @@ public class Mumble : MonoBehaviour {
 	}
 
 	private IEnumerator PlayText(string text) {
-		var previousLetter = ' ';
+        _audioData.volume = 0.4f;
+        var previousLetter = ' ';
 		foreach (var letter in text) {
 			if (letter != previousLetter) {
 				if (letter == 'a') {
@@ -132,14 +133,10 @@ public class Mumble : MonoBehaviour {
 				yield return 0;
 
 		}
-	}
+        _audioData.volume = 1f;
+    }
 
 	public void Play(string text) {
 		StartCoroutine(PlayText(text));
-	}
-
-	// Update is called once per frame
-	void Update () {
-
 	}
 }
