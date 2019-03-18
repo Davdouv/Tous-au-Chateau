@@ -21,10 +21,14 @@ public class MapSelector : MonoBehaviour {
 		var tuto1 = mapStations[0].name;
 		var tuto2 = mapStations[1].name;
 		var tuto3 = mapStations[2].name;
-		if (_globalScore.GetScore(tuto1) <= 0 ||
-				_globalScore.GetScore(tuto2) <= 0 ||
-				_globalScore.GetScore(tuto3) <= 0 ) {
-			SwitchScene(firstSceneName);
+		if (_globalScore.GetScore(tuto1) <= 0) {
+			SwitchScene(tuto1);
+		}
+		else if (_globalScore.GetScore(tuto2) <= 0) {
+			SwitchScene(tuto2);
+		}
+		else if (_globalScore.GetScore(tuto3) <= 0) {
+			SwitchScene(tuto3);
 		}
 	}
 
