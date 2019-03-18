@@ -50,6 +50,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4084161999483626}
   - component: {fileID: 54539046492175544}
+  - component: {fileID: 65826970039434542}
   m_Layer: 0
   m_Name: TransLP
   m_TagString: Sign
@@ -259,3 +260,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65826970039434542
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704118711876476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.5, y: 3.5, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0.05}
