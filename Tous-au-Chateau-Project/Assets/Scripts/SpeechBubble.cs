@@ -15,7 +15,6 @@ public class SpeechBubble : MonoBehaviour {
 	private GameObject _dots;
 	private Text _textComp;
 	private Text _textWithControllersComp;
-	private float letterTime = 0.03f;
 	private bool _open = false;
 	private Animator animator;
 	private bool _isCameraDefault = false;
@@ -25,6 +24,8 @@ public class SpeechBubble : MonoBehaviour {
 
 	private AudioSource _audioData;
 	public AudioClip bubbleSound;
+
+	public float letterTime = 0.03f;
 
 	public bool canClose = false;
 	public bool dots = true;
