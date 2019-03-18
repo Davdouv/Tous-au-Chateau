@@ -55,6 +55,7 @@ public class MainActions : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        print("wesh "+name);
         //events = GetComponent<VRTK.VRTK_ControllerEvents>();
         trigger = false;
         crushMode = false;
