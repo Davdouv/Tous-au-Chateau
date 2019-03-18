@@ -131,6 +131,7 @@ public class MainActions : MonoBehaviour
             {
                 //releaseBuilding
                 haveBuilding = false;
+                //EnableBoxColliders(newBuilding, true);
                 newBuilding.GetComponent<Rigidbody>().isKinematic = false;
                 newBuilding.transform.parent = null;
                 //On hand release
@@ -193,7 +194,7 @@ public class MainActions : MonoBehaviour
 
     private void CrushGround(Collider other)
     {
-        if (crushMode && canCrush)
+        if (crushMode && canCrush && !haveBuilding)
         {
             if (other.gameObject.tag == "Ground")
             {
@@ -211,7 +212,10 @@ public class MainActions : MonoBehaviour
 
                 if (GameManager.Instance.tuto)
                 {
-                    speechEvent1.hasCrushedGround = true;
+                    if (speechEvent1)
+                    {
+                        speechEvent1.hasCrushedGround = true;
+                    }                    
                 }
             }
         }
@@ -220,7 +224,7 @@ public class MainActions : MonoBehaviour
     // Return true if we crushed something
     private bool CrushAction(Collider other)
     {
-        if (crushMode && canCrush) //Destroy element of the nature
+        if (crushMode && canCrush && !haveBuilding) //Destroy element of the nature
         {
             if (other.gameObject.GetComponent<Crushable>() && other.gameObject.GetComponent<Crushable>().canBeCrushed)
             {
@@ -282,7 +286,9 @@ public class MainActions : MonoBehaviour
                         //Instantiate building
                         buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
                         newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
-                        buildingPreviewPrefab = other.gameObject.GetComponent<Building>().prefabTransparent; 
+                        buildingPreviewPrefab = other.gameObject.GetComponent<Building>().prefabTransparent;
+                        EnableBoxColliders(newBuilding, false);
+                        buildingPreview = Instantiate(buildingPreviewPrefab);
                         haveBuilding = true;
                     }
                 }
@@ -344,11 +350,12 @@ public class MainActions : MonoBehaviour
 
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
-            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
+            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.3f, 0));
             return true;
         }
         return false;
     }
+
     private void ShowConstructionPreview()
     {
         int layerMask = 1 << 11;
@@ -360,7 +367,24 @@ public class MainActions : MonoBehaviour
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
             Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
-            buildingPreview = Instantiate(buildingPreviewPrefab, previewPosition, newBuilding.transform.rotation);
+            buildingPreview.transform.position = previewPosition;
+            buildingPreview.transform.rotation = Quaternion.Euler(newBuilding.transform.rotation.x, newBuilding.transform.rotation.y, newBuilding.transform.rotation.z);
+            //buildingPreview.transform.SetPositionAndRotation(previewPosition, newBuilding.transform.rotation);
+
+            //Debug.Log("Building Rotation : " + newBuilding.transform.rotation);
+            //Debug.Log("Preview Rotation : " + buildingPreview.transform.rotation);
+        }
+    }
+
+    private void EnableBoxColliders(GameObject gameObject, bool enable)
+    {
+        gameObject.GetComponent<BoxCollider>().enabled = enable;
+        for (int i = 0; i < gameObject.transform.childCount; ++i)
+        {
+            if (gameObject.transform.GetChild(i).GetComponent<BoxCollider>())
+            {
+                gameObject.transform.GetChild(i).GetComponent<BoxCollider>().enabled = enable;
+            }
         }
     }
 

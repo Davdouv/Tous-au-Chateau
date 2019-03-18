@@ -16,6 +16,7 @@ public class UIManagerCustomInspector : Editor {
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_ResourceManager"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("controlPanel"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("ResourceGainPrefab"));
 
         DisplayResources();
 

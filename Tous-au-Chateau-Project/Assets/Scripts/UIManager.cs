@@ -42,8 +42,10 @@ public class UIManager : MonoBehaviour
     public Button gameOverButton;
     public Color victoryTextColor;
     public Color gameoverTextColor;
+
     public ResourceManager _ResourceManager;
     public GameObject controlPanel;
+    public GameObject ResourceGainPrefab;
 
     //For construction pagination
     public BuildingsTypeGroup _BuildingTypeGroup;
