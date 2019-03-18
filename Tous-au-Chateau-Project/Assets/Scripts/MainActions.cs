@@ -212,7 +212,10 @@ public class MainActions : MonoBehaviour
 
                 if (GameManager.Instance.tuto)
                 {
-                    speechEvent1.hasCrushedGround = true;
+                    if (speechEvent1)
+                    {
+                        speechEvent1.hasCrushedGround = true;
+                    }                    
                 }
             }
         }
@@ -347,11 +350,12 @@ public class MainActions : MonoBehaviour
 
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
-            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
+            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.3f, 0));
             return true;
         }
         return false;
     }
+
     private void ShowConstructionPreview()
     {
         int layerMask = 1 << 11;
@@ -364,11 +368,11 @@ public class MainActions : MonoBehaviour
         {
             Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
             buildingPreview.transform.position = previewPosition;
-            buildingPreview.transform.rotation = Quaternion.Euler(-90, newBuilding.transform.rotation.y, newBuilding.transform.rotation.z);
+            buildingPreview.transform.rotation = Quaternion.Euler(newBuilding.transform.rotation.x, newBuilding.transform.rotation.y, newBuilding.transform.rotation.z);
             //buildingPreview.transform.SetPositionAndRotation(previewPosition, newBuilding.transform.rotation);
 
-            Debug.Log("Building Rotation : " + newBuilding.transform.rotation);
-            Debug.Log("Preview Rotation : " + buildingPreview.transform.rotation);
+            //Debug.Log("Building Rotation : " + newBuilding.transform.rotation);
+            //Debug.Log("Preview Rotation : " + buildingPreview.transform.rotation);
         }
     }
 
