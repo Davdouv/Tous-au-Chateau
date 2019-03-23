@@ -24,10 +24,6 @@ public class MainActions : MonoBehaviour
     private SphereCollider sphereCollider;
     private float distanceDetection;
 
-
-    public Material Transparent_Building;
-    Material Building_mat;
-
     GameObject newBuilding;
     GameObject buildingPreview;
     GameObject newVillager;
@@ -129,17 +125,28 @@ public class MainActions : MonoBehaviour
             canCrush = true;
             if (haveBuilding)
             {
-                //releaseBuilding
-                haveBuilding = false;
-                //EnableBoxColliders(newBuilding, true);
-                newBuilding.GetComponent<Rigidbody>().isKinematic = false;
-                newBuilding.transform.parent = null;
-                //On hand release
-                Transform buildingTrans;
-                buildingTrans = buildingPreview.transform;
-                Destroy(buildingPreview);
-                Destroy(newBuilding);
-                newBuilding = Instantiate(buildingPrefab, buildingTrans);
+                if (buildingPreview.GetComponent<materialChange>().inCollision)
+                {
+                    //releaseBuilding
+                    haveBuilding = false;
+                    //EnableBoxColliders(newBuilding, true);
+                    newBuilding.GetComponent<Rigidbody>().isKinematic = false;
+                    newBuilding.transform.parent = null;
+                    //On hand release
+                    Transform buildingTrans;
+                    buildingTrans = buildingPreview.transform;
+                    Destroy(buildingPreview);
+                    Destroy(newBuilding);
+                    newBuilding = Instantiate(buildingPrefab, buildingTrans);
+                    EnableBoxColliders(newBuilding, true);
+                }
+                else
+                {
+                    haveBuilding = false;
+                    Destroy(buildingPreview);
+                    Destroy(newBuilding);
+                    //We need to check ressources to be able to retrieve a pack when not used
+                }
             }
             else if (SceneManager.GetActiveScene().name == "Map Selector")
             {
@@ -337,6 +344,10 @@ public class MainActions : MonoBehaviour
     {
         return transform.TransformPoint(sphereCollider.center);
     }
+    private Vector3 BorderOfHand()
+    {
+        return transform.TransformPoint(sphereCollider.center) + new Vector3 (sphereCollider.radius,0,0);
+    }
 
     // Return true if the raycast hit
     private bool ShowCrushPreview()
@@ -344,14 +355,24 @@ public class MainActions : MonoBehaviour
         // Bit shift the index of the layer (10) (terrain) to get a bit mask
         int layerMask = 1 << 11;
 
-        RaycastHit hit;
+        RaycastHit hit, hitRight, hitLeft;
 
         Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
 
+        //raycast from center down vector
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
-            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.3f, 0));
-            return true;
+            //raycast from border and diagonal
+            if(Physics.Raycast(BorderOfHand(), new Vector3(1, 0, 1), out hitRight, Mathf.Infinity, layerMask))
+            {
+                //raycast from other border and diagonal
+                if (Physics.Raycast(-BorderOfHand(), new Vector3(-1, 0, 1), out hitLeft, Mathf.Infinity, layerMask))
+                {
+                    float HighestHit = Mathf.Max(hit.distance, hitRight.distance, hitLeft.distance);
+                    impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -HighestHit + 0.3f, 0));
+                    return true;
+                }
+            }
         }
         return false;
     }

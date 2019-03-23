@@ -9,6 +9,7 @@ public class ResourceGained : MonoBehaviour {
 
     private Text _gainText;
     private float _startTime;
+    private Transform _cameraTransform;
 
     bool init = false;
 
@@ -24,10 +25,11 @@ public class ResourceGained : MonoBehaviour {
             _startTime = Time.time;
             _startPos = _gainText.rectTransform.position;
 
+            _cameraTransform = CameraManager.Instance.GetCameraTransform();
             Invoke("SelfDestroy", animationTime + 1.0f);
         }
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         float timeElapsed = (Time.time - _startTime);
@@ -44,7 +46,11 @@ public class ResourceGained : MonoBehaviour {
         _gainText.color = c;
 
         //Look at player
-        transform.LookAt(CameraManager.Instance.GetCamera().transform);
+        if (CameraManager.Instance.IsCameraDefault(_cameraTransform))
+        {
+          _cameraTransform = CameraManager.Instance.GetCameraTransform();
+        }
+        transform.LookAt(_cameraTransform);
     }
 
     private void SelfDestroy()
