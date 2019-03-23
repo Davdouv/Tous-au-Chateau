@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+//IMPORTANT LEAVE THIS LINE HERE
+//VISUAL STUDIO DOESN'T UNDERSTANDS IT
+//BUT IT HAS IMPACT ON THE SCRIPT
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -192,7 +196,9 @@ public class UIManager : MonoBehaviour
                     Transform cost = currentBuilding.transform.Find("Display/HelpTextCanvas/Cost");
                     if (cost != null)
                     {
-                        cost.GetComponent<Text>().color = Color.black;
+                        //IMPORTANT THIS LINE IS NOT AN ERROR
+                        //VISUAL STUDIO DOESN'T UNDERSTANDS IT BUT IT WORKS
+                        cost.GetComponent<TextMeshProUGUI>().color = Color.black;
                     }
                 }
                 else
@@ -204,7 +210,9 @@ public class UIManager : MonoBehaviour
                     Transform cost = currentBuilding.transform.Find("Display/HelpTextCanvas/Cost");
                     if (cost != null)
                     {
-                        cost.GetComponent<Text>().color = buildingNotPuchasable;
+                        //IMPORTANT THIS LINE IS NOT AN ERROR
+                        //VISUAL STUDIO DOESN'T UNDERSTANDS IT BUT IT WORKS
+                        cost.GetComponent<TextMeshProUGUI>().color = buildingNotPuchasable;
                     }
                 }
             }
@@ -314,21 +322,11 @@ public class UIManager : MonoBehaviour
 
             if (cost != null && _BuildingTypeGroup.buildings[i].GetCostString() != "")
             {
-                cost.GetComponent<Text>().text = _BuildingTypeGroup.buildings[i].GetCostString();
+                //IMPORTANT THIS LINE IS NOT AN ERROR
+                //VISUAL STUDIO DOESN'T UNDERSTANDS IT BUT IT WORKS
+                cost.GetComponent<TextMeshProUGUI>().text = _BuildingTypeGroup.buildings[i].GetCostString();
                 _isCostEmpty = _isCostEmpty || false;
             }
-        }
-    }
-
-    //only used at beginning of program
-    //The buildings needed to be hidden because they are not inside the UI from the start
-    //and the UI Manager script is only called when the UI palette is displayed
-    //thus, we need to set the buildings active back when the construction pagination is done
-    private void ShowBuildings()
-    {
-        for (int i = 0; i < _BuildingTypeGroup.buildings.Count; ++i)
-        {
-            _BuildingTypeGroup.buildings[i].gameObject.SetActive(true);
         }
     }
 
@@ -350,7 +348,6 @@ public class UIManager : MonoBehaviour
 
         UpdateBuildingInfo();
         CreatePagesList();
-        ShowBuildings();
         CreateButtonsList();
     }
 
