@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+//IMPORTANT LEAVE THIS LINE HERE
+//VISUAL STUDIO DOESN'T UNDERSTANDS IT
+//BUT IT HAS IMPACT ON THE SCRIPT
+using TMPro;
 
 public class ResourceGained : MonoBehaviour {
 
     public float animationTime = 1.0f;
 
-    private Text _gainText;
+    //IMPORTANT THIS LINE IS NOT AN ERROR
+    //VISUAL STUDIO DOESN'T UNDERSTANDS IT BUT IT WORKS
+    private TextMeshProUGUI _gainText;
     private float _startTime;
     private Transform _cameraTransform;
 
@@ -21,7 +27,7 @@ public class ResourceGained : MonoBehaviour {
         {
             init = true;
             Debug.Log(transform.childCount);
-            _gainText = transform.GetChild(0).GetComponent<Text>();
+            _gainText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             _startTime = Time.time;
             _startPos = _gainText.rectTransform.position;
 
@@ -64,10 +70,37 @@ public class ResourceGained : MonoBehaviour {
         {
             Start();
         }
-        //An object can't give several resources at the same time
-        //Thus, the result of the addition only returns the right resource number
-        int gainedNb = gained.food + gained.wood + gained.stone + gained.workForce + gained.motivation;
 
-        _gainText.text = "" + gainedNb;
+        if (gained.wood > 0)
+        {
+            _gainText.text = "+" + gained.wood + "<sprite=0>";
+            return;
+        }
+
+        if (gained.stone > 0)
+        {
+            _gainText.text = "+" + gained.stone + "<sprite=1>";
+            return;
+        }
+
+        if (gained.food > 0)
+        {
+            _gainText.text = "+" + gained.food + "<sprite=2>";
+            return;
+        }
+
+        if (gained.workForce > 0)
+        {
+            _gainText.text = "+" + gained.workForce + "<sprite=3>";
+            return;
+        }
+
+        if (gained.motivation > 0)
+        {
+            _gainText.text = "+" + gained.motivation + "<sprite=4>";
+            return;
+        }
+
+        _gainText.text = "+0";
     }
 }
