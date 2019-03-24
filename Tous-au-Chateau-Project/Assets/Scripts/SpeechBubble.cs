@@ -21,6 +21,7 @@ public class SpeechBubble : MonoBehaviour {
 	private GameObject _controllerAnimation = null;
 	private float minimalPanelSize = 500;
 	private bool bold = false;
+	private Mumble mumble;
 
 	private AudioSource _audioData;
 	public AudioClip bubbleSound;
@@ -33,6 +34,7 @@ public class SpeechBubble : MonoBehaviour {
 
 	void Start()
 	{
+		mumble = GetComponent<Mumble>();
 		cameraTransform = CameraManager.Instance.GetCamera().transform;
 		_panel = this.transform.Find("Panel").gameObject;
 		_text = this.transform.Find("Text").gameObject;
@@ -94,6 +96,7 @@ public class SpeechBubble : MonoBehaviour {
 		AdaptCanvasToText();
 		_audioData.clip = bubbleSound;
 		_audioData.Play();
+		mumble.Play(message);
 		StartCoroutine(AnimateText());
 	}
 

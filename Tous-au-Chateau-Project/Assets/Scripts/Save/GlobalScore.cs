@@ -14,7 +14,7 @@ public class GlobalScore : MonoBehaviour {
 	void Start () {
 		_scores = new List<LevelScore>();
 
-		// CreateScoreDebug(); // DEBUG
+		CreateScoreDebug(); // DEBUG
 
 		ready = FetchData();
 

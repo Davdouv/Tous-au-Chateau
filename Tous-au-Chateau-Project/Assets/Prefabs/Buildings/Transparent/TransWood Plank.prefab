@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4627239509930598}
   - component: {fileID: 54052232657574614}
   - component: {fileID: 65140132054814780}
+  - component: {fileID: 114039994492242310}
   m_Layer: 0
   m_Name: TransWood Plank
   m_TagString: Plank
@@ -127,7 +128,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &65140132054814780
 BoxCollider:
@@ -141,3 +142,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5248406, y: 5.5, z: 0.1}
   m_Center: {x: 0.037419893, y: 0, z: 0.1}
+--- !u!114 &114039994492242310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490190447488744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d627535ab77d004aa9da3c87bdab797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparent_mat: {fileID: 2100000, guid: a929a93b229463e4ca63ae16b703c302, type: 2}
+  transparentRed_mat: {fileID: 2100000, guid: 61cfb1eaae0244d49b04d6468dc7427c, type: 2}
+  inCollision: 0

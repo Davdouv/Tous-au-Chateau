@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _audioData = GetComponent<AudioSource>();
+        levelName = SceneManager.GetActiveScene().name;
     }
 
     // ***** STATES OF THE GAME *****/
