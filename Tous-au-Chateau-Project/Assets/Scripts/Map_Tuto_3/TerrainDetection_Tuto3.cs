@@ -4,35 +4,28 @@ using UnityEngine;
 
 public class TerrainDetection_Tuto3 : MonoBehaviour {
 
-    /*
-    public SpeechEvent_MapTuto2_Event4 speechEvent4;
-    public SpeechEvent_MapTuto2_Event4_1 speechEvent4_1;
+    public SpeechEvent_MapTuto3_Event3 speechEvent3;
+    public SpeechEvent_MapTuto3_Event4 speechEvent4;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == 10) // 10 : Building
         {
             collision.gameObject.GetComponent<Building>().SetHasLanded();
-            if (collision.gameObject.GetComponent<StoneWall>())
+            if (collision.gameObject.GetComponent<DirectionalSign>())
             {
-                // Tell the event the stone wall has landed
-                speechEvent4.hasStoneWallLanded = true;
-                Debug.Log("Has Landed");
-
-                if (speechEvent4_1)
+                // Tell the event the directional panel has landed
+                if (speechEvent3.hasDirectionalPanelLanded && speechEvent4.IsOpen())
                 {
-                    // If the wall isn't placed at the right position
-                    if (!speechEvent4_1.isStoneWallPlacedWell)
-                    {
-                        Debug.Log("Not Well placed");
-                        // Destroy it and give back the resources
-                        StartCoroutine(DestroyWall(collision.gameObject));
-                    }
+                    speechEvent4.hasDirectionalPanelLanded = true;
                 }
+                else
+                {                    
+                    speechEvent3.hasDirectionalPanelLanded = true;
+                }                
             }
         }
     }
-    */
 
 }
 

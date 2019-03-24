@@ -7,8 +7,8 @@ using UnityEngine;
 public class SpeechEvent_MapTuto3_Event5 : SpeechEvent {
 
 	public override bool MustOpen() {
-		// Open after previous event is done
-		if (previousEvent != null && previousEvent.IsDone()) {
+		// Open after previous event is done (or previous previous)
+		if (previousEvent != null && (previousEvent.IsDone() || previousEvent.previousEvent.IsDone())) {
 			if (GameManager.Instance.IsGameWon()) {
 					return true;
 			}

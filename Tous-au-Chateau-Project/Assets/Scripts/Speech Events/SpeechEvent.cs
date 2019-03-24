@@ -12,7 +12,7 @@ public class SpeechEvent : MonoBehaviour {
 	public SpeechEvent previousEvent;
 	public GameObject controllerAnimation = null;
 
-  public bool hasDoneAction;  // For events that need to detect if player has done an action
+    public bool hasDoneAction;  // For events that need to detect if player has done an action
 
 	public static VillagersGroup currentVillagersGroup;
 

@@ -1379,7 +1379,6 @@ MonoBehaviour:
   previousEvent: {fileID: 564704340}
   controllerAnimation: {fileID: 735240212}
   hasDoneAction: 0
-  wolf: {fileID: 0}
 --- !u!4 &104874727
 Transform:
   m_ObjectHideFlags: 0
@@ -26023,6 +26022,7 @@ MonoBehaviour:
   previousEvent: {fileID: 104874726}
   controllerAnimation: {fileID: 1739848967}
   hasDoneAction: 0
+  hasDirectionalPanelLanded: 0
 --- !u!4 &698406505
 Transform:
   m_ObjectHideFlags: 0
@@ -36846,6 +36846,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f54bb1fe7eccaa4991f6e1556aff5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speechEvent3: {fileID: 698406504}
+  speechEvent4: {fileID: 2050851015}
 --- !u!1 &1159987987
 GameObject:
   m_ObjectHideFlags: 0
@@ -52217,7 +52219,7 @@ MonoBehaviour:
   previousEvent: {fileID: 698406504}
   controllerAnimation: {fileID: 1739848967}
   hasDoneAction: 0
-  hasStoneWallLanded: 0
+  hasDirectionalPanelLanded: 0
 --- !u!4 &2050851016
 Transform:
   m_ObjectHideFlags: 0
@@ -52426,6 +52428,7 @@ MonoBehaviour:
   speechEvent4_1: {fileID: 0}
   speechEvent7: {fileID: 0}
   speechEvent2_1: {fileID: 0}
+  speechEvent3_1: {fileID: 564704340}
   player: {fileID: 0}
 --- !u!82 &2073152388
 AudioSource:

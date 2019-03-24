@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class SpeechEvent_MapTuto3_Event2 : SpeechEvent {
 
-    public AICharacter wolf;
-
     public override bool MustOpen()
     {
         // Open after previous event is done
@@ -16,8 +14,8 @@ public class SpeechEvent_MapTuto3_Event2 : SpeechEvent {
             // Check if all group is dead
             if (currentVillagersGroup.GetNumberOfVillagersAlive() == 0)
             {
-                // Check if at least one has been killed by a wolf
-                if (currentVillagersGroup.IsDeathCausedBy(DeathReason.WOLF))
+                // Check if at least one has been killed by the void
+                if (currentVillagersGroup.IsDeathCausedBy(DeathReason.VOID))
                 {
                     return true;
                 }
@@ -28,8 +26,8 @@ public class SpeechEvent_MapTuto3_Event2 : SpeechEvent {
 
     public override bool MustClose()
     {
-        // Crush the wolf
-        if (!wolf.GetStats().IsAlive())
+        // Crush some trees
+        if (ResourceManager.Instance.GetWood() > 0)
         {
             return true;
         }
