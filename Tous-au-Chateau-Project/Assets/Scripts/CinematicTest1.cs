@@ -13,11 +13,14 @@ public class CinematicTest1 : MonoBehaviour {
     public Animator villagersCameraAnim;
 
     private Camera _playerCamera; // set by CameraManager
+    private Camera _copyPlayerCamera;
 
     public Camera globalCamera;
     public Camera globalCamera2;
     public Camera chateauCamera;
     public Camera villagersCamera;
+
+    public bool shouldStart;
 
 	// Use this for initialization
 	void Start ()
@@ -27,10 +30,12 @@ public class CinematicTest1 : MonoBehaviour {
         chateauCamera.enabled = false;
         villagersCamera.enabled = false;*/
 
-        globalCamera.gameObject.SetActive(false);
+        shouldStart = false;
+
+        /*globalCamera.gameObject.SetActive(false);
         globalCamera2.gameObject.SetActive(false);
         chateauCamera.gameObject.SetActive(false);
-        villagersCamera.gameObject.SetActive(false);
+        villagersCamera.gameObject.SetActive(false);*/
 
     }
 	
@@ -38,23 +43,35 @@ public class CinematicTest1 : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.C))
         {
-            // start cinematic
-            StartCoroutine(playCinematic());
+            Debug.Log("TEST CHANGE CAMERA");
+            globalCamera.enabled = true;
+            globalCamera.gameObject.SetActive(true);
+            if (shouldStart)
+            {
+                Debug.Log("Should Start");
+                StartCoroutine(PlayCinematic());
+            }
         }
 	}
 
-    void changeCamera()
+    public void StartCinematic(Camera player)
     {
-
+        shouldStart = true;
+        _playerCamera = player;
+        _copyPlayerCamera = player;
+        Debug.Log("______________________________________________________________________________CAMERA IS" + player.gameObject.name);
+        //_playerCamera.position.Set(0, 0, 0); // test
+        Debug.Log("StartCinematic_________________________________________________");
     }
 
-    IEnumerator playCinematic()
+    IEnumerator PlayCinematic()
     {
-        Debug.Log("START CINEMATIC");
+        Debug.Log("PLAY CINEMATIC");
 
         Debug.Log("CAMERA 1");
         // Plan 1 : global view: zoom in
         globalCamera.gameObject.SetActive(true);
+        _playerCamera = globalCamera;
         transitionAnim.SetTrigger("fadeOutWhite");
         globalCameraAnim.SetTrigger("zoomGlobal");
         yield return new WaitForSeconds(2f);
@@ -90,6 +107,5 @@ public class CinematicTest1 : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         transitionAnim.SetTrigger("fadeInWhite");
         yield return new WaitForSeconds(1.5f);
-
     }
 }

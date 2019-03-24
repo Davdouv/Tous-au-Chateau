@@ -1803,57 +1803,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bee40cdaf506b4459a1b2b72e11de70, type: 2}
   m_IsPrefabAsset: 0
---- !u!1 &145551109
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 145551110}
-  - component: {fileID: 145551111}
-  m_Layer: 0
-  m_Name: _CinematicManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &145551110
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 145551109}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 58.152054, y: -57.492023, z: 46.703804}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 459847906}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &145551111
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 145551109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 809385fd3e34dcf4b8aa0652250be3a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transitionAnim: {fileID: 953649556}
-  globalCloudsAnim: {fileID: 0}
-  globalCameraAnim: {fileID: 1683692461}
-  globalCamera2Anim: {fileID: 58074609}
-  chateauCameraAnim: {fileID: 272872082}
-  villagersCameraAnim: {fileID: 1093510073}
-  mainCamera: {fileID: 1330720603}
-  globalCamera: {fileID: 1683692459}
-  globalCamera2: {fileID: 393079233}
-  chateauCamera: {fileID: 272872080}
-  villagersCamera: {fileID: 1093510071}
 --- !u!4 &153543258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4402895621097250, guid: 312027973a381ed4bb1e7656396b27f4,
@@ -2123,12 +2072,15 @@ MonoBehaviour:
   GameOverPanel: {fileID: 253097581}
   gameOverTitleText: {fileID: 1355639721}
   gameOverVillagersText: {fileID: 199488035}
+  gameOverButton: {fileID: 0}
   victoryTextColor: {r: 0.27092335, g: 0.8113208, b: 0.21048418, a: 1}
   gameoverTextColor: {r: 0.6901961, g: 0, b: 0.027450982, a: 1}
   _ResourceManager: {fileID: 439394635}
+  controlPanel: {fileID: 0}
   _BuildingTypeGroup: {fileID: 1453698697}
   ConstructionPagination: {fileID: 1107526685}
   buildingNotPuchasable: {r: 0.6901961, g: 0, b: 0.02745098, a: 1}
+  paginationButtonsPrefab: {fileID: 0}
   buttonsPosition: {fileID: 623682146}
   constructionPosition1: {fileID: 1327219228}
   constructionPosition2: {fileID: 527055989}
@@ -3415,12 +3367,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4456586308171016, guid: 403f63e3e9f0ab14e8161f52406f7b9c,
     type: 2}
   m_PrefabInternal: {fileID: 1090896905}
---- !u!114 &306849989 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114383071381247166, guid: 403f63e3e9f0ab14e8161f52406f7b9c,
-    type: 2}
-  m_PrefabInternal: {fileID: 1090896905}
-  m_Script: {fileID: 11500000, guid: 8e8095997e99bef46bdb80285778c5b1, type: 3}
 --- !u!1 &307737656
 GameObject:
   m_ObjectHideFlags: 0
@@ -4279,12 +4225,6 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e167632a6630dc4b9993756d15bda4e, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &411181027 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114046573780057168, guid: 5e167632a6630dc4b9993756d15bda4e,
-    type: 2}
-  m_PrefabInternal: {fileID: 411181026}
-  m_Script: {fileID: 11500000, guid: af561be8694ef0240b78fdae8b0765d8, type: 3}
 --- !u!4 &411181028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4254714503749770, guid: 5e167632a6630dc4b9993756d15bda4e,
@@ -4858,7 +4798,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 145551110}
+  - {fileID: 1120607841}
   - {fileID: 1050290305}
   - {fileID: 178656204}
   - {fileID: 1453698698}
@@ -10824,7 +10764,9 @@ MonoBehaviour:
   tuto: 0
   victorySound: {fileID: 8300000, guid: 5cd9dcbdeef9b8c46a1913953bb218ba, type: 3}
   defeatSound: {fileID: 8300000, guid: 788d006a0be6ba440a2ec27c10fe9b39, type: 3}
+  victoryFX: {fileID: 0}
   levelName: Map_B
+  nextSceneName: 
 --- !u!4 &1050290305
 Transform:
   m_ObjectHideFlags: 0
@@ -11860,6 +11802,86 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1119467316}
   m_Mesh: {fileID: 4300000, guid: 9b73437bf65c22b42a0a6c43d48d9ed2, type: 3}
+--- !u!1 &1120607840
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1120607841}
+  - component: {fileID: 1120607842}
+  - component: {fileID: 1120607844}
+  - component: {fileID: 1120607843}
+  m_Layer: 0
+  m_Name: _CameraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1120607841
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120607840}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 241.69202, y: -228.44017, z: 4.141672}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 459847906}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1120607842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120607840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ad19b4e96e73c4d9de7341050fd3fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1120607843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120607840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 809385fd3e34dcf4b8aa0652250be3a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transitionAnim: {fileID: 953649556}
+  globalCloudsAnim: {fileID: 0}
+  globalCameraAnim: {fileID: 1683692461}
+  globalCamera2Anim: {fileID: 58074609}
+  chateauCameraAnim: {fileID: 272872082}
+  villagersCameraAnim: {fileID: 1093510073}
+  globalCamera: {fileID: 1683692459}
+  globalCamera2: {fileID: 393079233}
+  chateauCamera: {fileID: 272872080}
+  villagersCamera: {fileID: 1093510071}
+  shouldStart: 0
+--- !u!114 &1120607844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120607840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718569ab98c032048a79d40fd738552d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 0.5
+  duration: 1
+  camera: {fileID: 0}
+  slowDownAmount: 1
+  shouldShake: 0
 --- !u!1001 &1126867795
 Prefab:
   m_ObjectHideFlags: 0
@@ -16502,11 +16524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c3edd366e904b4fab3a76edd92dde9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buildings:
-  - {fileID: 306849989}
-  - {fileID: 1760536710}
-  - {fileID: 1738532867}
-  - {fileID: 411181027}
+  buildings: []
   notBuyable: {fileID: 0}
 --- !u!4 &1453698698
 Transform:
@@ -16768,7 +16786,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _TreesPosition: {fileID: 1386545986}
-  firstTree: {fileID: 0}
 --- !u!1 &1465945012
 GameObject:
   m_ObjectHideFlags: 0
@@ -19722,12 +19739,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4908700878600438, guid: e2b86c0af65ce1149921f5d2a9f51b8c,
     type: 2}
   m_PrefabInternal: {fileID: 1737355196}
---- !u!114 &1738532867 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114046573780057168, guid: 45c7ff8691e959749a47f1d455c12c96,
-    type: 2}
-  m_PrefabInternal: {fileID: 1192549719}
-  m_Script: {fileID: 11500000, guid: af561be8694ef0240b78fdae8b0765d8, type: 3}
 --- !u!4 &1738532868 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4254714503749770, guid: 45c7ff8691e959749a47f1d455c12c96,
@@ -20113,12 +20124,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4188777913029896, guid: 4fef603fc95ef0744a447569b1d0dd6b,
     type: 2}
   m_PrefabInternal: {fileID: 1965934803}
---- !u!114 &1760536710 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114117450727915320, guid: 4fef603fc95ef0744a447569b1d0dd6b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1965934803}
-  m_Script: {fileID: 11500000, guid: c083dc5f125b8444694c77bab11d061d, type: 3}
 --- !u!1 &1761505792
 GameObject:
   m_ObjectHideFlags: 0
@@ -24359,17 +24364,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceM: {fileID: 439394635}
+  uiM: {fileID: 0}
   spawnPoint: {fileID: 1787859272}
   RightHand: {fileID: 1235158201}
+  events: {fileID: 0}
   minHeightToCrush: 10
   crushFloorSound: {fileID: 8300000, guid: 41ffd92bbc1e1ff40a96dc3545dd1b84, type: 3}
   Transparent_Building: {fileID: 0}
   villagerPrefab: {fileID: 0}
   fxPrefab: {fileID: 0}
+  impactPreview: {fileID: 0}
   speechEvent1: {fileID: 0}
   speechEvent2: {fileID: 0}
   speechEvent4_1: {fileID: 0}
   speechEvent7: {fileID: 0}
+  speechEvent2_1: {fileID: 0}
   player: {fileID: 0}
 --- !u!114 &2092337014
 MonoBehaviour:
