@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
         // SAVE THE PLAYER's VICTORY
         SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));
 
-        StartCoroutine(ChangeScene());
+        StartCoroutine(ChangeScene(tuto ? 10 : 5));
     }
     public void GameLost()
     {
@@ -182,9 +182,9 @@ public class GameManager : MonoBehaviour
     }
 
     // Change the scene after 5 sec
-    private IEnumerator ChangeScene()
+    private IEnumerator ChangeScene(float seconds = 5)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(seconds);
 
         if (_hasWin && nextSceneName != "")
         {

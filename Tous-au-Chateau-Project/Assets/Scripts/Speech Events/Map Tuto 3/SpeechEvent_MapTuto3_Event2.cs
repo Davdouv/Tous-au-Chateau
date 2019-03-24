@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class SpeechEvent_MapTuto3_Event2 : SpeechEvent {
 
+    private bool stopWait = false;
+
     public override bool MustOpen()
     {
         // Open after previous event is done
@@ -29,8 +31,15 @@ public class SpeechEvent_MapTuto3_Event2 : SpeechEvent {
         // Crush some trees
         if (ResourceManager.Instance.GetWood() > 0)
         {
-            return true;
+            StartCoroutine(WaitSeconds());
+            return stopWait;
         }
         return false;
+    }
+
+    IEnumerator WaitSeconds()
+    {
+        yield return new WaitForSeconds(2);
+        stopWait = true;
     }
 }
