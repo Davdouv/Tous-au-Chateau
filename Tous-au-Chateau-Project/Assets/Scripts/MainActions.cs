@@ -125,30 +125,29 @@ public class MainActions : MonoBehaviour
             trigger = false;
             crushMode = false;
             canCrush = true;
+            // If we had a building and we have released it
             if (haveBuilding)
             {
+                //releaseBuilding
+                haveBuilding = false;
+                // If the Preview Was In Collision, then don't create new building
                 if (buildingPreview.GetComponent<materialChange>().inCollision)
                 {
-                    //releaseBuilding
-                    haveBuilding = false;
                     //EnableBoxColliders(newBuilding, true);
-                    newBuilding.GetComponent<Rigidbody>().isKinematic = false;
-                    newBuilding.transform.parent = null;
-                    //On hand release
-                    Transform buildingTrans;
-                    buildingTrans = buildingPreview.transform;
-                    Destroy(buildingPreview);
+                    //We need to check ressources to be able to retrieve a pack when not used
                     Destroy(newBuilding);
-                    newBuilding = Instantiate(buildingPrefab, buildingTrans);
-                    EnableBoxColliders(newBuilding, true);
                 }
+                // If it wasn't in collision, then create new building
                 else
                 {
-                    haveBuilding = false;
-                    Destroy(buildingPreview);
-                    Destroy(newBuilding);
-                    //We need to check ressources to be able to retrieve a pack when not used
+                    Transform buildingTrans;
+                    buildingTrans = buildingPreview.transform;
+                    newBuilding = Instantiate(buildingPrefab, buildingTrans);
+                    newBuilding.GetComponent<Rigidbody>().isKinematic = false;
+                    newBuilding.transform.parent = null;
+                    EnableBoxColliders(newBuilding, true);
                 }
+                Destroy(buildingPreview);
             }
             else if (SceneManager.GetActiveScene().name == "Map Selector")
             {
@@ -424,7 +423,7 @@ public class MainActions : MonoBehaviour
     // Return true if the raycast hit
     private bool ShowCrushPreview()
     {
-        float highestHit = 100000000000000;
+        float highestHit = 0;
         bool showCrush = RayCastHit(MiddleOfHand(), BorderOfHand(true), BorderOfHand(false), ref highestHit);
 
         if (showCrush)
@@ -459,11 +458,11 @@ public class MainActions : MonoBehaviour
         BoxCollider boxCollider = buildingPreview.GetComponent<BoxCollider>();
         Vector3 scale = buildingPreview.transform.localScale;
 
-        Vector3 middlePosition = buildingPreview.transform.position;
+        Vector3 middlePosition = newBuilding.transform.position;
         Vector3 rightPosition = new Vector3(middlePosition.x + (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z + (boxCollider.size.y / scale.y));
         Vector3 leftPosition = new Vector3(middlePosition.x - (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z - (boxCollider.size.y / scale.y));
 
-        float highestHit = 100000000000000;
+        float highestHit = 0;
         if (RayCastHit(middlePosition, rightPosition, leftPosition, ref highestHit))
         {
             Vector3 previewPosition = newBuilding.transform.position + (new Vector3(0, -highestHit + 0.3f, 0));

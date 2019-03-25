@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23503656234864204}
   - component: {fileID: 114005624463843918}
   - component: {fileID: 136370405147741770}
+  - component: {fileID: 114829961893117380}
   m_Layer: 0
   m_Name: rock2
   m_TagString: Untagged
@@ -102,10 +103,21 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
-  audioData: {fileID: 0}
   crushedDownSound: {fileID: 8300000, guid: ae11ad137f7a73d46b584108e7a4325a, type: 3}
   crushFXPrefab: {fileID: 112862, guid: 6e54aa00306e21743b1d31bb8c8ce5bc, type: 2}
   canBeCrushed: 1
+--- !u!114 &114829961893117380
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1598936623957666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6350d5821965448a1289d6eec5479c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenTrigered: []
 --- !u!136 &136370405147741770
 CapsuleCollider:
   m_ObjectHideFlags: 1

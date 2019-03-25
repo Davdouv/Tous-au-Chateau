@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114573472189254182}
   - component: {fileID: 82267826961457186}
   - component: {fileID: 114565158038499540}
+  - component: {fileID: 114581099320950144}
   m_Layer: 10
   m_Name: Right Directional Panel
   m_TagString: Sign
@@ -574,6 +575,18 @@ MonoBehaviour:
   targetTag:
   - Villager
   distanceDetection: 2.6
+--- !u!114 &114581099320950144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1041851197267500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6350d5821965448a1289d6eec5479c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenTrigered: []
 --- !u!114 &114831576993073006
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 114440791285500012}
   - component: {fileID: 82284620775278900}
   - component: {fileID: 114703005772285828}
+  - component: {fileID: 114851575528939020}
   m_Layer: 10
   m_Name: Left Directional Panel
   m_TagString: Sign
@@ -598,6 +599,18 @@ MonoBehaviour:
   crushedDownSound: {fileID: 8300000, guid: 66f16a88da5ba30429e87ce6b3a127b6, type: 3}
   crushFXPrefab: {fileID: 0}
   canBeCrushed: 1
+--- !u!114 &114851575528939020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1369170372466890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6350d5821965448a1289d6eec5479c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenTrigered: []
 --- !u!135 &135467919404139138
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 82452514398338516}
   - component: {fileID: 114480422534844070}
   - component: {fileID: 114352801390628934}
+  - component: {fileID: 114840820730994766}
   m_Layer: 10
   m_Name: Wood Plank
   m_TagString: Plank
@@ -450,3 +451,15 @@ MonoBehaviour:
     food: 0
     workForce: 0
     motivation: 0
+--- !u!114 &114840820730994766
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860531767917994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6350d5821965448a1289d6eec5479c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenTrigered: []
