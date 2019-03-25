@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 4456586308171016}
   - component: {fileID: 114383071381247166}
   - component: {fileID: 82279728789856960}
+  - component: {fileID: 65400536128022100}
   m_Layer: 0
   m_Name: Wood Plank UI
   m_TagString: Building
@@ -391,6 +392,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1864077700198710}
   m_Mesh: {fileID: 4300000, guid: 4ef52a0965ec3b140942df71b0ca4aac, type: 3}
+--- !u!65 &65400536128022100
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1851684891941176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.46, y: 0.95, z: 6}
+  m_Center: {x: 0, y: 0, z: 2.96}
 --- !u!82 &82279728789856960
 AudioSource:
   m_ObjectHideFlags: 1
