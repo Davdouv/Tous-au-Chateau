@@ -26,13 +26,13 @@ public class ResourceGained : MonoBehaviour {
         if (!init)
         {
             init = true;
-            Debug.Log(transform.childCount);
+            //Debug.Log("into start function of resource gained script : " + transform.childCount);
             _gainText = transform.GetChild(0).GetComponent<TextMeshProUGUI>();
             _startTime = Time.time;
             _startPos = _gainText.rectTransform.position;
 
             _cameraTransform = CameraManager.Instance.GetCameraTransform();
-            Invoke("SelfDestroy", animationTime + 1.0f);
+            Invoke("SelfDestroy", animationTime + 2.0f);
         }
     }
 
@@ -70,6 +70,8 @@ public class ResourceGained : MonoBehaviour {
         {
             Start();
         }
+
+        //Debug.Log("In updated gain of resource gain script");
 
         if (gained.wood > 0)
         {
