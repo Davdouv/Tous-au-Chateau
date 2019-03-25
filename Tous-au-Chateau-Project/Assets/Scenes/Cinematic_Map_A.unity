@@ -1803,6 +1803,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bee40cdaf506b4459a1b2b72e11de70, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &139967542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 2120237022}
 --- !u!4 &153543258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4402895621097250, guid: 312027973a381ed4bb1e7656396b27f4,
@@ -2832,7 +2837,7 @@ Prefab:
     - target: {fileID: 114079941186006326, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
         type: 2}
       propertyPath: _canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
@@ -2927,7 +2932,6 @@ GameObject:
   m_Component:
   - component: {fileID: 272872081}
   - component: {fileID: 272872080}
-  - component: {fileID: 272872079}
   - component: {fileID: 272872082}
   m_Layer: 0
   m_Name: CinematicCameraChateau
@@ -2936,13 +2940,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &272872079
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 272872078}
-  m_Enabled: 1
 --- !u!20 &272872080
 Camera:
   m_ObjectHideFlags: 0
@@ -3520,6 +3517,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 322273162}
   m_Mesh: {fileID: 4300000, guid: d2020be1aa7db7540bb14257f926fb22, type: 3}
+--- !u!1 &322718375 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1451653720}
 --- !u!1 &325064577
 GameObject:
   m_ObjectHideFlags: 0
@@ -3990,7 +3992,6 @@ GameObject:
   m_Component:
   - component: {fileID: 393079234}
   - component: {fileID: 393079233}
-  - component: {fileID: 393079232}
   m_Layer: 0
   m_Name: CinematicCameraGlobal2
   m_TagString: MainCamera
@@ -3998,13 +3999,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &393079232
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 393079231}
-  m_Enabled: 1
 --- !u!20 &393079233
 Camera:
   m_ObjectHideFlags: 0
@@ -5031,6 +5025,11 @@ MonoBehaviour:
     fallbackTypeName: VRTK.SDK_FallbackController
     typeName: VRTK.SDK_UnityController
     descriptionIndex: 1
+--- !u!1 &498325016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1433736698}
 --- !u!1001 &498591513
 Prefab:
   m_ObjectHideFlags: 0
@@ -6489,7 +6488,7 @@ Prefab:
     - target: {fileID: 114079941186006326, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
         type: 2}
       propertyPath: _canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
@@ -7015,7 +7014,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4219222216158774, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
       propertyPath: m_Name
@@ -7024,7 +7023,7 @@ Prefab:
     - target: {fileID: 114079941186006326, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
         type: 2}
       propertyPath: _canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
@@ -11028,6 +11027,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1075247151}
   m_Mesh: {fileID: 4300000, guid: d2020be1aa7db7540bb14257f926fb22, type: 3}
+--- !u!1 &1078368109 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 267668427}
 --- !u!1001 &1090249166
 Prefab:
   m_ObjectHideFlags: 0
@@ -11074,7 +11078,7 @@ Prefab:
     - target: {fileID: 114079941186006326, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
         type: 2}
       propertyPath: _canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
@@ -11223,7 +11227,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1093510072}
   - component: {fileID: 1093510071}
-  - component: {fileID: 1093510070}
   - component: {fileID: 1093510073}
   m_Layer: 0
   m_Name: CinematicCameraPeople
@@ -11232,13 +11235,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1093510070
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1093510069}
-  m_Enabled: 1
 --- !u!20 &1093510071
 Camera:
   m_ObjectHideFlags: 0
@@ -11462,6 +11458,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1097038914}
   m_Mesh: {fileID: 4300000, guid: d2020be1aa7db7540bb14257f926fb22, type: 3}
+--- !u!1 &1102146687 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 633997107}
 --- !u!1 &1107526685 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1682245385716016, guid: b19b3413f135c184ea7e44fd32e83a9f,
@@ -11867,6 +11868,16 @@ MonoBehaviour:
   globalCamera2: {fileID: 393079233}
   chateauCamera: {fileID: 272872080}
   villagersCamera: {fileID: 1093510071}
+  villagersGroup:
+  - {fileID: 498325016}
+  - {fileID: 1624844413}
+  - {fileID: 1102146687}
+  - {fileID: 1722653671}
+  - {fileID: 1681447635}
+  - {fileID: 139967542}
+  - {fileID: 322718375}
+  - {fileID: 1078368109}
+  - {fileID: 1319050113}
   shouldStart: 0
 --- !u!114 &1120607844
 MonoBehaviour:
@@ -14764,6 +14775,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1289700942}
   m_CullTransparentMesh: 0
+--- !u!1 &1319050113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 687880663}
 --- !u!1 &1326461641
 GameObject:
   m_ObjectHideFlags: 0
@@ -15818,7 +15834,7 @@ Prefab:
     - target: {fileID: 114079941186006326, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
         type: 2}
       propertyPath: _canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
@@ -16211,7 +16227,7 @@ Prefab:
     - target: {fileID: 114079941186006326, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
         type: 2}
       propertyPath: _canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
@@ -17137,7 +17153,7 @@ Prefab:
     - target: {fileID: 114079941186006326, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
         type: 2}
       propertyPath: _canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
@@ -18322,6 +18338,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1622637695}
   m_Mesh: {fileID: 4300000, guid: c1860dda2a1b5b24e928b79edc92c6b3, type: 3}
+--- !u!1 &1624844413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1512788635}
 --- !u!1001 &1637970345
 Prefab:
   m_ObjectHideFlags: 0
@@ -18930,6 +18951,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1679037274}
   m_Mesh: {fileID: 4300000, guid: d2020be1aa7db7540bb14257f926fb22, type: 3}
+--- !u!1 &1681447635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1836864953}
 --- !u!1 &1683692457
 GameObject:
   m_ObjectHideFlags: 0
@@ -18939,7 +18965,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1683692460}
   - component: {fileID: 1683692459}
-  - component: {fileID: 1683692458}
   - component: {fileID: 1683692461}
   m_Layer: 0
   m_Name: CinematicCameraGlobal
@@ -18948,13 +18973,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1683692458
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1683692457}
-  m_Enabled: 1
 --- !u!20 &1683692459
 Camera:
   m_ObjectHideFlags: 0
@@ -19720,6 +19738,11 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1717478554}
   m_CullTransparentMesh: 0
+--- !u!1 &1722653671 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1096130410665992, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
+    type: 2}
+  m_PrefabInternal: {fileID: 1090249166}
 --- !u!114 &1728796883 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114727969491774788, guid: b19b3413f135c184ea7e44fd32e83a9f,
@@ -21380,7 +21403,7 @@ Prefab:
     - target: {fileID: 114079941186006326, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
         type: 2}
       propertyPath: _canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}
@@ -24874,7 +24897,7 @@ Prefab:
     - target: {fileID: 114079941186006326, guid: 3dc2678a0d2b6704ab8809d93fe086fe,
         type: 2}
       propertyPath: _canMove
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dc2678a0d2b6704ab8809d93fe086fe, type: 2}

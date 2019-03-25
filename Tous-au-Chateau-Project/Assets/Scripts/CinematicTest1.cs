@@ -22,6 +22,8 @@ public class CinematicTest1 : MonoBehaviour {
     public Camera chateauCamera;
     public Camera villagersCamera;
 
+    public GameObject [] villagersGroup;
+
     public bool shouldStart;
 
 	// Use this for initialization
@@ -33,6 +35,11 @@ public class CinematicTest1 : MonoBehaviour {
         villagersCamera.enabled = false;
 
         shouldStart = true;
+
+        foreach (GameObject villager in villagersGroup)
+        {
+            villager.GetComponent<Villager>().SetCanMove(false);
+        }
     }
 	
 	// Update is called once per frame
@@ -51,7 +58,6 @@ public class CinematicTest1 : MonoBehaviour {
     {
         shouldStart = true;
         _playerCamera = tmpCamera;
-        _copyPlayerCamera = player;
         
         Debug.Log("______________________________________________________________________________CAMERA IS : " + player.gameObject.name);
     }
@@ -92,19 +98,20 @@ public class CinematicTest1 : MonoBehaviour {
         transitionAnim.SetTrigger("fadeOutWhite");
         chateauCameraAnim.SetTrigger("travelingChateau");
         ChangeCamera(globalCamera2, chateauCamera);
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(5f);
 
         transitionAnim.SetTrigger("fadeInWhite");
         yield return new WaitForSeconds(1f);
 
-        //Debug.Log("CAMERA 4");
+        Debug.Log("CAMERA 4");
         // Plan 4 : villagers: traveling right -> left
-        //villagersCameraAnim.SetTrigger("travelingVillagers");
-        //ChangeCamera(chateauCamera, villagersCamera);
-        //transitionAnim.SetTrigger("fadeOutWhite");
-        //yield return new WaitForSeconds(5f);
-        //transitionAnim.SetTrigger("fadeInWhite");
-        //yield return new WaitForSeconds(1f);
+        transitionAnim.SetTrigger("fadeOutWhite");
+        villagersCameraAnim.SetTrigger("travelingVillagers");
+        ChangeCamera(chateauCamera, villagersCamera);
+        yield return new WaitForSeconds(4f);
+
+        transitionAnim.SetTrigger("fadeInWhite");
+        yield return new WaitForSeconds(1f);
 
         ChangeCamera(villagersCamera, tmpCamera);
     }
