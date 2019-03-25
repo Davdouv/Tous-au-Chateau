@@ -346,9 +346,9 @@ public class MainActions : MonoBehaviour
     {
         return transform.TransformPoint(sphereCollider.center);
     }
-    private Vector3 BorderOfHand()
+    private Vector3 BorderOfHand(bool right)
     {
-        return transform.TransformPoint(sphereCollider.center) + new Vector3 (sphereCollider.radius,0,0);
+        return transform.TransformPoint(sphereCollider.center) + new Vector3 (right ? distanceDetection : -distanceDetection, 0, right ? distanceDetection : -distanceDetection);
     }
 
     // Return true if the raycast hit
@@ -360,23 +360,33 @@ public class MainActions : MonoBehaviour
         RaycastHit hit, hitRight, hitLeft;
 
         Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(BorderOfHand(true), new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(BorderOfHand(false), new Vector3(0, -1, 0) * 100, Color.red);
+
+        bool showCrush = false;
 
         //raycast from center down vector
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
-            //raycast from border and diagonal
-            if(Physics.Raycast(BorderOfHand(), new Vector3(1, 0, 1), out hitRight, Mathf.Infinity, layerMask))
-            {
-                //raycast from other border and diagonal
-                if (Physics.Raycast(-BorderOfHand(), new Vector3(-1, 0, 1), out hitLeft, Mathf.Infinity, layerMask))
-                {
-                    float HighestHit = Mathf.Max(hit.distance, hitRight.distance, hitLeft.distance);
-                    impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -HighestHit + 0.3f, 0));
-                    return true;
-                }
-            }
+            showCrush = true;
         }
-        return false;
+        //raycast from border and diagonal
+        if (Physics.Raycast(BorderOfHand(true), new Vector3(0, -1, 0), out hitRight, Mathf.Infinity, layerMask))
+        {
+            showCrush = true;
+        }
+        //raycast from other border and diagonal
+        if (Physics.Raycast(BorderOfHand(false), new Vector3(0, -1, 0), out hitLeft, Mathf.Infinity, layerMask))
+        {
+            showCrush = true;
+        }
+
+        if (showCrush)
+        {
+            float HighestHit = Mathf.Min(hit.distance, hitRight.distance, hitLeft.distance);
+            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -HighestHit + 0.3f, 0));
+        }
+        return showCrush;
     }
 
     private void ShowConstructionPreview()
@@ -385,17 +395,17 @@ public class MainActions : MonoBehaviour
 
         RaycastHit hit;
 
-        //Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
-
+        Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
+        //newBuilding.transform.position;
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
-            Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
+            Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.3f, 0));
             buildingPreview.transform.position = previewPosition;
-            buildingPreview.transform.rotation = Quaternion.Euler(newBuilding.transform.rotation.x, newBuilding.transform.rotation.y, newBuilding.transform.rotation.z);
-            //buildingPreview.transform.SetPositionAndRotation(previewPosition, newBuilding.transform.rotation);
 
-            //Debug.Log("Building Rotation : " + newBuilding.transform.rotation);
-            //Debug.Log("Preview Rotation : " + buildingPreview.transform.rotation);
+            var angles = newBuilding.transform.rotation.eulerAngles;
+            angles.x = -90;
+            angles.y = 90;
+            buildingPreview.transform.rotation = Quaternion.Euler(angles);
         }
     }
 
