@@ -404,11 +404,11 @@ public class UIManager : MonoBehaviour
             button.transform.parent = buttonsPosition;
 
             //Change umber in 3D text child
-            Transform textNb = button.transform.Find("Page number");
+            Transform textNb = button.transform.Find("Canvas/Page number");
 
             if (textNb != null)
             {
-                textNb.GetComponent<TextMesh>().text = "" + (i+1);
+                textNb.GetComponent<Text>().text = "" + (i+1);
             }
 
             button.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);

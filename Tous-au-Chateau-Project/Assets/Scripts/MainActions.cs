@@ -125,30 +125,32 @@ public class MainActions : MonoBehaviour
             trigger = false;
             crushMode = false;
             canCrush = true;
+            // If we had a building and we have released it
             if (haveBuilding)
             {
+                impactPreview.SetActive(false);
+
+                //releaseBuilding
+                haveBuilding = false;
+                // If the Preview Was In Collision, then don't create new building
                 if (buildingPreview.GetComponent<materialChange>().inCollision)
                 {
-                    //releaseBuilding
-                    haveBuilding = false;
-                    //EnableBoxColliders(newBuilding, true);
-                    newBuilding.GetComponent<Rigidbody>().isKinematic = false;
-                    newBuilding.transform.parent = null;
-                    //On hand release
-                    Transform buildingTrans;
-                    buildingTrans = buildingPreview.transform;
-                    Destroy(buildingPreview);
+                    ResourceManager.Instance.AddResources(newBuilding.GetComponent<Building>().getCost());
                     Destroy(newBuilding);
-                    newBuilding = Instantiate(buildingPrefab, buildingTrans);
-                    EnableBoxColliders(newBuilding, true);
                 }
+                // If it wasn't in collision, then create new building
                 else
                 {
-                    haveBuilding = false;
-                    Destroy(buildingPreview);
-                    Destroy(newBuilding);
-                    //We need to check ressources to be able to retrieve a pack when not used
+                    //newBuilding = Instantiate(buildingPrefab, buildingTrans);
+                    newBuilding.GetComponent<Rigidbody>().isKinematic = false;
+                    newBuilding.transform.parent = null;
+
+                    // The building we had in the hand take the position & rotation of the preview
+                    newBuilding.transform.position = buildingPreview.transform.position;
+                    newBuilding.transform.rotation = buildingPreview.transform.rotation;
+                    EnableBoxColliders(newBuilding, true);
                 }
+                Destroy(buildingPreview);
             }
             else if (SceneManager.GetActiveScene().name == "Map Selector")
             {
@@ -292,6 +294,7 @@ public class MainActions : MonoBehaviour
                     //Get ResourcePack building
                     if (other.gameObject.GetComponent<Building>().CanBuy())
                     {
+                        impactPreview.SetActive(false);
                         //Instantiate building
                         buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
                         newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
@@ -424,7 +427,7 @@ public class MainActions : MonoBehaviour
     // Return true if the raycast hit
     private bool ShowCrushPreview()
     {
-        float highestHit = 100000000000000;
+        float highestHit = 0;
         bool showCrush = RayCastHit(MiddleOfHand(), BorderOfHand(true), BorderOfHand(false), ref highestHit);
 
         if (showCrush)
@@ -459,34 +462,44 @@ public class MainActions : MonoBehaviour
         BoxCollider boxCollider = buildingPreview.GetComponent<BoxCollider>();
         Vector3 scale = buildingPreview.transform.localScale;
 
-        Vector3 middlePosition = buildingPreview.transform.position;
+        Vector3 middlePosition = newBuilding.transform.position;
         Vector3 rightPosition = new Vector3(middlePosition.x + (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z + (boxCollider.size.y / scale.y));
         Vector3 leftPosition = new Vector3(middlePosition.x - (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z - (boxCollider.size.y / scale.y));
 
-        float highestHit = 100000000000000;
+        float highestHit = 0;
         if (RayCastHit(middlePosition, rightPosition, leftPosition, ref highestHit))
         {
-            Vector3 previewPosition = newBuilding.transform.position + (new Vector3(0, -highestHit + 0.3f, 0));
+            float heightOffset = 0.5f;
+            Vector3 previewPosition = newBuilding.transform.position + (new Vector3(0, -highestHit + heightOffset, 0));
             buildingPreview.transform.position = previewPosition;
 
-            var previousAngles = buildingPreview.transform.rotation.eulerAngles;
+            // CORRECT HERE
+            
+            var previousAngles = newBuilding.transform.localRotation.eulerAngles;
+            /*
             Debug.Log(previousAngles);
             var angles = newBuilding.transform.rotation.eulerAngles;
-            angles.x = -90;
-            angles.y = 90;
+            angles.x = previousAngles.x;
+            angles.y = previousAngles.y;
+            //angles.x = -90;
+            //angles.y = 90;
             buildingPreview.transform.rotation = Quaternion.Euler(angles);
+            */
+
+            buildingPreview.transform.localRotation = Quaternion.Euler(-90, 90, previousAngles.z);
         }
     }
 
     private void EnableBoxColliders(GameObject gameObject, bool enable)
     {
-        gameObject.GetComponent<BoxCollider>().enabled = enable;
+        if (gameObject.transform.GetComponent<BoxCollider>())
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = enable;
+        }
+            
         for (int i = 0; i < gameObject.transform.childCount; ++i)
         {
-            if (gameObject.transform.GetChild(i).GetComponent<BoxCollider>())
-            {
-                gameObject.transform.GetChild(i).GetComponent<BoxCollider>().enabled = enable;
-            }
+            EnableBoxColliders(gameObject.transform.GetChild(i).gameObject, enable);
         }
     }
 

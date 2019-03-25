@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23847890650939612}
   - component: {fileID: 114887672405378100}
   - component: {fileID: 135095430092049702}
+  - component: {fileID: 114568828310469742}
   m_Layer: 8
   m_Name: whiteFlower
   m_TagString: food
@@ -87,6 +88,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1024184751642612}
   m_Mesh: {fileID: 4300006, guid: 978251188eaf3c44c8eea1ee3669dbbb, type: 3}
+--- !u!114 &114568828310469742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1024184751642612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6350d5821965448a1289d6eec5479c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenTrigered: []
 --- !u!114 &114887672405378100
 MonoBehaviour:
   m_ObjectHideFlags: 1
