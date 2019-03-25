@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 114046573780057168}
   - component: {fileID: 114685885166733660}
   - component: {fileID: 82113578241162552}
+  - component: {fileID: 65964246501004054}
   m_Layer: 0
   m_Name: Directional Panel Left UI
   m_TagString: Building
@@ -653,6 +654,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1017110215282670}
   m_Mesh: {fileID: 4300000, guid: 9769f9c636b83e841b3d22cbac28dc1e, type: 3}
+--- !u!65 &65964246501004054
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774256326975916}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 4, z: 1}
+  m_Center: {x: 0, y: 0, z: 1.5}
 --- !u!82 &82113578241162552
 AudioSource:
   m_ObjectHideFlags: 1
