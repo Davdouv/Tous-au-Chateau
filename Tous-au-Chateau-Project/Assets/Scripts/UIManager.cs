@@ -47,12 +47,10 @@ public class UIManager : MonoBehaviour
     public Color victoryTextColor;
     public Color gameoverTextColor;
 
-    public ResourceManager _ResourceManager;
     public GameObject controlPanel;
     public GameObject ResourceGainPrefab;
 
     //For construction pagination
-    public BuildingsTypeGroup _BuildingTypeGroup;
     public GameObject ConstructionPagination; //parent of each page content in hierarchy
     public Color buildingNotPuchasable;
     public GameObject paginationButtonsPrefab;
@@ -79,7 +77,7 @@ public class UIManager : MonoBehaviour
         constructionsPositions[2] = constructionPosition3;
         constructionsPositions[3] = constructionPosition4;
 
-        if (_BuildingTypeGroup != null)
+        if (BuildingsTypeGroup.Instance != null)
         {
             CalculateNbOfPages();
         }
@@ -87,7 +85,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (_BuildingTypeGroup != null && _pages == null && _pageButtons == null) //if fails on start
+        if (BuildingsTypeGroup.Instance != null && _pages == null && _pageButtons == null) //if fails on start
         {
             CalculateNbOfPages();
         }
@@ -167,16 +165,16 @@ public class UIManager : MonoBehaviour
         }
 
         GameOverPanel.SetActive(true);
-        gameOverVillagersText.text = "Remaining Villagers : " + _ResourceManager.GetWorkForce();
+        gameOverVillagersText.text = "Remaining Villagers : " + ResourceManager.Instance.GetWorkForce();
     }
 
     private void UpdateResourcesInformation()
     {
-        woodTxt.text = "" + _ResourceManager.GetWood();
-        stoneTxt.text = "" + _ResourceManager.GetStone();
-        foodTxt.text = "" + _ResourceManager.GetFood();
-        villagersTxt.text = "" + _ResourceManager.GetWorkForce();
-        motivation.value = _ResourceManager.GetMotivation();
+        woodTxt.text = "" + ResourceManager.Instance.GetWood();
+        stoneTxt.text = "" + ResourceManager.Instance.GetStone();
+        foodTxt.text = "" + ResourceManager.Instance.GetFood();
+        villagersTxt.text = "" + ResourceManager.Instance.GetWorkForce();
+        motivation.value = ResourceManager.Instance.GetMotivation();
     }
 
     /* Updates the ability to purchase or not each building */
@@ -187,7 +185,7 @@ public class UIManager : MonoBehaviour
             for (int j = 0; j < _sortedBuildings[i].Count; ++j)
             {
                 Building currentBuilding = _sortedBuildings[i][j];
-                if (_ResourceManager.HasEnoughResources(currentBuilding.getCost()))
+                if (ResourceManager.Instance.HasEnoughResources(currentBuilding.getCost()))
                 {
                     //make it normal
                     currentBuilding.transform.GetChild(2).gameObject.SetActive(true);
@@ -309,22 +307,24 @@ public class UIManager : MonoBehaviour
     //only used at beginning of program
     private void UpdateBuildingInfo()
     {
-        for(int i = 0; i < _BuildingTypeGroup.buildings.Count; ++i)
+        List<Building> tmpBuilding = BuildingsTypeGroup.Instance.buildings;
+
+        for (int i = 0; i < tmpBuilding.Count; ++i)
         {
-            Transform title = _BuildingTypeGroup.buildings[i].transform.Find("Title/TitleCanvas/TitleText");
+            Transform title = tmpBuilding[i].transform.Find("Title/TitleCanvas/TitleText");
 
             if(title != null)
             {
-                title.GetComponent<Text>().text = _BuildingTypeGroup.buildings[i]._name;
+                title.GetComponent<Text>().text = tmpBuilding[i]._name;
             }
 
-            Transform cost = _BuildingTypeGroup.buildings[i].transform.Find("Display/HelpTextCanvas/Cost");
+            Transform cost = tmpBuilding[i].transform.Find("Display/HelpTextCanvas/Cost");
 
-            if (cost != null && _BuildingTypeGroup.buildings[i].GetCostString() != "")
+            if (cost != null && tmpBuilding[i].GetCostString() != "")
             {
                 //IMPORTANT THIS LINE IS NOT AN ERROR
                 //VISUAL STUDIO DOESN'T UNDERSTANDS IT BUT IT WORKS
-                cost.GetComponent<TextMeshProUGUI>().text = _BuildingTypeGroup.buildings[i].GetCostString();
+                cost.GetComponent<TextMeshProUGUI>().text = tmpBuilding[i].GetCostString();
                 _isCostEmpty = _isCostEmpty || false;
             }
         }
@@ -333,7 +333,7 @@ public class UIManager : MonoBehaviour
     //only for beginning of program
     private void CalculateNbOfPages()
     {
-        _sortedBuildings = _BuildingTypeGroup.getBuildingsSortedByType();
+        _sortedBuildings = BuildingsTypeGroup.Instance.getBuildingsSortedByType();
 
         if (_sortedBuildings == null)
             return;
