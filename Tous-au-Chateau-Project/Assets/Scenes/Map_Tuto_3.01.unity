@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28930417, g: 0.46862257, b: 0.9005637, a: 1}
+  m_IndirectSpecularColor: {r: 0.105268255, g: 0.28903043, b: 0.7487039, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2098,11 +2098,9 @@ MonoBehaviour:
   gameOverButton: {fileID: 1683339795}
   victoryTextColor: {r: 0.27092335, g: 0.8113208, b: 0.21048418, a: 1}
   gameoverTextColor: {r: 0.6901961, g: 0, b: 0.027450982, a: 1}
-  _ResourceManager: {fileID: 439394635}
   controlPanel: {fileID: 1756107966}
   ResourceGainPrefab: {fileID: 1137109586676948, guid: ddc922da42399eb459da854438708633,
     type: 2}
-  _BuildingTypeGroup: {fileID: 246454946}
   ConstructionPagination: {fileID: 1107526685}
   buildingNotPuchasable: {r: 0.6901961, g: 0, b: 0.02745098, a: 1}
   paginationButtonsPrefab: {fileID: 1377314420153762, guid: 0d2e2b9055bbed7468ccf7db747689b1,
@@ -30809,6 +30807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
   tuto: 1
+  Player: {fileID: 1235158202}
   victorySound: {fileID: 8300000, guid: 5cd9dcbdeef9b8c46a1913953bb218ba, type: 3}
   defeatSound: {fileID: 8300000, guid: 788d006a0be6ba440a2ec27c10fe9b39, type: 3}
   victoryFX: {fileID: 530949743}
