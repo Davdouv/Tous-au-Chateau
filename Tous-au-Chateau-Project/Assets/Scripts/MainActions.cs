@@ -362,27 +362,60 @@ public class MainActions : MonoBehaviour
         Debug.DrawRay(right, new Vector3(0, -1, 0) * 100, Color.red);
         Debug.DrawRay(left, new Vector3(0, -1, 0) * 100, Color.red);
 
+        bool middleHit = false;
+        bool rightHit = false;
+        bool leftHit = false;
         bool showCrush = false;
 
         //raycast from center down vector
         if (Physics.Raycast(middle, new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
-            showCrush = true;
+            middleHit = true;
         }
         //raycast from border and diagonal
         if (Physics.Raycast(right, new Vector3(0, -1, 0), out hitRight, Mathf.Infinity, layerMask))
         {
-            showCrush = true;
+            rightHit = true;
+
         }
         //raycast from other border and diagonal
         if (Physics.Raycast(left, new Vector3(0, -1, 0), out hitLeft, Mathf.Infinity, layerMask))
         {
-            showCrush = true;
+            leftHit = true;
         }
 
-        if (showCrush)
+        if (middleHit || rightHit || leftHit)
         {
-            highestHit = Mathf.Min(hit.distance, hitRight.distance, hitLeft.distance);
+            showCrush = true;
+
+            if (middleHit && rightHit && leftHit)
+            {
+                highestHit = Mathf.Min(hit.distance, hitRight.distance, hitLeft.distance);
+            }
+            else if (middleHit && rightHit)
+            {
+                highestHit = Mathf.Min(hit.distance, hitRight.distance);
+            }
+            else if (middleHit && leftHit)
+            {
+                highestHit = Mathf.Min(hit.distance, hitLeft.distance);
+            }
+            else if (rightHit && leftHit)
+            {
+                highestHit = Mathf.Min(hitRight.distance, hitLeft.distance);
+            }
+            else if (middleHit)
+            {
+                highestHit = hit.distance;
+            }
+            else if (rightHit)
+            {
+                highestHit = hitRight.distance;
+            }
+            else if (leftHit)
+            {
+                highestHit = hitLeft.distance;
+            }
         }
 
         return showCrush;
@@ -391,7 +424,7 @@ public class MainActions : MonoBehaviour
     // Return true if the raycast hit
     private bool ShowCrushPreview()
     {
-        float highestHit = 0;
+        float highestHit = 100000000000000;
         bool showCrush = RayCastHit(MiddleOfHand(), BorderOfHand(true), BorderOfHand(false), ref highestHit);
 
         if (showCrush)
@@ -423,17 +456,25 @@ public class MainActions : MonoBehaviour
         }
         */
 
-        Vector3 buildingMiddlePosition = buildingPreview.transform.position;
-        Debug.Log(buildingMiddlePosition);
-        Vector3 multiply = Vector3.Scale(buildingPreview.GetComponent<BoxCollider>().center, buildingMiddlePosition);
-        Vector3 boxColliderCenter = multiply + buildingMiddlePosition;
-        Debug.Log("Building position : " + buildingMiddlePosition);
-        Debug.Log("multiply position : " + multiply);
-        Debug.Log("boxColliderCenter position : " + boxColliderCenter);
+        BoxCollider boxCollider = buildingPreview.GetComponent<BoxCollider>();
+        Vector3 scale = buildingPreview.transform.localScale;
 
-        if (true)
+        Vector3 middlePosition = buildingPreview.transform.position;
+        Vector3 rightPosition = new Vector3(middlePosition.x + (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z + (boxCollider.size.y / scale.y));
+        Vector3 leftPosition = new Vector3(middlePosition.x - (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z - (boxCollider.size.y / scale.y));
+
+        float highestHit = 100000000000000;
+        if (RayCastHit(middlePosition, rightPosition, leftPosition, ref highestHit))
         {
+            Vector3 previewPosition = newBuilding.transform.position + (new Vector3(0, -highestHit + 0.3f, 0));
+            buildingPreview.transform.position = previewPosition;
 
+            var previousAngles = buildingPreview.transform.rotation.eulerAngles;
+            Debug.Log(previousAngles);
+            var angles = newBuilding.transform.rotation.eulerAngles;
+            angles.x = -90;
+            angles.y = 90;
+            buildingPreview.transform.rotation = Quaternion.Euler(angles);
         }
     }
 
