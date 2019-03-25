@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 82605072961491450}
   - component: {fileID: 114457815685435022}
   - component: {fileID: 114668736200293458}
+  - component: {fileID: 114088366740362958}
   m_Layer: 10
   m_Name: Stone Wall
   m_TagString: wall
@@ -240,6 +241,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114088366740362958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1608018364246078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6350d5821965448a1289d6eec5479c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenTrigered: []
 --- !u!114 &114139063721167156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,7 +286,7 @@ MonoBehaviour:
   purchasedSound: {fileID: 8300000, guid: 6a6ce624e08a2ca4a966e24e2afab741, type: 3}
   _cost:
     wood: 0
-    stone: 0
+    stone: 10
     food: 0
     workForce: 0
     motivation: 0
