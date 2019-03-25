@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 4188777913029896}
   - component: {fileID: 114117450727915320}
   - component: {fileID: 82341994868798750}
+  - component: {fileID: 65026599457054386}
   m_Layer: 0
   m_Name: Wall UI
   m_TagString: Building
@@ -332,6 +333,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1747474841577580}
   m_Mesh: {fileID: 4300000, guid: f4879642d3ef4e344909a948853abb83, type: 3}
+--- !u!65 &65026599457054386
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1310125500452364}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9, y: 7.3, z: 1}
+  m_Center: {x: 0, y: -0.3, z: 2.11}
 --- !u!82 &82341994868798750
 AudioSource:
   m_ObjectHideFlags: 1
