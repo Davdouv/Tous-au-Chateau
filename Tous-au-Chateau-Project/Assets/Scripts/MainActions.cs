@@ -346,56 +346,94 @@ public class MainActions : MonoBehaviour
     {
         return transform.TransformPoint(sphereCollider.center);
     }
-    private Vector3 BorderOfHand()
+    private Vector3 BorderOfHand(bool right)
     {
-        return transform.TransformPoint(sphereCollider.center) + new Vector3 (sphereCollider.radius,0,0);
+        return transform.TransformPoint(sphereCollider.center) + new Vector3 (right ? distanceDetection : -distanceDetection, 0, right ? distanceDetection : -distanceDetection);
+    }
+
+    // Test if an object ray cast hit the terrain
+    private bool RayCastHit(Vector3 middle, Vector3 right, Vector3 left, ref float highestHit)
+    {
+        int layerMask = 1 << 11;
+
+        RaycastHit hit, hitRight, hitLeft;
+
+        Debug.DrawRay(middle, new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(right, new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(left, new Vector3(0, -1, 0) * 100, Color.red);
+
+        bool showCrush = false;
+
+        //raycast from center down vector
+        if (Physics.Raycast(middle, new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
+        {
+            showCrush = true;
+        }
+        //raycast from border and diagonal
+        if (Physics.Raycast(right, new Vector3(0, -1, 0), out hitRight, Mathf.Infinity, layerMask))
+        {
+            showCrush = true;
+        }
+        //raycast from other border and diagonal
+        if (Physics.Raycast(left, new Vector3(0, -1, 0), out hitLeft, Mathf.Infinity, layerMask))
+        {
+            showCrush = true;
+        }
+
+        if (showCrush)
+        {
+            highestHit = Mathf.Min(hit.distance, hitRight.distance, hitLeft.distance);
+        }
+
+        return showCrush;
     }
 
     // Return true if the raycast hit
     private bool ShowCrushPreview()
     {
-        // Bit shift the index of the layer (10) (terrain) to get a bit mask
-        int layerMask = 1 << 11;
+        float highestHit = 0;
+        bool showCrush = RayCastHit(MiddleOfHand(), BorderOfHand(true), BorderOfHand(false), ref highestHit);
 
-        RaycastHit hit, hitRight, hitLeft;
-
-        Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
-
-        //raycast from center down vector
-        if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
+        if (showCrush)
         {
-            //raycast from border and diagonal
-            if(Physics.Raycast(BorderOfHand(), new Vector3(1, 0, 1), out hitRight, Mathf.Infinity, layerMask))
-            {
-                //raycast from other border and diagonal
-                if (Physics.Raycast(-BorderOfHand(), new Vector3(-1, 0, 1), out hitLeft, Mathf.Infinity, layerMask))
-                {
-                    float HighestHit = Mathf.Max(hit.distance, hitRight.distance, hitLeft.distance);
-                    impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -HighestHit + 0.3f, 0));
-                    return true;
-                }
-            }
+            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -highestHit + 0.3f, 0));
         }
-        return false;
+
+        return showCrush;
     }
 
     private void ShowConstructionPreview()
     {
+        /*
         int layerMask = 1 << 11;
 
         RaycastHit hit;
 
-        //Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
-
+        Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
+        //newBuilding.transform.position;
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
-            Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
+            Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.3f, 0));
             buildingPreview.transform.position = previewPosition;
-            buildingPreview.transform.rotation = Quaternion.Euler(newBuilding.transform.rotation.x, newBuilding.transform.rotation.y, newBuilding.transform.rotation.z);
-            //buildingPreview.transform.SetPositionAndRotation(previewPosition, newBuilding.transform.rotation);
 
-            //Debug.Log("Building Rotation : " + newBuilding.transform.rotation);
-            //Debug.Log("Preview Rotation : " + buildingPreview.transform.rotation);
+            var angles = newBuilding.transform.rotation.eulerAngles;
+            angles.x = -90;
+            angles.y = 90;
+            buildingPreview.transform.rotation = Quaternion.Euler(angles);
+        }
+        */
+
+        Vector3 buildingMiddlePosition = buildingPreview.transform.position;
+        Debug.Log(buildingMiddlePosition);
+        Vector3 multiply = Vector3.Scale(buildingPreview.GetComponent<BoxCollider>().center, buildingMiddlePosition);
+        Vector3 boxColliderCenter = multiply + buildingMiddlePosition;
+        Debug.Log("Building position : " + buildingMiddlePosition);
+        Debug.Log("multiply position : " + multiply);
+        Debug.Log("boxColliderCenter position : " + boxColliderCenter);
+
+        if (true)
+        {
+
         }
     }
 
