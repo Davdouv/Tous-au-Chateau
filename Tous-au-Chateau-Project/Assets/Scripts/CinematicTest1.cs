@@ -7,6 +7,8 @@ public class CinematicTest1 : MonoBehaviour {
     public Animator transitionAnim;
     public Animator globalCloudsAnim;
 
+    public Camera tmpCamera;
+
     public Animator globalCameraAnim;
     public Animator globalCamera2Anim;
     public Animator chateauCameraAnim;
@@ -25,27 +27,18 @@ public class CinematicTest1 : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        /*globalCamera.enabled = false;
+        globalCamera.enabled = false;
         globalCamera2.enabled = false;
         chateauCamera.enabled = false;
-        villagersCamera.enabled = false;*/
+        villagersCamera.enabled = false;
 
-        shouldStart = false;
-
-        /*globalCamera.gameObject.SetActive(false);
-        globalCamera2.gameObject.SetActive(false);
-        chateauCamera.gameObject.SetActive(false);
-        villagersCamera.gameObject.SetActive(false);*/
-
+        shouldStart = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.C))
         {
-            Debug.Log("TEST CHANGE CAMERA");
-            globalCamera.enabled = true;
-            globalCamera.gameObject.SetActive(true);
             if (shouldStart)
             {
                 Debug.Log("Should Start");
@@ -57,11 +50,16 @@ public class CinematicTest1 : MonoBehaviour {
     public void StartCinematic(Camera player)
     {
         shouldStart = true;
-        _playerCamera = player;
+        _playerCamera = tmpCamera;
         _copyPlayerCamera = player;
-        Debug.Log("______________________________________________________________________________CAMERA IS" + player.gameObject.name);
-        //_playerCamera.position.Set(0, 0, 0); // test
-        Debug.Log("StartCinematic_________________________________________________");
+        
+        Debug.Log("______________________________________________________________________________CAMERA IS : " + player.gameObject.name);
+    }
+
+    void ChangeCamera(Camera currentCamera, Camera newCamera)
+    {
+        currentCamera.enabled = false;
+        newCamera.enabled = true;
     }
 
     IEnumerator PlayCinematic()
@@ -70,42 +68,44 @@ public class CinematicTest1 : MonoBehaviour {
 
         Debug.Log("CAMERA 1");
         // Plan 1 : global view: zoom in
-        globalCamera.gameObject.SetActive(true);
-        _playerCamera = globalCamera;
         transitionAnim.SetTrigger("fadeOutWhite");
+        globalCloudsAnim.SetTrigger("cloudsFall");
         globalCameraAnim.SetTrigger("zoomGlobal");
-        yield return new WaitForSeconds(2f);
+        ChangeCamera(tmpCamera, globalCamera);
+        yield return new WaitForSeconds(5f);
+
         transitionAnim.SetTrigger("fadeInWhite");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         Debug.Log("CAMERA 2");
         // Plan 2 : up view: traveling
-        globalCamera.gameObject.SetActive(false);
-        globalCamera2.gameObject.SetActive(true);
         transitionAnim.SetTrigger("fadeOutWhite");
         globalCamera2Anim.SetTrigger("travelingGlobal");
-        yield return new WaitForSeconds(2f);
+        ChangeCamera(globalCamera, globalCamera2);
+        yield return new WaitForSeconds(8f);
+
         transitionAnim.SetTrigger("fadeInWhite");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         Debug.Log("CAMERA 3");
         // Plan 3 : chateau: traveling down -> up
-        globalCamera2.gameObject.SetActive(false);
-        chateauCamera.gameObject.SetActive(true);
         transitionAnim.SetTrigger("fadeOutWhite");
         chateauCameraAnim.SetTrigger("travelingChateau");
-        yield return new WaitForSeconds(2f);
-        transitionAnim.SetTrigger("fadeInWhite");
-        yield return new WaitForSeconds(1.5f);
+        ChangeCamera(globalCamera2, chateauCamera);
+        yield return new WaitForSeconds(6f);
 
-        Debug.Log("CAMERA 4");
-        // Plan 4 : villagers: traveling right -> left
-        chateauCamera.gameObject.SetActive(false);
-        villagersCamera.gameObject.SetActive(true);
-        transitionAnim.SetTrigger("fadeOutWhite");
-        villagersCameraAnim.SetTrigger("travelingVillagers");
-        yield return new WaitForSeconds(2f);
         transitionAnim.SetTrigger("fadeInWhite");
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
+
+        //Debug.Log("CAMERA 4");
+        // Plan 4 : villagers: traveling right -> left
+        //villagersCameraAnim.SetTrigger("travelingVillagers");
+        //ChangeCamera(chateauCamera, villagersCamera);
+        //transitionAnim.SetTrigger("fadeOutWhite");
+        //yield return new WaitForSeconds(5f);
+        //transitionAnim.SetTrigger("fadeInWhite");
+        //yield return new WaitForSeconds(1f);
+
+        ChangeCamera(villagersCamera, tmpCamera);
     }
 }

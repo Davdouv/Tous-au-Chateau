@@ -39,7 +39,7 @@ public class CameraManager : MonoBehaviour
     {
         cameraShaker = GetComponent<CameraShaker>();
         cinematic = GetComponent<CinematicTest1>();
-        PlayCinematic(); // test
+        PlayCinematic();
     }
 
     public bool FindCamera()
@@ -99,8 +99,6 @@ public class CameraManager : MonoBehaviour
         if (cinematic)
         {
             cinematic.StartCinematic(GetCamera());
-            /*Debug.Log(_camera.gameObject.name);*/
-            //GetCamera().transform.position.Set(0, 0, 0);
             Debug.Log("Camera Manager PlayCinematic");
         } else
         {
