@@ -40,6 +40,7 @@ public class MainActions : MonoBehaviour
     public SpeechEvent_MapTuto1_Event4_1 speechEvent4_1 = null;
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
     public SpeechEvent_MapTuto2_Event1 speechEvent2_1 = null;
+    public SpeechEvent_MapTuto3_Event1 speechEvent3_1 = null;
 
     Material[] mats;
     string[] objName;
@@ -80,6 +81,7 @@ public class MainActions : MonoBehaviour
                 VerifyActionTuto(speechEvent4_1);
                 VerifyActionTuto(speechEvent7);
                 VerifyActionTuto(speechEvent2_1);
+                VerifyActionTuto(speechEvent3_1);
             }
         }
 

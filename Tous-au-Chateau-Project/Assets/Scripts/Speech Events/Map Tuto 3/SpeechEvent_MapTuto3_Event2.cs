@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-// 3 - CRUSHING A ROCK
+// 2 - FALL INTO THE VOID
 
-public class SpeechEvent_MapTuto2_Event3 : SpeechEvent {
+public class SpeechEvent_MapTuto3_Event2 : SpeechEvent {
+
+    private bool stopWait = false;
 
     public override bool MustOpen()
     {
@@ -14,8 +16,8 @@ public class SpeechEvent_MapTuto2_Event3 : SpeechEvent {
             // Check if all group is dead
             if (currentVillagersGroup.GetNumberOfVillagersAlive() == 0)
             {
-                // Check if at least one has been killed by the void (or the river after updating the map)
-                if (currentVillagersGroup.IsDeathCausedBy(DeathReason.VOID) || currentVillagersGroup.IsDeathCausedBy(DeathReason.RIVER))
+                // Check if at least one has been killed by the void
+                if (currentVillagersGroup.IsDeathCausedBy(DeathReason.VOID))
                 {
                     return true;
                 }
@@ -26,11 +28,18 @@ public class SpeechEvent_MapTuto2_Event3 : SpeechEvent {
 
     public override bool MustClose()
     {
-        // Crushing a rock (any rock)
-        if (ResourceManager.Instance.GetStone() > 0)
+        // Crush some trees
+        if (ResourceManager.Instance.GetWood() > 0)
         {
-            return true;
+            StartCoroutine(WaitSeconds());
+            return stopWait;
         }
         return false;
+    }
+
+    IEnumerator WaitSeconds()
+    {
+        yield return new WaitForSeconds(2);
+        stopWait = true;
     }
 }

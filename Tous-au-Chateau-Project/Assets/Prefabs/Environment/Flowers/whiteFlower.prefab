@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1024184751642612}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 1.143, y: -0.00000002815777, z: -0.6441747}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -102,6 +102,8 @@ MonoBehaviour:
   speed: 0
   strength: 0
   _deathReason: 0
+  deathSound: []
+  fallingSound: []
 --- !u!135 &135095430092049702
 SphereCollider:
   m_ObjectHideFlags: 1
