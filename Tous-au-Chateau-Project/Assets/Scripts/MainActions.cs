@@ -351,46 +351,60 @@ public class MainActions : MonoBehaviour
         return transform.TransformPoint(sphereCollider.center) + new Vector3 (right ? distanceDetection : -distanceDetection, 0, right ? distanceDetection : -distanceDetection);
     }
 
-    // Return true if the raycast hit
-    private bool ShowCrushPreview()
+    // Test if an object ray cast hit the terrain
+    private bool RayCastHit(Vector3 middle, Vector3 right, Vector3 left, ref float highestHit)
     {
-        // Bit shift the index of the layer (10) (terrain) to get a bit mask
         int layerMask = 1 << 11;
 
         RaycastHit hit, hitRight, hitLeft;
 
-        Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
-        Debug.DrawRay(BorderOfHand(true), new Vector3(0, -1, 0) * 100, Color.red);
-        Debug.DrawRay(BorderOfHand(false), new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(middle, new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(right, new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(left, new Vector3(0, -1, 0) * 100, Color.red);
 
         bool showCrush = false;
 
         //raycast from center down vector
-        if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(middle, new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
             showCrush = true;
         }
         //raycast from border and diagonal
-        if (Physics.Raycast(BorderOfHand(true), new Vector3(0, -1, 0), out hitRight, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(right, new Vector3(0, -1, 0), out hitRight, Mathf.Infinity, layerMask))
         {
             showCrush = true;
         }
         //raycast from other border and diagonal
-        if (Physics.Raycast(BorderOfHand(false), new Vector3(0, -1, 0), out hitLeft, Mathf.Infinity, layerMask))
+        if (Physics.Raycast(left, new Vector3(0, -1, 0), out hitLeft, Mathf.Infinity, layerMask))
         {
             showCrush = true;
         }
 
         if (showCrush)
         {
-            float HighestHit = Mathf.Min(hit.distance, hitRight.distance, hitLeft.distance);
-            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -HighestHit + 0.3f, 0));
+            highestHit = Mathf.Min(hit.distance, hitRight.distance, hitLeft.distance);
         }
+
+        return showCrush;
+    }
+
+    // Return true if the raycast hit
+    private bool ShowCrushPreview()
+    {
+        float highestHit = 0;
+        bool showCrush = RayCastHit(MiddleOfHand(), BorderOfHand(true), BorderOfHand(false), ref highestHit);
+
+        if (showCrush)
+        {
+            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -highestHit + 0.3f, 0));
+        }
+
         return showCrush;
     }
 
     private void ShowConstructionPreview()
     {
+        /*
         int layerMask = 1 << 11;
 
         RaycastHit hit;
@@ -406,6 +420,20 @@ public class MainActions : MonoBehaviour
             angles.x = -90;
             angles.y = 90;
             buildingPreview.transform.rotation = Quaternion.Euler(angles);
+        }
+        */
+
+        Vector3 buildingMiddlePosition = buildingPreview.transform.position;
+        Debug.Log(buildingMiddlePosition);
+        Vector3 multiply = Vector3.Scale(buildingPreview.GetComponent<BoxCollider>().center, buildingMiddlePosition);
+        Vector3 boxColliderCenter = multiply + buildingMiddlePosition;
+        Debug.Log("Building position : " + buildingMiddlePosition);
+        Debug.Log("multiply position : " + multiply);
+        Debug.Log("boxColliderCenter position : " + boxColliderCenter);
+
+        if (true)
+        {
+
         }
     }
 
