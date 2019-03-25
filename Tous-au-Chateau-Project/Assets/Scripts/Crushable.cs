@@ -37,6 +37,10 @@ public class Crushable : MonoBehaviour
                 GameObject fx = Instantiate(crushFXPrefab, transform);
                 fx.SetActive(true);
                 fx.transform.SetParent(transform.parent.parent);
+
+                GameObject resourceGain = Instantiate(UIManager.Instance.ResourceGainPrefab, transform);
+                resourceGain.transform.SetParent(transform.parent.parent);
+                resourceGain.GetComponent<ResourceGained>().UpdateGain(_gain);
             }
             // If it's a character, make him die
             if (this.GetComponent<CharacterStats>() && this.GetComponent<CharacterStats>().IsAlive())
@@ -47,10 +51,6 @@ public class Crushable : MonoBehaviour
             else
             {
                 Destroy(gameObject);
-            }
-            if (crushFXPrefab)
-            {
-                Instantiate(crushFXPrefab, transform);
             }
             canBeCrushed = false;
         }

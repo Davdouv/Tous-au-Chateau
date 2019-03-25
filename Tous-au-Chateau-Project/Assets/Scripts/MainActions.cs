@@ -24,10 +24,6 @@ public class MainActions : MonoBehaviour
     private SphereCollider sphereCollider;
     private float distanceDetection;
 
-
-    public Material Transparent_Building;
-    Material Building_mat;
-
     GameObject newBuilding;
     GameObject buildingPreview;
     GameObject newVillager;
@@ -44,6 +40,7 @@ public class MainActions : MonoBehaviour
     public SpeechEvent_MapTuto1_Event4_1 speechEvent4_1 = null;
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
     public SpeechEvent_MapTuto2_Event1 speechEvent2_1 = null;
+    public SpeechEvent_MapTuto3_Event1 speechEvent3_1 = null;
 
     Material[] mats;
     string[] objName;
@@ -87,6 +84,7 @@ public class MainActions : MonoBehaviour
                 VerifyActionTuto(speechEvent4_1);
                 VerifyActionTuto(speechEvent7);
                 VerifyActionTuto(speechEvent2_1);
+                VerifyActionTuto(speechEvent3_1);
             }
         }
 
@@ -130,19 +128,32 @@ public class MainActions : MonoBehaviour
             trigger = false;
             crushMode = false;
             canCrush = true;
+            // If we had a building and we have released it
             if (haveBuilding)
             {
+                impactPreview.SetActive(false);
+
                 //releaseBuilding
                 haveBuilding = false;
-                EnableBoxColliders(newBuilding, true);
-                newBuilding.GetComponent<Rigidbody>().isKinematic = false;
-                newBuilding.transform.parent = null;
-                //On hand release
-                Transform buildingTrans;
-                buildingTrans = buildingPreview.transform;
+                // If the Preview Was In Collision, then don't create new building
+                if (buildingPreview.GetComponent<materialChange>().inCollision)
+                {
+                    ResourceManager.Instance.AddResources(newBuilding.GetComponent<Building>().getCost());
+                    Destroy(newBuilding);
+                }
+                // If it wasn't in collision, then create new building
+                else
+                {
+                    //newBuilding = Instantiate(buildingPrefab, buildingTrans);
+                    newBuilding.GetComponent<Rigidbody>().isKinematic = false;
+                    newBuilding.transform.parent = null;
+
+                    // The building we had in the hand take the position & rotation of the preview
+                    newBuilding.transform.position = buildingPreview.transform.position;
+                    newBuilding.transform.rotation = buildingPreview.transform.rotation;
+                    EnableBoxColliders(newBuilding, true);
+                }
                 Destroy(buildingPreview);
-                Destroy(newBuilding);
-                newBuilding = Instantiate(buildingPrefab, buildingTrans);
             }
             else if (SceneManager.GetActiveScene().name == "Map Selector")
             {
@@ -215,7 +226,10 @@ public class MainActions : MonoBehaviour
 
                 if (GameManager.Instance.tuto)
                 {
-                    speechEvent1.hasCrushedGround = true;
+                    if (speechEvent1)
+                    {
+                        speechEvent1.hasCrushedGround = true;
+                    }                    
                 }
             }
         }
@@ -299,6 +313,7 @@ public class MainActions : MonoBehaviour
                     //Get ResourcePack building
                     if (other.gameObject.GetComponent<Building>().CanBuy())
                     {
+                        impactPreview.SetActive(false);
                         //Instantiate building
                         buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
                         newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
@@ -353,49 +368,157 @@ public class MainActions : MonoBehaviour
     {
         return transform.TransformPoint(sphereCollider.center);
     }
+    private Vector3 BorderOfHand(bool right)
+    {
+        return transform.TransformPoint(sphereCollider.center) + new Vector3 (right ? distanceDetection : -distanceDetection, 0, right ? distanceDetection : -distanceDetection);
+    }
+
+    // Test if an object ray cast hit the terrain
+    private bool RayCastHit(Vector3 middle, Vector3 right, Vector3 left, ref float highestHit)
+    {
+        int layerMask = 1 << 11;
+
+        RaycastHit hit, hitRight, hitLeft;
+
+        Debug.DrawRay(middle, new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(right, new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(left, new Vector3(0, -1, 0) * 100, Color.red);
+
+        bool middleHit = false;
+        bool rightHit = false;
+        bool leftHit = false;
+        bool showCrush = false;
+
+        //raycast from center down vector
+        if (Physics.Raycast(middle, new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
+        {
+            middleHit = true;
+        }
+        //raycast from border and diagonal
+        if (Physics.Raycast(right, new Vector3(0, -1, 0), out hitRight, Mathf.Infinity, layerMask))
+        {
+            rightHit = true;
+
+        }
+        //raycast from other border and diagonal
+        if (Physics.Raycast(left, new Vector3(0, -1, 0), out hitLeft, Mathf.Infinity, layerMask))
+        {
+            leftHit = true;
+        }
+
+        if (middleHit || rightHit || leftHit)
+        {
+            showCrush = true;
+
+            if (middleHit && rightHit && leftHit)
+            {
+                highestHit = Mathf.Min(hit.distance, hitRight.distance, hitLeft.distance);
+            }
+            else if (middleHit && rightHit)
+            {
+                highestHit = Mathf.Min(hit.distance, hitRight.distance);
+            }
+            else if (middleHit && leftHit)
+            {
+                highestHit = Mathf.Min(hit.distance, hitLeft.distance);
+            }
+            else if (rightHit && leftHit)
+            {
+                highestHit = Mathf.Min(hitRight.distance, hitLeft.distance);
+            }
+            else if (middleHit)
+            {
+                highestHit = hit.distance;
+            }
+            else if (rightHit)
+            {
+                highestHit = hitRight.distance;
+            }
+            else if (leftHit)
+            {
+                highestHit = hitLeft.distance;
+            }
+        }
+
+        return showCrush;
+    }
 
     // Return true if the raycast hit
     private bool ShowCrushPreview()
     {
-        // Bit shift the index of the layer (10) (terrain) to get a bit mask
+        float highestHit = 0;
+        bool showCrush = RayCastHit(MiddleOfHand(), BorderOfHand(true), BorderOfHand(false), ref highestHit);
+
+        if (showCrush)
+        {
+            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -highestHit + 0.3f, 0));
+        }
+
+        return showCrush;
+    }
+
+    private void ShowConstructionPreview()
+    {
+        /*
         int layerMask = 1 << 11;
 
         RaycastHit hit;
 
         Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
-
+        //newBuilding.transform.position;
         if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
         {
-            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
-            return true;
-        }
-        return false;
-    }
-    private void ShowConstructionPreview()
-    {
-        int layerMask = 1 << 11;
-
-        RaycastHit hit;
-
-        //Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
-
-        if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
-        {
-            Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
+            Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.3f, 0));
             buildingPreview.transform.position = previewPosition;
-            //buildingPreview.transform.SetPositionAndRotation(previewPosition, Quaternion.EulerAngles()
+
+            var angles = newBuilding.transform.rotation.eulerAngles;
+            angles.x = -90;
+            angles.y = 90;
+            buildingPreview.transform.rotation = Quaternion.Euler(angles);
+        }
+        */
+
+        BoxCollider boxCollider = buildingPreview.GetComponent<BoxCollider>();
+        Vector3 scale = buildingPreview.transform.localScale;
+
+        Vector3 middlePosition = newBuilding.transform.position;
+        Vector3 rightPosition = new Vector3(middlePosition.x + (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z + (boxCollider.size.y / scale.y));
+        Vector3 leftPosition = new Vector3(middlePosition.x - (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z - (boxCollider.size.y / scale.y));
+
+        float highestHit = 0;
+        if (RayCastHit(middlePosition, rightPosition, leftPosition, ref highestHit))
+        {
+            float heightOffset = 0.5f;
+            Vector3 previewPosition = newBuilding.transform.position + (new Vector3(0, -highestHit + heightOffset, 0));
+            buildingPreview.transform.position = previewPosition;
+
+            // CORRECT HERE
+            
+            var previousAngles = newBuilding.transform.localRotation.eulerAngles;
+            /*
+            Debug.Log(previousAngles);
+            var angles = newBuilding.transform.rotation.eulerAngles;
+            angles.x = previousAngles.x;
+            angles.y = previousAngles.y;
+            //angles.x = -90;
+            //angles.y = 90;
+            buildingPreview.transform.rotation = Quaternion.Euler(angles);
+            */
+
+            buildingPreview.transform.localRotation = Quaternion.Euler(-90, 90, previousAngles.z);
         }
     }
 
     private void EnableBoxColliders(GameObject gameObject, bool enable)
     {
-        gameObject.GetComponent<BoxCollider>().enabled = enable;
+        if (gameObject.transform.GetComponent<BoxCollider>())
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = enable;
+        }
+            
         for (int i = 0; i < gameObject.transform.childCount; ++i)
         {
-            if (gameObject.transform.GetChild(i).GetComponent<BoxCollider>())
-            {
-                gameObject.transform.GetChild(i).GetComponent<BoxCollider>().enabled = enable;
-            }
+            EnableBoxColliders(gameObject.transform.GetChild(i).gameObject, enable);
         }
     }
 

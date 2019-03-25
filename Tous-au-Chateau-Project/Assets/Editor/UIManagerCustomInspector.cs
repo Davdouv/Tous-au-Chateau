@@ -14,8 +14,8 @@ public class UIManagerCustomInspector : Editor {
 
         EditorGUILayout.Space();
 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("_ResourceManager"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("controlPanel"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("ResourceGainPrefab"));
 
         DisplayResources();
 
@@ -90,9 +90,6 @@ public class UIManagerCustomInspector : Editor {
         EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
         EditorGUILayout.Space();
-
-        EditorGUILayout.LabelField(serializedObject.FindProperty("_BuildingTypeGroup").displayName);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("_BuildingTypeGroup"), GUIContent.none);
 
         EditorGUILayout.LabelField(serializedObject.FindProperty("ConstructionPagination").displayName);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("ConstructionPagination"), GUIContent.none);

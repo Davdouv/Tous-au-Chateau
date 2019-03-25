@@ -51,6 +51,8 @@ GameObject:
   - component: {fileID: 4084161999483626}
   - component: {fileID: 54539046492175544}
   - component: {fileID: 65826970039434542}
+  - component: {fileID: 114647163710644788}
+  - component: {fileID: 114199168168098570}
   m_Layer: 0
   m_Name: TransLP
   m_TagString: Sign
@@ -99,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1704118711876476}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 55.16596, y: -58.87, z: -40.378067}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children:
   - {fileID: 4872675510805944}
@@ -256,9 +258,9 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &65826970039434542
 BoxCollider:
@@ -270,5 +272,31 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.5, y: 3.5, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.05}
+  m_Size: {x: 1, y: 1, z: 0.1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114199168168098570
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704118711876476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6350d5821965448a1289d6eec5479c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenTrigered: []
+--- !u!114 &114647163710644788
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1704118711876476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d627535ab77d004aa9da3c87bdab797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparent_mat: {fileID: 2100000, guid: a929a93b229463e4ca63ae16b703c302, type: 2}
+  transparentRed_mat: {fileID: 2100000, guid: 61cfb1eaae0244d49b04d6468dc7427c, type: 2}
+  inCollision: 0

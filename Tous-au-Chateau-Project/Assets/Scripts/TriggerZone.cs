@@ -33,6 +33,11 @@ public abstract class TriggerZone : MonoBehaviour {
         if (targetTag.Contains(other.gameObject.tag))
         {
             _targetList.Add(new Target(other.gameObject));
+
+            if (other.GetComponent<CanBeDestroyed>())
+            {
+                other.GetComponent<CanBeDestroyed>().hasBeenTrigered.Add(this);
+            }
         }
     }
     private void OnTriggerExit(Collider other)
@@ -108,7 +113,7 @@ public abstract class TriggerZone : MonoBehaviour {
         return (distance < distanceDetection*distanceDetection);
     }
 
-    protected void RemoveTarget(GameObject target)
+    public void RemoveTarget(GameObject target)
     {
         foreach(Target tar in _targetList)
         {
@@ -124,7 +129,12 @@ public abstract class TriggerZone : MonoBehaviour {
     {
         for (int i = 0; i < _targetList.Count; ++i)
         {
-            if (_targetList[i] != null)
+            if (_targetList[i] == null)
+            {
+                _targetList.RemoveAt(i);
+                break;
+            }
+            else if (_targetList[i] != null)
             {
                 // If not triggered yet, check if it's a the good distance
                 if (!_targetList[i].IsTriggered() && IsInRange(_targetList[i].GetObject().transform.position))
@@ -146,7 +156,6 @@ public abstract class TriggerZone : MonoBehaviour {
                     --i;
                 }
             }
-            
         }
     }
 }

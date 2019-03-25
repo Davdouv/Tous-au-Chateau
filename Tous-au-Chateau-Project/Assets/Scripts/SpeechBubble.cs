@@ -21,6 +21,7 @@ public class SpeechBubble : MonoBehaviour {
 	private GameObject _controllerAnimation = null;
 	private float minimalPanelSize = 500;
 	private bool bold = false;
+	private Mumble mumble;
 
 	private AudioSource _audioData;
 	public AudioClip bubbleSound;
@@ -33,7 +34,8 @@ public class SpeechBubble : MonoBehaviour {
 
 	void Start()
 	{
-		cameraTransform = CameraManager.Instance.GetCamera().transform;
+		mumble = GetComponent<Mumble>();
+		cameraTransform = CameraManager.Instance.GetCameraTransform();
 		_panel = this.transform.Find("Panel").gameObject;
 		_text = this.transform.Find("Text").gameObject;
 		_textWithControllers = this.transform.Find("TextWithControllers").gameObject;
@@ -78,13 +80,13 @@ public class SpeechBubble : MonoBehaviour {
 	void Update()
 	{
 		if (!cameraTransform) {
-			cameraTransform = CameraManager.Instance.GetCamera().transform;
+			cameraTransform = CameraManager.Instance.GetCameraTransform();
 		} else {
 			_panel.transform.rotation = Quaternion.LookRotation(_panel.transform.position - cameraTransform.position);
 			_text.transform.rotation = Quaternion.LookRotation(_text.transform.position - cameraTransform.position);
 			_textWithControllers.transform.rotation = Quaternion.LookRotation(_textWithControllersComp.transform.position - cameraTransform.position);
-			if (CameraManager.Instance.IsCameraDefault()) {
-				cameraTransform = CameraManager.Instance.GetCamera().transform;
+			if (CameraManager.Instance.IsCameraDefault(cameraTransform)) {
+				cameraTransform = CameraManager.Instance.GetCameraTransform();
 			}
 		}
 	}
@@ -94,6 +96,7 @@ public class SpeechBubble : MonoBehaviour {
 		AdaptCanvasToText();
 		_audioData.clip = bubbleSound;
 		_audioData.Play();
+		mumble.Play(message);
 		StartCoroutine(AnimateText());
 	}
 
