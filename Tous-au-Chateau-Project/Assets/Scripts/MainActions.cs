@@ -459,25 +459,6 @@ public class MainActions : MonoBehaviour
 
     private void ShowConstructionPreview()
     {
-        /*
-        int layerMask = 1 << 11;
-
-        RaycastHit hit;
-
-        Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
-        //newBuilding.transform.position;
-        if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
-        {
-            Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.3f, 0));
-            buildingPreview.transform.position = previewPosition;
-
-            var angles = newBuilding.transform.rotation.eulerAngles;
-            angles.x = -90;
-            angles.y = 90;
-            buildingPreview.transform.rotation = Quaternion.Euler(angles);
-        }
-        */
-
         BoxCollider boxCollider = buildingPreview.GetComponent<BoxCollider>();
         Vector3 scale = buildingPreview.transform.localScale;
 
@@ -488,24 +469,14 @@ public class MainActions : MonoBehaviour
         float highestHit = 0;
         if (RayCastHit(middlePosition, rightPosition, leftPosition, ref highestHit))
         {
+            // Project building Preview onto the terrain
             float heightOffset = 0.5f;
             Vector3 previewPosition = newBuilding.transform.position + (new Vector3(0, -highestHit + heightOffset, 0));
+            // Copy X & Z position
             buildingPreview.transform.position = previewPosition;
-
-            // CORRECT HERE
-            
-            var previousAngles = newBuilding.transform.localRotation.eulerAngles;
-            /*
-            Debug.Log(previousAngles);
-            var angles = newBuilding.transform.rotation.eulerAngles;
-            angles.x = previousAngles.x;
-            angles.y = previousAngles.y;
-            //angles.x = -90;
-            //angles.y = 90;
-            buildingPreview.transform.rotation = Quaternion.Euler(angles);
-            */
-
-            buildingPreview.transform.localRotation = Quaternion.Euler(-90, 90, previousAngles.z);
+            // Copy Y rotation
+            float yRotation = newBuilding.transform.eulerAngles.y;
+            buildingPreview.transform.eulerAngles = new Vector3(buildingPreview.transform.eulerAngles.x, yRotation, buildingPreview.transform.eulerAngles.z);
         }
     }
 
