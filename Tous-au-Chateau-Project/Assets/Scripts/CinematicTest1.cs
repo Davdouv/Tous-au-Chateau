@@ -7,7 +7,7 @@ public class CinematicTest1 : MonoBehaviour {
     public Animator transitionAnim;
     public Animator globalCloudsAnim;
 
-    public Camera tmpCamera;
+    public Camera tmpCamera; // default camera to test
 
     public Animator globalCameraAnim;
     public Animator globalCamera2Anim;
@@ -34,32 +34,33 @@ public class CinematicTest1 : MonoBehaviour {
         chateauCamera.enabled = false;
         villagersCamera.enabled = false;
 
-        shouldStart = true;
+        shouldStart = false;
 
         foreach (GameObject villager in villagersGroup)
         {
             villager.GetComponent<Villager>().SetCanMove(false);
         }
 
-        StartCoroutine(PlayCinematic());
+        //StartCoroutine(PlayCinematic()); // test
     }
 	
 	// Update is called once per frame
 	void Update () {
 		/*if(Input.GetKeyDown(KeyCode.C))
-        {
+        {*/
             if (shouldStart)
             {
                 Debug.Log("Should Start");
+                shouldStart = false;
                 StartCoroutine(PlayCinematic());
             }
-        }*/
+        /*}*/
 	}
 
     public void StartCinematic(Camera player)
     {
         shouldStart = true;
-        _playerCamera = tmpCamera;
+        _playerCamera = player;
         
         Debug.Log("______________________________________________________________________________CAMERA IS : " + player.gameObject.name);
     }
@@ -79,7 +80,7 @@ public class CinematicTest1 : MonoBehaviour {
         transitionAnim.SetTrigger("fadeOutWhite");
         globalCloudsAnim.SetTrigger("cloudsFall");
         globalCameraAnim.SetTrigger("zoomGlobal");
-        ChangeCamera(tmpCamera, globalCamera);
+        ChangeCamera(_playerCamera, globalCamera);
         yield return new WaitForSeconds(5f);
 
         transitionAnim.SetTrigger("fadeInWhite");
