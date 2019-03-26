@@ -41,6 +41,7 @@ public class MainActions : MonoBehaviour
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
     public SpeechEvent_MapTuto2_Event1 speechEvent2_1 = null;
     public SpeechEvent_MapTuto3_Event1 speechEvent3_1 = null;
+    public SpeechEvent_MapA_Event1 speechEventA_1 = null;
 
     Material[] mats;
     string[] objName;
@@ -85,6 +86,13 @@ public class MainActions : MonoBehaviour
                 VerifyActionTuto(speechEvent7);
                 VerifyActionTuto(speechEvent2_1);
                 VerifyActionTuto(speechEvent3_1);
+            }
+        }
+        else
+        {
+            if (!speechEventA_1.hasDoneAction && events.triggerPressed || events.touchpadPressed)
+            {
+                VerifyActionTuto(speechEventA_1);
             }
         }
 
@@ -463,8 +471,8 @@ public class MainActions : MonoBehaviour
         Vector3 scale = buildingPreview.transform.localScale;
 
         Vector3 middlePosition = newBuilding.transform.position;
-        Vector3 rightPosition = new Vector3(middlePosition.x + (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z + (boxCollider.size.y / scale.y));
-        Vector3 leftPosition = new Vector3(middlePosition.x - (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z - (boxCollider.size.y / scale.y));
+        Vector3 rightPosition = new Vector3(middlePosition.x + (boxCollider.size.x * scale.x), middlePosition.y + (boxCollider.size.y * scale.y), middlePosition.z + (boxCollider.size.z * scale.z));
+        Vector3 leftPosition = new Vector3(middlePosition.x - (boxCollider.size.x * scale.x), middlePosition.y - (boxCollider.size.y * scale.y), middlePosition.z - (boxCollider.size.z * scale.z));
 
         float highestHit = 0;
         if (RayCastHit(middlePosition, rightPosition, leftPosition, ref highestHit))
