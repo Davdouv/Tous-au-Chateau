@@ -41,6 +41,7 @@ public class MainActions : MonoBehaviour
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
     public SpeechEvent_MapTuto2_Event1 speechEvent2_1 = null;
     public SpeechEvent_MapTuto3_Event1 speechEvent3_1 = null;
+    public SpeechEvent_MapA_Event1 speechEventA_1 = null;
 
     Material[] mats;
     string[] objName;
@@ -85,6 +86,13 @@ public class MainActions : MonoBehaviour
                 VerifyActionTuto(speechEvent7);
                 VerifyActionTuto(speechEvent2_1);
                 VerifyActionTuto(speechEvent3_1);
+            }
+        }
+        else
+        {
+            if (!speechEventA_1.hasDoneAction && events.triggerPressed || events.touchpadPressed)
+            {
+                VerifyActionTuto(speechEventA_1);
             }
         }
 
