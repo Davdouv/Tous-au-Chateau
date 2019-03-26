@@ -77,6 +77,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        GameOverPanel.SetActive(false);
+
         constructionsPositions = new Transform[4];
         constructionsPositions[0] = constructionPosition1;
         constructionsPositions[1] = constructionPosition2;
@@ -107,11 +109,13 @@ public class UIManager : MonoBehaviour
         /* Test for end of game */
         if (GameManager.Instance.IsGameWon())
         {
+            Debug.Log("GAME WON");
             DisplayGameOverPanel(true);
         }
 
         if (GameManager.Instance.IsGameLost())
         {
+            Debug.Log("GAME LOST");
             DisplayGameOverPanel(false);
         }
 

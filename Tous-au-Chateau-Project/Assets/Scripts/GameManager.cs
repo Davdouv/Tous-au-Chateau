@@ -51,13 +51,22 @@ public class GameManager : MonoBehaviour
     private float levelDuration = 0;
     public string nextSceneName;
 
+    private void ResetState()
+    {
+        _hasStarted = true;
+        _hasWin = false;
+        _hasLost = false;
+    }
+
     private void Start()
     {
-        if (levelName == "Tuto_01")
-            _playerLastPosition = Player.position;
+        ResetState();
+        Debug.Log("Is Game Won ? : " + IsGameWon());
+        //if (levelName == "Map_Tuto1.04")
+            //_playerLastPosition = Player.position;
         _audioData = GetComponent<AudioSource>();
         levelName = SceneManager.GetActiveScene().name;
-        Player.position = _playerLastPosition;
+        //Player.position = _playerLastPosition;
     }
 
     // ***** STATES OF THE GAME *****/
