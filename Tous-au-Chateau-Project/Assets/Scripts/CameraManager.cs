@@ -32,6 +32,7 @@ public class CameraManager : MonoBehaviour
     private GameObject _camera;
     private bool _isCameraDefault = false;
 
+    private CinematicTest1 cinematic;
     private GameObject _cameraDefault;
 
     private CameraShaker cameraShaker;
@@ -41,6 +42,8 @@ public class CameraManager : MonoBehaviour
     private void Start()
     {
         cameraShaker = GetComponent<CameraShaker>();
+        cinematic = GetComponent<CinematicTest1>();
+        PlayCinematic();
         _cameraDefault = GameObject.Find("Main Camera");
     }
 
@@ -114,6 +117,18 @@ public class CameraManager : MonoBehaviour
             {
                 cameraShaker.ShakeCamera(_cameraDefault.transform);
             }
+        }
+    }
+
+    public void PlayCinematic()
+    {
+        if (cinematic)
+        {
+            cinematic.StartCinematic(GetCamera());
+            Debug.Log("Camera Manager PlayCinematic");
+        } else
+        {
+            Debug.Log("cinematic component not found_________________________________________________");
         }
     }
 }

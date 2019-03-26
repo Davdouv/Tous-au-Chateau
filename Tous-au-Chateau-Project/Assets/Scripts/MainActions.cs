@@ -63,7 +63,7 @@ public class MainActions : MonoBehaviour
         _audioData = GetComponent<AudioSource>();
         sphereCollider = GetComponent<SphereCollider>();
         distanceDetection = sphereCollider.radius * 100 * 100; // 100 is the scale of the last parent (other parent has scale of 1) and 100 of the game object
-
+        Debug.Log("NOM" + gameObject.name);
         if (player == null)
         {
             player = GameObject.Find("[VRTK_SDKManager]");
