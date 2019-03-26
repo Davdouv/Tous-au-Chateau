@@ -909,7 +909,7 @@ Animator:
   m_GameObject: {fileID: 58074608}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6bf8b3c945112534e9f9d465324c2544, type: 2}
+  m_Controller: {fileID: 9100000, guid: d447033d44006f244a3d5ccb3e2741be, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2080,10 +2080,8 @@ MonoBehaviour:
   gameOverButton: {fileID: 0}
   victoryTextColor: {r: 0.27092335, g: 0.8113208, b: 0.21048418, a: 1}
   gameoverTextColor: {r: 0.6901961, g: 0, b: 0.027450982, a: 1}
-  _ResourceManager: {fileID: 439394635}
   controlPanel: {fileID: 1756107966}
   ResourceGainPrefab: {fileID: 0}
-  _BuildingTypeGroup: {fileID: 1453698697}
   ConstructionPagination: {fileID: 1107526685}
   buildingNotPuchasable: {r: 0.6901961, g: 0, b: 0.02745098, a: 1}
   paginationButtonsPrefab: {fileID: 0}
@@ -3002,7 +3000,7 @@ Animator:
   m_GameObject: {fileID: 272872078}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fac9f87c1437d8b49aea87254afe7274, type: 2}
+  m_Controller: {fileID: 9100000, guid: a61f4a1020e7197449e5dff2b1a949f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10062,7 +10060,7 @@ Animator:
   m_GameObject: {fileID: 953649554}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6a868e2f42c0ff7429ad4a6af530a859, type: 2}
+  m_Controller: {fileID: 9100000, guid: 870286bf792f4ce42a8726eb72defeed, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -10762,6 +10760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
   tuto: 0
+  Player: {fileID: 0}
   victorySound: {fileID: 8300000, guid: 5cd9dcbdeef9b8c46a1913953bb218ba, type: 3}
   defeatSound: {fileID: 8300000, guid: 788d006a0be6ba440a2ec27c10fe9b39, type: 3}
   victoryFX: {fileID: 0}
@@ -11297,7 +11296,7 @@ Animator:
   m_GameObject: {fileID: 1093510069}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d27dc1f233e8d18478c3d0e306df9590, type: 2}
+  m_Controller: {fileID: 9100000, guid: c624cb7a87ec9964db2fc90f9449ded6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -11815,6 +11814,7 @@ GameObject:
   - component: {fileID: 1120607842}
   - component: {fileID: 1120607844}
   - component: {fileID: 1120607843}
+  - component: {fileID: 1120607845}
   m_Layer: 0
   m_Name: _CameraManager
   m_TagString: Untagged
@@ -11857,6 +11857,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 809385fd3e34dcf4b8aa0652250be3a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1120607844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120607840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 718569ab98c032048a79d40fd738552d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 0.5
+  duration: 1
+  camera: {fileID: 0}
+  slowDownAmount: 1
+  shouldShake: 0
+--- !u!114 &1120607845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1120607840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7d1853fc961d8e478ec58758ae6bc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   transitionAnim: {fileID: 953649556}
   globalCloudsAnim: {fileID: 2118928987}
   tmpCamera: {fileID: 87457141}
@@ -11879,22 +11906,6 @@ MonoBehaviour:
   - {fileID: 1078368109}
   - {fileID: 1319050113}
   shouldStart: 0
---- !u!114 &1120607844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1120607840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 718569ab98c032048a79d40fd738552d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power: 0.5
-  duration: 1
-  camera: {fileID: 0}
-  slowDownAmount: 1
-  shouldShake: 0
 --- !u!1001 &1126867795
 Prefab:
   m_ObjectHideFlags: 0
@@ -19035,7 +19046,7 @@ Animator:
   m_GameObject: {fileID: 1683692457}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f501a27f5852bf34289d7f2bf17b0d4d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0da20c82b7242cd4aa58e8cae498e05f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -24842,7 +24853,7 @@ Animator:
   m_GameObject: {fileID: 2118928986}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a0deb61af39fd6f4291c00a3c8a87c1d, type: 2}
+  m_Controller: {fileID: 9100000, guid: bf872615c9e5b374d8cd55f470853e60, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

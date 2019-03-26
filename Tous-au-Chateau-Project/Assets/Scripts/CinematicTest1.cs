@@ -40,18 +40,20 @@ public class CinematicTest1 : MonoBehaviour {
         {
             villager.GetComponent<Villager>().SetCanMove(false);
         }
+
+        StartCoroutine(PlayCinematic());
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.C))
+		/*if(Input.GetKeyDown(KeyCode.C))
         {
             if (shouldStart)
             {
                 Debug.Log("Should Start");
                 StartCoroutine(PlayCinematic());
             }
-        }
+        }*/
 	}
 
     public void StartCinematic(Camera player)
@@ -105,13 +107,13 @@ public class CinematicTest1 : MonoBehaviour {
 
         Debug.Log("CAMERA 4");
         // Plan 4 : villagers: traveling right -> left
-        transitionAnim.SetTrigger("fadeOutWhite");
+        /*transitionAnim.SetTrigger("fadeOutWhite");
         villagersCameraAnim.SetTrigger("travelingVillagers");
         ChangeCamera(chateauCamera, villagersCamera);
         yield return new WaitForSeconds(4f);
 
         transitionAnim.SetTrigger("fadeInWhite");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);*/
 
         ChangeCamera(villagersCamera, tmpCamera);
     }
