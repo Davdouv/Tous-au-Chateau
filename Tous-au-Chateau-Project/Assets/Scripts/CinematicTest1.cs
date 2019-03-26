@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class CinematicTest1 : MonoBehaviour {
 
+    public string mapName;
+
     public Animator transitionAnim;
     public Animator globalCloudsAnim;
 
@@ -118,6 +120,6 @@ public class CinematicTest1 : MonoBehaviour {
         yield return new WaitForSeconds(1f);*/
 
         /*ChangeCamera(villagersCamera, tmpCamera);*/
-        SceneManager.LoadScene("Map_B.01");
+        SceneManager.LoadScene(mapName);
     }
 }
