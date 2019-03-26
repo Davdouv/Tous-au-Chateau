@@ -40,6 +40,7 @@ public class MainActions : MonoBehaviour
     public SpeechEvent_MapTuto1_Event4_1 speechEvent4_1 = null;
     public SpeechEvent_MapTuto1_Event7 speechEvent7 = null;
     public SpeechEvent_MapTuto2_Event1 speechEvent2_1 = null;
+    public SpeechEvent_MapTuto3_Event1 speechEvent3_1 = null;
 
     Material[] mats;
     string[] objName;
@@ -47,6 +48,9 @@ public class MainActions : MonoBehaviour
     public GameObject player;
 
     private bool mapManager = false;
+
+    public CreditButtonScript creditButton;
+    public ExitButtonScript exitButton;
 
     // Use this for initialization
     void Start()
@@ -80,6 +84,7 @@ public class MainActions : MonoBehaviour
                 VerifyActionTuto(speechEvent4_1);
                 VerifyActionTuto(speechEvent7);
                 VerifyActionTuto(speechEvent2_1);
+                VerifyActionTuto(speechEvent3_1);
             }
         }
 
@@ -123,30 +128,32 @@ public class MainActions : MonoBehaviour
             trigger = false;
             crushMode = false;
             canCrush = true;
+            // If we had a building and we have released it
             if (haveBuilding)
             {
+                impactPreview.SetActive(false);
+
+                //releaseBuilding
+                haveBuilding = false;
+                // If the Preview Was In Collision, then don't create new building
                 if (buildingPreview.GetComponent<materialChange>().inCollision)
                 {
-                    //releaseBuilding
-                    haveBuilding = false;
-                    //EnableBoxColliders(newBuilding, true);
-                    newBuilding.GetComponent<Rigidbody>().isKinematic = false;
-                    newBuilding.transform.parent = null;
-                    //On hand release
-                    Transform buildingTrans;
-                    buildingTrans = buildingPreview.transform;
-                    Destroy(buildingPreview);
+                    ResourceManager.Instance.AddResources(newBuilding.GetComponent<Building>().getCost());
                     Destroy(newBuilding);
-                    newBuilding = Instantiate(buildingPrefab, buildingTrans);
-                    EnableBoxColliders(newBuilding, true);
                 }
+                // If it wasn't in collision, then create new building
                 else
                 {
-                    haveBuilding = false;
-                    Destroy(buildingPreview);
-                    Destroy(newBuilding);
-                    //We need to check ressources to be able to retrieve a pack when not used
+                    //newBuilding = Instantiate(buildingPrefab, buildingTrans);
+                    newBuilding.GetComponent<Rigidbody>().isKinematic = false;
+                    newBuilding.transform.parent = null;
+
+                    // The building we had in the hand take the position & rotation of the preview
+                    newBuilding.transform.position = buildingPreview.transform.position;
+                    newBuilding.transform.rotation = buildingPreview.transform.rotation;
+                    EnableBoxColliders(newBuilding, true);
                 }
+                Destroy(buildingPreview);
             }
             else if (SceneManager.GetActiveScene().name == "Map Selector")
             {
@@ -252,6 +259,22 @@ public class MainActions : MonoBehaviour
         return false;
     }
 
+    private void PushButtons()
+    {
+        if (crushMode && canCrush && !haveVillager)
+        {
+            if (creditButton && IsInRange(creditButton.gameObject.transform.position))
+            {
+                creditButton.OpenCreditEven();
+                return;
+            }
+            if (exitButton && IsInRange(exitButton.gameObject.transform.position))
+            {
+                exitButton.ExitGame();
+            }
+        }            
+    }
+
     private void OnTriggerStay(Collider other)
     {
         if (mapManager)
@@ -277,8 +300,8 @@ public class MainActions : MonoBehaviour
                     newVillager.SetActive(true);
                     haveVillager = true;
                 }
-
             }
+            PushButtons();
         }
         // If we didn't crush, check for other actions
         else if (!CrushAction(other))
@@ -290,6 +313,7 @@ public class MainActions : MonoBehaviour
                     //Get ResourcePack building
                     if (other.gameObject.GetComponent<Building>().CanBuy())
                     {
+                        impactPreview.SetActive(false);
                         //Instantiate building
                         buildingPrefab = other.gameObject.GetComponent<Building>().prefab;
                         newBuilding = Instantiate(other.gameObject.GetComponent<Building>().prefab, spawnPoint.transform.position, new Quaternion(0, 0, 0, 0));
@@ -344,68 +368,128 @@ public class MainActions : MonoBehaviour
     {
         return transform.TransformPoint(sphereCollider.center);
     }
-    private Vector3 BorderOfHand()
+    private Vector3 BorderOfHand(bool right)
     {
-        return transform.TransformPoint(sphereCollider.center) + new Vector3 (sphereCollider.radius,0,0);
+        return transform.TransformPoint(sphereCollider.center) + new Vector3 (right ? distanceDetection : -distanceDetection, 0, right ? distanceDetection : -distanceDetection);
+    }
+
+    // Test if an object ray cast hit the terrain
+    private bool RayCastHit(Vector3 middle, Vector3 right, Vector3 left, ref float highestHit)
+    {
+        int layerMask = 1 << 11;
+
+        RaycastHit hit, hitRight, hitLeft;
+
+        Debug.DrawRay(middle, new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(right, new Vector3(0, -1, 0) * 100, Color.red);
+        Debug.DrawRay(left, new Vector3(0, -1, 0) * 100, Color.red);
+
+        bool middleHit = false;
+        bool rightHit = false;
+        bool leftHit = false;
+        bool showCrush = false;
+
+        //raycast from center down vector
+        if (Physics.Raycast(middle, new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
+        {
+            middleHit = true;
+        }
+        //raycast from border and diagonal
+        if (Physics.Raycast(right, new Vector3(0, -1, 0), out hitRight, Mathf.Infinity, layerMask))
+        {
+            rightHit = true;
+
+        }
+        //raycast from other border and diagonal
+        if (Physics.Raycast(left, new Vector3(0, -1, 0), out hitLeft, Mathf.Infinity, layerMask))
+        {
+            leftHit = true;
+        }
+
+        if (middleHit || rightHit || leftHit)
+        {
+            showCrush = true;
+
+            if (middleHit && rightHit && leftHit)
+            {
+                highestHit = Mathf.Min(hit.distance, hitRight.distance, hitLeft.distance);
+            }
+            else if (middleHit && rightHit)
+            {
+                highestHit = Mathf.Min(hit.distance, hitRight.distance);
+            }
+            else if (middleHit && leftHit)
+            {
+                highestHit = Mathf.Min(hit.distance, hitLeft.distance);
+            }
+            else if (rightHit && leftHit)
+            {
+                highestHit = Mathf.Min(hitRight.distance, hitLeft.distance);
+            }
+            else if (middleHit)
+            {
+                highestHit = hit.distance;
+            }
+            else if (rightHit)
+            {
+                highestHit = hitRight.distance;
+            }
+            else if (leftHit)
+            {
+                highestHit = hitLeft.distance;
+            }
+        }
+
+        return showCrush;
     }
 
     // Return true if the raycast hit
     private bool ShowCrushPreview()
     {
-        // Bit shift the index of the layer (10) (terrain) to get a bit mask
-        int layerMask = 1 << 11;
+        float highestHit = 0;
+        bool showCrush = RayCastHit(MiddleOfHand(), BorderOfHand(true), BorderOfHand(false), ref highestHit);
 
-        RaycastHit hit, hitRight, hitLeft;
-
-        Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
-
-        //raycast from center down vector
-        if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
+        if (showCrush)
         {
-            //raycast from border and diagonal
-            if(Physics.Raycast(BorderOfHand(), new Vector3(1, 0, 1), out hitRight, Mathf.Infinity, layerMask))
-            {
-                //raycast from other border and diagonal
-                if (Physics.Raycast(-BorderOfHand(), new Vector3(-1, 0, 1), out hitLeft, Mathf.Infinity, layerMask))
-                {
-                    float HighestHit = Mathf.Max(hit.distance, hitRight.distance, hitLeft.distance);
-                    impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -HighestHit + 0.3f, 0));
-                    return true;
-                }
-            }
+            impactPreview.transform.position = MiddleOfHand() + (new Vector3(0, -highestHit + 0.3f, 0));
         }
-        return false;
+
+        return showCrush;
     }
 
     private void ShowConstructionPreview()
     {
-        int layerMask = 1 << 11;
+        BoxCollider boxCollider = buildingPreview.GetComponent<BoxCollider>();
+        Vector3 scale = buildingPreview.transform.localScale;
 
-        RaycastHit hit;
+        Vector3 middlePosition = newBuilding.transform.position;
+        Vector3 rightPosition = new Vector3(middlePosition.x + (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z + (boxCollider.size.y / scale.y));
+        Vector3 leftPosition = new Vector3(middlePosition.x - (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z - (boxCollider.size.y / scale.y));
 
-        //Debug.DrawRay(MiddleOfHand(), new Vector3(0, -1, 0) * 100, Color.red);
-
-        if (Physics.Raycast(MiddleOfHand(), new Vector3(0, -1, 0), out hit, Mathf.Infinity, layerMask))
+        float highestHit = 0;
+        if (RayCastHit(middlePosition, rightPosition, leftPosition, ref highestHit))
         {
-            Vector3 previewPosition = MiddleOfHand() + (new Vector3(0, -hit.distance + 0.1f, 0));
+            // Project building Preview onto the terrain
+            float heightOffset = 0.5f;
+            Vector3 previewPosition = newBuilding.transform.position + (new Vector3(0, -highestHit + heightOffset, 0));
+            // Copy X & Z position
             buildingPreview.transform.position = previewPosition;
-            buildingPreview.transform.rotation = Quaternion.Euler(newBuilding.transform.rotation.x, newBuilding.transform.rotation.y, newBuilding.transform.rotation.z);
-            //buildingPreview.transform.SetPositionAndRotation(previewPosition, newBuilding.transform.rotation);
-
-            //Debug.Log("Building Rotation : " + newBuilding.transform.rotation);
-            //Debug.Log("Preview Rotation : " + buildingPreview.transform.rotation);
+            // Copy Y rotation
+            float yRotation = newBuilding.transform.eulerAngles.y;
+            buildingPreview.transform.eulerAngles = new Vector3(buildingPreview.transform.eulerAngles.x, yRotation, buildingPreview.transform.eulerAngles.z);
         }
     }
 
     private void EnableBoxColliders(GameObject gameObject, bool enable)
     {
-        gameObject.GetComponent<BoxCollider>().enabled = enable;
+        if (gameObject.transform.GetComponent<BoxCollider>())
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = enable;
+        }
+            
         for (int i = 0; i < gameObject.transform.childCount; ++i)
         {
-            if (gameObject.transform.GetChild(i).GetComponent<BoxCollider>())
-            {
-                gameObject.transform.GetChild(i).GetComponent<BoxCollider>().enabled = enable;
-            }
+            EnableBoxColliders(gameObject.transform.GetChild(i).gameObject, enable);
         }
     }
 

@@ -10,7 +10,7 @@
         else
         {
             _audioData.Play();
-        }          return hasEnoughResources;     }      public virtual bool Drag()     {         return false;     }      public string GetCostString()     {         string costStr = "";          if (_cost == null)             return costStr;          if (_cost.wood > 0) { costStr += "w : " + _cost.wood; }         if (_cost.stone > 0) { costStr += " s : " + _cost.stone; }         if (_cost.food > 0) { costStr += " f : " + _cost.food; }         if (_cost.workForce > 0) { costStr += " wf : " + _cost.workForce; }         if (_cost.motivation > 0) { costStr += " m : " + _cost.motivation; }          return costStr;     }      public virtual void SetHasLanded()
+        }          return hasEnoughResources;     }      public virtual bool Drag()     {         return false;     }      public string GetCostString()     {         string costStr = "";          if (_cost == null)             return costStr;          if (_cost.wood > 0) { costStr += _cost.wood + " <sprite=0>"; }         if (_cost.stone > 0) { costStr += _cost.stone + " <sprite=1>"; }         if (_cost.food > 0) { costStr += _cost.food + " <sprite=2>"; }         if (_cost.workForce > 0) { costStr += _cost.workForce + " <sprite=3>"; }         if (_cost.motivation > 0) { costStr += _cost.motivation + " <sprite=4>"; }          return costStr;     }      public virtual void SetHasLanded()
     {
         if (!_hasLanded)
         {

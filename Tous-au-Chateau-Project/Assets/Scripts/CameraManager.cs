@@ -29,10 +29,12 @@ public class CameraManager : MonoBehaviour
     }
     #endregion
 
-    private Camera _camera;
+    private GameObject _camera;
     private bool _isCameraDefault = false;
 
     private CinematicTest1 cinematic;
+    private GameObject _cameraDefault;
+
     private CameraShaker cameraShaker;
 
     void Start()
@@ -40,36 +42,37 @@ public class CameraManager : MonoBehaviour
         cameraShaker = GetComponent<CameraShaker>();
         cinematic = GetComponent<CinematicTest1>();
         PlayCinematic();
+        _cameraDefault = GameObject.Find("Main Camera");
     }
 
     public bool FindCamera()
     {
         if (GameObject.Find("Camera (eye)"))
         { // VR
-          //Debug.Log("VR Camera");
+          Debug.Log("VR Camera (eye)");
             _isCameraDefault = false;
-            _camera = GameObject.Find("Camera (eye)").GetComponent<Camera>();
+            _camera = GameObject.Find("Camera (eye)");
             return true;
         }
-        else if (GameObject.Find("Neck/Camera"))
-        { // VR
-          //Debug.Log("VR Camera");
+        else if (GameObject.Find("Neck"))
+        { // Simulator
+          Debug.Log("Simulator Camera (neck)");
             _isCameraDefault = false;
-            _camera = GameObject.Find("Neck/Camera").GetComponent<Camera>();
+            _camera = GameObject.Find("Neck");
             return true;
         }
         else if (GameObject.Find("[VRSimulator_CameraRig]"))
         { // Simulator
-          //Debug.Log("Simulator Camera");
+          Debug.Log("Simulator Camera");
             _isCameraDefault = false;
-            _camera = GameObject.Find("Camera (eye)").GetComponent<Camera>();
+            _camera = GameObject.Find("[VRSimulator_CameraRig]");
             return true;
         }
         else if (GameObject.Find("Main Camera"))
         { // Default
-          //Debug.Log("Default Camera");
+          Debug.Log("Default Camera");
             _isCameraDefault = true;
-            _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
+            _camera = GameObject.Find("Main Camera");
             return true;
         }
         return false;
@@ -78,19 +81,40 @@ public class CameraManager : MonoBehaviour
     public Camera GetCamera()
     {
         FindCamera();
-        return _camera;
+        if (_camera.GetComponent<Camera>() != null) {
+          return _camera.GetComponent<Camera>();
+        }
+        return null;
     }
 
-    public bool IsCameraDefault()
+    public Transform GetCameraTransform()
     {
-        return _isCameraDefault;
+        FindCamera();
+        return _camera.transform;
+    }
+
+    public bool IsCameraDefault(Camera camera)
+    {
+        return _cameraDefault.GetComponent<Camera>() == camera;
+    }
+
+    public bool IsCameraDefault(Transform transform)
+    {
+        return _cameraDefault.transform == transform;
     }
 
     public void ShakeCamera()
     {
         if (cameraShaker)
         {
-            cameraShaker.ShakeCamera(GetCamera().transform.parent.transform);
+            if (GetCamera())
+            {
+                cameraShaker.ShakeCamera(GetCamera().transform.parent.transform);
+            }
+            else
+            {
+                cameraShaker.ShakeCamera(_cameraDefault.transform);
+            }
         }
     }
 

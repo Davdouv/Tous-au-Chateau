@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public bool tuto = true;
 
+    public Transform Player;
+    private Vector3 _playerLastPosition;
+
     //Audio
     private AudioSource _audioData;
     public AudioClip victorySound;
@@ -50,8 +53,11 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (levelName == "Tuto_01")
+            _playerLastPosition = Player.position;
         _audioData = GetComponent<AudioSource>();
         levelName = SceneManager.GetActiveScene().name;
+        Player.position = _playerLastPosition;
     }
 
     // ***** STATES OF THE GAME *****/
@@ -73,7 +79,7 @@ public class GameManager : MonoBehaviour
         // SAVE THE PLAYER's VICTORY
         SaveManager.Save(new LevelScore(levelName, scoreCount, levelDuration));
 
-        StartCoroutine(ChangeScene());
+        StartCoroutine(ChangeScene(tuto ? 10 : 5));
     }
     public void GameLost()
     {
@@ -182,12 +188,13 @@ public class GameManager : MonoBehaviour
     }
 
     // Change the scene after 5 sec
-    private IEnumerator ChangeScene()
+    private IEnumerator ChangeScene(float seconds = 5)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(seconds);
 
         if (_hasWin && nextSceneName != "")
         {
+            _playerLastPosition = Player.position;
             SceneManager.LoadScene(nextSceneName);
         }
 

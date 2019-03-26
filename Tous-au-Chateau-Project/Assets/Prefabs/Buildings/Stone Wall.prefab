@@ -11,6 +11,24 @@ Prefab:
   m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1608018364246078}
   m_IsPrefabAsset: 1
+--- !u!1 &1064300472596370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4293931153406406}
+  - component: {fileID: 33155927226386780}
+  - component: {fileID: 23735894183527562}
+  - component: {fileID: 114139063721167156}
+  m_Layer: 10
+  m_Name: Mesh
+  m_TagString: wall
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1608018364246078
 GameObject:
   m_ObjectHideFlags: 0
@@ -19,13 +37,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4408238867544808}
-  - component: {fileID: 33904373162349420}
-  - component: {fileID: 23113714396087924}
-  - component: {fileID: 65460175939575962}
   - component: {fileID: 54982050638544906}
+  - component: {fileID: 65460175939575962}
   - component: {fileID: 82605072961491450}
   - component: {fileID: 114457815685435022}
   - component: {fileID: 114668736200293458}
+  - component: {fileID: 114088366740362958}
   m_Layer: 10
   m_Name: Stone Wall
   m_TagString: wall
@@ -33,25 +50,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4293931153406406
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1064300472596370}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0.13731766, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4408238867544808}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
 --- !u!4 &4408238867544808
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1608018364246078}
-  m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 49.917908, y: -26.133724, z: -5.5255947}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 42.46, y: -57.45, z: -68.94}
   m_LocalScale: {x: 2, y: 2, z: 2}
-  m_Children: []
+  m_Children:
+  - {fileID: 4293931153406406}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
---- !u!23 &23113714396087924
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23735894183527562
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1608018364246078}
+  m_GameObject: {fileID: 1064300472596370}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -81,12 +112,12 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33904373162349420
+--- !u!33 &33155927226386780
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1608018364246078}
+  m_GameObject: {fileID: 1064300472596370}
   m_Mesh: {fileID: 4300000, guid: f4879642d3ef4e344909a948853abb83, type: 3}
 --- !u!54 &54982050638544906
 Rigidbody:
@@ -110,11 +141,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1608018364246078}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 4.4657497, z: 3.6476307}
-  m_Center: {x: 0, y: 0.04713154, z: 1.7604418}
+  m_Size: {x: 4.46575, y: 3.647631, z: 1}
+  m_Center: {x: 0.1, y: 1.75, z: 0}
 --- !u!82 &82605072961491450
 AudioSource:
   m_ObjectHideFlags: 1
@@ -210,6 +241,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &114088366740362958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1608018364246078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d6350d5821965448a1289d6eec5479c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hasBeenTrigered: []
+--- !u!114 &114139063721167156
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1064300472596370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d627535ab77d004aa9da3c87bdab797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transparent_mat: {fileID: 2100000, guid: a929a93b229463e4ca63ae16b703c302, type: 2}
+  transparentRed_mat: {fileID: 2100000, guid: 61cfb1eaae0244d49b04d6468dc7427c, type: 2}
+  inCollision: 0
 --- !u!114 &114457815685435022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,13 +280,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Wall
   buildingType: 0
-  prefab: {fileID: 1608018364246078}
+  prefab: {fileID: 0}
   prefabTransparent: {fileID: 1924257871848448, guid: 0a20a82b10e1b014d9225be165e227a2,
     type: 2}
   purchasedSound: {fileID: 8300000, guid: 6a6ce624e08a2ca4a966e24e2afab741, type: 3}
   _cost:
     wood: 0
-    stone: 0
+    stone: 10
     food: 0
     workForce: 0
     motivation: 0

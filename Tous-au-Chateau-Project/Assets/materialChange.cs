@@ -8,7 +8,7 @@ public class materialChange : MonoBehaviour
     public Material transparent_mat;
     public Material transparentRed_mat;
     Renderer rend;
-    public bool inCollision;
+    public bool inCollision = false;
     private bool _mustChange = false;
 
     protected List<GameObject> _targetList = new List<GameObject>();
@@ -21,19 +21,23 @@ public class materialChange : MonoBehaviour
 
     void Update()
     {
+        /*
         if (_mustChange)
         {
             if (inCollision)
             {
+                Debug.Log("IN COLLISION");
                 //rend.material = transparentRed_mat;
                 ChangeMaterial(transparentRed_mat);
             }
             else
             {
+                Debug.Log("TRANSPARENT");
                 //rend.material = transparent_mat;
                 ChangeMaterial(transparent_mat);
             }
         }
+        */
     }
 
     // ***** DETECTION *****/
@@ -110,6 +114,20 @@ public class materialChange : MonoBehaviour
         else
         {
             _mustChange = false;
+        }
+
+        if (_mustChange)
+        {
+            if (inCollision)
+            {
+                //rend.material = transparentRed_mat;
+                ChangeMaterial(transparentRed_mat);
+            }
+            else
+            {
+                //rend.material = transparent_mat;
+                ChangeMaterial(transparent_mat);
+            }
         }
     }
 

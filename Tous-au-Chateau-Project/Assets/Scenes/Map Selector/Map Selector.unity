@@ -1382,6 +1382,7 @@ MonoBehaviour:
   previousEvent: {fileID: 0}
   controllerAnimation: {fileID: 1844677414}
   hasDoneAction: 0
+  canClose: 0
 --- !u!1 &145288552
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,6 +3228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - {fileID: 143385163}
+  - {fileID: 381937106}
   firstVillagersGroup: {fileID: 0}
 --- !u!1 &359148913
 GameObject:
@@ -3685,6 +3687,69 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
     type: 2}
   m_PrefabInternal: {fileID: 16740139}
+--- !u!1 &381937104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381937105}
+  - component: {fileID: 381937106}
+  m_Layer: 0
+  m_Name: CreditEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &381937105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381937104}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1905996376}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &381937106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 381937104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701a439c18789684dbfea8ee15180328, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "\nTous-Au-Chateau !\n\n\nR\xE9alis\xE9 par : La Seule Formation Publique
+    d'Ing\xE9nieur Alliant Art et Science !\n\n\nChef de Projet : David NASR\n\nGameDev
+    : David NASR - Amel NEGRA - Daphn\xE9 ROSE - Justine VUILLEMOT - Etienne JUIF
+    - Kenthyvong TAN - Alexane LE GUERN\n\nGameDesign/LevelDesign : Daphn\xE9 ROSE\n\nUI
+    Design : Justine VUILLEMOT\n\n3D Graphics : Etienne JUIF - Alexane LE GUERN\n\nSound
+    Design : Alexane LE GUERN - Amel NEGRA\n\nVR Developper : David NASR - Amel NEGRA\n\nIA
+    Programming : David NASR - Amel NEGRA - Etienne JUIF - Justine VUILLEMOT\n\nProject
+    Tutor : Benoit NEIL\n\n\nTechnologies\n\n\nGameEngine : Unity\n\n3D Assets & Animation
+    : Blender\n\nSound : Audition\n\nVR Library : VRTK\n\n\nMusiques&Sons Utilis\xE9es\n\nMenu
+    Theme - \"Fireside Tales\", by Darren Curtis\n\nMain Theme - \"Village Consort\",
+    by Always No Copyright Music\n\nDanger SFX - Metal Gear Solid\n\nRemerciement\n\nJules
+    Fouchy - Nicolas Senecal - David Wan - Antoine Miaud - Pauline Legros - Venceslas
+    Biri - Maximilien Pluchard - Olivier Meyer - Lucas Dussouchaud\n\nRemerciements
+    Sp\xE9ciaux \xE0 :\nMatthieu Blayo - Alain Lioret - Benoit Neil\n\nDisclaimer\nTOUS-AU-CHATEAU
+    ! est un projet r\xE9alis\xE9 dans le cadre de la formation d'ing\xE9nieur IMAC
+    en 2019. Toute ressemblance, rapprochement ou association \xE0 des personnes ou
+    \xE9v\xE8nements pass\xE9 ou futur, ou \xE0 toute id\xE9e politique ou incitation
+    \xE0 la haine et \xE0 la violence, est fortuite et probablement non souhait\xE9.\n"
+  bubble: {fileID: 1794407886}
+  previousEvent: {fileID: 0}
+  controllerAnimation: {fileID: 0}
+  hasDoneAction: 0
+  hasPressed: 0
 --- !u!1 &382823973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -4009,6 +4074,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.4648707
       objectReference: {fileID: 0}
+    - target: {fileID: 1293198355383072, guid: 3044c2273b7194a4fb19ae7004301156, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3044c2273b7194a4fb19ae7004301156, type: 2}
   m_IsPrefabAsset: 0
@@ -4273,6 +4342,12 @@ Prefab:
     - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &443881786 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114200219305065478, guid: 4b0ab4522de7e044ab4d3657e5dd1745,
+    type: 2}
+  m_PrefabInternal: {fileID: 1418903096}
+  m_Script: {fileID: 11500000, guid: 3708abcd8ef604c45ae5d6e2b164b8cd, type: 3}
 --- !u!1 &451728817
 GameObject:
   m_ObjectHideFlags: 0
@@ -8047,6 +8122,8 @@ MonoBehaviour:
   speechEvent7: {fileID: 0}
   speechEvent2_1: {fileID: 0}
   player: {fileID: 0}
+  creditButton: {fileID: 2031560073}
+  exitButton: {fileID: 443881786}
 --- !u!82 &917597976
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12268,6 +12345,53 @@ Prefab:
     - {fileID: 65376332058422150, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b2c6d17f0bddb1d43836495617a0f3d3, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &1418903096
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1685138267}
+    m_Modifications:
+    - target: {fileID: 4601778436102624, guid: 4b0ab4522de7e044ab4d3657e5dd1745, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 208.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601778436102624, guid: 4b0ab4522de7e044ab4d3657e5dd1745, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 296.20993
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601778436102624, guid: 4b0ab4522de7e044ab4d3657e5dd1745, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -602.55383
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601778436102624, guid: 4b0ab4522de7e044ab4d3657e5dd1745, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601778436102624, guid: 4b0ab4522de7e044ab4d3657e5dd1745, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601778436102624, guid: 4b0ab4522de7e044ab4d3657e5dd1745, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601778436102624, guid: 4b0ab4522de7e044ab4d3657e5dd1745, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601778436102624, guid: 4b0ab4522de7e044ab4d3657e5dd1745, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b0ab4522de7e044ab4d3657e5dd1745, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &1418903097 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4601778436102624, guid: 4b0ab4522de7e044ab4d3657e5dd1745,
+    type: 2}
+  m_PrefabInternal: {fileID: 1418903096}
 --- !u!1 &1424540413
 GameObject:
   m_ObjectHideFlags: 0
@@ -12544,6 +12668,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 2dcd95aa56fe7d744a2e03b1e9dbc748,
     type: 3}
   m_PrefabInternal: {fileID: 1467772823}
+--- !u!1001 &1471547938
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1685138267}
+    m_Modifications:
+    - target: {fileID: 4128369307617304, guid: c21c0a70e8c5ad6428b40f880cf75e17, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 140.38908
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128369307617304, guid: c21c0a70e8c5ad6428b40f880cf75e17, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 296.20996
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128369307617304, guid: c21c0a70e8c5ad6428b40f880cf75e17, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -602.55383
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128369307617304, guid: c21c0a70e8c5ad6428b40f880cf75e17, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128369307617304, guid: c21c0a70e8c5ad6428b40f880cf75e17, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128369307617304, guid: c21c0a70e8c5ad6428b40f880cf75e17, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128369307617304, guid: c21c0a70e8c5ad6428b40f880cf75e17, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128369307617304, guid: c21c0a70e8c5ad6428b40f880cf75e17, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114547507179255700, guid: c21c0a70e8c5ad6428b40f880cf75e17,
+        type: 2}
+      propertyPath: credits
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114547507179255700, guid: c21c0a70e8c5ad6428b40f880cf75e17,
+        type: 2}
+      propertyPath: creditevent
+      value: 
+      objectReference: {fileID: 381937106}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c21c0a70e8c5ad6428b40f880cf75e17, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!4 &1471547939 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4128369307617304, guid: c21c0a70e8c5ad6428b40f880cf75e17,
+    type: 2}
+  m_PrefabInternal: {fileID: 1471547938}
 --- !u!1 &1480674190 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -14106,6 +14287,8 @@ Transform:
   - {fileID: 2128368847}
   - {fileID: 1547201791}
   - {fileID: 1245806633}
+  - {fileID: 1471547939}
+  - {fileID: 1418903097}
   m_Father: {fileID: 1353084242}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15653,6 +15836,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 143385162}
+  - {fileID: 381937105}
   m_Father: {fileID: 1353084242}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16456,6 +16640,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2031560073 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114547507179255700, guid: c21c0a70e8c5ad6428b40f880cf75e17,
+    type: 2}
+  m_PrefabInternal: {fileID: 1471547938}
+  m_Script: {fileID: 11500000, guid: 0c3b5d9e50324714ba4c7edff99300b1, type: 3}
 --- !u!4 &2034808408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
