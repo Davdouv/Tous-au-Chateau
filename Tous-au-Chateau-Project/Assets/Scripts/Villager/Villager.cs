@@ -87,7 +87,7 @@ public class Villager : MonoBehaviour
     public void SetCanMove(bool canMove)
     {
         _canMove = canMove;
-        _anim.SetBool("walk", canMove);
+        /*_anim.SetBool("walk", canMove);*/
     }
 
     private void OnCollisionEnter(Collision collision)
