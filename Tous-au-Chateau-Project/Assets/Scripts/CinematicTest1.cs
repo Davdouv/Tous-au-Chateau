@@ -105,7 +105,7 @@ public class CinematicTest1 : MonoBehaviour {
         yield return new WaitForSeconds(5f);
 
         transitionAnim.SetTrigger("fadeInWhite");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
 
         Debug.Log("CAMERA 4");
         // Plan 4 : villagers: traveling right -> left
