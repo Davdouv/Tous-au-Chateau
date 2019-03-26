@@ -36,5 +36,6 @@ public class CastleCollision : MonoBehaviour
     {
         fadeAnimation.SetTrigger("SceneTransition");
         yield return new WaitForSeconds(1.5f);
+        MapSelector.SwitchScene(_levelName);
     }
 }

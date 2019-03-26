@@ -66,7 +66,13 @@ public class MapSelector : MonoBehaviour {
 	}
 
 	public static void SwitchScene(string name) {
-		SceneManager.LoadScene(name);
+		Scene cinematicScene = SceneManager.GetSceneByName("Cinematic_" + name);
+		Scene gameScene = SceneManager.GetSceneByName(name);
+		if (cinematicScene.IsValid()) {
+			SceneManager.LoadScene("Cinematic_" + name);
+		} else if (gameScene.IsValid()) {
+			SceneManager.LoadScene(name);
+		}
 	}
 
 	private MapStation GetStation(Transform transform) {

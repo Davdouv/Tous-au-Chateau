@@ -51,14 +51,14 @@ public static class SaveManager {
             existingScores = new List<LevelScore>();
         }
 
-		existingScores.Add(newScore); // Add new score into the list
+				existingScores.Add(newScore); // Add new score into the list
 
-		string newData = JsonHelperList.ToJson(existingScores, true);
+				string newData = JsonHelperList.ToJson(existingScores, true);
 
-		StreamWriter writer = new StreamWriter(path);
+				StreamWriter writer = new StreamWriter(path);
 
-		writer.WriteLine(newData); // Rewrite score
-		writer.Close();
+				writer.WriteLine(newData); // Rewrite score
+				writer.Close();
     }
 
     private static bool IsFileValid(string filePath)
@@ -76,5 +76,12 @@ public static class SaveManager {
 
         return IsValid;
     }
+
+		public static void Erase() {
+			string path = Application.persistentDataPath + "/score.dat";
+			StreamWriter temp_writer = new StreamWriter(path);
+			temp_writer.Close();
+			Debug.Log("Save erased");
+		}
 
 }

@@ -46,9 +46,11 @@ public class GlobalScore : MonoBehaviour {
 	}
 
 	public int GetScore(string levelName) {
-		foreach (var score in _scores) {
-			if (score.levelName == levelName) {
-				return score.stars;
+		if (_scores != null) {
+			foreach (var score in _scores) {
+				if (score.levelName == levelName) {
+					return score.stars;
+				}
 			}
 		}
 		return -1;

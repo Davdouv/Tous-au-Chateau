@@ -194,6 +194,11 @@ public class GameManager : MonoBehaviour
         {
             levelDuration += Time.deltaTime;
         }
+
+            // ERASE SAVE - Press K and P
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && Input.GetKey(KeyCode.E)) {
+            SaveManager.Erase();
+        }
     }
 
     // Change the scene after 5 sec
