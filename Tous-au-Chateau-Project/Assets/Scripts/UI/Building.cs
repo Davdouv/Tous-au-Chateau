@@ -1,5 +1,6 @@
 ﻿using System.Collections; using System.Collections.Generic; using UnityEngine;  public enum BuildingType { Basics, DirectionalPanel };  public class Building : MonoBehaviour {      public string _name;     public BuildingType buildingType;     public GameObject prefab;
-    public GameObject prefabTransparent;     private AudioSource _audioData;     public AudioClip purchasedSound;      [SerializeField]     protected ResourcesPack _cost;          private float _width;     private float _height;     private bool _isDraggable;      private bool _hasLanded;      void Start()
+    public GameObject prefabTransparent;     private AudioSource _audioData;     public AudioClip purchasedSound;      public GameObject leftCorner;
+    public GameObject rightCorner;      [SerializeField]     protected ResourcesPack _cost;          private float _width;     private float _height;     private bool _isDraggable;      private bool _hasLanded;      void Start()
     {
         _audioData = GetComponent<AudioSource>();
         _audioData.clip = purchasedSound;

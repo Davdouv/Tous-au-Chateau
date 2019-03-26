@@ -471,8 +471,11 @@ public class MainActions : MonoBehaviour
         Vector3 scale = buildingPreview.transform.localScale;
 
         Vector3 middlePosition = newBuilding.transform.position;
-        Vector3 rightPosition = new Vector3(middlePosition.x + (boxCollider.size.x * scale.x), middlePosition.y + (boxCollider.size.y * scale.y), middlePosition.z + (boxCollider.size.z * scale.z));
-        Vector3 leftPosition = new Vector3(middlePosition.x - (boxCollider.size.x * scale.x), middlePosition.y - (boxCollider.size.y * scale.y), middlePosition.z - (boxCollider.size.z * scale.z));
+        //Vector3 rightPosition = new Vector3(middlePosition.x + ((boxCollider.size.x / 2) * scale.x), middlePosition.y + ((boxCollider.size.y / 2) * scale.y), middlePosition.z + ((boxCollider.size.z / 2) * scale.z));
+        //Vector3 leftPosition = new Vector3(middlePosition.x - ((boxCollider.size.x / 2) * scale.x), middlePosition.y - ((boxCollider.size.y / 2) * scale.y), middlePosition.z - ((boxCollider.size.z/2) * scale.z));
+
+        Vector3 rightPosition = newBuilding.GetComponent<Building>().rightCorner.transform.position;
+        Vector3 leftPosition = newBuilding.GetComponent<Building>().leftCorner.transform.position;
 
         float highestHit = 0;
         if (RayCastHit(middlePosition, rightPosition, leftPosition, ref highestHit))
