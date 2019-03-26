@@ -118,9 +118,6 @@ public class Mumble : MonoBehaviour {
 				else if (letter == 'z') {
 					_audioData.clip = b;
 				}
-				else if (letter == '!' || letter == ',' || letter == '.' || letter == '?') {
-					_audioData.clip = r;
-				}
 				else {
 					_audioData.clip = null;
 				}

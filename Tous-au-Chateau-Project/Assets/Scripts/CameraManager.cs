@@ -36,6 +36,8 @@ public class CameraManager : MonoBehaviour
 
     private CameraShaker cameraShaker;
 
+    public bool log = false;
+
     private void Start()
     {
         cameraShaker = GetComponent<CameraShaker>();
@@ -46,28 +48,28 @@ public class CameraManager : MonoBehaviour
     {
         if (GameObject.Find("Camera (eye)"))
         { // VR
-          Debug.Log("VR Camera (eye)");
+          if (log) { Debug.Log("VR Camera (eye)"); }
             _isCameraDefault = false;
             _camera = GameObject.Find("Camera (eye)");
             return true;
         }
         else if (GameObject.Find("Neck"))
         { // Simulator
-          Debug.Log("Simulator Camera (neck)");
+          if (log) { Debug.Log("Simulator Camera (neck)"); }
             _isCameraDefault = false;
             _camera = GameObject.Find("Neck");
             return true;
         }
         else if (GameObject.Find("[VRSimulator_CameraRig]"))
         { // Simulator
-          Debug.Log("Simulator Camera");
+          if (log) { Debug.Log("Simulator Camera"); }
             _isCameraDefault = false;
             _camera = GameObject.Find("[VRSimulator_CameraRig]");
             return true;
         }
         else if (GameObject.Find("Main Camera"))
         { // Default
-          Debug.Log("Default Camera");
+          if (log) { Debug.Log("Default Camera"); }
             _isCameraDefault = true;
             _camera = GameObject.Find("Main Camera");
             return true;
