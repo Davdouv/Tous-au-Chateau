@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CinematicTest1 : MonoBehaviour {
 
@@ -35,34 +34,31 @@ public class CinematicTest1 : MonoBehaviour {
         chateauCamera.enabled = false;
         villagersCamera.enabled = false;
 
-        shouldStart = false;
+        shouldStart = true;
 
         foreach (GameObject villager in villagersGroup)
         {
             villager.GetComponent<Villager>().SetCanMove(false);
         }
-
-        // Start cinematic
-        //StartCoroutine(PlayCinematic());
     }
 	
 	// Update is called once per frame
 	void Update () {
-		/*if(Input.GetKeyDown(KeyCode.C))
-        {*/
+		if(Input.GetKeyDown(KeyCode.C))
+        {
             if (shouldStart)
             {
                 Debug.Log("Should Start");
-                shouldStart = false;
                 StartCoroutine(PlayCinematic());
             }
-       /* }*/
+        }
 	}
 
     public void StartCinematic(Camera player)
     {
-        _playerCamera = player;
         shouldStart = true;
+        _playerCamera = tmpCamera;
+        
         Debug.Log("______________________________________________________________________________CAMERA IS : " + player.gameObject.name);
     }
 
@@ -81,7 +77,7 @@ public class CinematicTest1 : MonoBehaviour {
         transitionAnim.SetTrigger("fadeOutWhite");
         globalCloudsAnim.SetTrigger("cloudsFall");
         globalCameraAnim.SetTrigger("zoomGlobal");
-        ChangeCamera(_playerCamera, globalCamera);
+        ChangeCamera(tmpCamera, globalCamera);
         yield return new WaitForSeconds(5f);
 
         transitionAnim.SetTrigger("fadeInWhite");
@@ -109,15 +105,14 @@ public class CinematicTest1 : MonoBehaviour {
 
         Debug.Log("CAMERA 4");
         // Plan 4 : villagers: traveling right -> left
-        /*transitionAnim.SetTrigger("fadeOutWhite");
+        transitionAnim.SetTrigger("fadeOutWhite");
         villagersCameraAnim.SetTrigger("travelingVillagers");
         ChangeCamera(chateauCamera, villagersCamera);
         yield return new WaitForSeconds(4f);
 
         transitionAnim.SetTrigger("fadeInWhite");
-        yield return new WaitForSeconds(1f);*/
+        yield return new WaitForSeconds(1f);
 
-        //ChangeCamera(villagersCamera, tmpCamera);
-        SceneManager.LoadScene("Map_B.01");
+        ChangeCamera(villagersCamera, tmpCamera);
     }
 }
