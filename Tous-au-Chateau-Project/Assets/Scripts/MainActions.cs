@@ -463,8 +463,8 @@ public class MainActions : MonoBehaviour
         Vector3 scale = buildingPreview.transform.localScale;
 
         Vector3 middlePosition = newBuilding.transform.position;
-        Vector3 rightPosition = new Vector3(middlePosition.x + (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z + (boxCollider.size.y / scale.y));
-        Vector3 leftPosition = new Vector3(middlePosition.x - (boxCollider.size.x * scale.x), middlePosition.y, middlePosition.z - (boxCollider.size.y / scale.y));
+        Vector3 rightPosition = new Vector3(middlePosition.x + (boxCollider.size.x * scale.x), middlePosition.y + (boxCollider.size.y * scale.y), middlePosition.z + (boxCollider.size.z * scale.z));
+        Vector3 leftPosition = new Vector3(middlePosition.x - (boxCollider.size.x * scale.x), middlePosition.y - (boxCollider.size.y * scale.y), middlePosition.z - (boxCollider.size.z * scale.z));
 
         float highestHit = 0;
         if (RayCastHit(middlePosition, rightPosition, leftPosition, ref highestHit))
