@@ -53,13 +53,18 @@ public class UIManager : MonoBehaviour
     //For construction pagination
     public GameObject ConstructionPagination; //parent of each page content in hierarchy
     public Color buildingNotPuchasable;
-    public GameObject paginationButtonsPrefab;
-    public Transform buttonsPosition;
+
     public Transform constructionPosition1;
     public Transform constructionPosition2;
     public Transform constructionPosition3;
     public Transform constructionPosition4;
 
+    public GameObject paginationButtonsPrefab;
+    public Transform buttonsParent;
+    public Transform buttonPosition1;
+    public Transform buttonPosition2;
+
+    /* Private*/
     private List<List<Building>> _sortedBuildings; //sorted by type
     private const int constructionNbByPage = 4;
     private int _nbOfPagesInUI = 0;
@@ -68,6 +73,7 @@ public class UIManager : MonoBehaviour
     private GameObject[] _pageButtons;
     private bool _isCostEmpty = true;
     private Transform[] constructionsPositions;
+    private Transform[] buttonsPositions;
 
     private void Start()
     {
@@ -76,6 +82,10 @@ public class UIManager : MonoBehaviour
         constructionsPositions[1] = constructionPosition2;
         constructionsPositions[2] = constructionPosition3;
         constructionsPositions[3] = constructionPosition4;
+
+        buttonsPositions = new Transform[2];
+        buttonsPositions[0] = buttonPosition1;
+        buttonsPositions[1] = buttonPosition2;
 
         if (BuildingsTypeGroup.Instance != null)
         {
@@ -401,7 +411,7 @@ public class UIManager : MonoBehaviour
         {
             GameObject button = Instantiate(paginationButtonsPrefab);
             button.name = "Construction Panel Button " + i;
-            button.transform.parent = buttonsPosition;
+            button.transform.parent = buttonsParent;
 
             //Change umber in 3D text child
             Transform textNb = button.transform.Find("Canvas/Page number");
@@ -412,9 +422,10 @@ public class UIManager : MonoBehaviour
             }
 
             button.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
-            button.transform.position = buttonsPosition.position 
+            /*button.transform.position = buttonsPosition.position 
                 + Vector3.forward * 0.02f / 0.01f
-                + Vector3.up * (- i * 0.08f) / 0.01f;
+                + Vector3.up * (- i * 0.08f) / 0.01f;*/
+            button.transform.position = buttonsPositions[i].position;
 
             _pageButtons[i] = button;
         }

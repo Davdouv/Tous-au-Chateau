@@ -100,8 +100,8 @@ public class UIManagerCustomInspector : Editor {
         EditorGUILayout.LabelField(serializedObject.FindProperty("paginationButtonsPrefab").displayName);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("paginationButtonsPrefab"), GUIContent.none);
 
-        EditorGUILayout.LabelField(serializedObject.FindProperty("buttonsPosition").displayName);
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("buttonsPosition"), GUIContent.none);
+        EditorGUILayout.LabelField(serializedObject.FindProperty("buttonsParent").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("buttonsParent"), GUIContent.none);
 
         EditorGUILayout.Space();
 
@@ -116,6 +116,14 @@ public class UIManagerCustomInspector : Editor {
 
         EditorGUILayout.LabelField(serializedObject.FindProperty("constructionPosition4").displayName);
         EditorGUILayout.PropertyField(serializedObject.FindProperty("constructionPosition4"), GUIContent.none);
+
+        EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField(serializedObject.FindProperty("buttonPosition1").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("buttonPosition1"), GUIContent.none);
+
+        EditorGUILayout.LabelField(serializedObject.FindProperty("buttonPosition2").displayName);
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("buttonPosition2"), GUIContent.none);
 
         EditorGUILayout.Space();
 
