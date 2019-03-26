@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CinematicTest1 : MonoBehaviour {
 
@@ -34,27 +35,27 @@ public class CinematicTest1 : MonoBehaviour {
         chateauCamera.enabled = false;
         villagersCamera.enabled = false;
 
-        shouldStart = false;
+        shouldStart = true;
 
         foreach (GameObject villager in villagersGroup)
         {
             villager.GetComponent<Villager>().SetCanMove(false);
         }
 
-        //StartCoroutine(PlayCinematic()); // test
+        StartCoroutine(PlayCinematic()); // test
     }
 	
 	// Update is called once per frame
 	void Update () {
 		/*if(Input.GetKeyDown(KeyCode.C))
-        {*/
+        {
             if (shouldStart)
             {
                 Debug.Log("Should Start");
                 shouldStart = false;
                 StartCoroutine(PlayCinematic());
             }
-        /*}*/
+        }*/
 	}
 
     public void StartCinematic(Camera player)
@@ -80,7 +81,7 @@ public class CinematicTest1 : MonoBehaviour {
         transitionAnim.SetTrigger("fadeOutWhite");
         globalCloudsAnim.SetTrigger("cloudsFall");
         globalCameraAnim.SetTrigger("zoomGlobal");
-        ChangeCamera(_playerCamera, globalCamera);
+        ChangeCamera(tmpCamera, globalCamera);
         yield return new WaitForSeconds(5f);
 
         transitionAnim.SetTrigger("fadeInWhite");
@@ -116,6 +117,7 @@ public class CinematicTest1 : MonoBehaviour {
         transitionAnim.SetTrigger("fadeInWhite");
         yield return new WaitForSeconds(1f);*/
 
-        ChangeCamera(villagersCamera, tmpCamera);
+        /*ChangeCamera(villagersCamera, tmpCamera);*/
+        SceneManager.LoadScene("Map_B.01");
     }
 }

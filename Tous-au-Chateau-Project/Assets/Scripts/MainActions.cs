@@ -90,7 +90,7 @@ public class MainActions : MonoBehaviour
         }
         else
         {
-            if (!speechEventA_1.hasDoneAction && events.triggerPressed || events.touchpadPressed)
+            if (speechEventA_1 && !speechEventA_1.hasDoneAction && events.triggerPressed || events.touchpadPressed)
             {
                 VerifyActionTuto(speechEventA_1);
             }
