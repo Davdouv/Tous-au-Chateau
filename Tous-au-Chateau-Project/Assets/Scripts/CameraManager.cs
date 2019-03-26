@@ -123,10 +123,9 @@ public class CameraManager : MonoBehaviour
         if (cinematic)
         {
             cinematic.StartCinematic(GetCamera());
-            Debug.Log("Camera Manager PlayCinematic");
         } else
         {
-            Debug.Log("cinematic component not found_________________________________________________");
+            Debug.Log("Cinematic component not found");
         }
     }
 }
