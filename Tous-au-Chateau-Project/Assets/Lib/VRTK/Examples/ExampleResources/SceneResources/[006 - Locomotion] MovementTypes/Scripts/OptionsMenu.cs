@@ -10,23 +10,39 @@
 
         protected bool state;
         Transform InitialParent;
-        bool once; 
+        bool once;
+        int counter=0;
+        public Vector3 handDistance;
 
         void Start()
         {
             InitialParent = transform.parent;
             once = false;
+            handDistance = new Vector3(0, 0, 0);
         }
         private void Update()
         {
+
             if (state)
             {
                 if (!once)
                 {
-                    transform.position = leftController.transform.position;
-                    leftController.transform.Rotate(0, transform.rotation.y, 90f, Space.World);
-                    once = true;
+
+                    transform.rotation = Quaternion.Euler(0, 180, 0);
+                    transform.position = (leftController.transform.position) + handDistance;
+
+                    /* transform.position = leftController.transform.position;
+                    if (counter % 2 != 0)
+                    {
+                        transform.Rotate(0, -180f, transform.rotation.z, Space.World);
+                    }
+                    else
+                    {
+                        transform.Rotate(0, 180, transform.rotation.z, Space.World);
+                    }
+                    once = true;*/
                 }
+
                 transform.SetParent(leftController.transform);
                 //transform.position = leftController.transform.position;
                 //transform.localRotation = Quaternion.LookRotation(-leftController.transform.forward);
@@ -36,6 +52,7 @@
         protected virtual void OnEnable()
         {
             state = false;
+            Debug.Log("PrintOnEnable: script was enabled");
             RegisterEvents(leftController);
             RegisterEvents(rightController);
             SetObjectVisibility();
