@@ -11888,6 +11888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d1853fc961d8e478ec58758ae6bc68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapName: 
   transitionAnim: {fileID: 953649556}
   globalCloudsAnim: {fileID: 2118928987}
   tmpCamera: {fileID: 87457141}
@@ -12100,6 +12101,10 @@ Prefab:
         type: 2}
       propertyPath: threeFingerAxisButton
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708282929750094, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
@@ -16466,6 +16471,10 @@ Prefab:
     - target: {fileID: 4653173414971708, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708282929750094, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}

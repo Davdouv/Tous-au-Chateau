@@ -6398,8 +6398,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 371770105}
-  m_LocalRotation: {x: -0.2942635, y: 0.6282334, z: 0.27830008, w: 0.66428983}
-  m_LocalPosition: {x: 7.864334, y: -118.53175, z: -44.40398}
+  m_LocalRotation: {x: -0.2942635, y: 0.6282334, z: 0.2783001, w: 0.66428983}
+  m_LocalPosition: {x: -13.332249, y: -122.696205, z: -5.6193504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -20073,7 +20073,7 @@ MonoBehaviour:
   victorySound: {fileID: 8300000, guid: 5cd9dcbdeef9b8c46a1913953bb218ba, type: 3}
   defeatSound: {fileID: 8300000, guid: 788d006a0be6ba440a2ec27c10fe9b39, type: 3}
   victoryFX: {fileID: 786939321}
-  levelName: Tuto_01
+  levelName: Map_Tuto_1.04
   nextSceneName: Map_Tuto_2.01
 --- !u!4 &1050290305
 Transform:
@@ -20877,6 +20877,10 @@ Prefab:
         type: 2}
       propertyPath: threeFingerAxisButton
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708282929750094, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
@@ -23473,6 +23477,10 @@ Prefab:
     - target: {fileID: 4653173414971708, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708282929750094, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}

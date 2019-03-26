@@ -1232,6 +1232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnimation: {fileID: 0}
 --- !u!1 &119169539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,6 +2458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnimation: {fileID: 0}
 --- !u!1001 &210928446
 Prefab:
   m_ObjectHideFlags: 0
@@ -2573,6 +2575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnimation: {fileID: 0}
 --- !u!1 &240520809
 GameObject:
   m_ObjectHideFlags: 0
@@ -2710,6 +2713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnimation: {fileID: 0}
 --- !u!1001 &256427633
 Prefab:
   m_ObjectHideFlags: 0
@@ -7920,6 +7924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnimation: {fileID: 0}
 --- !u!1 &841107716
 GameObject:
   m_ObjectHideFlags: 0
@@ -8459,6 +8464,10 @@ Prefab:
     - target: {fileID: 1812289512735356, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708282929750094, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
@@ -12742,6 +12751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnimation: {fileID: 0}
 --- !u!1 &1364966240 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1439752461410414, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -12947,6 +12957,10 @@ Prefab:
         type: 2}
       propertyPath: threeFingerAxisButton
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1708282929750094, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afec65f27dcd2c74cba31fc61eea61e6, type: 2}
@@ -14837,6 +14851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnimation: {fileID: 0}
 --- !u!1001 &1636578898
 Prefab:
   m_ObjectHideFlags: 0
@@ -15824,6 +15839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnimation: {fileID: 0}
 --- !u!4 &1746115235 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4446483562577848, guid: b2c6d17f0bddb1d43836495617a0f3d3,
@@ -17964,6 +17980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013198790ecb0f448f2d327a15dbcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeAnimation: {fileID: 0}
 --- !u!114 &2031560073 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114547507179255700, guid: c21c0a70e8c5ad6428b40f880cf75e17,
@@ -19648,7 +19665,7 @@ MonoBehaviour:
   villager: {fileID: 626018096}
   originalMat: {fileID: 2100000, guid: bcb6c7a06e9c56742b859c08f5913e02, type: 2}
   highlightMat: {fileID: 2100000, guid: 9908043f8bc79b544913d33c76622f95, type: 2}
-  debug: 1
+  debug: 0
 --- !u!4 &2128369107
 Transform:
   m_ObjectHideFlags: 0
