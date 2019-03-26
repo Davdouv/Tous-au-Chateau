@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28930417, g: 0.46862257, b: 0.9005637, a: 1}
+  m_IndirectSpecularColor: {r: 0.105295464, g: 0.28905082, b: 0.7486986, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -26886,8 +26886,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 783153449}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -3.6}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalPosition: {x: 0, y: 0, z: -61.46}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 589913638}
   - {fileID: 1488794453}
@@ -26898,7 +26898,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 104, y: -25.6}
+  m_AnchoredPosition: {x: 86, y: -63.299995}
   m_SizeDelta: {x: 710, y: 279}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &783153451
@@ -39415,15 +39415,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4063109419103972, guid: 688c1d1dc22259e49bc1dfa4b78d6a78, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 41.5
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4063109419103972, guid: 688c1d1dc22259e49bc1dfa4b78d6a78, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -46.2
+      value: -74.7
       objectReference: {fileID: 0}
     - target: {fileID: 4063109419103972, guid: 688c1d1dc22259e49bc1dfa4b78d6a78, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -19
+      value: -74.2
       objectReference: {fileID: 0}
     - target: {fileID: 4063109419103972, guid: 688c1d1dc22259e49bc1dfa4b78d6a78, type: 2}
       propertyPath: m_LocalRotation.x
@@ -47894,7 +47894,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1747281933}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -150, z: 0}
+  m_LocalPosition: {x: 0, y: -185, z: 0}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children:
   - {fileID: 756081873}

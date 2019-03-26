@@ -16,8 +16,8 @@ public class TerrainDetection_Tuto2 : MonoBehaviour {
             {
                 // Tell the event the stone wall has landed
                 speechEvent4.hasStoneWallLanded = true;
-                Debug.Log("Has Landed");
-
+                //Debug.Log("Has Landed");
+                /*
                 if (speechEvent4_1)
                 {
                     // If the wall isn't placed at the right position
@@ -28,6 +28,7 @@ public class TerrainDetection_Tuto2 : MonoBehaviour {
                         StartCoroutine(DestroyWall(collision.gameObject));
                     }
                 }
+                */
             }
         }
     }

@@ -291,7 +291,7 @@ public class MainActions : MonoBehaviour
             {
                 if (other.tag == "Villager")
                 {
-                    if (other.name == "villager")
+                    if (other.name == "villagerChief")
                     {
                         oldVillager = other.gameObject;
                         oldVillager.SetActive(false);
