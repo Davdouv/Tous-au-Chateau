@@ -40,8 +40,8 @@
                     else
                     {
                         transform.Rotate(0, 180, transform.rotation.z, Space.World);
-                    }
-                    once = true;*/
+                    }*/
+                    once = true;
                 }
 
                 transform.SetParent(leftController.transform);
