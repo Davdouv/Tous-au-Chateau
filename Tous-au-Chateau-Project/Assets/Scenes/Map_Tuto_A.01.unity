@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28930417, g: 0.46862257, b: 0.9005637, a: 1}
+  m_IndirectSpecularColor: {r: 0.10536869, g: 0.28913683, b: 0.7486905, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4983,8 +4983,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 340960883}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2956.25}
-  m_LocalScale: {x: 2.4999998, y: 2.4999998, z: 2.4999998}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1914417781}
   - {fileID: 988419138}
@@ -4993,7 +4993,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 900, y: -758.3331}
+  m_AnchoredPosition: {x: -11.999878, y: 17.999954}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!4 &343516023 stripped
@@ -8142,7 +8142,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8068ca07d96a78342a22c5ff9d2f9e83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: WELCOME TO MAP A
+  message: "Dear Popularios, here begins the real journey to kick the Lord out of
+    his castle. This world is dangerous and only #you# can save us from dying. There
+    will be no second chance, this time. #Once we're dead, we're dead.# And to make
+    it worse, us villagers are ready to rise up, but not for too long. See, after
+    some time, we get a bit tired and discouraged... We pray for you, Popularios!
+    Down with the Lord! It's over for you C\xE9driiic!"
   bubble: {fileID: 1077681572}
   previousEvent: {fileID: 0}
   controllerAnimation: {fileID: 2009693251}
@@ -9545,7 +9550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 160, y: -174}
+  m_AnchoredPosition: {x: 202, y: -174}
   m_SizeDelta: {x: 1400, y: 82.1}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &675671008
@@ -11785,8 +11790,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 832753086}
-  m_LocalRotation: {x: -0.26903155, y: 0.010679976, z: 0.0034077622, w: 0.96306616}
-  m_LocalPosition: {x: 61.99109, y: -62.111954, z: -33.561653}
+  m_LocalRotation: {x: -0.0038678907, y: 0.9917405, z: 0.124422096, w: 0.03090116}
+  m_LocalPosition: {x: 93.96087, y: -61.017063, z: 25.00853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14249,8 +14254,8 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 988419137}
-  m_LocalRotation: {x: -0, y: -0.03489949, z: -0, w: 0.99939084}
-  m_LocalPosition: {x: 0, y: 0, z: 83}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.8333333, z: 1}
   m_Children: []
   m_Father: {fileID: 340960884}
@@ -15626,7 +15631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c947be01b31ec4b80e136a20cfe8c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: Message
+  message: 
   bubbleSound: {fileID: 8300000, guid: 78e42cfe7f0af5f4594e2cecd9e32113, type: 3}
   letterTime: 0.025
   canClose: 0
@@ -16664,7 +16669,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1122482827}
   m_LocalRotation: {x: -0, y: -0, z: -0.2937066, w: 0.9558956}
-  m_LocalPosition: {x: 469.00006, y: 18.999989, z: -24.000025}
+  m_LocalPosition: {x: 469.00006, y: 18.999989, z: 0}
   m_LocalScale: {x: 42.899994, y: 36.499996, z: 35}
   m_Children: []
   m_Father: {fileID: 1832925362}
@@ -26999,7 +27004,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1807513349}
   m_LocalRotation: {x: -0, y: -0, z: -0.2937066, w: 0.9558956}
-  m_LocalPosition: {x: 469.00006, y: 18.999989, z: -24.000025}
+  m_LocalPosition: {x: 469.00006, y: 18.999989, z: 0}
   m_LocalScale: {x: 42.899994, y: 36.499996, z: 35}
   m_Children: []
   m_Father: {fileID: 2009693252}
@@ -27180,7 +27185,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 160, y: -174}
+  m_AnchoredPosition: {x: 252, y: -174}
   m_SizeDelta: {x: 1400, y: 82.1}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1822456406
@@ -27420,8 +27425,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1832925361}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2956.25}
-  m_LocalScale: {x: 2.4999998, y: 2.4999998, z: 2.4999998}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1122482828}
   - {fileID: 675671007}
@@ -27430,7 +27435,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 900, y: -758.3331}
+  m_AnchoredPosition: {x: -12, y: 18}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1833886761
@@ -28797,7 +28802,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1914417780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 393, y: 57, z: -29}
+  m_LocalPosition: {x: 393, y: 32, z: 0}
   m_LocalScale: {x: 29.72326, y: 25.289022, z: 24.24975}
   m_Children: []
   m_Father: {fileID: 340960884}
@@ -30542,7 +30547,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2009693252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30550,8 +30555,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2009693251}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2956.25}
-  m_LocalScale: {x: 2.4999998, y: 2.4999998, z: 2.4999998}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1807513350}
   - {fileID: 1822456405}
@@ -30560,7 +30565,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 900, y: -758.3331}
+  m_AnchoredPosition: {x: -11.999878, y: 17.999954}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2013018186
