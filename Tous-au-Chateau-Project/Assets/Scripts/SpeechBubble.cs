@@ -131,7 +131,15 @@ public class SpeechBubble : MonoBehaviour {
 			yield return new WaitForSeconds(1);
 			foreach (char letter in message)
 			{
-				_textComp.text += letter;
+				string displayLetter = letter.ToString();
+				if (letter == '#') {
+						bold = !bold;
+				} else {
+					if (bold) {
+					displayLetter = "<b><color=orange>" + letter + "</color></b>";
+					}
+					_textComp.text += displayLetter;
+				}
 				yield return 0;
 				yield return new WaitForSeconds(letterTime);
 			}
