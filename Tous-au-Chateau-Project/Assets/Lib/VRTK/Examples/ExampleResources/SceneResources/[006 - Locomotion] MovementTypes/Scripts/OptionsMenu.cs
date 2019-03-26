@@ -18,7 +18,7 @@
         {
             InitialParent = transform.parent;
             once = false;
-            handDistance = new Vector3(0, 0, 0);
+            handDistance = new Vector3(0, 0.1f, 0);
         }
         private void Update()
         {
@@ -29,7 +29,8 @@
                 {
 
                     transform.rotation = Quaternion.Euler(0, 180, 0);
-                    transform.position = (leftController.transform.position) + handDistance;
+                    transform.position = (leftController.transform.position);
+                    //controlObject.transform.position = handDistance;
 
                     /* transform.position = leftController.transform.position;
                     if (counter % 2 != 0)
