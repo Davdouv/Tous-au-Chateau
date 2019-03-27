@@ -204,10 +204,12 @@ public class GameManager : MonoBehaviour
     // Change the scene after 5 sec
     private IEnumerator ChangeScene(float seconds = 5)
     {
+                Debug.Log("Wait before change Scene to : " + nextSceneName);
         yield return new WaitForSeconds(seconds);
 
         if (_hasWin && nextSceneName != "")
         {
+            Debug.Log("Change Scene");
             _playerLastPosition = Player.position;
             SceneManager.LoadScene(nextSceneName);
         }

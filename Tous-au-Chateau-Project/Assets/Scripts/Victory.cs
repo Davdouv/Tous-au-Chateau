@@ -10,6 +10,7 @@ public class Victory : TriggerZone {
 
 	// Use this for initialization
 	void Start () {
+    scoreCount = 0;
     }
 
     public override void CollisionEnter(Collision collision)

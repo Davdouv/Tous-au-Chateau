@@ -22,17 +22,15 @@ public class MapSelector : MonoBehaviour {
 	private void CheckIfTutorialMustStart() {
 		if (!debug) {
 			var tuto1 = mapStations[0].name;
-			var tuto2 = mapStations[1].name;
-			var tuto3 = mapStations[2].name;
 			if (_globalScore.GetScore(tuto1) <= 0) {
 				SwitchScene(tuto1);
 			}
-			else if (_globalScore.GetScore(tuto2) <= 0) {
-				SwitchScene(tuto2);
-			}
-			else if (_globalScore.GetScore(tuto3) <= 0) {
-				SwitchScene(tuto3);
-			}
+			// else if (_globalScore.GetScore(tuto2) <= 0) {
+			// 	SwitchScene(tuto2);
+			// }
+			// else if (_globalScore.GetScore(tuto3) <= 0) {
+			// 	SwitchScene(tuto3);
+			// }
 		}
 	}
 
@@ -62,12 +60,20 @@ public class MapSelector : MonoBehaviour {
 		foreach (var station in mapStations) {
 			int score = _globalScore.GetScore(station.name);
 			station.SetCompletionLevel(score);
+			if (station.name == "Map_A.01") {
+				station.SetCompletionLevel(0);
+			}
 		}
 	}
 
 	public static void SwitchScene(string name) {
 		Scene cinematicScene = SceneManager.GetSceneByName("Cinematic_" + name);
 		Scene gameScene = SceneManager.GetSceneByName(name);
+
+		if (name == "Map_A.01") {
+			SceneManager.LoadScene("Cinematic_" + name);
+		}
+
 		Debug.Log("Veut ouvrir " + name);
 		if (cinematicScene.IsValid()) {
 			Debug.Log("Ouvre Cinématique");
