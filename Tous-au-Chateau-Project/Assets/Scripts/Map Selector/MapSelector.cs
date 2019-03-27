@@ -68,9 +68,14 @@ public class MapSelector : MonoBehaviour {
 	public static void SwitchScene(string name) {
 		Scene cinematicScene = SceneManager.GetSceneByName("Cinematic_" + name);
 		Scene gameScene = SceneManager.GetSceneByName(name);
+		Debug.Log("Veut ouvrir " + name);
 		if (cinematicScene.IsValid()) {
+			Debug.Log("Ouvre Cinématique");
 			SceneManager.LoadScene("Cinematic_" + name);
 		} else if (gameScene.IsValid()) {
+			Debug.Log("Ouvre Normal");
+			SceneManager.LoadScene(name);
+		} else {
 			SceneManager.LoadScene(name);
 		}
 	}
