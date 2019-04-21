@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject pauseMenu;
     public bool tuto = true;
+    public bool cinematic = false;
 
     public Transform Player;
     private Vector3 _playerLastPosition;

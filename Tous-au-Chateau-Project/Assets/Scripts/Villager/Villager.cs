@@ -69,7 +69,14 @@ public class Villager : MonoBehaviour
         _rb.isKinematic = false;
         _rb.freezeRotation = !_isPassive;
         _rb.interpolation = RigidbodyInterpolation.None;
-        _canMove = !_isPassive;
+        if (GameManager.Instance.cinematic)
+        {
+            _canMove = false;
+        }
+        else
+        {
+            _canMove = !_isPassive;
+        }        
         _hasJoined = !_isPassive;
         _isJoining = null;
         //Vector3 objectif = GameObject.Find("Objectif").transform.position;
